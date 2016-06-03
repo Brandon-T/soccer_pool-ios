@@ -97,7 +97,7 @@ class ServiceLayer {
         
         
         
-        static let baseURL = NSURL(string: "http://104.131.118.14")!
+        static let baseURL = NSURL(string: "*************IPAddress/BaseURLHere************")!
         
         var URL: NSURL { return Router.baseURL.URLByAppendingPathComponent(route.path) }
         
