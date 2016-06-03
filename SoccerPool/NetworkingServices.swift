@@ -74,31 +74,32 @@ class ServiceLayer {
     
     
     enum Router: URLRequestConvertible {
-        static let baseURL = NSURL(string: "http://104.131.118.14")!
-        
-        
+
         case Base
         case Login(String, String)
         case Pool
         
         
-        
-        
-        var URL: NSURL { return Router.baseURL.URLByAppendingPathComponent(route.path) }
-        
         var route: (method: Alamofire.Method, path: String, parameters: [String : AnyObject]?) {
             switch self {
-                case .Base:
-                    return (.GET, "/", nil)
+            case .Base:
+                return (.GET, "/", nil)
                 
-                case .Login(let email, let password):
-                    return (.POST, "/sample/login", ["email":email, "password":password])
+            case .Login(let email, let password):
+                return (.POST, "/sample/login", ["email":email, "password":password])
                 
-                case .Pool:
-                    return (.GET, "/sample/pool", nil)
+            case .Pool:
+                return (.GET, "/sample/pool", nil)
                 
             }
         }
+        
+        
+        
+        
+        static let baseURL = NSURL(string: "http://104.131.118.14")!
+        
+        var URL: NSURL { return Router.baseURL.URLByAppendingPathComponent(route.path) }
         
         var URLRequest: NSMutableURLRequest {
             let request = NSMutableURLRequest(URL: URL)
