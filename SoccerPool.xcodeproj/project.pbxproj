@@ -14,6 +14,9 @@
 		CA5FB2FB1D0141D300150762 /* ServiceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FB2FA1D0141D300150762 /* ServiceLayer.swift */; };
 		CAE147FD1D04A8A3000C67A3 /* NSObject+Serializable.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE147FC1D04A8A3000C67A3 /* NSObject+Serializable.m */; };
 		CAE148001D04A95E000C67A3 /* Pool.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE147FF1D04A95E000C67A3 /* Pool.swift */; };
+		CAE148021D04B06B000C67A3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE148011D04B06B000C67A3 /* Game.swift */; };
+		CAE148041D04B096000C67A3 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE148031D04B096000C67A3 /* Team.swift */; };
+		CAE148061D04B0F8000C67A3 /* Prediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE148051D04B0F8000C67A3 /* Prediction.swift */; };
 		CAE7836E1D013B7400492BBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE7836D1D013B7400492BBD /* AppDelegate.swift */; };
 		CAE783701D013B7400492BBD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE7836F1D013B7400492BBD /* ViewController.swift */; };
 		CAE783751D013B7400492BBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAE783741D013B7400492BBD /* Assets.xcassets */; };
@@ -32,6 +35,9 @@
 		CAE147FB1D04A8A3000C67A3 /* NSObject+Serializable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Serializable.h"; sourceTree = "<group>"; };
 		CAE147FC1D04A8A3000C67A3 /* NSObject+Serializable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Serializable.m"; sourceTree = "<group>"; };
 		CAE147FF1D04A95E000C67A3 /* Pool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pool.swift; sourceTree = "<group>"; };
+		CAE148011D04B06B000C67A3 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		CAE148031D04B096000C67A3 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		CAE148051D04B0F8000C67A3 /* Prediction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prediction.swift; sourceTree = "<group>"; };
 		CAE7836A1D013B7400492BBD /* SoccerPool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoccerPool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAE7836D1D013B7400492BBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAE7836F1D013B7400492BBD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +70,9 @@
 			isa = PBXGroup;
 			children = (
 				CAE147FF1D04A95E000C67A3 /* Pool.swift */,
+				CAE148011D04B06B000C67A3 /* Game.swift */,
+				CAE148031D04B096000C67A3 /* Team.swift */,
+				CAE148051D04B0F8000C67A3 /* Prediction.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -238,12 +247,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAE147FD1D04A8A3000C67A3 /* NSObject+Serializable.m in Sources */,
+				CAE148021D04B06B000C67A3 /* Game.swift in Sources */,
 				CA5FB2F91D013E8700150762 /* BaseViewController.swift in Sources */,
+				CAE148061D04B0F8000C67A3 /* Prediction.swift in Sources */,
 				CA5FB2F51D013E0E00150762 /* LoginViewController.swift in Sources */,
 				CAE783701D013B7400492BBD /* ViewController.swift in Sources */,
 				CAE7836E1D013B7400492BBD /* AppDelegate.swift in Sources */,
 				CA5FB2F71D013E1C00150762 /* HomeViewController.swift in Sources */,
 				CA5FB2FB1D0141D300150762 /* ServiceLayer.swift in Sources */,
+				CAE148041D04B096000C67A3 /* Team.swift in Sources */,
 				CAE148001D04A95E000C67A3 /* Pool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

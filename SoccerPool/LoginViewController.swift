@@ -16,16 +16,26 @@ class LoginViewController : BaseViewController {
         
         self.view.backgroundColor = UIColor.whiteColor()
         
-        /*ServiceLayer.loginUser("brandon@plasticmobile.com", password: "developer") { (json, error) in
+        ServiceLayer.loginUser("brandon@plasticmobile.com", password: "developer") { (json, error) in
             print("JSON: \(json) -- error: \(error)")
-        }*/
+        }
         
         ServiceLayer.getPool { (json, error) in
             let data = json?["data"] as! Array<[String: AnyObject]>
             let pools = Pool.fromJSONArray(data) as! [Pool]
             
             for pool in pools {
-                print("Name: \(pool.name) -- Points: \(pool.points)")
+                print("Name: \(pool)")
+            }
+        }
+        
+        ServiceLayer.getGames { (json, error) in
+            let data = json?["data"] as! Array<[String: AnyObject]>
+            let games = Game.fromJSONArray(data) as! [Game]
+
+ 
+            for game in games {
+                print("Game: \(game)")
             }
         }
     }
