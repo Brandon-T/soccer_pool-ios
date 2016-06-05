@@ -13,39 +13,25 @@ class ServiceLayer {
     
     
     static func loginUser(email: String, password: String, completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
-        requestManager.request(Router.Login(email, password))
-            .validate(statusCode: 200..<300)
-            .validate(contentType: ["application/json", "text/html"])
-            .responseJSON { (response) in
-                
-                guard response.result.isSuccess else {
-                    print("Error: \(response.result.error)")
-                    completion(json: nil, error: response.result.error)
-                    return
-                }
-                
-                completion(json: response.result.value as? [String: AnyObject], error: nil)
-        }
+        ServiceLayer.request(Router.Login(email, password), completion: completion)
     }
     
     static func getPool(completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
-        requestManager.request(Router.Pool)
-            .validate(statusCode: 200..<300)
-            .validate(contentType: ["application/json", "text/html"])
-            .responseJSON { (response) in
-                
-                guard response.result.isSuccess else {
-                    print("Error: \(response.result.error)")
-                    completion(json: nil, error: response.result.error)
-                    return
-                }
-                
-                completion(json: response.result.value as? [String: AnyObject], error: nil)
-        }
+        ServiceLayer.request(Router.Pool, completion: completion)
     }
     
     static func getGames(completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
-        requestManager.request(Router.Games)
+        ServiceLayer.request(Router.Games, completion: completion)
+    }
+    
+    static func predictGame(gameID: UInt, awayGoals: UInt, homeGoals: UInt, completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
+        ServiceLayer.request(Router.PredictGames(gameID, awayGoals, homeGoals), completion: completion);
+    }
+    
+    
+    
+    static func request(router: Router, completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
+        requestManager.request(router)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json", "text/html"])
             .responseJSON { (response) in
@@ -59,12 +45,6 @@ class ServiceLayer {
                 completion(json: response.result.value as? [String: AnyObject], error: nil)
         }
     }
-    
-    static func predictGame(gameID: UInt, awayGoals: UInt, homeGoals: UInt) -> Void {
-        
-    }
-    
-    
     
     
     
