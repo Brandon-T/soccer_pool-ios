@@ -44,9 +44,25 @@ class ServiceLayer {
         }
     }
     
+    static func getGames(completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
+        requestManager.request(Router.Games)
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["application/json", "text/html"])
+            .responseJSON { (response) in
+                
+                guard response.result.isSuccess else {
+                    print("Error: \(response.result.error)")
+                    completion(json: nil, error: response.result.error)
+                    return
+                }
+                
+                completion(json: response.result.value as? [String: AnyObject], error: nil)
+        }
+    }
     
-    
-    
+    static func predictGame(gameID: UInt, awayGoals: UInt, homeGoals: UInt) -> Void {
+        
+    }
     
     
     
@@ -78,6 +94,8 @@ class ServiceLayer {
         case Base
         case Login(String, String)
         case Pool
+        case Games
+        case PredictGames(UInt, UInt, UInt)
         
         
         var route: (method: Alamofire.Method, path: String, parameters: [String : AnyObject]?) {
@@ -86,18 +104,23 @@ class ServiceLayer {
                 return (.GET, "/", nil)
                 
             case .Login(let email, let password):
-                return (.POST, "/sample/login", ["email":email, "password":password])
+                return (.POST, "/sample/login", ["email": email, "password": password])
                 
             case .Pool:
                 return (.GET, "/sample/pool", nil)
                 
+            case .Games:
+                return (.GET, "/sample/games", nil)
+                
+            case .PredictGames(let gameID, let awayGoals, let homeGoals):
+                return (.POST, "/sample/predictgame", ["gameID": gameID, "awayGoals": awayGoals, "homeGoals": homeGoals])
             }
         }
         
         
         
         
-        static let baseURL = NSURL(string: "*************IPAddress/BaseURLHere************")!
+        static let baseURL = NSURL(string: "http://104.131.118.14")!
         
         var URL: NSURL { return Router.baseURL.URLByAppendingPathComponent(route.path) }
         
