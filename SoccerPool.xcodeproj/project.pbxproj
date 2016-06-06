@@ -13,7 +13,12 @@
 		2FE39E1E1D04BC6B00A62F1C /* UIColor+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE39E1D1D04BC6B00A62F1C /* UIColor+Utilities.swift */; };
 		CA5FB2F51D013E0E00150762 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FB2F41D013E0E00150762 /* LoginViewController.swift */; };
 		CA5FB2F91D013E8700150762 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FB2F81D013E8700150762 /* BaseViewController.swift */; };
-		CA5FB2FB1D0141D300150762 /* NetworkingServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FB2FA1D0141D300150762 /* NetworkingServices.swift */; };
+		CA5FB2FB1D0141D300150762 /* ServiceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FB2FA1D0141D300150762 /* ServiceLayer.swift */; };
+		CAE147FD1D04A8A3000C67A3 /* NSObject+Serializable.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE147FC1D04A8A3000C67A3 /* NSObject+Serializable.m */; };
+		CAE148001D04A95E000C67A3 /* Pool.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE147FF1D04A95E000C67A3 /* Pool.swift */; };
+		CAE148021D04B06B000C67A3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE148011D04B06B000C67A3 /* Game.swift */; };
+		CAE148041D04B096000C67A3 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE148031D04B096000C67A3 /* Team.swift */; };
+		CAE148061D04B0F8000C67A3 /* Prediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE148051D04B0F8000C67A3 /* Prediction.swift */; };
 		CAE7836E1D013B7400492BBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE7836D1D013B7400492BBD /* AppDelegate.swift */; };
 		CAE783751D013B7400492BBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAE783741D013B7400492BBD /* Assets.xcassets */; };
 		CAE783781D013B7400492BBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAE783761D013B7400492BBD /* LaunchScreen.storyboard */; };
@@ -28,7 +33,14 @@
 		C300CEBE3466E68B61A7257F /* Pods_SoccerPool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoccerPool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA5FB2F41D013E0E00150762 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CA5FB2F81D013E8700150762 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		CA5FB2FA1D0141D300150762 /* NetworkingServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingServices.swift; sourceTree = "<group>"; };
+		CA5FB2FA1D0141D300150762 /* ServiceLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceLayer.swift; sourceTree = "<group>"; };
+		CAE147FA1D04A8A3000C67A3 /* SoccerPool-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SoccerPool-Bridging-Header.h"; sourceTree = "<group>"; };
+		CAE147FB1D04A8A3000C67A3 /* NSObject+Serializable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Serializable.h"; sourceTree = "<group>"; };
+		CAE147FC1D04A8A3000C67A3 /* NSObject+Serializable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Serializable.m"; sourceTree = "<group>"; };
+		CAE147FF1D04A95E000C67A3 /* Pool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pool.swift; sourceTree = "<group>"; };
+		CAE148011D04B06B000C67A3 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		CAE148031D04B096000C67A3 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		CAE148051D04B0F8000C67A3 /* Prediction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prediction.swift; sourceTree = "<group>"; };
 		CAE7836A1D013B7400492BBD /* SoccerPool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoccerPool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAE7836D1D013B7400492BBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAE783741D013B7400492BBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -106,6 +118,17 @@
 				C300CEBE3466E68B61A7257F /* Pods_SoccerPool.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CAE147FE1D04A93D000C67A3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CAE147FF1D04A95E000C67A3 /* Pool.swift */,
+				CAE148011D04B06B000C67A3 /* Game.swift */,
+				CAE148031D04B096000C67A3 /* Team.swift */,
+				CAE148051D04B0F8000C67A3 /* Prediction.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		CAE783611D013B7400492BBD = {
@@ -287,7 +310,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAE147FD1D04A8A3000C67A3 /* NSObject+Serializable.m in Sources */,
+				CAE148021D04B06B000C67A3 /* Game.swift in Sources */,
 				CA5FB2F91D013E8700150762 /* BaseViewController.swift in Sources */,
+				CAE148061D04B0F8000C67A3 /* Prediction.swift in Sources */,
 				CA5FB2F51D013E0E00150762 /* LoginViewController.swift in Sources */,
 				CAE7836E1D013B7400492BBD /* AppDelegate.swift in Sources */,
 				2F7B9F631D04B822005BEAB8 /* LoginFieldsView.swift in Sources */,
@@ -398,10 +424,13 @@
 			baseConfigurationReference = 828FF0358ED14F9F23605039 /* Pods-SoccerPool.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SoccerPool/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = XIO.SoccerPool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SoccerPool/SoccerPool-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -410,10 +439,12 @@
 			baseConfigurationReference = 1E62B4D6BCF1FE90F995B330 /* Pods-SoccerPool.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SoccerPool/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = XIO.SoccerPool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SoccerPool/SoccerPool-Bridging-Header.h";
 			};
 			name = Release;
 		};
