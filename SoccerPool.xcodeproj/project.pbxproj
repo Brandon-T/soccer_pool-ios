@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0213553F8C1A5090F474BAA4 /* Pods_SoccerPool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C300CEBE3466E68B61A7257F /* Pods_SoccerPool.framework */; };
+		2F39489F1D05B78D00C8B6B3 /* Pool.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE147FF1D04A95E000C67A3 /* Pool.swift */; };
+		2F3948A01D05B78D00C8B6B3 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE148031D04B096000C67A3 /* Team.swift */; };
 		2F7B9F5F1D04A6FC005BEAB8 /* SoccerPool.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F7B9F5E1D04A6FC005BEAB8 /* SoccerPool.storyboard */; };
 		2F7B9F631D04B822005BEAB8 /* LoginFieldsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7B9F621D04B822005BEAB8 /* LoginFieldsView.swift */; };
 		2FE39E1E1D04BC6B00A62F1C /* UIColor+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE39E1D1D04BC6B00A62F1C /* UIColor+Utilities.swift */; };
@@ -15,9 +17,7 @@
 		CA5FB2F91D013E8700150762 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FB2F81D013E8700150762 /* BaseViewController.swift */; };
 		CA5FB2FB1D0141D300150762 /* ServiceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FB2FA1D0141D300150762 /* ServiceLayer.swift */; };
 		CAE147FD1D04A8A3000C67A3 /* NSObject+Serializable.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE147FC1D04A8A3000C67A3 /* NSObject+Serializable.m */; };
-		CAE148001D04A95E000C67A3 /* Pool.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE147FF1D04A95E000C67A3 /* Pool.swift */; };
 		CAE148021D04B06B000C67A3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE148011D04B06B000C67A3 /* Game.swift */; };
-		CAE148041D04B096000C67A3 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE148031D04B096000C67A3 /* Team.swift */; };
 		CAE148061D04B0F8000C67A3 /* Prediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE148051D04B0F8000C67A3 /* Prediction.swift */; };
 		CAE7836E1D013B7400492BBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE7836D1D013B7400492BBD /* AppDelegate.swift */; };
 		CAE783751D013B7400492BBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAE783741D013B7400492BBD /* Assets.xcassets */; };
@@ -63,7 +63,6 @@
 		2F7B9F611D04B7F5005BEAB8 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				CA5FB2F41D013E0E00150762 /* LoginViewController.swift */,
 				2F7B9F621D04B822005BEAB8 /* LoginFieldsView.swift */,
 			);
 			name = Login;
@@ -90,7 +89,6 @@
 			isa = PBXGroup;
 			children = (
 				2F7B9F5E1D04A6FC005BEAB8 /* SoccerPool.storyboard */,
-				CAE783761D013B7400492BBD /* LaunchScreen.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -98,7 +96,6 @@
 		2FE39E231D04D63200A62F1C /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				CA5FB2F81D013E8700150762 /* BaseViewController.swift */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -106,8 +103,6 @@
 		2FE39E271D04FAD400A62F1C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CAE783741D013B7400492BBD /* Assets.xcassets */,
-				CAE783791D013B7400492BBD /* Info.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -156,8 +151,17 @@
 				2FE39E221D04D5E000A62F1C /* View */,
 				2FE39E211D04D5B400A62F1C /* Controllers */,
 				2FE39E1C1D04BC1700A62F1C /* Utilities */,
+				CAE147FE1D04A93D000C67A3 /* Models */,
 				CAE7836D1D013B7400492BBD /* AppDelegate.swift */,
-				CA5FB2FA1D0141D300150762 /* NetworkingServices.swift */,
+				CA5FB2FA1D0141D300150762 /* ServiceLayer.swift */,
+				CA5FB2F81D013E8700150762 /* BaseViewController.swift */,
+				CA5FB2F41D013E0E00150762 /* LoginViewController.swift */,
+				CAE783741D013B7400492BBD /* Assets.xcassets */,
+				CAE783761D013B7400492BBD /* LaunchScreen.storyboard */,
+				CAE783791D013B7400492BBD /* Info.plist */,
+				CAE147FB1D04A8A3000C67A3 /* NSObject+Serializable.h */,
+				CAE147FC1D04A8A3000C67A3 /* NSObject+Serializable.m */,
+				CAE147FA1D04A8A3000C67A3 /* SoccerPool-Bridging-Header.h */,
 			);
 			path = SoccerPool;
 			sourceTree = "<group>";
@@ -310,6 +314,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F39489F1D05B78D00C8B6B3 /* Pool.swift in Sources */,
+				2F3948A01D05B78D00C8B6B3 /* Team.swift in Sources */,
 				CAE147FD1D04A8A3000C67A3 /* NSObject+Serializable.m in Sources */,
 				CAE148021D04B06B000C67A3 /* Game.swift in Sources */,
 				CA5FB2F91D013E8700150762 /* BaseViewController.swift in Sources */,
@@ -318,7 +324,7 @@
 				CAE7836E1D013B7400492BBD /* AppDelegate.swift in Sources */,
 				2F7B9F631D04B822005BEAB8 /* LoginFieldsView.swift in Sources */,
 				2FE39E1E1D04BC6B00A62F1C /* UIColor+Utilities.swift in Sources */,
-				CA5FB2FB1D0141D300150762 /* NetworkingServices.swift in Sources */,
+				CA5FB2FB1D0141D300150762 /* ServiceLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
