@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SCLAlertView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>XYPieChart.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,12 +37,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>28DA4E104BA0C94507284C178FC788AD</key>
+		<key>077EFC0B8A26EAEA4A9DD056D6F6D4D8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>321B0C3495D86911996E96DB52DD14CE</key>
+		<key>1DA0A4A5133C580E8065B48D96C7ABF0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>32C31C679247A85A9DACD122141EA5D2</key>
 		<dict>
 			<key>primary</key>
 			<true/>

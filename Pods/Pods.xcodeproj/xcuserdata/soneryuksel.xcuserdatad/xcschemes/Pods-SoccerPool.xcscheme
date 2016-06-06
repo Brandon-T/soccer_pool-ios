@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'DC4C8D5B36A3F377EA17BD3D'
+               BlueprintIdentifier = '01CD2BA3FE83F8BF097A95C1'
                BlueprintName = 'Pods-SoccerPool'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_SoccerPool.framework'>

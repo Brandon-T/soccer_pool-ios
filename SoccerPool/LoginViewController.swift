@@ -8,19 +8,52 @@
 
 import Foundation
 import UIKit
+import SCLAlertView
 
-class LoginViewController : BaseViewController {
+class LoginViewController : BaseViewController, LoginFieldsViewDelegate {
     
+    @IBOutlet weak var loginFieldsView: LoginFieldsView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.backgroundColor = UIColor.whiteColor()
-        
-        ServiceLayer.loginUser("brandon@plasticmobile.com", password: "developer") { (json, error) in
-            print("JSON: \(json) -- error: \(error)")
-        }
+
+        self.initControllers()
+        self.setTheme()
+        self.doLayout()
     }
     
+    func initControllers() -> Void {
+        
+        loginFieldsView.delegate = self
+    }
+    
+    func setTheme() -> Void {
+        
+    }
+    
+    func doLayout() -> Void {
+        
+    }
+    
+    func didEnterPoolPressed(sender: AnyObject, name: String, password: String){
+        
+        ServiceLayer.loginUser(name, password: password) { (json, error) in
+            
+            print(json)
+            
+            let success = json?["success"] as! Int
+            let data = json?["errorMessage"] as! String
+            
+            if success == 0{
+                SCLAlertView().showInfo("Error", subTitle: data, circleIconImage: UIImage(named: "EuroCupIcon"))
+            }
+            else{
+                self.performSegueWithIdentifier("segueSuccessfulLogin", sender: nil)
+            }
+        }
+    }
+
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
