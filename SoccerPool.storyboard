@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Baf-EB-vlc">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="aXS-Du-pnM">
+            <objects>
+                <viewController id="Baf-EB-vlc" customClass="LoginViewController" customModule="SoccerPool" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fsq-ic-SFG"/>
+                        <viewControllerLayoutGuide type="bottom" id="OPw-wk-OKZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qmj-Y7-g9H">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IntroBackground" translatesAutoresizingMaskIntoConstraints="NO" id="jSl-9n-n56">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlasticLogo" translatesAutoresizingMaskIntoConstraints="NO" id="aqW-mv-SV8">
+                                <rect key="frame" x="194" y="43" width="213" height="89"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="89" id="B81-ZC-yBZ"/>
+                                    <constraint firstAttribute="width" constant="213" id="hpb-Ag-oa1"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EURO CUP POOL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kgs-wD-kDD">
+                                <rect key="frame" x="0.0" y="155" width="600" height="27"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EuroCupBallLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Rii-o4-e5W">
+                                <rect key="frame" x="233" y="209" width="135" height="135"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="135" id="aAz-NE-tse"/>
+                                    <constraint firstAttribute="width" constant="135" id="oq0-cl-CX1"/>
+                                </constraints>
+                            </imageView>
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUa-qA-wFF" customClass="LoginFieldsView" customModule="SoccerPool" customModuleProvider="target">
+                                <rect key="frame" x="45" y="384" width="510" height="215"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Set Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RaI-kT-OAV">
+                                        <rect key="frame" x="21" y="65" width="469" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="rzL-aP-fh1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Plastic Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="q9R-zh-XnE">
+                                        <rect key="frame" x="21" y="13" width="469" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Ird-EA-orz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFd-QC-Tru">
+                                        <rect key="frame" x="21" y="137" width="469" height="44"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Cra-cZ-9Ji"/>
+                                        </constraints>
+                                        <state key="normal" title="Enter the Pool">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="enterPoolButtonPressed:" destination="AUa-qA-wFF" eventType="touchUpInside" id="sCh-8W-MGP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.77647058823529413" green="0.83921568627450982" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="KFd-QC-Tru" firstAttribute="top" secondItem="RaI-kT-OAV" secondAttribute="bottom" constant="28" id="5qy-5H-siK"/>
+                                    <constraint firstItem="q9R-zh-XnE" firstAttribute="leading" secondItem="AUa-qA-wFF" secondAttribute="leading" constant="21" id="9MQ-qu-kfs"/>
+                                    <constraint firstItem="RaI-kT-OAV" firstAttribute="centerX" secondItem="AUa-qA-wFF" secondAttribute="centerX" id="C3s-L6-YwZ"/>
+                                    <constraint firstItem="q9R-zh-XnE" firstAttribute="top" secondItem="AUa-qA-wFF" secondAttribute="top" constant="13" id="EfV-1q-l5e"/>
+                                    <constraint firstItem="q9R-zh-XnE" firstAttribute="centerX" secondItem="AUa-qA-wFF" secondAttribute="centerX" id="Smr-3M-VEW"/>
+                                    <constraint firstItem="KFd-QC-Tru" firstAttribute="leading" secondItem="AUa-qA-wFF" secondAttribute="leading" constant="21" id="YzU-2Z-MvB"/>
+                                    <constraint firstItem="RaI-kT-OAV" firstAttribute="top" secondItem="q9R-zh-XnE" secondAttribute="bottom" constant="8" id="eCg-mI-35J"/>
+                                    <constraint firstItem="RaI-kT-OAV" firstAttribute="leading" secondItem="AUa-qA-wFF" secondAttribute="leading" constant="21" id="kMI-c0-jKf"/>
+                                    <constraint firstItem="KFd-QC-Tru" firstAttribute="centerX" secondItem="AUa-qA-wFF" secondAttribute="centerX" id="kRJ-oU-W8u"/>
+                                    <constraint firstAttribute="height" constant="215" id="rRq-J4-uDh"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="emailTextField" destination="q9R-zh-XnE" id="h5z-7d-Dkz"/>
+                                    <outlet property="enterPoolButton" destination="KFd-QC-Tru" id="kpK-bb-CQ4"/>
+                                    <outlet property="passwordTextField" destination="RaI-kT-OAV" id="7ui-KW-daD"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leading" secondItem="Kgs-wD-kDD" secondAttribute="leading" id="22Q-2G-k03"/>
+                            <constraint firstItem="OPw-wk-OKZ" firstAttribute="top" secondItem="jSl-9n-n56" secondAttribute="bottom" id="AZ5-YE-gcM"/>
+                            <constraint firstItem="jSl-9n-n56" firstAttribute="leading" secondItem="Qmj-Y7-g9H" secondAttribute="leading" id="IfE-SJ-mZG"/>
+                            <constraint firstItem="Kgs-wD-kDD" firstAttribute="top" secondItem="aqW-mv-SV8" secondAttribute="bottom" constant="23" id="PIg-9b-fJY"/>
+                            <constraint firstItem="jSl-9n-n56" firstAttribute="top" secondItem="Qmj-Y7-g9H" secondAttribute="topMargin" id="QMd-aB-BIi"/>
+                            <constraint firstItem="AUa-qA-wFF" firstAttribute="leading" secondItem="Qmj-Y7-g9H" secondAttribute="leading" constant="45" id="QmU-p8-Wnq"/>
+                            <constraint firstAttribute="trailing" secondItem="AUa-qA-wFF" secondAttribute="trailing" constant="45" id="Uaq-CM-8vv"/>
+                            <constraint firstItem="aqW-mv-SV8" firstAttribute="top" secondItem="fsq-ic-SFG" secondAttribute="bottom" constant="23" id="VVu-AW-p3i"/>
+                            <constraint firstItem="aqW-mv-SV8" firstAttribute="centerX" secondItem="Qmj-Y7-g9H" secondAttribute="centerX" id="ZPJ-nS-TKd"/>
+                            <constraint firstAttribute="trailing" secondItem="Kgs-wD-kDD" secondAttribute="trailing" id="eg7-0x-grJ"/>
+                            <constraint firstItem="Rii-o4-e5W" firstAttribute="centerX" secondItem="Qmj-Y7-g9H" secondAttribute="centerX" constant="0.5" id="kYp-bm-b5y"/>
+                            <constraint firstAttribute="trailing" secondItem="jSl-9n-n56" secondAttribute="trailing" id="pxf-3u-s8g"/>
+                            <constraint firstItem="AUa-qA-wFF" firstAttribute="top" secondItem="Rii-o4-e5W" secondAttribute="bottom" constant="40" id="wLF-cR-9mI"/>
+                            <constraint firstItem="Rii-o4-e5W" firstAttribute="top" secondItem="Kgs-wD-kDD" secondAttribute="bottom" constant="27.5" id="waF-r0-w2F"/>
+                            <constraint firstItem="AUa-qA-wFF" firstAttribute="centerX" secondItem="Qmj-Y7-g9H" secondAttribute="centerX" id="zyA-46-KWJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loginFieldsView" destination="AUa-qA-wFF" id="WRl-Qv-wwU"/>
+                        <segue destination="cYi-oa-FkP" kind="presentation" identifier="segueSuccessfulLogin" id="WJA-Bb-x3X"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xVC-G0-Hd1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="442" y="377"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="C5a-n6-56M">
+            <objects>
+                <viewController id="wvO-h0-MSH" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qRw-hk-5Bi"/>
+                        <viewControllerLayoutGuide type="bottom" id="MN3-f6-z40"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TFz-fu-MZ3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" id="OiJ-jv-llP"/>
+                    <navigationItem key="navigationItem" id="dI9-jI-YLB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xpd-KP-giU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3160" y="377"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="3f6-48-bAs">
+            <objects>
+                <viewController id="OKO-lb-ecc" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HQg-Cn-OfS"/>
+                        <viewControllerLayoutGuide type="bottom" id="Eef-j0-P6z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Pci-lJ-Usr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" id="Xbh-RF-UPT"/>
+                    <navigationItem key="navigationItem" id="Wng-X0-xyR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d4c-oM-PDz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3160" y="1290"/>
+        </scene>
+        <!--Games-->
+        <scene sceneID="5Sx-9F-GBP">
+            <objects>
+                <navigationController id="gXF-jl-xwV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Games" image="FootballTabBarIcon" id="ZlD-q9-r04"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="smA-Vh-GBn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="UHo-ft-GdW" kind="relationship" relationship="rootViewController" id="w3e-4W-LuS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L0d-35-YNB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2136" y="-541"/>
+        </scene>
+        <!--Standings-->
+        <scene sceneID="hIQ-D0-Qgf">
+            <objects>
+                <navigationController id="v1P-C5-ouV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Standings" image="StandingsTabBarIcon" id="Nbg-x7-uYL"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DGE-Qb-3zL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="wvO-h0-MSH" kind="relationship" relationship="rootViewController" id="6cg-jU-hY8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4vG-jh-wz3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2136" y="377"/>
+        </scene>
+        <!--Help-->
+        <scene sceneID="sxR-Wd-2DB">
+            <objects>
+                <navigationController id="AaM-58-95h" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Help" image="HelpTabBarIcon" id="oOt-gK-VnL"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xfA-z4-uV0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="OKO-lb-ecc" kind="relationship" relationship="rootViewController" id="nwA-4w-ORg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F4c-Xx-EeE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2144" y="1290"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="NUZ-oF-Wef">
+            <objects>
+                <viewController id="UHo-ft-GdW" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iR8-hw-ltP"/>
+                        <viewControllerLayoutGuide type="bottom" id="AXc-bc-4q2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gDN-pm-Ucd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" id="bvO-tb-7HS"/>
+                    <navigationItem key="navigationItem" id="10B-fd-d4v"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hvs-dt-XlB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3160" y="-541"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="y4g-mb-0Fj">
+            <objects>
+                <tabBarController id="cYi-oa-FkP" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="GzY-Bn-6qj"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Elv-hz-m6F">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.77254901960784317" green="0.792156862745098" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.7725490196" green="0.79215686269999996" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="gXF-jl-xwV" kind="relationship" relationship="viewControllers" id="AgH-pB-Vlq"/>
+                        <segue destination="v1P-C5-ouV" kind="relationship" relationship="viewControllers" id="HUb-yx-7Kn"/>
+                        <segue destination="AaM-58-95h" kind="relationship" relationship="viewControllers" id="O3P-e8-aLc"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vo6-WJ-NTr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1274" y="377"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="EuroCupBallLogo" width="2042" height="2042"/>
+        <image name="FootballTabBarIcon" width="50" height="50"/>
+        <image name="HelpTabBarIcon" width="50" height="50"/>
+        <image name="IntroBackground" width="380" height="560"/>
+        <image name="PlasticLogo" width="575" height="258"/>
+        <image name="StandingsTabBarIcon" width="50" height="50"/>
+    </resources>
+</document>
