@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -72,10 +71,6 @@
                                         </state>
                                         <connections>
                                             <action selector="enterPoolButtonPressed:" destination="AUa-qA-wFF" eventType="touchUpInside" id="sCh-8W-MGP"/>
-                                            <segue destination="cYi-oa-FkP" kind="modal" identifier="segueSuccessfulLogin" id="uKR-38-Tbf">
-                                                <segue key="commit" inheritsFrom="parent" id="p9r-BI-fjH"/>
-                                                <segue key="preview" inheritsFrom="commit" id="H56-0H-Zur"/>
-                                            </segue>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -120,11 +115,12 @@
                     </view>
                     <connections>
                         <outlet property="loginFieldsView" destination="AUa-qA-wFF" id="WRl-Qv-wwU"/>
+                        <segue destination="cYi-oa-FkP" kind="presentation" identifier="segueSuccessfulLogin" id="WJA-Bb-x3X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xVC-G0-Hd1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="409" y="377"/>
+            <point key="canvasLocation" x="442" y="377"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="C5a-n6-56M">
@@ -268,7 +264,4 @@
         <image name="PlasticLogo" width="575" height="258"/>
         <image name="StandingsTabBarIcon" width="50" height="50"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="uKR-38-Tbf"/>
-    </inferredMetricsTieBreakers>
 </document>
