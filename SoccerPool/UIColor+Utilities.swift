@@ -28,4 +28,11 @@ extension UIColor {
     static func navigationBarBackgroundColor() -> UIColor {
         return UIColor(hex: 0x3F51B5)
     }
+    
+    // MARK: - Games Cell Empty Text Color
+    
+    static func emptyCellTextColor() -> UIColor {
+        return UIColor(hex: 0xC5CAE9)
+    }
+    
 }

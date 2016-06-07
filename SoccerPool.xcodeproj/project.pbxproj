@@ -17,6 +17,8 @@
 		2F615C561D06730D00B1C484 /* String+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F615C551D06730D00B1C484 /* String+Utilities.swift */; };
 		2F7B9F5F1D04A6FC005BEAB8 /* SoccerPool.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F7B9F5E1D04A6FC005BEAB8 /* SoccerPool.storyboard */; };
 		2F7B9F631D04B822005BEAB8 /* LoginFieldsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7B9F621D04B822005BEAB8 /* LoginFieldsView.swift */; };
+		2F7ED2FF1D0693B400656DE5 /* NoMatchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7ED2FD1D0693B400656DE5 /* NoMatchesTableViewCell.swift */; };
+		2F7ED3001D0693B400656DE5 /* NoMatchesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F7ED2FE1D0693B400656DE5 /* NoMatchesTableViewCell.xib */; };
 		2FE39E1E1D04BC6B00A62F1C /* UIColor+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE39E1D1D04BC6B00A62F1C /* UIColor+Utilities.swift */; };
 		5E286E161D05BA0A00838831 /* SoccerPool.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5E286E141D05BA0A00838831 /* SoccerPool.xcdatamodeld */; };
 		CA5F53D21D0658D7007D7C3A /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F53D11D0658D7007D7C3A /* BaseModel.swift */; };
@@ -40,6 +42,8 @@
 		2F615C551D06730D00B1C484 /* String+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utilities.swift"; sourceTree = "<group>"; };
 		2F7B9F5E1D04A6FC005BEAB8 /* SoccerPool.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SoccerPool.storyboard; sourceTree = SOURCE_ROOT; };
 		2F7B9F621D04B822005BEAB8 /* LoginFieldsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginFieldsView.swift; sourceTree = "<group>"; };
+		2F7ED2FD1D0693B400656DE5 /* NoMatchesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoMatchesTableViewCell.swift; sourceTree = "<group>"; };
+		2F7ED2FE1D0693B400656DE5 /* NoMatchesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoMatchesTableViewCell.xib; sourceTree = "<group>"; };
 		2FE39E1D1D04BC6B00A62F1C /* UIColor+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Utilities.swift"; sourceTree = "<group>"; };
 		5E286E151D05BA0A00838831 /* SoccerPool.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SoccerPool.xcdatamodel; sourceTree = "<group>"; };
 		828FF0358ED14F9F23605039 /* Pods-SoccerPool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoccerPool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SoccerPool/Pods-SoccerPool.debug.xcconfig"; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 		2F615C4C1D06696900B1C484 /* Games */ = {
 			isa = PBXGroup;
 			children = (
+				2F7ED3011D06979500656DE5 /* GamesTableViewCells */,
 				2F615C4D1D06699A00B1C484 /* GamesViewController.swift */,
 			);
 			name = Games;
@@ -114,6 +119,15 @@
 				2F7B9F621D04B822005BEAB8 /* LoginFieldsView.swift */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		2F7ED3011D06979500656DE5 /* GamesTableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				2F7ED2FD1D0693B400656DE5 /* NoMatchesTableViewCell.swift */,
+				2F7ED2FE1D0693B400656DE5 /* NoMatchesTableViewCell.xib */,
+			);
+			name = GamesTableViewCells;
 			sourceTree = "<group>";
 		};
 		2FE39E1C1D04BC1700A62F1C /* Utilities */ = {
@@ -293,6 +307,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F7ED3001D0693B400656DE5 /* NoMatchesTableViewCell.xib in Resources */,
 				CAE783781D013B7400492BBD /* LaunchScreen.storyboard in Resources */,
 				CAE783751D013B7400492BBD /* Assets.xcassets in Resources */,
 				2F7B9F5F1D04A6FC005BEAB8 /* SoccerPool.storyboard in Resources */,
@@ -378,6 +393,7 @@
 				CAE148021D04B06B000C67A3 /* Game.swift in Sources */,
 				2F615C561D06730D00B1C484 /* String+Utilities.swift in Sources */,
 				5E286E161D05BA0A00838831 /* SoccerPool.xcdatamodeld in Sources */,
+				2F7ED2FF1D0693B400656DE5 /* NoMatchesTableViewCell.swift in Sources */,
 				CA5FB2F91D013E8700150762 /* BaseViewController.swift in Sources */,
 				CAE148061D04B0F8000C67A3 /* Prediction.swift in Sources */,
 				2F615C4B1D0667E600B1C484 /* BaseNavigationController.swift in Sources */,

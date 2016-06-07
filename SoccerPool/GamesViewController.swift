@@ -10,30 +10,159 @@ import Foundation
 import UIKit
 import SCLAlertView
 
-class GamesViewController : BaseViewController {
+class GamesViewController : UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.initControllers()
         self.setTheme()
+        self.registerClasses()
         self.doLayout()
     }
     
     func initControllers() -> Void {
-        
+        self.title = "Games"
     }
     
     func setTheme() -> Void {
+        let backgroundImageView = UIImageView(image: UIImage(named: "IntroBackground"))
+        backgroundImageView.frame = self.tableView.frame
+        self.tableView.backgroundView = backgroundImageView;
         
+    }
+    
+    func registerClasses() -> Void {
+
+        self.tableView.registerNib(UINib(nibName: "NoMatchesTableViewCell", bundle: nil), forCellReuseIdentifier: "NoMatchesCell")
     }
     
     func doLayout() -> Void {
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    // MARK: - Table view data source
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 3
     }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+            case 0:
+                return 2
+            case 1:
+                return 1
+            default:
+                return 2
+        }
+    }
+
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let view = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 44))
+        let label = UILabel(frame: CGRectMake(0, 0, tableView.frame.size.width, 44))
+        label.textAlignment = NSTextAlignment.Center
+        label.font = UIFont.boldSystemFontOfSize(17)
+        label.textColor = UIColor.whiteColor()
+        
+        switch section {
+            case 0:
+                label.text = "Upcoming Games"
+            case 1:
+                label.text = "In progress Games"
+            default:
+                label.text = "Completed"
+        }
+        
+        view.addSubview(label)
+        view.backgroundColor = UIColor.clearColor()
+        
+        return view
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44.0
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        
+        let section = indexPath.section
+        var cell = UITableViewCell()
+        
+        switch section {
+            case 0:
+                cell = tableView.dequeueReusableCellWithIdentifier("GamesCell", forIndexPath: indexPath)
+            case 1:
+                cell = tableView.dequeueReusableCellWithIdentifier("NoMatchesCell", forIndexPath: indexPath)
+            default:
+                cell = tableView.dequeueReusableCellWithIdentifier("GamesCell", forIndexPath: indexPath)
+
+        }
+        
+        
+       // cell.textLabel?.text = "Section \(indexPath.section) Row \(indexPath.row)"
+        cell.backgroundColor = UIColor.clearColor()
+        return cell
+    }
+    
+    
+    /*
+     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+     let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+     
+     // Configure the cell...
+     
+     return cell
+     }
+     */
+    
+    /*
+     // Override to support conditional editing of the table view.
+     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
+    /*
+     // Override to support editing the table view.
+     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+     if editingStyle == .Delete {
+     // Delete the row from the data source
+     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+     } else if editingStyle == .Insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+     }
+     */
+    
+    /*
+     // Override to support rearranging the table view.
+     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+     
+     }
+     */
+    
+    /*
+     // Override to support conditional rearranging of the table view.
+     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
 }

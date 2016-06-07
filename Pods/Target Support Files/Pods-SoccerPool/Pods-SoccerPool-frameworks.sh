@@ -85,6 +85,8 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-SoccerPool/Alamofire.framework"
+  install_framework "Pods-SoccerPool/Charts.framework"
+  install_framework "Pods-SoccerPool/CorePlot.framework"
   install_framework "Pods-SoccerPool/MBProgressHUD.framework"
   install_framework "Pods-SoccerPool/MagicalRecord.framework"
   install_framework "Pods-SoccerPool/SCLAlertView.framework"
@@ -92,6 +94,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-SoccerPool/Alamofire.framework"
+  install_framework "Pods-SoccerPool/Charts.framework"
+  install_framework "Pods-SoccerPool/CorePlot.framework"
   install_framework "Pods-SoccerPool/MBProgressHUD.framework"
   install_framework "Pods-SoccerPool/MagicalRecord.framework"
   install_framework "Pods-SoccerPool/SCLAlertView.framework"
