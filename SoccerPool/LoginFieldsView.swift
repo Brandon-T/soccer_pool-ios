@@ -41,15 +41,27 @@ class LoginFieldsView: UIView, UITextFieldDelegate{
     }
     
     func setTheme() -> Void {
-        
+    
         self.backgroundColor = UIColor.loginFieldViewBackgroundColor()
         self.alpha = 0.8
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.blackColor().CGColor
         self.emailTextField.placeholder = "Enter Plastic Email"
         self.passwordTextField.placeholder = "Set Password"
-        self.emailTextField.returnKeyType = UIReturnKeyType.Next
-        self.passwordTextField.returnKeyType = UIReturnKeyType.Default
+        self.emailTextField.returnKeyType = .Next
+        self.passwordTextField.returnKeyType = .Default
+        
+        self.emailTextField.autocapitalizationType = .None
+        self.emailTextField.autocorrectionType = .No
+        self.emailTextField.spellCheckingType = .No
+        self.emailTextField.keyboardType = .EmailAddress
+
+        self.passwordTextField.autocapitalizationType = .None
+        self.passwordTextField.autocorrectionType = .No
+        self.passwordTextField.spellCheckingType = .No
+        self.passwordTextField.keyboardType = .EmailAddress
+        
+        self.passwordTextField.secureTextEntry = true
     }
     
     func doLayout() -> Void {
@@ -62,6 +74,7 @@ class LoginFieldsView: UIView, UITextFieldDelegate{
 
             if name.characters.count == 0 {
                 errorMessage = "Please enter your Plastic Email"
+                self.passwordTextField.text = ""
                 return false
             }
             
@@ -69,6 +82,15 @@ class LoginFieldsView: UIView, UITextFieldDelegate{
                 errorMessage = "Please enter a password"
                 return false
             }
+            
+            /*
+            if password.isValidEmail() == false {
+                errorMessage = "Please enter a valid email address"
+                self.emailTextField.text = ""
+                self.passwordTextField.text = ""
+                return false
+            }
+            */
     
         }
         
