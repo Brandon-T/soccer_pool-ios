@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "eurocup_22x22.png",
+      "filename" : "Logout Rounded-22.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "eurocup_44x44.png",
+      "filename" : "Logout Rounded-44.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "eurocup_66x66.png",
+      "filename" : "Logout Rounded-66.png",
       "scale" : "3x"
     }
   ],

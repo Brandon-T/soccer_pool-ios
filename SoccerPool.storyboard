@@ -202,7 +202,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="h5n-Rx-jgX">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="gjq-aQ-8ok">
+                        <barButtonItem key="rightBarButtonItem" image="LogoutBarButtonItem" id="gjq-aQ-8ok">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
@@ -255,6 +255,7 @@
         <image name="EuroCupBallLogo" width="2042" height="2042"/>
         <image name="FootballTabBarIcon" width="30" height="30"/>
         <image name="IntroBackground" width="380" height="560"/>
+        <image name="LogoutBarButtonItem" width="44" height="44"/>
         <image name="PlasticLogo" width="575" height="258"/>
         <image name="StandingsTabBarIcon" width="30" height="30"/>
     </resources>
