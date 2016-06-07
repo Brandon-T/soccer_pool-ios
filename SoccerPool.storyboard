@@ -44,21 +44,13 @@
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUa-qA-wFF" customClass="LoginFieldsView" customModule="SoccerPool" customModuleProvider="target">
                                 <rect key="frame" x="45" y="384" width="510" height="215"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Set Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RaI-kT-OAV">
-                                        <rect key="frame" x="21" y="65" width="469" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="rzL-aP-fh1"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Plastic Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="q9R-zh-XnE">
                                         <rect key="frame" x="21" y="13" width="469" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="Ird-EA-orz"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFd-QC-Tru">
                                         <rect key="frame" x="21" y="137" width="469" height="44"/>
@@ -73,6 +65,14 @@
                                             <action selector="enterPoolButtonPressed:" destination="AUa-qA-wFF" eventType="touchUpInside" id="sCh-8W-MGP"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Set Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RaI-kT-OAV">
+                                        <rect key="frame" x="21" y="65" width="469" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="rzL-aP-fh1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.77647058823529413" green="0.83921568627450982" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -122,10 +122,10 @@
             </objects>
             <point key="canvasLocation" x="442" y="377"/>
         </scene>
-        <!--View Controller-->
+        <!--Standings View Controller-->
         <scene sceneID="C5a-n6-56M">
             <objects>
-                <viewController id="wvO-h0-MSH" sceneMemberID="viewController">
+                <viewController id="wvO-h0-MSH" customClass="StandingsViewController" customModule="SoccerPool" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qRw-hk-5Bi"/>
                         <viewControllerLayoutGuide type="bottom" id="MN3-f6-z40"/>
@@ -142,10 +142,10 @@
             </objects>
             <point key="canvasLocation" x="3160" y="377"/>
         </scene>
-        <!--View Controller-->
+        <!--Help View Controller-->
         <scene sceneID="3f6-48-bAs">
             <objects>
-                <viewController id="OKO-lb-ecc" sceneMemberID="viewController">
+                <viewController id="OKO-lb-ecc" customClass="HelpViewController" customModule="SoccerPool" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HQg-Cn-OfS"/>
                         <viewControllerLayoutGuide type="bottom" id="Eef-j0-P6z"/>
@@ -216,10 +216,10 @@
             </objects>
             <point key="canvasLocation" x="2144" y="1290"/>
         </scene>
-        <!--View Controller-->
+        <!--Games View Controller-->
         <scene sceneID="NUZ-oF-Wef">
             <objects>
-                <viewController id="UHo-ft-GdW" sceneMemberID="viewController">
+                <viewController id="UHo-ft-GdW" customClass="GamesViewController" customModule="SoccerPool" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iR8-hw-ltP"/>
                         <viewControllerLayoutGuide type="bottom" id="AXc-bc-4q2"/>
