@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (3.3.1)
+  - CorePlot (2.1)
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
   - MagicalRecord/Core (2.3.2)
@@ -9,6 +10,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 3.3.1)
+  - CorePlot (~> 2.1)
   - MagicalRecord (~> 2.3.2)
   - MBProgressHUD (~> 0.9.1)
   - SCLAlertView
@@ -16,9 +18,12 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  CorePlot: ab9898c79b94999018e9634ab0aa4c21480c8552
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   SCLAlertView: 653e84d1f9fd95333bc54671fbadb7d0c47fce49
   XYPieChart: 0efd8069d26c25d20ab74c01b5ad455f1fc48153
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 593be44b15f2f9d4371ca2114e0b6305fd109640
+
+COCOAPODS: 1.0.1

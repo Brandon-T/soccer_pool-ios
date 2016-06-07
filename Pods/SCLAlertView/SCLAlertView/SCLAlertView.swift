@@ -1002,8 +1002,6 @@ class SCLAlertViewStyleKit : NSObject {
         SCLAlertViewStyleKit.drawNotice()
         Cache.imageOfNotice = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
-        
         return Cache.imageOfNotice!
     }
     

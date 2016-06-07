@@ -131,10 +131,23 @@
                         <viewControllerLayoutGuide type="bottom" id="MN3-f6-z40"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TFz-fu-MZ3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lPi-x2-tCp" customClass="BarGraphView" customModule="SoccerPool" customModuleProvider="target">
+                                <rect key="frame" x="20" y="0.0" width="560" height="487"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MN3-f6-z40" firstAttribute="top" secondItem="lPi-x2-tCp" secondAttribute="bottom" id="Mq7-68-TYr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lPi-x2-tCp" secondAttribute="trailing" id="Vd5-fh-vIg"/>
+                            <constraint firstItem="lPi-x2-tCp" firstAttribute="top" secondItem="qRw-hk-5Bi" secondAttribute="bottom" id="etO-Lb-lgo"/>
+                            <constraint firstItem="lPi-x2-tCp" firstAttribute="leading" secondItem="TFz-fu-MZ3" secondAttribute="leadingMargin" id="nBj-NC-FZp"/>
+                        </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="" id="OiJ-jv-llP"/>
                     <navigationItem key="navigationItem" id="dI9-jI-YLB"/>
                 </viewController>
