@@ -2,17 +2,16 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "question_mark-50.png",
+      "filename" : "Question Mark-30.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "question_mark-51.png",
+      "filename" : "Question Mark-60.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "question_mark-52.png",
       "scale" : "3x"
     }
   ],

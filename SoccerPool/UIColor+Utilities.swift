@@ -23,4 +23,9 @@ extension UIColor {
         return UIColor(hex: 0xDADADA)
     }
     
+    // MARK: - Navigation Bar Background
+    
+    static func navigationBarBackgroundColor() -> UIColor {
+        return UIColor(hex: 0x3F51B5)
+    }
 }
