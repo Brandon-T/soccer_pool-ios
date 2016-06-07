@@ -21,6 +21,7 @@ class ServiceLayer {
             }
             
             Router.accessToken = json?["token"] as? String
+            completion(json: json, error: error)
         })
     }
     
@@ -33,6 +34,7 @@ class ServiceLayer {
             }
             
             Router.accessToken = json?["token"] as? String
+            completion(json: json, error: error)
         })
     }
     
