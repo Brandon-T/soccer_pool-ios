@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
     <entity name="Account" syncable="YES">
-        <attribute name="accessToken" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="relatedByAttribute" value="email"/>
+            </userInfo>
+        </attribute>
+        <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
+        <userInfo>
+            <entry key="relatedByAttribute" value="email"/>
+        </userInfo>
     </entity>
     <entity name="Game" syncable="YES">
         <attribute name="awayGoals" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -19,6 +27,9 @@
         <relationship name="awayTeam" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Team" inverseName="awayTeamGame" inverseEntity="Team" syncable="YES"/>
         <relationship name="homeTeam" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Team" inverseName="homeTeamGame" inverseEntity="Team" syncable="YES"/>
         <relationship name="prediction" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Prediction" inverseName="game" inverseEntity="Prediction" syncable="YES"/>
+        <userInfo>
+            <entry key="relatedByAttribute" value="gameID"/>
+        </userInfo>
     </entity>
     <entity name="Pool" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -40,6 +51,6 @@
         <element name="Game" positionX="79" positionY="-18" width="128" height="148"/>
         <element name="Team" positionX="-261" positionY="126" width="128" height="103"/>
         <element name="Prediction" positionX="81" positionY="170" width="128" height="88"/>
-        <element name="Account" positionX="-101" positionY="-16" width="128" height="58"/>
+        <element name="Account" positionX="-101" positionY="-16" width="128" height="73"/>
     </elements>
 </model>

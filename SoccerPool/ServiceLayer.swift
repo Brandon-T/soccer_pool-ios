@@ -13,7 +13,27 @@ class ServiceLayer {
     
     
     static func loginUser(email: String, password: String, completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
-        ServiceLayer.request(Router.Login(email, password), completion: completion)
+        ServiceLayer.request(Router.Login(email, password), completion: { (json, error) in
+            
+            if error != nil {
+                completion(json: json, error: error)
+                return
+            }
+            
+            Router.accessToken = json?["token"] as? String
+        })
+    }
+    
+    static func registerUser(email: String, password: String, completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
+        ServiceLayer.request(Router.Register(email, password), completion: { (json, error) in
+            
+            if error != nil {
+            completion(json: json, error: error)
+            return
+            }
+            
+            Router.accessToken = json?["token"] as? String
+        })
     }
     
     static func getPool(completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
@@ -73,6 +93,7 @@ class ServiceLayer {
 
         case Base
         case Login(String, String)
+        case Register(String, String)
         case Pool
         case Games
         case PredictGames(UInt, UInt, UInt)
@@ -84,16 +105,19 @@ class ServiceLayer {
                 return (.GET, "/", nil)
                 
             case .Login(let email, let password):
-                return (.POST, "/sample/login", ["email": email, "password": password])
+                return (.POST, "/test/login", ["email": email, "password": password])
+                
+            case .Register(let email, let password):
+                return (.POST, "test/login", ["email": email, "password": password, "signup": true])
                 
             case .Pool:
-                return (.GET, "/sample/pool", nil)
+                return (.GET, "/test/pool", nil)
                 
             case .Games:
-                return (.GET, "/sample/games", nil)
+                return (.GET, "/test/games", nil)
                 
             case .PredictGames(let gameID, let awayGoals, let homeGoals):
-                return (.POST, "/sample/predictgame", ["gameID": gameID, "awayGoals": awayGoals, "homeGoals": homeGoals])
+                return (.POST, "/test/predictgame", ["gameID": gameID, "awayGoals": awayGoals, "homeGoals": homeGoals])
             }
         }
         
@@ -101,12 +125,14 @@ class ServiceLayer {
         
         
         static let baseURL = NSURL(string: "http://104.131.118.14")!
+        static var accessToken: String? = nil
         
         var URL: NSURL { return Router.baseURL.URLByAppendingPathComponent(route.path) }
         
         var URLRequest: NSMutableURLRequest {
             let request = NSMutableURLRequest(URL: URL)
             request.HTTPMethod = route.method.rawValue
+            request.setValue(Router.accessToken, forHTTPHeaderField: "HTTP_TOKEN")
             return ParameterEncoding.URL.encode(request, parameters: route.parameters).0
         }
     }
