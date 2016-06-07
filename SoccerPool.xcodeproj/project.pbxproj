@@ -124,11 +124,11 @@
 		CAE147FE1D04A93D000C67A3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5E286E141D05BA0A00838831 /* SoccerPool.xcdatamodeld */,
 				CAE147FF1D04A95E000C67A3 /* Pool.swift */,
 				CAE148011D04B06B000C67A3 /* Game.swift */,
 				CAE148031D04B096000C67A3 /* Team.swift */,
 				CAE148051D04B0F8000C67A3 /* Prediction.swift */,
-				5E286E141D05BA0A00838831 /* SoccerPool.xcdatamodeld */,
 				CA5F53D11D0658D7007D7C3A /* BaseModel.swift */,
 			);
 			name = Models;
