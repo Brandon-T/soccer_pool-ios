@@ -19,6 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed("SoccerPool.sqlite")
         
+        if ServiceLayer.isLoggedIn() {
+            self.window = UIWindow()
+            self.window?.rootViewController = UIStoryboard(name: "SoccerPool", bundle: nil).instantiateViewControllerWithIdentifier("mainViewController")
+            self.window?.makeKeyAndVisible()
+        }
+        else {
+            self.window = UIWindow()
+            self.window?.rootViewController = UIStoryboard(name: "SoccerPool", bundle: nil).instantiateInitialViewController()
+            self.window?.makeKeyAndVisible()
+        }
+        
         return true
     }
 

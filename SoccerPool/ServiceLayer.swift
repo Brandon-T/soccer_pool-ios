@@ -15,6 +15,10 @@ class ServiceLayer {
         ServiceLayer.request(.TestGames, completion: completion)
     }
     
+    static func isLoggedIn() -> Bool {
+        return Router.accessToken != nil ? !Router.accessToken!.isEmpty : false
+    }
+    
     static func loginUser(email: String, password: String, completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
         ServiceLayer.request(Router.Login(email, password), completion: { (json, error) in
             
@@ -145,7 +149,18 @@ class ServiceLayer {
         
         
         static let baseURL = NSURL(string: "http://104.131.118.14")!
-        static var accessToken: String? = nil
+
+        static var token: String?
+        static var accessToken: String? {
+            set {
+                token = newValue
+                NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: "accessToken")
+                NSUserDefaults.standardUserDefaults().synchronize()
+            }
+            get {
+                return token ?? NSUserDefaults.standardUserDefaults().stringForKey("accessToken")
+            }
+        }
         
         var URL: NSURL { return Router.baseURL.URLByAppendingPathComponent(route.path) }
         

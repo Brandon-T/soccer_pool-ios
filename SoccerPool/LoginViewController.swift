@@ -23,7 +23,6 @@ class LoginViewController : BaseViewController, LoginFieldsViewDelegate {
     }
     
     func initControllers() -> Void {
-        
         loginFieldsView.delegate = self
     }
     
@@ -35,7 +34,7 @@ class LoginViewController : BaseViewController, LoginFieldsViewDelegate {
         
     }
     
-    func didEnterPoolPressed(sender: AnyObject, name: String, password: String){
+    func didEnterPoolPressed(sender: AnyObject, name: String, password: String) {
         ServiceLayer.loginUser(name, password: password) { (json, error) in
             print(json)
 
