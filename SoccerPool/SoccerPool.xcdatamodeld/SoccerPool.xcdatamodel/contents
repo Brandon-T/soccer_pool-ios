@@ -11,7 +11,11 @@
             </userInfo>
         </attribute>
         <attribute name="homeGoals" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES">
+            <userInfo>
+                <entry key="dateFormat" value="yyyy-MM-dd'T'HH:mm:ssZ"/>
+            </userInfo>
+        </attribute>
         <relationship name="awayTeam" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Team" inverseName="awayTeamGame" inverseEntity="Team" syncable="YES"/>
         <relationship name="homeTeam" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Team" inverseName="homeTeamGame" inverseEntity="Team" syncable="YES"/>
         <relationship name="prediction" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Prediction" inverseName="game" inverseEntity="Prediction" syncable="YES"/>
