@@ -134,22 +134,39 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lPi-x2-tCp" customClass="BarGraphView" customModule="SoccerPool" customModuleProvider="target">
-                                <rect key="frame" x="20" y="0.0" width="560" height="487"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IntroBackground" translatesAutoresizingMaskIntoConstraints="NO" id="VEr-rL-iw3">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="6cj-7z-ND5">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tvZ-8w-sbR" customClass="BarGraphView" customModule="SoccerPool" customModuleProvider="target">
+                                        <rect key="frame" x="180" y="140" width="240" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="MN3-f6-z40" firstAttribute="top" secondItem="lPi-x2-tCp" secondAttribute="bottom" id="Mq7-68-TYr"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="lPi-x2-tCp" secondAttribute="trailing" id="Vd5-fh-vIg"/>
-                            <constraint firstItem="lPi-x2-tCp" firstAttribute="top" secondItem="qRw-hk-5Bi" secondAttribute="bottom" id="etO-Lb-lgo"/>
-                            <constraint firstItem="lPi-x2-tCp" firstAttribute="leading" secondItem="TFz-fu-MZ3" secondAttribute="leadingMargin" id="nBj-NC-FZp"/>
+                            <constraint firstItem="MN3-f6-z40" firstAttribute="top" secondItem="VEr-rL-iw3" secondAttribute="bottom" id="K7K-UK-ZVm"/>
+                            <constraint firstItem="VEr-rL-iw3" firstAttribute="leading" secondItem="TFz-fu-MZ3" secondAttribute="leading" id="KzK-XO-djr"/>
+                            <constraint firstItem="6cj-7z-ND5" firstAttribute="width" secondItem="TFz-fu-MZ3" secondAttribute="width" id="Pcu-Uh-svl"/>
+                            <constraint firstItem="6cj-7z-ND5" firstAttribute="top" secondItem="qRw-hk-5Bi" secondAttribute="bottom" id="X4G-IS-iEO"/>
+                            <constraint firstAttribute="trailing" secondItem="VEr-rL-iw3" secondAttribute="trailing" id="aGK-yz-TR6"/>
+                            <constraint firstItem="6cj-7z-ND5" firstAttribute="leading" secondItem="TFz-fu-MZ3" secondAttribute="leading" id="i0m-W4-p82"/>
+                            <constraint firstItem="MN3-f6-z40" firstAttribute="top" secondItem="6cj-7z-ND5" secondAttribute="bottom" id="mWr-oh-qDm"/>
+                            <constraint firstAttribute="trailing" secondItem="6cj-7z-ND5" secondAttribute="trailing" id="pS5-WL-11l"/>
+                            <constraint firstItem="VEr-rL-iw3" firstAttribute="top" secondItem="qRw-hk-5Bi" secondAttribute="bottom" id="tZH-YO-3ld"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="" id="OiJ-jv-llP"/>
                     <navigationItem key="navigationItem" id="dI9-jI-YLB"/>
+                    <connections>
+                        <outlet property="barGraph" destination="tvZ-8w-sbR" id="Mhn-Np-Qts"/>
+                        <outlet property="scrollView" destination="6cj-7z-ND5" id="PIZ-di-qvE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xpd-KP-giU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

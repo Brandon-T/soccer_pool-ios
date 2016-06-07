@@ -44,14 +44,14 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
         let xMax = 4.0
         let yMax = 10.0
         let barOffset = barWidth / 2.0
-        let backgroundColour = CPTColor(CGColor: UIColor.whiteColor().CGColor)
+        let backgroundColour = CPTColor(CGColor: UIColor.clearColor().CGColor)
         
         self.hostedGraph?.title = self.title
         self.hostedGraph?.fill = CPTFill(color: backgroundColour)
-        self.hostedGraph?.plotAreaFrame?.paddingTop = 20.0
-        self.hostedGraph?.plotAreaFrame?.paddingBottom = 65.0
-        self.hostedGraph?.plotAreaFrame?.paddingLeft = 57.0
-        self.hostedGraph?.plotAreaFrame?.paddingRight = 5.0
+        self.hostedGraph?.plotAreaFrame?.paddingTop = 0.0
+        self.hostedGraph?.plotAreaFrame?.paddingBottom = 0.0
+        self.hostedGraph?.plotAreaFrame?.paddingLeft = 0.0
+        self.hostedGraph?.plotAreaFrame?.paddingRight = 0.0
         
         let plotSpace = self.hostedGraph?.defaultPlotSpace as! CPTXYPlotSpace
         plotSpace.delegate = self
@@ -69,23 +69,23 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
         let minorGridLineStyle = CPTMutableLineStyle()
         
         majorGridLineStyle.lineWidth = 1.0
-        majorGridLineStyle.lineColor = CPTColor.blackColor()
+        majorGridLineStyle.lineColor = CPTColor.whiteColor()
         minorGridLineStyle.lineWidth = 0.5
-        minorGridLineStyle.lineColor = CPTColor.blackColor().colorWithAlphaComponent(0.5)
+        minorGridLineStyle.lineColor = CPTColor.whiteColor().colorWithAlphaComponent(0.5)
         
         //Axis:
         let xAxisTextStyle = CPTMutableTextStyle()
         xAxisTextStyle.fontName = "Arial"
         xAxisTextStyle.fontSize = 11.0
-        xAxisTextStyle.color = CPTColor.blackColor()
+        xAxisTextStyle.color = CPTColor.whiteColor()
         
         let yAxisTextStyle = CPTMutableTextStyle()
         yAxisTextStyle.fontName = "Arial"
         yAxisTextStyle.fontSize = 12.0
-        yAxisTextStyle.color = CPTColor.blackColor()
+        yAxisTextStyle.color = CPTColor.whiteColor()
         
         let axisLineStyle = CPTMutableLineStyle()
-        axisLineStyle.lineColor = CPTColor.blackColor()
+        axisLineStyle.lineColor = CPTColor.whiteColor()
         axisLineStyle.lineWidth = 2.0
         
         
@@ -99,30 +99,32 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
         xAxis.titleOffset = 30.0
         xAxis.labelOffset = 3.0
         xAxis.titleTextStyle = xAxisTextStyle
+        xAxis.labelTextStyle = xAxisTextStyle
         xAxis.labelingPolicy = .None
         xAxis.labelingOrigin = 0
         xAxis.orthogonalPosition = 0
-        //xAxis.coordinate = CPTCoordinate(rawValue: 0)!
         xAxis.majorIntervalLength = 1.0
         xAxis.minorTicksPerInterval = 1
         xAxis.majorGridLineStyle = nil
         xAxis.minorGridLineStyle = nil
         xAxis.axisConstraints = CPTConstraints(lowerOffset: 0.0)
+        xAxis.axisLineStyle = axisLineStyle
         
         yAxis.titleOffset = 40.0
         yAxis.labelOffset = 3.0
         yAxis.titleTextStyle = yAxisTextStyle
+        yAxis.labelTextStyle = yAxisTextStyle
         yAxis.labelingPolicy = .Automatic
         yAxis.labelingOrigin = 0
         yAxis.orthogonalPosition = 0
-        //yAxis.coordinate = CPTCoordinate(rawValue: 0)!
         yAxis.majorIntervalLength = 1.0
         yAxis.minorTicksPerInterval = 1
         yAxis.majorGridLineStyle = majorGridLineStyle
         yAxis.minorGridLineStyle = minorGridLineStyle
         yAxis.axisConstraints = CPTConstraints(lowerOffset: 0.0)
+        yAxis.axisLineStyle = axisLineStyle
         
-        
+
         let plot = CPTBarPlot()
         plot.delegate = self
         plot.dataSource = self
@@ -132,7 +134,7 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
         
         let barBorderStyle = CPTMutableLineStyle()
         barBorderStyle.lineWidth = 1.0
-        barBorderStyle.lineColor = CPTColor.blackColor()
+        barBorderStyle.lineColor = CPTColor.whiteColor()
         
         plot.lineStyle = barBorderStyle
         plot.identifier = "BarGraphPlot"

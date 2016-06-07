@@ -17,12 +17,12 @@ class LoginViewController : BaseViewController, LoginFieldsViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.initControllers()
+        self.initControls()
         self.setTheme()
         self.doLayout()
     }
     
-    func initControllers() -> Void {
+    func initControls() -> Void {
         loginFieldsView.delegate = self
     }
     

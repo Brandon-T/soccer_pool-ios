@@ -12,7 +12,8 @@ import SCLAlertView
 
 class StandingsViewController : BaseViewController {
     
-    var barGraph: BarGraphView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var barGraph: BarGraphView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,7 @@ class StandingsViewController : BaseViewController {
     }
     
     func initControl() -> Void {
-        self.barGraph = BarGraphView()
+        //self.barGraph = BarGraphView()
     }
     
     func setTheme() -> Void {
