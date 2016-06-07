@@ -14,6 +14,7 @@
 		2F7B9F631D04B822005BEAB8 /* LoginFieldsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7B9F621D04B822005BEAB8 /* LoginFieldsView.swift */; };
 		2FE39E1E1D04BC6B00A62F1C /* UIColor+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE39E1D1D04BC6B00A62F1C /* UIColor+Utilities.swift */; };
 		5E286E161D05BA0A00838831 /* SoccerPool.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5E286E141D05BA0A00838831 /* SoccerPool.xcdatamodeld */; };
+		CA5F53D21D0658D7007D7C3A /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F53D11D0658D7007D7C3A /* BaseModel.swift */; };
 		CA5FB2F51D013E0E00150762 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FB2F41D013E0E00150762 /* LoginViewController.swift */; };
 		CA5FB2F91D013E8700150762 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FB2F81D013E8700150762 /* BaseViewController.swift */; };
 		CA5FB2FB1D0141D300150762 /* ServiceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FB2FA1D0141D300150762 /* ServiceLayer.swift */; };
@@ -33,6 +34,8 @@
 		5E286E151D05BA0A00838831 /* SoccerPool.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SoccerPool.xcdatamodel; sourceTree = "<group>"; };
 		828FF0358ED14F9F23605039 /* Pods-SoccerPool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoccerPool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SoccerPool/Pods-SoccerPool.debug.xcconfig"; sourceTree = "<group>"; };
 		C300CEBE3466E68B61A7257F /* Pods_SoccerPool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoccerPool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA5F53CF1D065773007D7C3A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CA5F53D11D0658D7007D7C3A /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		CA5FB2F41D013E0E00150762 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CA5FB2F81D013E8700150762 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CA5FB2FA1D0141D300150762 /* ServiceLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceLayer.swift; sourceTree = "<group>"; };
@@ -112,6 +115,7 @@
 		4E596C152D54131EF147D696 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA5F53CF1D065773007D7C3A /* CoreData.framework */,
 				C300CEBE3466E68B61A7257F /* Pods_SoccerPool.framework */,
 			);
 			name = Frameworks;
@@ -125,6 +129,7 @@
 				CAE148031D04B096000C67A3 /* Team.swift */,
 				CAE148051D04B0F8000C67A3 /* Prediction.swift */,
 				5E286E141D05BA0A00838831 /* SoccerPool.xcdatamodeld */,
+				CA5F53D11D0658D7007D7C3A /* BaseModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -320,6 +325,7 @@
 				2F39489F1D05B78D00C8B6B3 /* Pool.swift in Sources */,
 				2F3948A01D05B78D00C8B6B3 /* Team.swift in Sources */,
 				CAE147FD1D04A8A3000C67A3 /* NSObject+Serializable.m in Sources */,
+				CA5F53D21D0658D7007D7C3A /* BaseModel.swift in Sources */,
 				CAE148021D04B06B000C67A3 /* Game.swift in Sources */,
 				5E286E161D05BA0A00838831 /* SoccerPool.xcdatamodeld in Sources */,
 				CA5FB2F91D013E8700150762 /* BaseViewController.swift in Sources */,
