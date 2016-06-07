@@ -9,11 +9,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Charts.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>CorePlot.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,7 +42,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>06114A4FBB0026BF65E188E915353E7D</key>
+		<key>60856F9209331E2D79C66BBD19FD0FBD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,12 +52,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>88AF36B002FFD90C82F345A0074D38C8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C6828C2508515BC0428D6BDAA1292DC9</key>
+		<key>7E9F562AAE096A634FB3DE053C078AD2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,7 +67,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E360A684D716D72E33B0B1DC9945D94E</key>
+		<key>E0A86B1B66AB88330784C4DA3CB80593</key>
 		<dict>
 			<key>primary</key>
 			<true/>

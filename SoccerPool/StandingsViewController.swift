@@ -12,16 +12,24 @@ import SCLAlertView
 
 class StandingsViewController : BaseViewController {
     
+    var barGraph: BarGraphView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.initControllers()
+        self.initControl()
         self.setTheme()
         self.doLayout()
     }
     
-    func initControllers() -> Void {
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
+        self.barGraph.hostedGraph?.reloadData()
+    }
+    
+    func initControl() -> Void {
+        self.barGraph = BarGraphView()
     }
     
     func setTheme() -> Void {

@@ -10,5 +10,9 @@ target 'SoccerPool' do
   pod 'XYPieChart'
   pod 'SCLAlertView'
   pod 'CorePlot', '~> 2.1'
-  pod 'Charts', '~> 2.2.5'
+  #pod 'AFNetworking',   '~> 3.0.0'
+  #pod 'FBSDKCoreKit',   '~> 4.7.1'
+  #pod 'FBSDKLoginKit',  '~> 4.7.1'
+  #pod 'FBSDKShareKit',  '~> 4.7.1'
+  #pod 'Twitter'
 end
