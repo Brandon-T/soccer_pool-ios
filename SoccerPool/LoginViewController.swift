@@ -36,34 +36,27 @@ class LoginViewController : BaseViewController, LoginFieldsViewDelegate {
     }
     
     func didEnterPoolPressed(sender: AnyObject, name: String, password: String){
-        
         ServiceLayer.loginUser(name, password: password) { (json, error) in
             print(json)
-            
-            let success = json?["success"] as! Int
-            let data = json?["errorMessage"] as! String
-            
-            if success == 0 {
-                if (json?["errorCode"]) != nil {
+
+            if error != nil {
+                if error!.code == 2 { //Account not registered..
                     ServiceLayer.registerUser(name, password: password, completion: { (json, error) in
                         print(json)
-                        
-                        let success = json?["success"] as! Int
-                        let data = json?["errorMessage"] as! String
-                        
-                        if success == 0 {
-                            SCLAlertView().showInfo("Error", subTitle: data, circleIconImage: UIImage(named: "EuroCupIcon"))
+
+                        if error != nil {
+                            SCLAlertView().showInfo("Error", subTitle: error!.localizedDescription, circleIconImage: UIImage(named: "EuroCupIcon"))
                         }
-                        else{
+                        else {
                             self.performSegueWithIdentifier("segueSuccessfulLogin", sender: nil)
                         }
                     })
                     return
                 }
                 
-                SCLAlertView().showInfo("Error", subTitle: data, circleIconImage: UIImage(named: "EuroCupIcon"))
+                SCLAlertView().showInfo("Error", subTitle: error!.localizedDescription, circleIconImage: UIImage(named: "EuroCupIcon"))
             }
-            else{
+            else {
                 self.performSegueWithIdentifier("segueSuccessfulLogin", sender: nil)
             }
         }
