@@ -11,6 +11,9 @@ import Alamofire
 
 class ServiceLayer {
     
+    static func testGames(completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
+        ServiceLayer.request(.TestGames, completion: completion)
+    }
     
     static func loginUser(email: String, password: String, completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
         ServiceLayer.request(Router.Login(email, password), completion: { (json, error) in
@@ -58,13 +61,24 @@ class ServiceLayer {
             .validate(contentType: ["application/json", "text/html"])
             .responseJSON { (response) in
                 
+                func toError(json: [String: AnyObject]?) -> NSError? {
+                    let success: Bool = json?["success"] as! Bool
+                    let errorMessage: String = json?["errorMessage"] as! String
+                    let errorCode: Int = json?["errorCode"] as! Int
+                    
+                    guard success else {
+                        return NSError(domain: "com.soccer-pool.error", code: errorCode, userInfo: [NSLocalizedDescriptionKey: errorMessage])
+                    }
+                    return nil
+                }
+                
                 guard response.result.isSuccess else {
                     print("Error: \(response.result.error)")
-                    completion(json: nil, error: response.result.error)
+                    completion(json: nil, error: response.result.error ?? toError(response.result.value as? [String: AnyObject]))
                     return
                 }
                 
-                completion(json: response.result.value as? [String: AnyObject], error: nil)
+                completion(json: response.result.value as? [String: AnyObject], error: response.result.error ?? toError(response.result.value as? [String: AnyObject]))
         }
     }
     
@@ -99,6 +113,7 @@ class ServiceLayer {
         case Pool
         case Games
         case PredictGames(UInt, UInt, UInt)
+        case TestGames
         
         
         var route: (method: Alamofire.Method, path: String, parameters: [String : AnyObject]?) {
@@ -120,6 +135,9 @@ class ServiceLayer {
                 
             case .PredictGames(let gameID, let awayGoals, let homeGoals):
                 return (.POST, "/test/predictgame", ["gameID": gameID, "awayGoals": awayGoals, "homeGoals": homeGoals])
+            
+            case .TestGames:
+                return (.GET, "/test/setup", nil)
             }
         }
         
