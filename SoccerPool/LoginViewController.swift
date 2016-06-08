@@ -14,6 +14,10 @@ class LoginViewController : BaseViewController, LoginFieldsViewDelegate {
     
     @IBOutlet weak var loginFieldsView: LoginFieldsView!
 
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

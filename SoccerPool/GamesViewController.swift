@@ -22,7 +22,11 @@ class GamesViewController : UITableViewController {
     }
     
     func initControllers() -> Void {
-        self.title = "Games"
+        
+        let titleCupView = TitleView(frame: CGRect(x: 0, y: 0, width: 120, height: 44))
+        titleCupView.titleLabel.text = "Cup"        
+        navigationItem.titleView = titleCupView
+        
     }
     
     func setTheme() -> Void {
@@ -39,6 +43,16 @@ class GamesViewController : UITableViewController {
     
     func doLayout() -> Void {
         
+    }
+    
+    // MARK: - BAR BUTTON ITEM ACTIONS
+    
+    @IBAction func logoutBarButtonPressed(sender: AnyObject) {
+        ServiceLayer.logoutUser()
+        
+        let storyboard = UIStoryboard(name: "SoccerPool", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("loginViewController")
+        self.presentViewController(vc, animated: true, completion: nil)
     }
     
     
