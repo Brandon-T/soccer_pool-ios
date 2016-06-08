@@ -28,6 +28,10 @@ class LoginViewController : BaseViewController, LoginFieldsViewDelegate {
     
     func initControls() -> Void {
         loginFieldsView.delegate = self
+        
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
+
     }
     
     func setTheme() -> Void {
@@ -61,6 +65,34 @@ class LoginViewController : BaseViewController, LoginFieldsViewDelegate {
                 self.performSegueWithIdentifier("segueSuccessfulLogin", sender: nil)
             }
         }
+    }
+    
+    
+    func keyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            self.view.layoutIfNeeded()
+            UIView.animateWithDuration(0, animations: { 
+                self.view.frame.origin.y -= keyboardSize.height
+            })
+            
+        }
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            self.view.layoutIfNeeded()
+            
+            UIView.animateWithDuration(0, animations: { 
+                self.view.frame.origin.y += keyboardSize.height
+            })
+            
+        }
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
 

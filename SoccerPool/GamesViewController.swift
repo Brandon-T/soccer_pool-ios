@@ -26,7 +26,6 @@ class GamesViewController : UITableViewController {
         let titleCupView = TitleView(frame: CGRect(x: 0, y: 0, width: 120, height: 44))
         titleCupView.titleLabel.text = "Cup"        
         navigationItem.titleView = titleCupView
-        
 
         let rightInformationBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "InformationBarButtonItem"), landscapeImagePhone: nil, style: .Done, target: self, action: #selector(informationBarButtonPressed))
         
@@ -46,6 +45,8 @@ class GamesViewController : UITableViewController {
     func registerClasses() -> Void {
 
         self.tableView.registerNib(UINib(nibName: "NoMatchesTableViewCell", bundle: nil), forCellReuseIdentifier: "NoMatchesCell")
+        self.tableView.registerNib(UINib(nibName: "VoteMatchesTableViewCell", bundle: nil), forCellReuseIdentifier: "VoteMatchesCell")
+
     }
     
     func doLayout() -> Void {
@@ -109,9 +110,22 @@ class GamesViewController : UITableViewController {
         return view
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        
+        if(indexPath.section == 1){
+            return 44.0
+        }
+        else{
+            return 100.0
+        }
+  
+    }
+ 
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44.0
     }
+
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -121,11 +135,11 @@ class GamesViewController : UITableViewController {
         
         switch section {
             case 0:
-                cell = tableView.dequeueReusableCellWithIdentifier("GamesCell", forIndexPath: indexPath)
+                cell = tableView.dequeueReusableCellWithIdentifier("VoteMatchesCell", forIndexPath: indexPath)
             case 1:
                 cell = tableView.dequeueReusableCellWithIdentifier("NoMatchesCell", forIndexPath: indexPath)
             default:
-                cell = tableView.dequeueReusableCellWithIdentifier("GamesCell", forIndexPath: indexPath)
+                cell = tableView.dequeueReusableCellWithIdentifier("VoteMatchesCell", forIndexPath: indexPath)
 
         }
         
