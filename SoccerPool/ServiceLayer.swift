@@ -33,7 +33,7 @@ class ServiceLayer {
     }
     
     static func logoutUser() -> Void {
-        NSUserDefaults.standardUserDefaults().removeObjectForKey("accessToken")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey ("accessToken")
         NSUserDefaults.standardUserDefaults().synchronize()
     
     }
@@ -155,7 +155,8 @@ class ServiceLayer {
         
         
         static let baseURL = NSURL(string: "http://104.131.118.14")!
-
+        static let informationURL = NSURL(string: "http://104.131.118.14/info")
+        
         static var token: String?
         static var accessToken: String? {
             set {
