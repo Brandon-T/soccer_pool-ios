@@ -40,8 +40,6 @@ class LoginViewController : BaseViewController, LoginFieldsViewDelegate {
     
     func didEnterPoolPressed(sender: AnyObject, name: String, password: String) {
         ServiceLayer.loginUser(name, password: password) { (json, error) in
-            print(json)
-
             if error != nil {
                 if error!.code == 2 { //Account not registered..
                     ServiceLayer.registerUser(name, password: password, completion: { (json, error) in

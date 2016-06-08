@@ -27,6 +27,13 @@ class GamesViewController : UITableViewController {
         titleCupView.titleLabel.text = "Cup"        
         navigationItem.titleView = titleCupView
         
+
+        let rightInformationBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "InformationBarButtonItem"), landscapeImagePhone: nil, style: .Done, target: self, action: #selector(informationBarButtonPressed))
+        
+        let rightLogoutBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "LogoutBarButtonItem"), landscapeImagePhone: nil, style: .Done, target: self, action: #selector(logoutBarButtonPressed))
+    
+        self.navigationItem.setRightBarButtonItems([rightLogoutBarButtonItem,rightInformationBarButtonItem], animated: true)
+        
     }
     
     func setTheme() -> Void {
@@ -53,6 +60,11 @@ class GamesViewController : UITableViewController {
         let storyboard = UIStoryboard(name: "SoccerPool", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("loginViewController")
         self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func informationBarButtonPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("segueHelp", sender: nil)
+
     }
     
     
