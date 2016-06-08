@@ -142,14 +142,68 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="6cj-7z-ND5">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="6cj-7z-ND5">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tvZ-8w-sbR" customClass="BarGraphView" customModule="SoccerPool" customModuleProvider="target">
-                                        <rect key="frame" x="180" y="140" width="240" height="128"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLU-Fo-bMd" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IntroBackground" translatesAutoresizingMaskIntoConstraints="NO" id="V8r-kt-pFB">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uqv-5e-HRn" userLabel="BarGraph" customClass="BarGraphView" customModule="SoccerPool" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="6oC-de-8Fd"/>
+                                                </constraints>
+                                            </view>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gkw-wu-zuY">
+                                                <rect key="frame" x="0.0" y="300" width="600" height="187"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="k47-Cp-RnU">
+                                                    <size key="itemSize" width="100" height="200"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StandingsUserCellID" id="7eF-bR-lbg">
+                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="200"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="200"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                    </collectionViewCell>
+                                                </cells>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="wvO-h0-MSH" id="Wd6-j6-Eu1"/>
+                                                    <outlet property="delegate" destination="wvO-h0-MSH" id="CcR-ps-KKA"/>
+                                                </connections>
+                                            </collectionView>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="V8r-kt-pFB" firstAttribute="top" secondItem="NLU-Fo-bMd" secondAttribute="top" id="8v3-NM-Jtl"/>
+                                            <constraint firstItem="Uqv-5e-HRn" firstAttribute="top" secondItem="NLU-Fo-bMd" secondAttribute="top" id="Aua-R2-CXy"/>
+                                            <constraint firstItem="Gkw-wu-zuY" firstAttribute="leading" secondItem="NLU-Fo-bMd" secondAttribute="leading" id="Blh-8Z-zlg"/>
+                                            <constraint firstAttribute="trailing" secondItem="V8r-kt-pFB" secondAttribute="trailing" id="OEy-QJ-ISE"/>
+                                            <constraint firstAttribute="trailing" secondItem="Uqv-5e-HRn" secondAttribute="trailing" id="P2l-KZ-YX8"/>
+                                            <constraint firstItem="Uqv-5e-HRn" firstAttribute="leading" secondItem="NLU-Fo-bMd" secondAttribute="leading" id="U4X-lo-omw"/>
+                                            <constraint firstAttribute="bottom" secondItem="Gkw-wu-zuY" secondAttribute="bottom" id="W3V-sr-YXz"/>
+                                            <constraint firstAttribute="trailing" secondItem="Gkw-wu-zuY" secondAttribute="trailing" id="mIr-Xx-Ub4"/>
+                                            <constraint firstItem="V8r-kt-pFB" firstAttribute="leading" secondItem="NLU-Fo-bMd" secondAttribute="leading" id="qbx-j0-OwA"/>
+                                            <constraint firstAttribute="bottom" secondItem="V8r-kt-pFB" secondAttribute="bottom" id="tNZ-m8-zf9"/>
+                                            <constraint firstItem="Gkw-wu-zuY" firstAttribute="top" secondItem="Uqv-5e-HRn" secondAttribute="bottom" id="uDV-ei-i2K"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="NLU-Fo-bMd" secondAttribute="trailing" id="8dZ-YV-iZj"/>
+                                    <constraint firstAttribute="bottom" secondItem="NLU-Fo-bMd" secondAttribute="bottom" id="Vq6-EB-hmQ"/>
+                                    <constraint firstItem="NLU-Fo-bMd" firstAttribute="top" secondItem="6cj-7z-ND5" secondAttribute="top" id="qUF-Gt-KpK"/>
+                                    <constraint firstItem="NLU-Fo-bMd" firstAttribute="leading" secondItem="6cj-7z-ND5" secondAttribute="leading" id="zwH-2K-4FC"/>
+                                </constraints>
                                 <variation key="heightClass=regular" ambiguous="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="687"/>
                                 </variation>
@@ -157,8 +211,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="NLU-Fo-bMd" firstAttribute="width" secondItem="TFz-fu-MZ3" secondAttribute="width" id="1o7-oQ-WoX"/>
                             <constraint firstItem="6cj-7z-ND5" firstAttribute="top" secondItem="qRw-hk-5Bi" secondAttribute="bottom" id="BWk-oE-MZk"/>
                             <constraint firstItem="MN3-f6-z40" firstAttribute="top" secondItem="6cj-7z-ND5" secondAttribute="bottom" id="C5r-0B-oI7"/>
+                            <constraint firstItem="NLU-Fo-bMd" firstAttribute="height" secondItem="TFz-fu-MZ3" secondAttribute="height" id="ZCt-bQ-a3y"/>
                             <constraint firstItem="6cj-7z-ND5" firstAttribute="leading" secondItem="TFz-fu-MZ3" secondAttribute="leading" id="i0m-W4-p82"/>
                             <constraint firstAttribute="trailing" secondItem="6cj-7z-ND5" secondAttribute="trailing" id="pS5-WL-11l"/>
                         </constraints>
@@ -167,7 +223,8 @@
                     <tabBarItem key="tabBarItem" title="" id="OiJ-jv-llP"/>
                     <navigationItem key="navigationItem" id="dI9-jI-YLB"/>
                     <connections>
-                        <outlet property="barGraph" destination="tvZ-8w-sbR" id="Mhn-Np-Qts"/>
+                        <outlet property="barGraph" destination="Uqv-5e-HRn" id="OhL-Qk-1Uy"/>
+                        <outlet property="collectionView" destination="Gkw-wu-zuY" id="0KF-bE-wBA"/>
                         <outlet property="scrollView" destination="6cj-7z-ND5" id="PIZ-di-qvE"/>
                         <segue destination="DQV-co-UvZ" kind="presentation" identifier="segueHelp" id="qK9-gR-2Aa"/>
                     </connections>

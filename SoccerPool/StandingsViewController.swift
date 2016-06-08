@@ -10,16 +10,18 @@ import Foundation
 import UIKit
 import SCLAlertView
 
-class StandingsViewController : BaseViewController {
+class StandingsViewController : BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var barGraph: BarGraphView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.initControls()
         self.setTheme()
+        self.registerClasses()
         self.doLayout()
     }
     
@@ -42,12 +44,12 @@ class StandingsViewController : BaseViewController {
     }
     
     func setTheme() -> Void {
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        UIImage(named: "IntroBackground")?.drawInRect(self.view.bounds)
-        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        self.view.backgroundColor = UIColor(patternImage: image)
+        self.collectionView.backgroundColor = UIColor.clearColor()
+        self.collectionView.backgroundView?.backgroundColor = UIColor.clearColor()
+    }
+    
+    func registerClasses() -> Void {
+        self.collectionView.registerNib(UINib(nibName: "StandingsUserCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "StandingsUserCellID")
     }
     
     func doLayout() -> Void {
@@ -73,4 +75,18 @@ class StandingsViewController : BaseViewController {
         super.didReceiveMemoryWarning()
     }
     
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("StandingsUserCellID", forIndexPath: indexPath)
+        
+        return cell
+    }
 }

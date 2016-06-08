@@ -50,7 +50,7 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
         self.hostedGraph?.fill = CPTFill(color: backgroundColour)
         self.hostedGraph?.plotAreaFrame?.paddingTop = 10.0
         self.hostedGraph?.plotAreaFrame?.paddingBottom = 10.0
-        self.hostedGraph?.plotAreaFrame?.paddingLeft = 60.0
+        self.hostedGraph?.plotAreaFrame?.paddingLeft = 35.0
         self.hostedGraph?.plotAreaFrame?.paddingRight = 10.0
         
         let plotSpace = self.hostedGraph?.defaultPlotSpace as! CPTXYPlotSpace
