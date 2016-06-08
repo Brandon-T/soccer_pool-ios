@@ -22,6 +22,7 @@ class NoMatchesTableViewCell: UITableViewCell {
         informationTextLabel.text = "No matches yet."
         informationTextLabel.font = UIFont.boldSystemFontOfSize(17)
         informationTextLabel.textColor = UIColor.emptyCellTextColor()
+        self.selectionStyle = UITableViewCellSelectionStyle.None
     
     }
     
