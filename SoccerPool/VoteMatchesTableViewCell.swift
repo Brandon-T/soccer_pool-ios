@@ -10,11 +10,29 @@ import UIKit
 
 class VoteMatchesTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var containerView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.setTheme()
     }
 
+    func setTheme() -> Void {
+
+        self.containerView.backgroundColor = UIColor.whiteColor()
+        self.containerView.layer.cornerRadius = 5.0
+        self.containerView.layer.borderColor = UIColor.grayColor().CGColor
+        self.containerView.layer.borderWidth = 0.5
+        self.containerView.layer.shadowColor = UIColor.blackColor().CGColor
+        self.containerView.layer.shadowOffset = CGSizeZero
+        self.containerView.layer.shadowOpacity = 0.5
+        self.containerView.layer.shadowRadius = 5
+        self.containerView.clipsToBounds = true
+
+        
+    }
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
