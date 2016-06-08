@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -21,22 +21,30 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IntroBackground" translatesAutoresizingMaskIntoConstraints="NO" id="puX-4I-A9y">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlasticLogo" translatesAutoresizingMaskIntoConstraints="NO" id="A4t-OI-747">
-                                <rect key="frame" x="194" y="28" width="213" height="89"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EuroCupBallLogo" translatesAutoresizingMaskIntoConstraints="NO" id="A4t-OI-747">
+                                <rect key="frame" x="188" y="95" width="225" height="225"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="89" id="m7W-PB-vwP"/>
+                                    <constraint firstAttribute="height" constant="225" id="ik5-Sd-zOF"/>
+                                    <constraint firstAttribute="width" constant="225" id="y8X-rX-Dw6"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlasticLogo" translatesAutoresizingMaskIntoConstraints="NO" id="hRL-w0-yhf">
+                                <rect key="frame" x="188" y="357" width="225" height="122"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="122" id="R7S-3M-MT0"/>
+                                    <constraint firstAttribute="width" constant="225" id="dH7-wF-rjT"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="A4t-OI-747" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="75" id="7AI-bS-i8X"/>
                             <constraint firstItem="puX-4I-A9y" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" id="9Nh-Pb-QuR"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="puX-4I-A9y" secondAttribute="bottom" id="Hx6-5t-rbY"/>
-                            <constraint firstAttribute="trailing" secondItem="A4t-OI-747" secondAttribute="trailing" constant="193" id="ON9-l3-1W6"/>
-                            <constraint firstItem="A4t-OI-747" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="8" id="ThA-cQ-5dD"/>
-                            <constraint firstItem="A4t-OI-747" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="UG6-z1-gFo"/>
+                            <constraint firstItem="hRL-w0-yhf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="IiO-rU-yTP"/>
+                            <constraint firstItem="hRL-w0-yhf" firstAttribute="top" secondItem="A4t-OI-747" secondAttribute="bottom" constant="37" id="XB8-Ae-bqH"/>
+                            <constraint firstItem="A4t-OI-747" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="eJi-7n-cE3"/>
                             <constraint firstAttribute="trailing" secondItem="puX-4I-A9y" secondAttribute="trailing" id="g2Y-us-hye"/>
-                            <constraint firstItem="A4t-OI-747" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="194" id="t8c-Kg-ZfC"/>
                             <constraint firstItem="puX-4I-A9y" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="zcI-xW-OC0"/>
                         </constraints>
                     </view>
@@ -47,6 +55,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="EuroCupBallLogo" width="2042" height="2042"/>
         <image name="IntroBackground" width="380" height="560"/>
         <image name="PlasticLogo" width="575" height="258"/>
     </resources>

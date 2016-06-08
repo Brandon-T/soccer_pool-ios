@@ -32,12 +32,18 @@ class ServiceLayer {
         })
     }
     
+    static func logoutUser() -> Void {
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("accessToken")
+        NSUserDefaults.standardUserDefaults().synchronize()
+    
+    }
+    
     static func registerUser(email: String, password: String, completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
         ServiceLayer.request(Router.Register(email, password), completion: { (json, error) in
             
             if error != nil {
-            completion(json: json, error: error)
-            return
+                completion(json: json, error: error)
+                return
             }
             
             Router.accessToken = json?["token"] as? String

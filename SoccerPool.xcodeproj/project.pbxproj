@@ -12,12 +12,13 @@
 		2F615C4B1D0667E600B1C484 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F615C4A1D0667E600B1C484 /* BaseNavigationController.swift */; };
 		2F615C4E1D06699A00B1C484 /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F615C4D1D06699A00B1C484 /* GamesViewController.swift */; };
 		2F615C501D066A7A00B1C484 /* StandingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F615C4F1D066A7A00B1C484 /* StandingsViewController.swift */; };
-		2F615C531D066B4E00B1C484 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F615C521D066B4E00B1C484 /* HelpViewController.swift */; };
 		2F615C561D06730D00B1C484 /* String+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F615C551D06730D00B1C484 /* String+Utilities.swift */; };
 		2F7B9F5F1D04A6FC005BEAB8 /* SoccerPool.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F7B9F5E1D04A6FC005BEAB8 /* SoccerPool.storyboard */; };
 		2F7B9F631D04B822005BEAB8 /* LoginFieldsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7B9F621D04B822005BEAB8 /* LoginFieldsView.swift */; };
 		2F7ED2FF1D0693B400656DE5 /* NoMatchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7ED2FD1D0693B400656DE5 /* NoMatchesTableViewCell.swift */; };
 		2F7ED3001D0693B400656DE5 /* NoMatchesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F7ED2FE1D0693B400656DE5 /* NoMatchesTableViewCell.xib */; };
+		2FABF9331D0766EA00F5AAE4 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FABF9321D0766EA00F5AAE4 /* TitleView.swift */; };
+		2FABF9351D07672900F5AAE4 /* TitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FABF9341D07672900F5AAE4 /* TitleView.xib */; };
 		2FE39E1E1D04BC6B00A62F1C /* UIColor+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE39E1D1D04BC6B00A62F1C /* UIColor+Utilities.swift */; };
 		44C583AF58B5112A57246843 /* Pods_SoccerPool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1FDBA1971B06030A022B613 /* Pods_SoccerPool.framework */; };
 		5E286E161D05BA0A00838831 /* SoccerPool.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5E286E141D05BA0A00838831 /* SoccerPool.xcdatamodeld */; };
@@ -39,12 +40,13 @@
 		2F615C4A1D0667E600B1C484 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		2F615C4D1D06699A00B1C484 /* GamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
 		2F615C4F1D066A7A00B1C484 /* StandingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandingsViewController.swift; sourceTree = "<group>"; };
-		2F615C521D066B4E00B1C484 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		2F615C551D06730D00B1C484 /* String+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utilities.swift"; sourceTree = "<group>"; };
 		2F7B9F5E1D04A6FC005BEAB8 /* SoccerPool.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SoccerPool.storyboard; sourceTree = SOURCE_ROOT; };
 		2F7B9F621D04B822005BEAB8 /* LoginFieldsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginFieldsView.swift; sourceTree = "<group>"; };
 		2F7ED2FD1D0693B400656DE5 /* NoMatchesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoMatchesTableViewCell.swift; sourceTree = "<group>"; };
 		2F7ED2FE1D0693B400656DE5 /* NoMatchesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoMatchesTableViewCell.xib; sourceTree = "<group>"; };
+		2FABF9321D0766EA00F5AAE4 /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		2FABF9341D07672900F5AAE4 /* TitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleView.xib; sourceTree = "<group>"; };
 		2FE39E1D1D04BC6B00A62F1C /* UIColor+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Utilities.swift"; sourceTree = "<group>"; };
 		4E875914CD1D81C714DAED12 /* Pods-SoccerPool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoccerPool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SoccerPool/Pods-SoccerPool.debug.xcconfig"; sourceTree = "<group>"; };
 		5E286E151D05BA0A00838831 /* SoccerPool.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SoccerPool.xcdatamodel; sourceTree = "<group>"; };
@@ -94,8 +96,8 @@
 		2F615C4C1D06696900B1C484 /* Games */ = {
 			isa = PBXGroup;
 			children = (
-				2F7ED3011D06979500656DE5 /* GamesTableViewCells */,
 				2F615C4D1D06699A00B1C484 /* GamesViewController.swift */,
+				2F7ED3011D06979500656DE5 /* GamesTableViewCells */,
 			);
 			name = Games;
 			sourceTree = "<group>";
@@ -106,14 +108,6 @@
 				2F615C4F1D066A7A00B1C484 /* StandingsViewController.swift */,
 			);
 			name = StandingsViewController;
-			sourceTree = "<group>";
-		};
-		2F615C541D066B5300B1C484 /* HelpViewController */ = {
-			isa = PBXGroup;
-			children = (
-				2F615C521D066B4E00B1C484 /* HelpViewController.swift */,
-			);
-			name = HelpViewController;
 			sourceTree = "<group>";
 		};
 		2F7B9F611D04B7F5005BEAB8 /* Login */ = {
@@ -134,6 +128,23 @@
 			name = GamesTableViewCells;
 			sourceTree = "<group>";
 		};
+		2FABF9311D0766D500F5AAE4 /* TitleView */ = {
+			isa = PBXGroup;
+			children = (
+				2FABF9321D0766EA00F5AAE4 /* TitleView.swift */,
+				2FABF9341D07672900F5AAE4 /* TitleView.xib */,
+			);
+			name = TitleView;
+			sourceTree = "<group>";
+		};
+		2FABF9361D07BDF400F5AAE4 /* BarGraphView */ = {
+			isa = PBXGroup;
+			children = (
+				CAD2AC391D068437004AC26E /* BarGraphView.swift */,
+			);
+			name = BarGraphView;
+			sourceTree = "<group>";
+		};
 		2FE39E1C1D04BC1700A62F1C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,7 +160,6 @@
 			children = (
 				2F615C4C1D06696900B1C484 /* Games */,
 				2F615C511D066A7F00B1C484 /* StandingsViewController */,
-				2F615C541D066B5300B1C484 /* HelpViewController */,
 				2F7B9F611D04B7F5005BEAB8 /* Login */,
 				2FE39E231D04D63200A62F1C /* Base */,
 			);
@@ -161,7 +171,6 @@
 			children = (
 				2F7B9F5E1D04A6FC005BEAB8 /* SoccerPool.storyboard */,
 				CAE783761D013B7400492BBD /* LaunchScreen.storyboard */,
-				CAD2AC391D068437004AC26E /* BarGraphView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -178,6 +187,8 @@
 		2FE39E271D04FAD400A62F1C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2FABF9361D07BDF400F5AAE4 /* BarGraphView */,
+				2FABF9311D0766D500F5AAE4 /* TitleView */,
 				CAE147FB1D04A8A3000C67A3 /* NSObject+Serializable.h */,
 				CAE147FC1D04A8A3000C67A3 /* NSObject+Serializable.m */,
 				CAE783741D013B7400492BBD /* Assets.xcassets */,
@@ -286,7 +297,6 @@
 				TargetAttributes = {
 					CAE783691D013B7400492BBD = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = YTT3U95S25;
 					};
 				};
 			};
@@ -314,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F7ED3001D0693B400656DE5 /* NoMatchesTableViewCell.xib in Resources */,
+				2FABF9351D07672900F5AAE4 /* TitleView.xib in Resources */,
 				CAE783781D013B7400492BBD /* LaunchScreen.storyboard in Resources */,
 				CAE783751D013B7400492BBD /* Assets.xcassets in Resources */,
 				2F7B9F5F1D04A6FC005BEAB8 /* SoccerPool.storyboard in Resources */,
@@ -403,11 +414,11 @@
 				CA5FB2F91D013E8700150762 /* BaseViewController.swift in Sources */,
 				CAE148061D04B0F8000C67A3 /* Prediction.swift in Sources */,
 				2F615C4B1D0667E600B1C484 /* BaseNavigationController.swift in Sources */,
-				2F615C531D066B4E00B1C484 /* HelpViewController.swift in Sources */,
 				CA5FB2F51D013E0E00150762 /* LoginViewController.swift in Sources */,
 				CAD2AC3C1D0698F5004AC26E /* OrderedDictionary.swift in Sources */,
 				CAE7836E1D013B7400492BBD /* AppDelegate.swift in Sources */,
 				2F7B9F631D04B822005BEAB8 /* LoginFieldsView.swift in Sources */,
+				2FABF9331D0766EA00F5AAE4 /* TitleView.swift in Sources */,
 				CAD2AC3A1D068437004AC26E /* BarGraphView.swift in Sources */,
 				2FE39E1E1D04BC6B00A62F1C /* UIColor+Utilities.swift in Sources */,
 				CA5FB2FB1D0141D300150762 /* ServiceLayer.swift in Sources */,
@@ -517,6 +528,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SoccerPool/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = XIO.SoccerPool;
@@ -532,6 +544,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SoccerPool/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = XIO.SoccerPool;
