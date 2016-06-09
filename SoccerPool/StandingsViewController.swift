@@ -25,12 +25,6 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
         self.doLayout()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.barGraph.hostedGraph?.reloadData()
-    }
-    
     func initControls() -> Void {
         //self.barGraph = BarGraphView()
         
@@ -44,6 +38,8 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     }
     
     func setTheme() -> Void {
+        self.barGraph.title = "Leader Board (Competitors vs. Points)"
+        
         self.collectionView.backgroundColor = UIColor.clearColor()
         self.collectionView.backgroundView?.backgroundColor = UIColor.clearColor()
     }
@@ -53,7 +49,7 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     }
     
     func doLayout() -> Void {
-        
+        self.barGraph.hostedGraph?.reloadData()
     }
     
     //MARK: BAR BUTTON ACTIONS

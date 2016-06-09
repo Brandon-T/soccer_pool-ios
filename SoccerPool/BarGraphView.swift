@@ -14,7 +14,16 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
     
     let barWidth = 0.5
     
-    var title: String! = ""
+    var title: String {
+        get {
+            return self.hostedGraph?.title ?? ""
+        }
+        
+        set {
+            self.hostedGraph?.title = newValue
+        }
+    }
+    
     var graphData: OrderedDictionary<String, AnyObject>! = ["Brandon":10, "Soner":7, "Oleksiy":9, "Brian":5, "Omar":8, "Sandeep":4]
     
     
@@ -46,9 +55,8 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
         let barOffset = barWidth / 2.0
         let backgroundColour = CPTColor(CGColor: UIColor.clearColor().CGColor)
         
-        self.hostedGraph?.title = self.title
         self.hostedGraph?.fill = CPTFill(color: backgroundColour)
-        self.hostedGraph?.plotAreaFrame?.paddingTop = 10.0
+        self.hostedGraph?.plotAreaFrame?.paddingTop = 30.0
         self.hostedGraph?.plotAreaFrame?.paddingBottom = 10.0
         self.hostedGraph?.plotAreaFrame?.paddingLeft = 35.0
         self.hostedGraph?.plotAreaFrame?.paddingRight = 10.0
@@ -89,8 +97,9 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
         axisLineStyle.lineWidth = 2.0
         
         
+        self.hostedGraph?.title = self.title
         self.hostedGraph?.titleTextStyle = yAxisTextStyle
-        self.hostedGraph?.titleDisplacement = CGPoint(x: 20.0, y: 0.0)
+        self.hostedGraph?.titleDisplacement = CGPoint(x: 0.0, y: 0.0)
         
         
         let xAxis = (self.hostedGraph?.axisSet as! CPTXYAxisSet).xAxis!
