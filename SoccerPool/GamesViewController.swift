@@ -56,8 +56,17 @@ class GamesViewController : UITableViewController {
                     }
                 }
 
-                print("Sasaas")
+                self.upcomingGames.sortInPlace({ (first, second) -> Bool in
+                    return first.startTime!.compare(second.startTime!) == .OrderedAscending
+                })
                 
+                self.inProgressGames.sortInPlace({ (first, second) -> Bool in
+                    return first.startTime!.compare(second.startTime!) == .OrderedAscending
+                })
+                
+                self.completedGames.sortInPlace({ (first, second) -> Bool in
+                    return first.startTime!.compare(second.startTime!) == .OrderedAscending
+                })
             }
         }
     }
