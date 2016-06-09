@@ -82,16 +82,7 @@ class LoginFieldsView: UIView, UITextFieldDelegate{
                 errorMessage = "Please enter a password"
                 return false
             }
-            
-            /*
-            if password.isValidEmail() == false {
-                errorMessage = "Please enter a valid email address"
-                self.emailTextField.text = ""
-                self.passwordTextField.text = ""
-                return false
-            }
-            */
-    
+         
         }
         
         return true
@@ -108,6 +99,9 @@ class LoginFieldsView: UIView, UITextFieldDelegate{
             else{
                 if let error = errorMessage{
                     SCLAlertView().showInfo("Error", subTitle: error, circleIconImage: UIImage(named: "EuroCupIcon"))
+                    self.emailTextField.resignFirstResponder()
+                    self.passwordTextField.resignFirstResponder()
+
                 }
             }
         }

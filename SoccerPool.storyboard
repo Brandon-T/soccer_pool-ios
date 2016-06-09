@@ -45,10 +45,10 @@
                                         </constraints>
                                     </imageView>
                                     <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUa-qA-wFF" customClass="LoginFieldsView" customModule="SoccerPool" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="393" width="570" height="192"/>
+                                        <rect key="frame" x="35" y="393" width="530" height="192"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Plastic Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="q9R-zh-XnE">
-                                                <rect key="frame" x="15" y="15" width="540" height="44"/>
+                                                <rect key="frame" x="15" y="15" width="500" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="bes-t1-Hg6"/>
                                                 </constraints>
@@ -56,7 +56,7 @@
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFd-QC-Tru">
-                                                <rect key="frame" x="15" y="133" width="540" height="44"/>
+                                                <rect key="frame" x="15" y="133" width="500" height="44"/>
                                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Enter the Pool">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -66,7 +66,7 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Set Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RaI-kT-OAV">
-                                                <rect key="frame" x="15" y="74" width="540" height="44"/>
+                                                <rect key="frame" x="15" y="74" width="500" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                             </textField>
@@ -98,8 +98,8 @@
                                     <constraint firstAttribute="trailing" secondItem="jSl-9n-n56" secondAttribute="trailing" id="5L2-yp-kwP"/>
                                     <constraint firstItem="jSl-9n-n56" firstAttribute="leading" secondItem="Nmc-au-2az" secondAttribute="leading" id="BMD-wL-uKk"/>
                                     <constraint firstAttribute="bottom" secondItem="jSl-9n-n56" secondAttribute="bottom" id="BXe-4I-ucF"/>
-                                    <constraint firstAttribute="trailing" secondItem="AUa-qA-wFF" secondAttribute="trailing" constant="15" id="LVu-Yg-osS"/>
-                                    <constraint firstItem="AUa-qA-wFF" firstAttribute="leading" secondItem="Nmc-au-2az" secondAttribute="leading" constant="15" id="W5b-dK-UuM"/>
+                                    <constraint firstAttribute="trailing" secondItem="AUa-qA-wFF" secondAttribute="trailing" constant="35" id="LVu-Yg-osS"/>
+                                    <constraint firstItem="AUa-qA-wFF" firstAttribute="leading" secondItem="Nmc-au-2az" secondAttribute="leading" constant="35" id="W5b-dK-UuM"/>
                                     <constraint firstItem="aqW-mv-SV8" firstAttribute="top" secondItem="Nmc-au-2az" secondAttribute="top" constant="44" id="WyZ-KI-cjQ"/>
                                     <constraint firstItem="Kgs-wD-kDD" firstAttribute="top" secondItem="aqW-mv-SV8" secondAttribute="bottom" constant="15" id="dV1-a5-wnd"/>
                                     <constraint firstItem="AUa-qA-wFF" firstAttribute="top" secondItem="Rii-o4-e5W" secondAttribute="bottom" constant="75" id="g4l-dp-Su8"/>
