@@ -108,6 +108,9 @@ class LoginFieldsView: UIView, UITextFieldDelegate{
             else{
                 if let error = errorMessage{
                     SCLAlertView().showInfo("Error", subTitle: error, circleIconImage: UIImage(named: "EuroCupIcon"))
+                    self.emailTextField.resignFirstResponder()
+                    self.passwordTextField.resignFirstResponder()
+
                 }
             }
         }

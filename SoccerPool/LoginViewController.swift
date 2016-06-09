@@ -61,6 +61,7 @@ class LoginViewController : BaseViewController, LoginFieldsViewDelegate {
 
                         if error != nil {
                             SCLAlertView().showInfo("Error", subTitle: error!.localizedDescription, circleIconImage: UIImage(named: "EuroCupIcon"))
+                            self.view.endEditing(true)
                         }
                         else {
                             self.performSegueWithIdentifier("segueSuccessfulLogin", sender: nil)
@@ -70,6 +71,8 @@ class LoginViewController : BaseViewController, LoginFieldsViewDelegate {
                 }
                 
                 SCLAlertView().showInfo("Error", subTitle: error!.localizedDescription, circleIconImage: UIImage(named: "EuroCupIcon"))
+                self.view.endEditing(true)
+
             }
             else {
                 self.performSegueWithIdentifier("segueSuccessfulLogin", sender: nil)
