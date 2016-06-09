@@ -16,6 +16,10 @@ class ServiceLayer {
         ServiceLayer.request(.TestGames, completion: completion)
     }
     
+    static func getInfo(completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
+        ServiceLayer.request(.Info, completion: completion)
+    }
+    
     static func isLoggedIn() -> Bool {
         return Router.accessToken != nil ? !Router.accessToken!.isEmpty : false
     }
@@ -147,6 +151,7 @@ class ServiceLayer {
         case Games
         case PredictGames(UInt, UInt, UInt)
         case Image(String)
+        case Info
         case TestGames
         
         
@@ -156,25 +161,28 @@ class ServiceLayer {
                 return (.GET, "/", nil)
                 
             case .Login(let email, let password):
-                return (.POST, "/test/login", ["email": email, "password": password])
+                return (.POST, "/login", ["email": email, "password": password])
                 
             case .Register(let email, let password):
-                return (.POST, "test/login", ["email": email, "password": password, "signup": true])
+                return (.POST, "/login", ["email": email, "password": password, "signup": true])
                 
             case .Pool:
-                return (.GET, "/test/pool", nil)
+                return (.GET, "/pool", nil)
                 
             case .Games:
-                return (.GET, "/test/games", nil)
+                return (.GET, "/games", nil)
                 
             case .PredictGames(let gameID, let awayGoals, let homeGoals):
-                return (.POST, "/test/predictgame", ["gameID": gameID, "awayGoals": awayGoals, "homeGoals": homeGoals])
+                return (.POST, "/predictgame", ["gameID": gameID, "awayGoals": awayGoals, "homeGoals": homeGoals])
                 
             case .Image(let url):
                 return (.GET, url, nil)
+                
+            case .Info:
+                return (.GET, "/info", nil)
             
             case .TestGames:
-                return (.GET, "/test/setup", nil)
+                return (.GET, "/setup", nil)
             }
         }
         

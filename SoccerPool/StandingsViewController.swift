@@ -32,9 +32,10 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
             }
             
             if let poolArray = json?["data"] as? [[String: AnyObject]] {
-                let pools = Pool.fromJSONArray(poolArray) as! [Pool]
                 
+                //Sort into groups of 3 per row.
                 var pool = [Pool]()
+                let pools = Pool.fromJSONArray(poolArray) as! [Pool]
                 
                 for i in 0..<pools.count {
                     if i > 0 && i % 3 == 0 {
@@ -51,6 +52,18 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
                     self.pools.append(pool)
                 }
                 
+                
+                //Source for bar graph
+                let barGraphSource = OrderedDictionary<String, AnyObject>()
+                
+                for pool in pools {
+                    barGraphSource[pool.name!] = Int(pool.points!) > 0 ? pool.points! : 0.1
+                }
+                
+                self.barGraph.graphData = barGraphSource
+                
+                //Update UI.
+                self.barGraph?.hostedGraph?.reloadData()
                 self.collectionView.reloadData()
             }
         }
