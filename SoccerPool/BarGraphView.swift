@@ -188,15 +188,18 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
     }
     
     func barFillForBarPlot(barPlot: CPTBarPlot, recordIndex idx: UInt) -> CPTFill? {
-        func getRandomColor() -> CPTColor {
+        func getBarColor(idx: UInt) -> CPTColor {
             let randomRed:CGFloat = CGFloat(arc4random()) / CGFloat(UInt32.max)
             let randomGreen:CGFloat = CGFloat(arc4random()) / CGFloat(UInt32.max)
             let randomBlue:CGFloat = CGFloat(arc4random()) / CGFloat(UInt32.max)
             return CPTColor(componentRed: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
+            
+            //let colour: UIColor = UIColor(hue: 0.4 * CGFloat(idx), saturation: 0.9, brightness: 0.9, alpha: 1.0)
+            //return CPTColor(CGColor: colour.CGColor)
         }
         
         if (barPlot.identifier as! String) == "BarGraphPlot" {
-            return CPTFill(color: getRandomColor())
+            return CPTFill(color: getBarColor(idx))
         }
         return CPTFill(color: CPTColor.whiteColor())
     }
