@@ -31,6 +31,7 @@
 		5E15629F1D08C6AB001F50A2 /* StandingsUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15629D1D08C6AB001F50A2 /* StandingsUserCollectionViewCell.swift */; };
 		5E1562A01D08C6AB001F50A2 /* StandingsUserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E15629E1D08C6AB001F50A2 /* StandingsUserCollectionViewCell.xib */; };
 		5E286E161D05BA0A00838831 /* SoccerPool.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5E286E141D05BA0A00838831 /* SoccerPool.xcdatamodeld */; };
+		5E53F4831D09E28E004CB62E /* NSDate+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E53F4821D09E28E004CB62E /* NSDate+Utilities.swift */; };
 		CA5F53D21D0658D7007D7C3A /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F53D11D0658D7007D7C3A /* BaseModel.swift */; };
 		CA5FB2F51D013E0E00150762 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FB2F41D013E0E00150762 /* LoginViewController.swift */; };
 		CA5FB2F91D013E8700150762 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FB2F81D013E8700150762 /* BaseViewController.swift */; };
@@ -71,6 +72,7 @@
 		5E15629D1D08C6AB001F50A2 /* StandingsUserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandingsUserCollectionViewCell.swift; sourceTree = "<group>"; };
 		5E15629E1D08C6AB001F50A2 /* StandingsUserCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StandingsUserCollectionViewCell.xib; sourceTree = "<group>"; };
 		5E286E151D05BA0A00838831 /* SoccerPool.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SoccerPool.xcdatamodel; sourceTree = "<group>"; };
+		5E53F4821D09E28E004CB62E /* NSDate+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Utilities.swift"; sourceTree = "<group>"; };
 		C47CCEBB48532F0E083249D2 /* Pods-SoccerPool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoccerPool.release.xcconfig"; path = "Pods/Target Support Files/Pods-SoccerPool/Pods-SoccerPool.release.xcconfig"; sourceTree = "<group>"; };
 		CA5F53CF1D065773007D7C3A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CA5F53D11D0658D7007D7C3A /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				CA886FA11D08F12A00EC4704 /* NSObject+Utilities.swift */,
 				CA886FA31D08F42000EC4704 /* UIView+Utilities.swift */,
 				CA886FA61D09273F00EC4704 /* UIImageView+Utilities.swift */,
+				5E53F4821D09E28E004CB62E /* NSDate+Utilities.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				CA5FB2F51D013E0E00150762 /* LoginViewController.swift in Sources */,
 				CAD2AC3C1D0698F5004AC26E /* OrderedDictionary.swift in Sources */,
 				2F8B270F1D091D08002C0B46 /* FinishedMatchesTableViewCell.swift in Sources */,
+				5E53F4831D09E28E004CB62E /* NSDate+Utilities.swift in Sources */,
 				5E15629F1D08C6AB001F50A2 /* StandingsUserCollectionViewCell.swift in Sources */,
 				CAE7836E1D013B7400492BBD /* AppDelegate.swift in Sources */,
 				2F7B9F631D04B822005BEAB8 /* LoginFieldsView.swift in Sources */,

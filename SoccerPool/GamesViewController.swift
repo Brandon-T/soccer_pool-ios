@@ -182,18 +182,41 @@ class GamesViewController : UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        var cell: UITableViewCell!
         
-        let section = indexPath.section
-        var cell = UITableViewCell()
+        switch indexPath.section {
+        case 0:
+            cell = tableView.dequeueReusableCellWithIdentifier("VoteMatchesCell", forIndexPath: indexPath)
         
-        switch section {
-            case 0:
-                cell = tableView.dequeueReusableCellWithIdentifier("VoteMatchesCell", forIndexPath: indexPath)
-            case 1:
-                cell = tableView.dequeueReusableCellWithIdentifier("NoMatchesCell", forIndexPath: indexPath)
-            default:
-                cell = tableView.dequeueReusableCellWithIdentifier("FinishedMatchesCell", forIndexPath: indexPath)
-
+            if let cell = cell as? VoteMatchesTableViewCell {
+                let game = self.upcomingGames[indexPath.row]
+                
+                cell.homeTeamNameLabel.text = game.homeTeam?.name
+                cell.awayTeamNameLabel.text = game.awayTeam?.name
+                cell.homeTeamFlagImageView.loadImage(game.homeTeam?.flag)
+                cell.awayTeamFlagImageView.loadImage(game.awayTeam?.flag)
+                cell.homeTeamScoreLabel.text = "\(game.homeGoals)"
+                cell.awayTeamScoreLabel.text = "\(game.awayGoals)"
+                cell.gameTimeLabel.text = game.startTime?.format("yyyy-MM-dd")
+            }
+        
+        
+        case 1:
+            cell = tableView.dequeueReusableCellWithIdentifier("NoMatchesCell", forIndexPath: indexPath) as! NoMatchesTableViewCell
+            
+        default:
+            cell = tableView.dequeueReusableCellWithIdentifier("FinishedMatchesCell", forIndexPath: indexPath) as! FinishedMatchesTableViewCell
+            if let cell = cell as? FinishedMatchesTableViewCell {
+                let game = self.completedGames[indexPath.row]
+                
+                cell.homeTeamNameLabel.text = game.homeTeam?.name
+                cell.awayTeamNameLabel.text = game.awayTeam?.name
+                cell.homeTeamFlagImageView.loadImage(game.homeTeam?.flag)
+                cell.awayTeamFlagImageView.loadImage(game.awayTeam?.flag)
+                cell.homeTeamScoreLabel.text = "\(game.homeGoals)"
+                cell.awayTeamScoreLabel.text = "\(game.awayGoals)"
+                cell.finalScoreLabel.text = nil
+            }
         }
         
         cell.backgroundColor = UIColor.clearColor()

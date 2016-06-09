@@ -16,4 +16,5 @@ class Game : NSObject, Serializeable {
     var homeTeam: Team?
     var prediction: Prediction?
     var startTime: NSDate?
+    var hasBeenPredicted: Bool = false
 }
