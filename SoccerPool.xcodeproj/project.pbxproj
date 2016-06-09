@@ -17,6 +17,8 @@
 		2F7B9F631D04B822005BEAB8 /* LoginFieldsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7B9F621D04B822005BEAB8 /* LoginFieldsView.swift */; };
 		2F7ED2FF1D0693B400656DE5 /* NoMatchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7ED2FD1D0693B400656DE5 /* NoMatchesTableViewCell.swift */; };
 		2F7ED3001D0693B400656DE5 /* NoMatchesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F7ED2FE1D0693B400656DE5 /* NoMatchesTableViewCell.xib */; };
+		2F8B270F1D091D08002C0B46 /* FinishedMatchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8B270D1D091D08002C0B46 /* FinishedMatchesTableViewCell.swift */; };
+		2F8B27101D091D08002C0B46 /* FinishedMatchesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F8B270E1D091D08002C0B46 /* FinishedMatchesTableViewCell.xib */; };
 		2FABF9331D0766EA00F5AAE4 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FABF9321D0766EA00F5AAE4 /* TitleView.swift */; };
 		2FABF9351D07672900F5AAE4 /* TitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FABF9341D07672900F5AAE4 /* TitleView.xib */; };
 		2FABF93B1D07D64300F5AAE4 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FABF93A1D07D64300F5AAE4 /* HelpViewController.swift */; };
@@ -54,6 +56,8 @@
 		2F7B9F621D04B822005BEAB8 /* LoginFieldsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginFieldsView.swift; sourceTree = "<group>"; };
 		2F7ED2FD1D0693B400656DE5 /* NoMatchesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoMatchesTableViewCell.swift; sourceTree = "<group>"; };
 		2F7ED2FE1D0693B400656DE5 /* NoMatchesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoMatchesTableViewCell.xib; sourceTree = "<group>"; };
+		2F8B270D1D091D08002C0B46 /* FinishedMatchesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishedMatchesTableViewCell.swift; sourceTree = "<group>"; };
+		2F8B270E1D091D08002C0B46 /* FinishedMatchesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FinishedMatchesTableViewCell.xib; sourceTree = "<group>"; };
 		2FABF9321D0766EA00F5AAE4 /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		2FABF9341D07672900F5AAE4 /* TitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleView.xib; sourceTree = "<group>"; };
 		2FABF93A1D07D64300F5AAE4 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 				2F7ED2FE1D0693B400656DE5 /* NoMatchesTableViewCell.xib */,
 				2FD919E11D08966600F8B771 /* VoteMatchesTableViewCell.swift */,
 				2FD919E21D08966600F8B771 /* VoteMatchesTableViewCell.xib */,
+				2F8B270D1D091D08002C0B46 /* FinishedMatchesTableViewCell.swift */,
+				2F8B270E1D091D08002C0B46 /* FinishedMatchesTableViewCell.xib */,
 			);
 			name = GamesTableViewCells;
 			sourceTree = "<group>";
@@ -382,6 +388,7 @@
 				CAE783751D013B7400492BBD /* Assets.xcassets in Resources */,
 				2F7B9F5F1D04A6FC005BEAB8 /* SoccerPool.storyboard in Resources */,
 				2FD919E41D08966600F8B771 /* VoteMatchesTableViewCell.xib in Resources */,
+				2F8B27101D091D08002C0B46 /* FinishedMatchesTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +481,7 @@
 				2F615C4B1D0667E600B1C484 /* BaseNavigationController.swift in Sources */,
 				CA5FB2F51D013E0E00150762 /* LoginViewController.swift in Sources */,
 				CAD2AC3C1D0698F5004AC26E /* OrderedDictionary.swift in Sources */,
+				2F8B270F1D091D08002C0B46 /* FinishedMatchesTableViewCell.swift in Sources */,
 				5E15629F1D08C6AB001F50A2 /* StandingsUserCollectionViewCell.swift in Sources */,
 				CAE7836E1D013B7400492BBD /* AppDelegate.swift in Sources */,
 				2F7B9F631D04B822005BEAB8 /* LoginFieldsView.swift in Sources */,

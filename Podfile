@@ -10,6 +10,8 @@ target 'SoccerPool' do
   pod 'XYPieChart'
   pod 'SCLAlertView'
   pod 'CorePlot', '~> 2.1'
+  pod 'AlamofireImage', '~> 2.4.0'
+  pod 'SDWebImage', '~>3.8'
   #pod 'AFNetworking',   '~> 3.0.0'
   #pod 'FBSDKCoreKit',   '~> 4.7.1'
   #pod 'FBSDKLoginKit',  '~> 4.7.1'

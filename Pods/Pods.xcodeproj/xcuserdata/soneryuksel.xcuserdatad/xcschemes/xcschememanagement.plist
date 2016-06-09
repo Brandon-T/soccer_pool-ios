@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AlamofireImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>CorePlot.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -34,6 +39,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>XYPieChart.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,17 +52,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>60856F9209331E2D79C66BBD19FD0FBD</key>
+		<key>05094CC4A047119F7ADC14EE74C4881C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3C8CEBDAF7A9B195C1A180BBD14CA0BC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4DC07F63D0F9318F9A926380DB36F12A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7E9F562AAE096A634FB3DE053C078AD2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,12 +82,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E0A86B1B66AB88330784C4DA3CB80593</key>
+		<key>E61CE3B6DFA1FE6B3E296965C76C0E10</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E61CE3B6DFA1FE6B3E296965C76C0E10</key>
+		<key>E9D31F16D15CB7B45D345A29B173521C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EFAC701A53635724E8465B44FACB038A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
