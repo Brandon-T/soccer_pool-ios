@@ -46,7 +46,8 @@ class GamesViewController : UITableViewController {
 
         self.tableView.registerNib(UINib(nibName: "NoMatchesTableViewCell", bundle: nil), forCellReuseIdentifier: "NoMatchesCell")
         self.tableView.registerNib(UINib(nibName: "VoteMatchesTableViewCell", bundle: nil), forCellReuseIdentifier: "VoteMatchesCell")
-
+        self.tableView.registerNib(UINib(nibName: "FinishedMatchesTableViewCell", bundle: nil), forCellReuseIdentifier: "FinishedMatchesCell")
+        
     }
     
     func doLayout() -> Void {
@@ -139,7 +140,7 @@ class GamesViewController : UITableViewController {
             case 1:
                 cell = tableView.dequeueReusableCellWithIdentifier("NoMatchesCell", forIndexPath: indexPath)
             default:
-                cell = tableView.dequeueReusableCellWithIdentifier("VoteMatchesCell", forIndexPath: indexPath)
+                cell = tableView.dequeueReusableCellWithIdentifier("FinishedMatchesCell", forIndexPath: indexPath)
 
         }
         

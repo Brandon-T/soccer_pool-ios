@@ -8,24 +8,17 @@
 
 import UIKit
 
-class VoteMatchesTableViewCell: UITableViewCell {
-
+class FinishedMatchesTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var homeTeamNameLabel: UILabel!
-    @IBOutlet weak var awayTeamNameLabel: UILabel!
-    @IBOutlet weak var homeTeamFlagImageView: UIImageView!
-    @IBOutlet weak var awayTeamFlagImageView: UIImageView!
-    @IBOutlet weak var homeTeamScoreLabel: UILabel!
-    @IBOutlet weak var awayTeamScoreLabel: UILabel!
-    @IBOutlet weak var gameTimeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setTheme()
     }
-
+    
     func setTheme() -> Void {
-
+        
         self.containerView.backgroundColor = UIColor.whiteColor()
         self.containerView.layer.cornerRadius = 5.0
         self.containerView.layer.borderColor = UIColor.grayColor().CGColor
@@ -35,25 +28,13 @@ class VoteMatchesTableViewCell: UITableViewCell {
         self.containerView.layer.shadowOpacity = 0.5
         self.containerView.layer.shadowRadius = 5
         self.containerView.clipsToBounds = true
-
+        
         self.selectionStyle = UITableViewCellSelectionStyle.None
     }
     
-    func setHomeTeamName(name: String) -> Void{
-    
-        self.homeTeamNameLabel.text = name
-    }
-    
-    func setAwayTeamName(name: String) -> Void{
-        
-        self.awayTeamNameLabel.text = name
-    }
-
-    
-    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

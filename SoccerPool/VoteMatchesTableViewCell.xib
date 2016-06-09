@@ -137,9 +137,16 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="awayTeamFlagImageView" destination="PPh-7o-VBE" id="ApG-YL-t3Y"/>
+                <outlet property="awayTeamNameLabel" destination="lmu-nj-AhT" id="d9D-BF-War"/>
+                <outlet property="awayTeamScoreLabel" destination="yCF-3a-rB6" id="COU-Bh-9un"/>
                 <outlet property="containerView" destination="idX-DA-ZYu" id="i5k-3M-6GJ"/>
+                <outlet property="gameTimeLabel" destination="nfF-GS-8g0" id="q04-zz-NLf"/>
+                <outlet property="homeTeamFlagImageView" destination="WhD-ux-bRj" id="zDj-Hh-nXR"/>
+                <outlet property="homeTeamNameLabel" destination="79R-f8-Afh" id="YmY-N0-XYW"/>
+                <outlet property="homeTeamScoreLabel" destination="mZr-ON-hZO" id="Ec2-JF-oeF"/>
             </connections>
-            <point key="canvasLocation" x="413" y="340"/>
+            <point key="canvasLocation" x="382" y="255"/>
         </tableViewCell>
     </objects>
     <resources>
