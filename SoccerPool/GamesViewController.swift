@@ -12,6 +12,10 @@ import SCLAlertView
 
 class GamesViewController : UITableViewController {
     
+    var upcomingGames = [[Game]]()
+    var inProgressGames = [[Game]]()
+    var completedGames = [[Game]]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,6 +23,25 @@ class GamesViewController : UITableViewController {
         self.setTheme()
         self.registerClasses()
         self.doLayout()
+  
+        
+        ServiceLayer.getGames { [unowned self](json, error) in
+            guard error == nil else {
+                return
+            }
+            
+            if let gamesArray = json?["data"] as? [[String: AnyObject]] {
+                let games = Game.fromJSONArray(gamesArray) as! [Game]
+                
+                for i in 0..<games.count {
+
+                   // game.append(games[i])
+                }
+
+                print("Sasaas")
+                
+            }
+        }
     }
     
     func initControllers() -> Void {
