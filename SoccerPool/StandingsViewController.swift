@@ -15,6 +15,8 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var barGraph: BarGraphView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    var pools = [[Pool]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,35 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
         self.setTheme()
         self.registerClasses()
         self.doLayout()
+        
+        ServiceLayer.getPool { [unowned self](json, error) in
+            guard error == nil else {
+                return
+            }
+            
+            if let poolArray = json?["data"] as? [[String: AnyObject]] {
+                let pools = Pool.fromJSONArray(poolArray) as! [Pool]
+                
+                var pool = [Pool]()
+                
+                for i in 0..<pools.count {
+                    if i > 0 && i % 3 == 0 {
+                        self.pools.append(pool)
+                        pool = [Pool]()
+                        pool.append(pools[i])
+                    }
+                    else {
+                        pool.append(pools[i])
+                    }
+                }
+                
+                if pool.count > 0 {
+                    self.pools.append(pool)
+                }
+                
+                self.collectionView.reloadData()
+            }
+        }
     }
     
     func initControls() -> Void {
@@ -72,17 +103,22 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 2
+        return pools.count
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return pools[section].count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("StandingsUserCellID", forIndexPath: indexPath)
+        let pool = self.pools[indexPath.section][indexPath.row]
         
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("StandingsUserCellID", forIndexPath: indexPath) as! StandingsUserCollectionViewCell
+        
+        cell.userPhotoView.loadImage(pool.photo)
+        cell.userNameLabel.text = pool.name
+        cell.userPointsLabel.text = pool.points
         return cell
     }
     
