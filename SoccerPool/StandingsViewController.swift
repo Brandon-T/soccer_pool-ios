@@ -118,7 +118,7 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
         
         cell.userPhotoView.loadImage(pool.photo)
         cell.userNameLabel.text = pool.name
-        cell.userPointsLabel.text = pool.points
+        cell.userPointsLabel.text = "\(pool.points ?? "0") Pts"
         return cell
     }
     
