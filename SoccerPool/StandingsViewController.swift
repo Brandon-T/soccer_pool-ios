@@ -10,8 +10,9 @@ import Foundation
 import UIKit
 import SCLAlertView
 
-class StandingsViewController : BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class StandingsViewController : BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, BarGraphViewDelegate {
     
+    let emptyBarHeight: Double = 0.5
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var barGraph: BarGraphView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -54,14 +55,12 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
                 
                 
                 //Source for bar graph
-                let barGraphSource = OrderedDictionary<String, AnyObject>()
+                self.barGraph.graphData.removeAll()
                 
                 for pool in pools {
-                    barGraphSource[pool.name!] = Int(pool.points!) > 0 ? pool.points! : 0.1
+                    self.barGraph.graphData[pool.name!] = Int(pool.points!) > 0 ? pool.points! : self.emptyBarHeight
                 }
-                
-                self.barGraph.graphData = barGraphSource
-                
+
                 //Update UI.
                 self.barGraph?.hostedGraph?.reloadData()
                 self.collectionView.reloadData()
@@ -70,8 +69,6 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     }
     
     func initControls() -> Void {
-        //self.barGraph = BarGraphView()
-        
         self.title = "Standings"
         
         let rightInformationBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "InformationBarButtonItem"), landscapeImagePhone: nil, style: .Done, target: self, action: #selector(informationBarButtonPressed))
@@ -83,6 +80,7 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     
     func setTheme() -> Void {
         self.barGraph.title = "Leader Board (Competitors vs. Points)"
+        self.barGraph.delegate = self
         
         self.collectionView.backgroundColor = UIColor.clearColor()
         self.collectionView.backgroundView?.backgroundColor = UIColor.clearColor()
@@ -135,8 +133,6 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
         return cell
     }
     
-    
-    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
         if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
@@ -145,8 +141,10 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
             return CGSizeMake(width / numberOfItemsInSection, 150);
         }
         
-        
         return CGSizeZero
+    }
+    
+    func barSelected(barGraph: BarGraphView, index: UInt) -> Void {
         
     }
 }

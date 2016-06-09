@@ -56,4 +56,9 @@ class OrderedDictionary<Key: Hashable, Value> : DictionaryLiteralConvertible {
             }
         }
     }
+    
+    func removeAll() -> Void {
+        self.keys.removeAll()
+        self.values.removeAll()
+    }
 }

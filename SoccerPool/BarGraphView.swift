@@ -10,9 +10,18 @@ import Foundation
 import UIKit
 import CorePlot
 
+
+protocol BarGraphViewDelegate {
+    func barSelected(barGraph: BarGraphView, index: UInt) -> Void
+}
+
+
 class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelegate, CPTPlotSpaceDelegate {
     
+    //Constants & Variables
+    
     let barWidth = 0.5
+    var delegate: BarGraphViewDelegate?
     
     var title: String {
         get {
@@ -24,9 +33,11 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
         }
     }
     
-    var graphData: OrderedDictionary<String, AnyObject>! = ["Brandon":10, "Soner":7, "Oleksiy":9, "Brian":5, "Omar":8, "Sandeep":4]
+    let graphData = OrderedDictionary<String, AnyObject>()
     
     
+    
+    //Functions
     init() {
         super.init(frame: CGRectZero)
         
@@ -205,5 +216,11 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
     
     func plotSpace(space: CPTPlotSpace, willDisplaceBy proposedDisplacementVector: CGPoint) -> CGPoint {
         return CGPoint(x: proposedDisplacementVector.x, y: 0)
+    }
+    
+    func barPlot(plot: CPTBarPlot, barWasSelectedAtRecordIndex idx: UInt) {
+        if self.delegate != nil {
+            self.delegate!.barSelected(self, index: idx)
+        }
     }
 }
