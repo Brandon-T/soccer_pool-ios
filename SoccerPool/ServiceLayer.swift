@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import AlamofireImage
 
 class ServiceLayer {
     
@@ -64,18 +65,14 @@ class ServiceLayer {
     }
     
     static func getImage(url: String, completion: (image: UIImage?, error: NSError?) -> Void) -> Void {
-        /*requestManager.request(.GET, url)
-            .responseImage { response in
-                debugPrint(response)
-                
-                print(response.request)
-                print(response.response)
-                debugPrint(response.result)
-                
-                if let image = response.result.value {
-                    print("image downloaded: \(image)")
-                }
-        }*/
+        imageDownloader.downloadImage(URLRequest: Router.Image(url)) { (response) in
+            if let image = response.result.value {
+                completion(image: image, error: nil)
+            }
+            else {
+                completion(image: nil, error: response.result.error)
+            }
+        }
     }
     
     static func request(router: Router, completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
@@ -126,6 +123,19 @@ class ServiceLayer {
         return Static.instance
     }()
     
+    static let imageDownloader = {() -> ImageDownloader in
+        struct Static {
+            static var dispatchOnceToken: dispatch_once_t = 0
+            static var instance: ImageDownloader!
+        }
+        
+        dispatch_once(&Static.dispatchOnceToken) {
+            Static.instance = ImageDownloader(sessionManager: requestManager, downloadPrioritization: .FIFO, maximumActiveDownloads: 4, imageCache: AutoPurgingImageCache())
+        }
+        
+        return Static.instance
+    }()
+    
     
     
     enum Router: URLRequestConvertible {
@@ -136,6 +146,7 @@ class ServiceLayer {
         case Pool
         case Games
         case PredictGames(UInt, UInt, UInt)
+        case Image(String)
         case TestGames
         
         
@@ -158,6 +169,9 @@ class ServiceLayer {
                 
             case .PredictGames(let gameID, let awayGoals, let homeGoals):
                 return (.POST, "/test/predictgame", ["gameID": gameID, "awayGoals": awayGoals, "homeGoals": homeGoals])
+                
+            case .Image(let url):
+                return (.GET, url, nil)
             
             case .TestGames:
                 return (.GET, "/test/setup", nil)
@@ -182,7 +196,16 @@ class ServiceLayer {
             }
         }
         
-        var URL: NSURL { return Router.baseURL.URLByAppendingPathComponent(route.path) }
+        var URL: NSURL {
+            switch self {
+            case .Image:
+                return NSURL(string: route.path)!
+                
+            default:
+                break
+            }
+            return Router.baseURL.URLByAppendingPathComponent(route.path)
+        }
         
         var URLRequest: NSMutableURLRequest {
             let request = NSMutableURLRequest(URL: URL)

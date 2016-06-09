@@ -112,9 +112,11 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
+        let pool = self.pools[indexPath.section][indexPath.row]
+        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("StandingsUserCellID", forIndexPath: indexPath) as! StandingsUserCollectionViewCell
         
-        
+        cell.userPhotoView.loadImage(pool.photo)
         
         return cell
     }
