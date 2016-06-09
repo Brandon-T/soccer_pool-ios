@@ -116,6 +116,8 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
         xAxis.minorTicksPerInterval = 1
         xAxis.majorGridLineStyle = nil
         xAxis.minorGridLineStyle = nil
+        xAxis.majorTickLineStyle = majorGridLineStyle
+        xAxis.minorTickLineStyle = minorGridLineStyle
         xAxis.axisConstraints = CPTConstraints(lowerOffset: 0.0)
         xAxis.axisLineStyle = axisLineStyle
         
@@ -130,6 +132,8 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
         yAxis.minorTicksPerInterval = 1
         yAxis.majorGridLineStyle = majorGridLineStyle
         yAxis.minorGridLineStyle = minorGridLineStyle
+        yAxis.majorTickLineStyle = majorGridLineStyle
+        yAxis.minorTickLineStyle = minorGridLineStyle
         yAxis.axisConstraints = CPTConstraints(lowerOffset: 0.0)
         yAxis.axisLineStyle = axisLineStyle
         
