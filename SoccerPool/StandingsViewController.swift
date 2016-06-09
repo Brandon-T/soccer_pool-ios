@@ -117,7 +117,8 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("StandingsUserCellID", forIndexPath: indexPath) as! StandingsUserCollectionViewCell
         
         cell.userPhotoView.loadImage(pool.photo)
-        
+        cell.userNameLabel.text = pool.name
+        cell.userPointsLabel.text = pool.points
         return cell
     }
     
