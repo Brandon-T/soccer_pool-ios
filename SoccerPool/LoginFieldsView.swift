@@ -82,16 +82,7 @@ class LoginFieldsView: UIView, UITextFieldDelegate{
                 errorMessage = "Please enter a password"
                 return false
             }
-            
-            /*
-            if password.isValidEmail() == false {
-                errorMessage = "Please enter a valid email address"
-                self.emailTextField.text = ""
-                self.passwordTextField.text = ""
-                return false
-            }
-            */
-    
+         
         }
         
         return true
