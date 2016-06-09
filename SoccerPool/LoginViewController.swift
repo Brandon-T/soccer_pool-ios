@@ -26,12 +26,22 @@ class LoginViewController : BaseViewController, LoginFieldsViewDelegate {
         self.doLayout()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.view.startKeyboardListener()
+        self.view.setTapOutsideAdjuster(true)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.view.setTapOutsideAdjuster(false)
+        self.view.stopKeyboardListener()
+    }
+    
     func initControls() -> Void {
         loginFieldsView.delegate = self
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
-
     }
     
     func setTheme() -> Void {
@@ -65,42 +75,6 @@ class LoginViewController : BaseViewController, LoginFieldsViewDelegate {
                 self.performSegueWithIdentifier("segueSuccessfulLogin", sender: nil)
             }
         }
-    }
-    
-    
-    func keyboardWillShow(notification: NSNotification) {
-        let beginFrame = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()
-        let endFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue()
-        let curveInfo = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? UIViewAnimationCurve
-        let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSTimeInterval
-        
-        if let keyboardSize = endFrame {
-            UIView.animateWithDuration(duration!, animations: {
-                self.view.frame.origin.y -= keyboardSize.height
-            })
-            
-        }
-        
-    }
-    
-    func keyboardWillHide(notification: NSNotification) {
-        let beginFrame = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()
-        let endFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue()
-        let curveInfo = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? UIViewAnimationCurve
-        let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSTimeInterval
-        
-        if let keyboardSize = endFrame {
-            self.view.layoutIfNeeded()
-            
-            UIView.animateWithDuration(0, animations: { 
-                self.view.frame.origin.y += keyboardSize.height
-            })
-            
-        }
-    }
-    
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
 

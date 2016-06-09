@@ -31,6 +31,8 @@
 		CA5FB2F51D013E0E00150762 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FB2F41D013E0E00150762 /* LoginViewController.swift */; };
 		CA5FB2F91D013E8700150762 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FB2F81D013E8700150762 /* BaseViewController.swift */; };
 		CA5FB2FB1D0141D300150762 /* ServiceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FB2FA1D0141D300150762 /* ServiceLayer.swift */; };
+		CA886FA21D08F12A00EC4704 /* NSObject+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA886FA11D08F12A00EC4704 /* NSObject+Utilities.swift */; };
+		CA886FA41D08F42000EC4704 /* UIView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA886FA31D08F42000EC4704 /* UIView+Utilities.swift */; };
 		CAD2AC3A1D068437004AC26E /* BarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2AC391D068437004AC26E /* BarGraphView.swift */; };
 		CAD2AC3C1D0698F5004AC26E /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2AC3B1D0698F5004AC26E /* OrderedDictionary.swift */; };
 		CAE147FD1D04A8A3000C67A3 /* NSObject+Serializable.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE147FC1D04A8A3000C67A3 /* NSObject+Serializable.m */; };
@@ -66,6 +68,8 @@
 		CA5FB2F41D013E0E00150762 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CA5FB2F81D013E8700150762 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CA5FB2FA1D0141D300150762 /* ServiceLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceLayer.swift; sourceTree = "<group>"; };
+		CA886FA11D08F12A00EC4704 /* NSObject+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Utilities.swift"; sourceTree = "<group>"; };
+		CA886FA31D08F42000EC4704 /* UIView+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utilities.swift"; sourceTree = "<group>"; };
 		CAD2AC391D068437004AC26E /* BarGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarGraphView.swift; sourceTree = "<group>"; };
 		CAD2AC3B1D0698F5004AC26E /* OrderedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
 		CAE147FA1D04A8A3000C67A3 /* SoccerPool-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SoccerPool-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -172,6 +176,8 @@
 				2FE39E1D1D04BC6B00A62F1C /* UIColor+Utilities.swift */,
 				2F615C551D06730D00B1C484 /* String+Utilities.swift */,
 				CAD2AC3B1D0698F5004AC26E /* OrderedDictionary.swift */,
+				CA886FA11D08F12A00EC4704 /* NSObject+Utilities.swift */,
+				CA886FA31D08F42000EC4704 /* UIView+Utilities.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -439,6 +445,7 @@
 				2F615C501D066A7A00B1C484 /* StandingsViewController.swift in Sources */,
 				CAE147FD1D04A8A3000C67A3 /* NSObject+Serializable.m in Sources */,
 				CA5F53D21D0658D7007D7C3A /* BaseModel.swift in Sources */,
+				CA886FA41D08F42000EC4704 /* UIView+Utilities.swift in Sources */,
 				2F615C4E1D06699A00B1C484 /* GamesViewController.swift in Sources */,
 				2FD919E31D08966600F8B771 /* VoteMatchesTableViewCell.swift in Sources */,
 				CAE148021D04B06B000C67A3 /* Game.swift in Sources */,
@@ -457,6 +464,7 @@
 				2FABF9331D0766EA00F5AAE4 /* TitleView.swift in Sources */,
 				CAD2AC3A1D068437004AC26E /* BarGraphView.swift in Sources */,
 				2FE39E1E1D04BC6B00A62F1C /* UIColor+Utilities.swift in Sources */,
+				CA886FA21D08F12A00EC4704 /* NSObject+Utilities.swift in Sources */,
 				CA5FB2FB1D0141D300150762 /* ServiceLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
