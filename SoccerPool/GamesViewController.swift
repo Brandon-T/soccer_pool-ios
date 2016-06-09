@@ -67,6 +67,8 @@ class GamesViewController : UITableViewController {
                 self.completedGames.sortInPlace({ (first, second) -> Bool in
                     return first.startTime!.compare(second.startTime!) == .OrderedAscending
                 })
+                
+                self.tableView.reloadData()
             }
         }
     }
@@ -129,11 +131,11 @@ class GamesViewController : UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
             case 0:
-                return 2
+                return self.upcomingGames.count
             case 1:
-                return 1
+                return self.inProgressGames.count
             default:
-                return 2
+                return self.completedGames.count
         }
     }
 
