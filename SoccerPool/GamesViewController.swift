@@ -160,15 +160,9 @@ class GamesViewController : UITableViewController {
                 showCloseButton: false
             )
             
-            // Initialize SCLAlertView using custom Appearance
             let alert: SCLAlertView = SCLAlertView(appearance: appearance)
-            
-            // Creat the subview
-            //let subview = UIView(frame: CGRectMake(0,0,215,135))
-            
+
             let subView = BetDialogView(frame: CGRectMake(0,0,215,135))
-            
-            
 
             // Add the subview to the alert's UI property
             alert.customSubview = subView
