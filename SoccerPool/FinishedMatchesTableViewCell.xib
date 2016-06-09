@@ -21,8 +21,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iKx-zd-NHw">
                                 <rect key="frame" x="0.0" y="61" width="304" height="23"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Final: 0 - 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qd7-c0-R0r">
-                                        <rect key="frame" x="96" y="3.5" width="112.5" height="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Final: 0 - 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qd7-c0-R0r">
+                                        <rect key="frame" x="119.5" y="3.5" width="65.5" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -137,7 +137,14 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="awayTeamFlagImageView" destination="tCT-yf-YoC" id="BwZ-JE-vEb"/>
+                <outlet property="awayTeamNameLabel" destination="7SI-OJ-wZH" id="g4D-wc-diC"/>
+                <outlet property="awayTeamScoreLabel" destination="cDf-kE-R54" id="jzi-Qw-N2S"/>
                 <outlet property="containerView" destination="tp7-ii-Waw" id="vxU-QC-WOJ"/>
+                <outlet property="finalScoreLabel" destination="qd7-c0-R0r" id="Xlb-de-fYm"/>
+                <outlet property="homeTeamFlagImageView" destination="fND-T0-bUq" id="7EA-nZ-vd6"/>
+                <outlet property="homeTeamNameLabel" destination="o6y-qn-gMx" id="EXS-Tj-69c"/>
+                <outlet property="homeTeamScoreLabel" destination="K75-rx-Ooh" id="ZiR-7A-soL"/>
             </connections>
         </tableViewCell>
     </objects>

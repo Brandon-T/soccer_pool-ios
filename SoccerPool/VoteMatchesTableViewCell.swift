@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class VoteMatchesTableViewCell: UITableViewCell {
 
@@ -49,7 +50,34 @@ class VoteMatchesTableViewCell: UITableViewCell {
         self.awayTeamNameLabel.text = name
     }
 
+    func setHomeTeamFlagImage(urlImageString: String) -> Void{
+        
+        let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType!, imageURL: NSURL!) -> Void in}
+        let url = NSURL(string: urlImageString)
+        self.homeTeamFlagImageView.sd_setImageWithURL(url, completed: block)
+    }
     
+    func setawayTeamFlagImage(urlImageString: String) -> Void{
+        
+        let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType!, imageURL: NSURL!) -> Void in}
+        let url = NSURL(string: urlImageString)
+        self.awayTeamFlagImageView.sd_setImageWithURL(url, completed: block)
+    }
+    
+    func setHomeTeamScoreName(name: String) -> Void{
+        
+        self.homeTeamScoreLabel.text = name
+    }
+
+    func setAwayTeamScoreName(name: String) -> Void{
+        
+        self.awayTeamScoreLabel.text = name
+    }
+    
+    func setGameTime(name: String) -> Void{
+        
+        self.gameTimeLabel.text = name
+    }
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

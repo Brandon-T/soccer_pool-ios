@@ -7,10 +7,18 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FinishedMatchesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var homeTeamNameLabel: UILabel!
+    @IBOutlet weak var awayTeamNameLabel: UILabel!
+    @IBOutlet weak var homeTeamFlagImageView: UIImageView!
+    @IBOutlet weak var awayTeamFlagImageView: UIImageView!
+    @IBOutlet weak var homeTeamScoreLabel: UILabel!
+    @IBOutlet weak var awayTeamScoreLabel: UILabel!
+    @IBOutlet weak var finalScoreLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,6 +38,45 @@ class FinishedMatchesTableViewCell: UITableViewCell {
         self.containerView.clipsToBounds = true
         
         self.selectionStyle = UITableViewCellSelectionStyle.None
+    }
+    
+    func setHomeTeamName(name: String) -> Void{
+        
+        self.homeTeamNameLabel.text = name
+    }
+    
+    func setAwayTeamName(name: String) -> Void{
+        
+        self.awayTeamNameLabel.text = name
+    }
+    
+    func setHomeTeamFlagImage(urlImageString: String) -> Void{
+        
+        let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType!, imageURL: NSURL!) -> Void in}
+        let url = NSURL(string: urlImageString)
+        self.homeTeamFlagImageView.sd_setImageWithURL(url, completed: block)
+    }
+    
+    func setawayTeamFlagImage(urlImageString: String) -> Void{
+        
+        let block: SDWebImageCompletionBlock! = {(image: UIImage!, error: NSError!, cacheType: SDImageCacheType!, imageURL: NSURL!) -> Void in}
+        let url = NSURL(string: urlImageString)
+        self.awayTeamFlagImageView.sd_setImageWithURL(url, completed: block)
+    }
+    
+    func setHomeTeamScoreName(name: String) -> Void{
+        
+        self.homeTeamScoreLabel.text = name
+    }
+    
+    func setAwayTeamScoreName(name: String) -> Void{
+        
+        self.awayTeamScoreLabel.text = name
+    }
+    
+    func setFinalScore(name: String) -> Void{
+        
+        self.finalScoreLabel.text = name
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
