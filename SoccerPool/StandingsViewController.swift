@@ -15,7 +15,7 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var barGraph: BarGraphView!
     @IBOutlet weak var collectionView: UICollectionView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -84,5 +84,20 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("StandingsUserCellID", forIndexPath: indexPath)
         
         return cell
+    }
+    
+    
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
+            let numberOfItemsInSection = CGFloat(self.collectionView(collectionView, numberOfItemsInSection: 1))
+            let width = collectionView.bounds.width - ((layout.sectionInset.left + layout.sectionInset.right) * (numberOfItemsInSection - 1))
+            return CGSizeMake(width / numberOfItemsInSection, 150);
+        }
+        
+        
+        return CGSizeZero
+        
     }
 }
