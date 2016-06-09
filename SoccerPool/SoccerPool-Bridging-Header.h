@@ -3,4 +3,4 @@
 //
 
 #import "NSObject+Serializable.h"
-#import "UIImageView+WebCache.h"
+#import <SDWebImage/UIImageView+WebCache.h>
