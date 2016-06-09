@@ -12,9 +12,17 @@ import SCLAlertView
 
 class GamesViewController : UITableViewController {
     
-    var upcomingGames = [[Game]]()
-    var inProgressGames = [[Game]]()
-    var completedGames = [[Game]]()
+    var upcomingGames = [Game]()
+    var inProgressGames = [Game]()
+    var completedGames = [Game]()
+    
+    let rightNowPlusMatchPeriod = NSCalendar.currentCalendar().dateByAddingUnit(
+                    .Hour,
+                    value: -1,
+                    toDate: NSDate(),
+                    options: []) //The time date 2 hours after the match
+    
+    let rightNow = NSDate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +37,29 @@ class GamesViewController : UITableViewController {
             guard error == nil else {
                 return
             }
-            
             if let gamesArray = json?["data"] as? [[String: AnyObject]] {
                 let games = Game.fromJSONArray(gamesArray) as! [Game]
                 
                 for i in 0..<games.count {
+                    
+                    let gameStartTime = games[i].startTime
+                    let actualGame: Game = games[i]
 
-                   // game.append(games[i])
+                    //Game is completed
+                    if self.rightNowPlusMatchPeriod!.compare(gameStartTime!) == NSComparisonResult.OrderedDescending {
+                        print("\(self.rightNowPlusMatchPeriod) is later than \(gameStartTime)")
+                        
+                        self.completedGames.append(actualGame)
+                    }
+                    //Game is upcoming
+                    else if gameStartTime!.compare(self.rightNow) == NSComparisonResult.OrderedDescending{
+                        print("\(gameStartTime) is later than \(self.rightNow)")
+                        self.upcomingGames.append(actualGame)
+                    }
+                    else if self.rightNow.compare(gameStartTime!) == NSComparisonResult.OrderedDescending {
+                    
+                    }
+
                 }
 
                 print("Sasaas")
