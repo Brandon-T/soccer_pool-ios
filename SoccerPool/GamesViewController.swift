@@ -38,21 +38,17 @@ class GamesViewController : UITableViewController {
                     let startTime = game.startTime!
                     let endTime = startTime.dateByAddingTimeInterval(2 * 60 * 60)
                     
-                    //startTime <= currentDateTime
-                    if self.currentDateTime.compare(startTime) == .OrderedAscending || self.currentDateTime.compare(startTime) == .OrderedSame {
-                        self.completedGames.append(game)
-                    }
-                    else if self.currentDateTime.compare(endTime) == .OrderedSame {
-                        self.completedGames.append(game)
-                    }
-                    else if self.currentDateTime.compare(endTime) == .OrderedDescending {
-                        self.upcomingGames.append(game)
-                    }
-                    else {
-                        //startTime < currentDateTime < endTime
-                        if self.currentDateTime.compare(startTime) == .OrderedDescending && self.currentDateTime.compare(endTime) == .OrderedAscending {
+                    //currentDateTime < startTime
+                    if self.currentDateTime.compare(startTime) == .OrderedDescending {
+                        if self.currentDateTime.compare(endTime) == .OrderedAscending {
                             self.inProgressGames.append(game)
                         }
+                        else {
+                            self.completedGames.append(game)
+                        }
+                    }
+                    else {
+                        self.upcomingGames.append(game)
                     }
                 }
 
@@ -224,11 +220,12 @@ class GamesViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    
-        print(indexPath.row)
-        
-        if indexPath.section == 0{
-        
+        if indexPath.section == 0 {
+            
+            let game = self.upcomingGames[indexPath.row]
+            let homeGoalsPrediction = game.prediction != nil ? game.prediction!.homeGoals : 0
+            let awayGoalsPrediction = game.prediction != nil ? game.prediction!.awayGoals : 0
+            
             let appearance = SCLAlertView.SCLAppearance(
                 kTitleFont: UIFont.systemFontOfSize(18, weight: UIFontWeightSemibold),
                 kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
@@ -239,29 +236,39 @@ class GamesViewController : UITableViewController {
             let alert: SCLAlertView = SCLAlertView(appearance: appearance)
 
             let subView = BetDialogView(frame: CGRectMake(0,0,215,135))
+            subView.homeTeamNameLabel.text = game.homeTeam?.name
+            subView.homeTeamFlagView.loadImage(game.homeTeam?.flag)
+            subView.homeTeamScoreLabel.text = "\(homeGoalsPrediction)"
+            
+            subView.awayTeamNameLabel.text = game.awayTeam?.name
+            subView.awayTeamFlagView.loadImage(game.awayTeam?.flag)
+            subView.awayTeamScoreLabel.text = "\(awayGoalsPrediction)"
 
             // Add the subview to the alert's UI property
             alert.customSubview = subView
             
             alert.addButton("Submit") {
-                print("Submit The Score")
+                let homeGoals: UInt! = UInt(subView.homeTeamScoreLabel.text ?? "0")
+                let awayGoals: UInt! = UInt(subView.awayTeamScoreLabel.text ?? "0")
+                
+                ServiceLayer.predictGame(game.gameID, awayGoals: awayGoals, homeGoals: homeGoals, completion: { [unowned alert](json, error) in
+                    
+                    guard error == nil else {
+                        SCLAlertView().showInfo("Error", subTitle: error!.localizedDescription, circleIconImage: UIImage(named: "EuroCupIcon"))
+                        return
+                    }
+                    
+                    game.prediction!.homeGoals = homeGoals
+                    game.prediction!.awayGoals = awayGoals
+                    
+                    alert.hideView()
+                })
             }
             alert.addButton("Cancel", backgroundColor: UIColor.navigationBarBackgroundColor(), textColor: UIColor.whiteColor(), showDurationStatus: false) {
                 alert.hideView()
             }
             
             alert.showInfo("Place Bet", subTitle: "", circleIconImage: UIImage(named: "EuroCupIcon"))
-            
         }
-        
     }
-    
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-    
 }

@@ -9,6 +9,6 @@
 import Foundation
 
 class Prediction : NSObject, Serializeable {
-    var awayGoals: Int = 0
-    var homeGoals: Int = 0
+    var awayGoals: UInt = 0
+    var homeGoals: UInt = 0
 }
