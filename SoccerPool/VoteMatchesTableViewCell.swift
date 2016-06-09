@@ -14,7 +14,6 @@ class VoteMatchesTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         self.setTheme()
     }
 
@@ -30,7 +29,7 @@ class VoteMatchesTableViewCell: UITableViewCell {
         self.containerView.layer.shadowRadius = 5
         self.containerView.clipsToBounds = true
 
-        
+        self.selectionStyle = UITableViewCellSelectionStyle.None
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
