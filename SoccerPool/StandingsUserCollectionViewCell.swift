@@ -10,6 +10,11 @@ import UIKit
 
 class StandingsUserCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var userPhotoView: UIImageView!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userPointsLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

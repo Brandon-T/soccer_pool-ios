@@ -11,4 +11,5 @@ import Foundation
 class Pool : NSObject, Serializeable {
     var name: String?
     var points: Int?
+    var photo: String?
 }

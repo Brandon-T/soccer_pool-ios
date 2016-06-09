@@ -62,6 +62,11 @@
                 <constraint firstAttribute="trailing" secondItem="QZE-GI-HRZ" secondAttribute="trailing" constant="8" id="zrw-Ol-p5o"/>
             </constraints>
             <size key="customSize" width="208" height="245"/>
+            <connections>
+                <outlet property="userNameLabel" destination="QZE-GI-HRZ" id="AfA-I0-aRy"/>
+                <outlet property="userPhotoView" destination="CPu-Dj-B7O" id="QmG-sI-J0g"/>
+                <outlet property="userPointsLabel" destination="hhb-aU-y1P" id="Kn6-fO-dJe"/>
+            </connections>
             <point key="canvasLocation" x="186" y="214.5"/>
         </collectionViewCell>
     </objects>

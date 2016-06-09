@@ -63,7 +63,20 @@ class ServiceLayer {
         ServiceLayer.request(Router.PredictGames(gameID, awayGoals, homeGoals), completion: completion);
     }
     
-    
+    static func getImage(url: String, completion: (image: UIImage?, error: NSError?) -> Void) -> Void {
+        /*requestManager.request(.GET, url)
+            .responseImage { response in
+                debugPrint(response)
+                
+                print(response.request)
+                print(response.response)
+                debugPrint(response.result)
+                
+                if let image = response.result.value {
+                    print("image downloaded: \(image)")
+                }
+        }*/
+    }
     
     static func request(router: Router, completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
         requestManager.request(router)
@@ -174,7 +187,7 @@ class ServiceLayer {
         var URLRequest: NSMutableURLRequest {
             let request = NSMutableURLRequest(URL: URL)
             request.HTTPMethod = route.method.rawValue
-            request.setValue(Router.accessToken, forHTTPHeaderField: "HTTP_TOKEN")
+            request.setValue(Router.accessToken, forHTTPHeaderField: "token")
             return ParameterEncoding.URL.encode(request, parameters: route.parameters).0
         }
     }
