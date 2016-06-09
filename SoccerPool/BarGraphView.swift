@@ -189,13 +189,13 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
     
     func barFillForBarPlot(barPlot: CPTBarPlot, recordIndex idx: UInt) -> CPTFill? {
         func getBarColor(idx: UInt) -> CPTColor {
-            let randomRed:CGFloat = CGFloat(arc4random()) / CGFloat(UInt32.max)
+            /*let randomRed:CGFloat = CGFloat(arc4random()) / CGFloat(UInt32.max)
             let randomGreen:CGFloat = CGFloat(arc4random()) / CGFloat(UInt32.max)
             let randomBlue:CGFloat = CGFloat(arc4random()) / CGFloat(UInt32.max)
-            return CPTColor(componentRed: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
+            return CPTColor(componentRed: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)*/
             
-            //let colour: UIColor = UIColor(hue: 0.4 * CGFloat(idx), saturation: 0.9, brightness: 0.9, alpha: 1.0)
-            //return CPTColor(CGColor: colour.CGColor)
+            let colour: UIColor = UIColor(hue: CGFloat(idx) / CGFloat(self.graphData.count), saturation: 0.9, brightness: 0.9, alpha: 1.0)
+            return CPTColor(CGColor: colour.CGColor)
         }
         
         if (barPlot.identifier as! String) == "BarGraphPlot" {
@@ -225,5 +225,19 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
         if self.delegate != nil {
             self.delegate!.barSelected(self, index: idx)
         }
+    }
+    
+    func reloadData() {
+        let xMin = 0.0
+        let yMin = 0.0
+        let xMax = 4.0
+        let yMax = 10.0
+        
+        let plotSpace = self.hostedGraph?.defaultPlotSpace as! CPTXYPlotSpace
+        plotSpace.xRange = CPTPlotRange(locationDecimal: CPTDecimalFromDouble(xMin), lengthDecimal: CPTDecimalFromDouble(xMax - xMin))
+        plotSpace.yRange = CPTPlotRange(locationDecimal: CPTDecimalFromDouble(yMin), lengthDecimal: CPTDecimalFromDouble(yMax - yMin))
+        plotSpace.globalXRange = CPTPlotRange(locationDecimal: CPTDecimalFromDouble(xMin), lengthDecimal: CPTDecimalFromDouble(Double(self.graphData.count) <= xMax ? xMax : Double(self.graphData.count) - (1.0 - barWidth)))
+        
+        self.hostedGraph?.reloadData()
     }
 }

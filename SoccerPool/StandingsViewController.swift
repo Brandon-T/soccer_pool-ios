@@ -62,7 +62,7 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
                 }
 
                 //Update UI.
-                self.barGraph?.hostedGraph?.reloadData()
+                self.barGraph.reloadData()
                 self.collectionView.reloadData()
             }
         }
@@ -91,7 +91,7 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     }
     
     func doLayout() -> Void {
-        self.barGraph.hostedGraph?.reloadData()
+        self.barGraph.reloadData()
     }
     
     //MARK: BAR BUTTON ACTIONS
