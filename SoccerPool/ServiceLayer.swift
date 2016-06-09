@@ -130,7 +130,7 @@ class ServiceLayer {
         }
         
         dispatch_once(&Static.dispatchOnceToken) {
-            Static.instance = ImageDownloader(sessionManager: requestManager, downloadPrioritization: .FIFO, maximumActiveDownloads: 4, imageCache: AutoPurgingImageCache())
+            Static.instance = ImageDownloader()
         }
         
         return Static.instance

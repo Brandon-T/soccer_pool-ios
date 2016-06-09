@@ -35,4 +35,11 @@ extension UIColor {
         return UIColor(hex: 0xC5CAE9)
     }
     
+    static func dividerColor() -> UIColor {
+        return UIColor(hex: 0xB6B6B6)
+    }
+    
+    static func secondaryTextColor() -> UIColor {
+        return UIColor(hex: 0x727272)
+    }
 }
