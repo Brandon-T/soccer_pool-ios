@@ -22,11 +22,13 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         ServiceLayer.getPool { [unowned self](json, error) in
             guard error == nil else {
                 return
             }
+            
+            self.pools.removeAll()
             
             if let poolArray = json?["data"] as? [[String: AnyObject]] {
                 
