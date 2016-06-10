@@ -22,15 +22,6 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.initControls()
-        self.setTheme()
-        self.registerClasses()
-        self.doLayout()
         
         ServiceLayer.getPool { [unowned self](json, error) in
             guard error == nil else {
@@ -65,12 +56,21 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
                 for pool in pools {
                     self.barGraph.graphData[pool.name!] = Int(pool.points!) > 0 ? pool.points! : self.emptyBarHeight
                 }
-
+                
                 //Update UI.
                 self.barGraph.reloadData()
                 self.collectionView.reloadData()
             }
         }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.initControls()
+        self.setTheme()
+        self.registerClasses()
+        self.doLayout()
     }
     
     override func viewDidLayoutSubviews() {

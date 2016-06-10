@@ -249,7 +249,7 @@ class GamesViewController : UITableViewController {
                 let homeGoals: UInt! = UInt(subView.homeTeamScoreLabel.text ?? "0")
                 let awayGoals: UInt! = UInt(subView.awayTeamScoreLabel.text ?? "0")
                 
-                ServiceLayer.predictGame(game.gameID, awayGoals: awayGoals, homeGoals: homeGoals, completion: { [unowned alert](json, error) in
+                ServiceLayer.predictGame(game.gameID, awayGoals: awayGoals, homeGoals: homeGoals, completion: { (json, error) in
                     
                     guard error == nil else {
                         SCLAlertView().showInfo("Error", subTitle: error!.localizedDescription, circleIconImage: UIImage(named: "EuroCupIcon"))
