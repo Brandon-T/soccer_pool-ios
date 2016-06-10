@@ -51,8 +51,7 @@ class TitleView: UIView {
     }
     
     func setTheme() {
-
-        self.titleLabel.font = UIFont.systemFontOfSize(17, weight: UIFontWeightSemibold)
+        self.titleLabel.font = UIFont.semiBoldSystemFont(17)
         self.titleLabel.textColor = UIColor.whiteColor()
     }
     

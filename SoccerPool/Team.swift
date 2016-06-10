@@ -9,6 +9,6 @@
 import Foundation
 
 class Team : NSObject, Serializeable {
-    var flag: String?
+    var image: String?
     var name: String?
 }

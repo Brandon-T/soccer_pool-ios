@@ -39,6 +39,7 @@
 		CA886FA21D08F12A00EC4704 /* NSObject+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA886FA11D08F12A00EC4704 /* NSObject+Utilities.swift */; };
 		CA886FA41D08F42000EC4704 /* UIView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA886FA31D08F42000EC4704 /* UIView+Utilities.swift */; };
 		CA886FA71D09273F00EC4704 /* UIImageView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA886FA61D09273F00EC4704 /* UIImageView+Utilities.swift */; };
+		CAA225451D0A5E710090E622 /* UIFont+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA225441D0A5E710090E622 /* UIFont+Utilities.swift */; };
 		CAD2AC3A1D068437004AC26E /* BarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2AC391D068437004AC26E /* BarGraphView.swift */; };
 		CAD2AC3C1D0698F5004AC26E /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2AC3B1D0698F5004AC26E /* OrderedDictionary.swift */; };
 		CAE147FD1D04A8A3000C67A3 /* NSObject+Serializable.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE147FC1D04A8A3000C67A3 /* NSObject+Serializable.m */; };
@@ -82,6 +83,7 @@
 		CA886FA11D08F12A00EC4704 /* NSObject+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Utilities.swift"; sourceTree = "<group>"; };
 		CA886FA31D08F42000EC4704 /* UIView+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utilities.swift"; sourceTree = "<group>"; };
 		CA886FA61D09273F00EC4704 /* UIImageView+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Utilities.swift"; sourceTree = "<group>"; };
+		CAA225441D0A5E710090E622 /* UIFont+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Utilities.swift"; sourceTree = "<group>"; };
 		CAD2AC391D068437004AC26E /* BarGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarGraphView.swift; sourceTree = "<group>"; };
 		CAD2AC3B1D0698F5004AC26E /* OrderedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
 		CAE147FA1D04A8A3000C67A3 /* SoccerPool-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SoccerPool-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				CA886FA31D08F42000EC4704 /* UIView+Utilities.swift */,
 				CA886FA61D09273F00EC4704 /* UIImageView+Utilities.swift */,
 				5E53F4821D09E28E004CB62E /* NSDate+Utilities.swift */,
+				CAA225441D0A5E710090E622 /* UIFont+Utilities.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				2F39489F1D05B78D00C8B6B3 /* Pool.swift in Sources */,
 				2F3948A01D05B78D00C8B6B3 /* Team.swift in Sources */,
 				2F615C501D066A7A00B1C484 /* StandingsViewController.swift in Sources */,
+				CAA225451D0A5E710090E622 /* UIFont+Utilities.swift in Sources */,
 				CAE147FD1D04A8A3000C67A3 /* NSObject+Serializable.m in Sources */,
 				CA5F53D21D0658D7007D7C3A /* BaseModel.swift in Sources */,
 				CA886FA41D08F42000EC4704 /* UIView+Utilities.swift in Sources */,
@@ -606,6 +610,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SoccerPool/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = XIO.SoccerPool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -622,6 +627,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SoccerPool/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = XIO.SoccerPool;
 				PRODUCT_NAME = "$(TARGET_NAME)";

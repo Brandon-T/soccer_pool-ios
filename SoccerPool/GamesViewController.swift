@@ -189,8 +189,8 @@ class GamesViewController : UITableViewController {
                 
                 cell.homeTeamNameLabel.text = game.homeTeam?.name
                 cell.awayTeamNameLabel.text = game.awayTeam?.name
-                cell.homeTeamFlagImageView.loadImage(game.homeTeam?.flag)
-                cell.awayTeamFlagImageView.loadImage(game.awayTeam?.flag)
+                cell.homeTeamFlagImageView.loadImage(game.homeTeam?.image)
+                cell.awayTeamFlagImageView.loadImage(game.awayTeam?.image)
                 cell.homeTeamScoreLabel.text = "\(game.homeGoals)"
                 cell.awayTeamScoreLabel.text = "\(game.awayGoals)"
                 cell.gameTimeLabel.text = game.startTime?.format("yyyy-MM-dd")
@@ -207,8 +207,8 @@ class GamesViewController : UITableViewController {
                 
                 cell.homeTeamNameLabel.text = game.homeTeam?.name
                 cell.awayTeamNameLabel.text = game.awayTeam?.name
-                cell.homeTeamFlagImageView.loadImage(game.homeTeam?.flag)
-                cell.awayTeamFlagImageView.loadImage(game.awayTeam?.flag)
+                cell.homeTeamFlagImageView.loadImage(game.homeTeam?.image)
+                cell.awayTeamFlagImageView.loadImage(game.awayTeam?.image)
                 cell.homeTeamScoreLabel.text = "\(game.homeGoals)"
                 cell.awayTeamScoreLabel.text = "\(game.awayGoals)"
                 cell.finalScoreLabel.text = nil
@@ -227,7 +227,7 @@ class GamesViewController : UITableViewController {
             let awayGoalsPrediction = game.prediction != nil ? game.prediction!.awayGoals : 0
             
             let appearance = SCLAlertView.SCLAppearance(
-                kTitleFont: UIFont.systemFontOfSize(18, weight: UIFontWeightSemibold),
+                kTitleFont: UIFont.semiBoldSystemFont(18),
                 kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
                 kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
                 showCloseButton: false
@@ -235,13 +235,13 @@ class GamesViewController : UITableViewController {
             
             let alert: SCLAlertView = SCLAlertView(appearance: appearance)
 
-            let subView = BetDialogView(frame: CGRectMake(0,0,215,135))
+            let subView = BetDialogView(frame: CGRectMake(0, 0, 215, 135))
             subView.homeTeamNameLabel.text = game.homeTeam?.name
-            subView.homeTeamFlagView.loadImage(game.homeTeam?.flag)
+            subView.homeTeamFlagView.loadImage(game.homeTeam?.image)
             subView.homeTeamScoreLabel.text = "\(homeGoalsPrediction)"
             
             subView.awayTeamNameLabel.text = game.awayTeam?.name
-            subView.awayTeamFlagView.loadImage(game.awayTeam?.flag)
+            subView.awayTeamFlagView.loadImage(game.awayTeam?.image)
             subView.awayTeamScoreLabel.text = "\(awayGoalsPrediction)"
 
             // Add the subview to the alert's UI property
