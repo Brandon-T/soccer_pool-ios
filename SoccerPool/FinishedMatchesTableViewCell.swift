@@ -19,6 +19,9 @@ class FinishedMatchesTableViewCell: UITableViewCell {
     @IBOutlet weak var homeTeamScoreLabel: UILabel!
     @IBOutlet weak var awayTeamScoreLabel: UILabel!
     @IBOutlet weak var finalScoreLabel: UILabel!
+    @IBOutlet weak var cornerView: UIView!
+    @IBOutlet weak var cornerLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,6 +40,11 @@ class FinishedMatchesTableViewCell: UITableViewCell {
         self.containerView.clipsToBounds = true
         
         self.selectionStyle = UITableViewCellSelectionStyle.None
+        
+        self.cornerView.layer.shadowOffset = CGSizeZero
+        self.cornerView.layer.shadowOpacity = 0.5
+        self.cornerView.layer.shadowRadius = 5
+        self.cornerView.transform = CGAffineTransformMakeRotation((45.0 * CGFloat(M_PI)) / 180);
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
