@@ -127,9 +127,9 @@ class GamesViewController : UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
             case 0:
-                return self.upcomingGames.count
+                return self.inProgressGames.count > 0 ? self.inProgressGames.count : self.upcomingGames.count
             case 1:
-                return self.inProgressGames.count > 0 ? self.inProgressGames.count : 1
+                return self.inProgressGames.count > 0 ? self.upcomingGames.count : 1
             default:
                 return self.completedGames.count
         }
@@ -145,9 +145,9 @@ class GamesViewController : UITableViewController {
         
         switch section {
             case 0:
-                label.text = "Upcoming Games"
+                label.text = self.inProgressGames.count > 0 ? "In progress Games" : "Upcoming Games"
             case 1:
-                label.text = "In progress Games"
+                label.text = self.inProgressGames.count > 0 ? "Upcoming Games" : "In progress Games"
             default:
                 label.text = "Completed"
         }
@@ -160,11 +160,11 @@ class GamesViewController : UITableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 130.0
+            return self.inProgressGames.count > 0 ? 141 : 130.0
         }
         
         if indexPath.section == 1 {
-            return self.inProgressGames.count > 0 ? 141.0 : 44.0
+            return self.inProgressGames.count > 0 ? 130.0 : 44.0
         }
         
         return 141.0
@@ -180,22 +180,6 @@ class GamesViewController : UITableViewController {
         
         switch indexPath.section {
         case 0:
-            cell = tableView.dequeueReusableCellWithIdentifier("VoteMatchesCell", forIndexPath: indexPath)
-        
-            if let cell = cell as? VoteMatchesTableViewCell {
-                let game = self.upcomingGames[indexPath.row]
-                
-                cell.homeTeamNameLabel.text = game.homeTeam?.name
-                cell.awayTeamNameLabel.text = game.awayTeam?.name
-                cell.homeTeamFlagImageView.loadImage(game.homeTeam?.image)
-                cell.awayTeamFlagImageView.loadImage(game.awayTeam?.image)
-                cell.homeTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.homeGoals)" : "-")"
-                cell.awayTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.awayGoals)" : "-")"
-                cell.gameTimeLabel.text = game.startTime?.format("yyyy-MM-dd")
-            }
-        
-        
-        case 1:
             if self.inProgressGames.count > 0 {
                 cell = tableView.dequeueReusableCellWithIdentifier("FinishedMatchesCell", forIndexPath: indexPath) as! FinishedMatchesTableViewCell
                 if let cell = cell as? FinishedMatchesTableViewCell {
@@ -208,6 +192,39 @@ class GamesViewController : UITableViewController {
                     cell.homeTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.homeGoals)" : "-")"
                     cell.awayTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.awayGoals)" : "-")"
                     cell.finalScoreLabel.text = "Current Score: \(game.homeGoals) - \(game.awayGoals)"
+                    cell.gameTimeLabel.text = "Playing Right Now!"
+                }
+            }
+            else {
+                cell = tableView.dequeueReusableCellWithIdentifier("VoteMatchesCell", forIndexPath: indexPath)
+                
+                if let cell = cell as? VoteMatchesTableViewCell {
+                    let game = self.upcomingGames[indexPath.row]
+                    
+                    cell.homeTeamNameLabel.text = game.homeTeam?.name
+                    cell.awayTeamNameLabel.text = game.awayTeam?.name
+                    cell.homeTeamFlagImageView.loadImage(game.homeTeam?.image)
+                    cell.awayTeamFlagImageView.loadImage(game.awayTeam?.image)
+                    cell.homeTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.homeGoals)" : "-")"
+                    cell.awayTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.awayGoals)" : "-")"
+                    cell.gameTimeLabel.text = game.startTime?.format("hh:mm, dd MMM yyyy")
+                }
+            }
+        
+        case 1:
+            if self.inProgressGames.count > 0 {
+                cell = tableView.dequeueReusableCellWithIdentifier("VoteMatchesCell", forIndexPath: indexPath)
+                
+                if let cell = cell as? VoteMatchesTableViewCell {
+                    let game = self.upcomingGames[indexPath.row]
+                    
+                    cell.homeTeamNameLabel.text = game.homeTeam?.name
+                    cell.awayTeamNameLabel.text = game.awayTeam?.name
+                    cell.homeTeamFlagImageView.loadImage(game.homeTeam?.image)
+                    cell.awayTeamFlagImageView.loadImage(game.awayTeam?.image)
+                    cell.homeTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.homeGoals)" : "-")"
+                    cell.awayTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.awayGoals)" : "-")"
+                    cell.gameTimeLabel.text = game.startTime?.format("hh:mm, dd MMM yyyy")
                 }
             }
             else {
@@ -234,7 +251,7 @@ class GamesViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 0 {
+        if indexPath.section == (self.inProgressGames.count > 0 ? 1 : 0) {
             
             let game = self.upcomingGames[indexPath.row]
             let homeGoalsPrediction = game.prediction != nil ? game.prediction!.homeGoals : 0
