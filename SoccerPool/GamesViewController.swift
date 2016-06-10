@@ -129,7 +129,7 @@ class GamesViewController : UITableViewController {
             case 0:
                 return self.upcomingGames.count
             case 1:
-                return self.inProgressGames.count
+                return self.inProgressGames.count > 0 ? self.inProgressGames.count : 1
             default:
                 return self.completedGames.count
         }
@@ -164,7 +164,7 @@ class GamesViewController : UITableViewController {
         }
         
         if indexPath.section == 1 {
-            return 44.0
+            return self.inProgressGames.count > 0 ? 141.0 : 44.0
         }
         
         return 141.0
@@ -196,7 +196,23 @@ class GamesViewController : UITableViewController {
         
         
         case 1:
-            cell = tableView.dequeueReusableCellWithIdentifier("NoMatchesCell", forIndexPath: indexPath) as! NoMatchesTableViewCell
+            if self.inProgressGames.count > 0 {
+                cell = tableView.dequeueReusableCellWithIdentifier("FinishedMatchesCell", forIndexPath: indexPath) as! FinishedMatchesTableViewCell
+                if let cell = cell as? FinishedMatchesTableViewCell {
+                    let game = self.inProgressGames[indexPath.row]
+                    
+                    cell.homeTeamNameLabel.text = game.homeTeam?.name
+                    cell.awayTeamNameLabel.text = game.awayTeam?.name
+                    cell.homeTeamFlagImageView.loadImage(game.homeTeam?.image)
+                    cell.awayTeamFlagImageView.loadImage(game.awayTeam?.image)
+                    cell.homeTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.homeGoals)" : "-")"
+                    cell.awayTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.awayGoals)" : "-")"
+                    cell.finalScoreLabel.text = "Current Score: \(game.homeGoals) - \(game.awayGoals)"
+                }
+            }
+            else {
+                cell = tableView.dequeueReusableCellWithIdentifier("NoMatchesCell", forIndexPath: indexPath) as! NoMatchesTableViewCell
+            }
             
         default:
             cell = tableView.dequeueReusableCellWithIdentifier("FinishedMatchesCell", forIndexPath: indexPath) as! FinishedMatchesTableViewCell
