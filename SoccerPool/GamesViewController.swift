@@ -159,12 +159,15 @@ class GamesViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 130.0
+        }
+        
         if indexPath.section == 1 {
             return 44.0
         }
-        else {
-            return 130.0
-        }
+        
+        return 141.0
     }
  
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -204,9 +207,9 @@ class GamesViewController : UITableViewController {
                 cell.awayTeamNameLabel.text = game.awayTeam?.name
                 cell.homeTeamFlagImageView.loadImage(game.homeTeam?.image)
                 cell.awayTeamFlagImageView.loadImage(game.awayTeam?.image)
-                cell.homeTeamScoreLabel.text = "\(game.homeGoals)"
-                cell.awayTeamScoreLabel.text = "\(game.awayGoals)"
-                cell.finalScoreLabel.text = nil
+                //cell.homeTeamScoreLabel.text = "\(game.homeGoals)"
+                //cell.awayTeamScoreLabel.text = "\(game.awayGoals)"
+                cell.finalScoreLabel.text = "Final: \(game.homeGoals) - \(game.awayGoals)"
             }
         }
         

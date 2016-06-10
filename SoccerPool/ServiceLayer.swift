@@ -111,6 +111,10 @@ class ServiceLayer {
     
     //Private:
     
+    static let environment: Environment = .Test
+    
+    
+    
     static let requestManager = {() -> Manager in
         struct Static {
             static var dispatchOnceToken: dispatch_once_t = 0
@@ -141,6 +145,12 @@ class ServiceLayer {
     }()
     
     
+    enum Environment: String {
+        case Sample
+        case Test
+        case Live
+    }
+    
     
     enum Router: URLRequestConvertible {
 
@@ -156,33 +166,47 @@ class ServiceLayer {
         
         
         var route: (method: Alamofire.Method, path: String, parameters: [String : AnyObject]?) {
+            
+            func getEnvironment(environment: Environment) -> String {
+                switch environment {
+                case .Sample:
+                    return "/sample"
+                    
+                case .Test:
+                    return "/test"
+                    
+                case .Live:
+                    return ""
+                }
+            }
+            
             switch self {
             case .Base:
                 return (.GET, "/", nil)
                 
             case .Login(let email, let password):
-                return (.POST, "/login", ["email": email, "password": password])
+                return (.POST, "\(getEnvironment(environment))/login", ["email": email, "password": password])
                 
             case .Register(let email, let password):
-                return (.POST, "/login", ["email": email, "password": password, "signup": true])
+                return (.POST, "\(getEnvironment(environment))/login", ["email": email, "password": password, "signup": true])
                 
             case .Pool:
-                return (.GET, "/pool", nil)
+                return (.GET, "\(getEnvironment(environment))/pool", nil)
                 
             case .Games:
-                return (.GET, "/games", nil)
+                return (.GET, "\(getEnvironment(environment))/games", nil)
                 
             case .PredictGames(let gameID, let awayGoals, let homeGoals):
-                return (.POST, "/predictgame", ["gameID": gameID, "awayGoals": awayGoals, "homeGoals": homeGoals])
+                return (.POST, "\(getEnvironment(environment))/predictgame", ["gameID": gameID, "awayGoals": awayGoals, "homeGoals": homeGoals])
                 
             case .Image(let url):
                 return (.GET, url, nil)
                 
             case .Info:
-                return (.GET, "/info", nil)
+                return (.GET, "\(getEnvironment(environment))/info", nil)
             
             case .TestGames:
-                return (.GET, "/setup", nil)
+                return (.GET, "\(getEnvironment(environment))/setup", nil)
             }
         }
         
