@@ -30,7 +30,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.makeKeyAndVisible()
         }
         
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        application.registerUserNotificationSettings(settings)
+        application.registerForRemoteNotifications()
+        
         return true
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        
+    }
+    
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        let notification = UILocalNotification()
+        notification.repeatInterval = NSCalendarUnit(rawValue: 0)
+        notification.alertBody = "Test"
+        notification.fireDate = NSDate().dateByAddingTimeInterval(5000)
+        notification.timeZone = NSTimeZone.defaultTimeZone()
+        application.scheduleLocalNotification(notification)
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        
     }
 
     func applicationWillResignActive(application: UIApplication) {
