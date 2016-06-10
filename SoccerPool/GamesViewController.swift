@@ -192,7 +192,7 @@ class GamesViewController : UITableViewController {
                     cell.homeTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.homeGoals)" : "-")"
                     cell.awayTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.awayGoals)" : "-")"
                     cell.finalScoreLabel.text = "Current Score: \(game.homeGoals) - \(game.awayGoals)"
-                    cell.gameTimeLabel.text = "Playing Right Now!"
+                    cell.gameTimeLabel.text = "Playing Right Now! -- Time Left: \(0)"
                 }
             }
             else {
@@ -243,6 +243,8 @@ class GamesViewController : UITableViewController {
                 cell.homeTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.homeGoals)" : "-")"
                 cell.awayTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.awayGoals)" : "-")"
                 cell.finalScoreLabel.text = "Final: \(game.homeGoals) - \(game.awayGoals)"
+                cell.cornerLabel.text = "+\(game.prediction!.points)"
+                cell.gameTimeLabel.text = "Completed On:   \(game.startTime!.dateByAddingTimeInterval(2 * 60 * 60).format("dd MMM yyyy, hh:mm"))"
             }
         }
         
