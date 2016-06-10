@@ -27,6 +27,8 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
         self.registerClasses()
         self.doLayout()
         
+        pools.removeAll()
+        
         ServiceLayer.getPool { [unowned self](json, error) in
             guard error == nil else {
                 return
