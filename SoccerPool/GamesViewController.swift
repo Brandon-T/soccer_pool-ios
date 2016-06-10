@@ -260,10 +260,12 @@ class GamesViewController : UITableViewController {
                     game.prediction!.awayGoals = awayGoals
                     
                     alert.hideView()
+                    tableView.reloadData()
                 })
             }
             alert.addButton("Cancel", backgroundColor: UIColor.navigationBarBackgroundColor(), textColor: UIColor.whiteColor(), showDurationStatus: false) {
                 alert.hideView()
+                tableView.reloadData()
             }
             
             alert.showInfo("Place Bet", subTitle: "", circleIconImage: UIImage(named: "EuroCupIcon"))
