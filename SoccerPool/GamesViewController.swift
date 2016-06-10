@@ -189,8 +189,8 @@ class GamesViewController : UITableViewController {
                 cell.awayTeamNameLabel.text = game.awayTeam?.name
                 cell.homeTeamFlagImageView.loadImage(game.homeTeam?.image)
                 cell.awayTeamFlagImageView.loadImage(game.awayTeam?.image)
-                cell.homeTeamScoreLabel.text = "\(game.homeGoals)"
-                cell.awayTeamScoreLabel.text = "\(game.awayGoals)"
+                cell.homeTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.homeGoals)" : "-")"
+                cell.awayTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.awayGoals)" : "-")"
                 cell.gameTimeLabel.text = game.startTime?.format("yyyy-MM-dd")
             }
         
@@ -207,8 +207,8 @@ class GamesViewController : UITableViewController {
                 cell.awayTeamNameLabel.text = game.awayTeam?.name
                 cell.homeTeamFlagImageView.loadImage(game.homeTeam?.image)
                 cell.awayTeamFlagImageView.loadImage(game.awayTeam?.image)
-                //cell.homeTeamScoreLabel.text = "\(game.homeGoals)"
-                //cell.awayTeamScoreLabel.text = "\(game.awayGoals)"
+                cell.homeTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.homeGoals)" : "-")"
+                cell.awayTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.awayGoals)" : "-")"
                 cell.finalScoreLabel.text = "Final: \(game.homeGoals) - \(game.awayGoals)"
             }
         }
