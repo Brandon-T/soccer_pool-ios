@@ -54,8 +54,11 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
                 
                 //Source for bar graph
                 self.barGraph.graphData.removeAll()
+                self.barGraph.graphBarColors.removeAll()
                 
-                for pool in pools {
+                for i in 0..<pools.count {
+                    let pool = pools[i]
+                    self.barGraph.graphBarColors[pool.name!] = self.generateColour(UInt(i), total: UInt(pools.count))
                     self.barGraph.graphData[pool.name!] = Int(pool.points!) > 0 ? pool.points! : self.emptyBarHeight
                 }
                 
@@ -79,6 +82,10 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
         super.viewDidLayoutSubviews()
         
         self.collectionViewHeightConstraint.constant = self.collectionView.contentSize.height
+    }
+    
+    func generateColour(idx: UInt, total: UInt) -> UIColor {
+        return UIColor(hue: CGFloat(idx) / CGFloat(total), saturation: 0.9, brightness: 0.9, alpha: 1.0)
     }
     
     func initControls() -> Void {
@@ -137,12 +144,15 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let pool = self.pools[indexPath.section][indexPath.row]
+        let colour = self.barGraph.graphBarColors[pool.name!]
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("StandingsUserCellID", forIndexPath: indexPath) as! StandingsUserCollectionViewCell
         
         cell.userPhotoView.loadImage(pool.photo)
         cell.userNameLabel.text = pool.name
+        cell.userNameLabel.textColor = colour
         cell.userPointsLabel.text = "\(pool.points ?? "0") Pts"
+        cell.userPointsLabel.textColor = colour
         return cell
     }
     
