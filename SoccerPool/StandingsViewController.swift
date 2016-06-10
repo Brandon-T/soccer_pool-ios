@@ -168,6 +168,26 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     }
     
     func barSelected(barGraph: BarGraphView, index: UInt) -> Void {
-        
+        for section in 0..<self.pools.count {
+            for item in 0..<self.pools[section].count {
+                if UInt(section * item) == index {
+                    let indexPath = NSIndexPath(forItem: item, inSection: section)
+                    let attributes = self.collectionView.layoutAttributesForItemAtIndexPath(indexPath);
+                    
+                    if let attributes = attributes {
+                        var frame = attributes.frame
+                        frame.origin.y -= self.barGraph.frame.size.height
+                        frame = self.collectionView.convertRect(attributes.frame, toView: self.scrollView)
+                        
+                        
+                        self.scrollView.scrollRectToVisible(frame, animated: true)
+                        
+                    }
+                    
+                    //self.collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredVertically, animated: true)
+                    return
+                }
+            }
+        }
     }
 }
