@@ -151,7 +151,7 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
         if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
             let numberOfItemsInSection = CGFloat(self.collectionView(collectionView, numberOfItemsInSection: 0))
             let width = collectionView.bounds.width - ((layout.sectionInset.left + layout.sectionInset.right) * (numberOfItemsInSection - 1))
-            return CGSizeMake(width / numberOfItemsInSection, 150);
+            return CGSizeMake(width / numberOfItemsInSection, 180);
         }
         
         return CGSizeZero
