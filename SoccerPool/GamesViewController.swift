@@ -289,6 +289,7 @@ class GamesViewController : UITableViewController {
                         return
                     }
                     
+                    game.hasBeenPredicted = true
                     game.prediction!.homeGoals = homeGoals
                     game.prediction!.awayGoals = awayGoals
                     
