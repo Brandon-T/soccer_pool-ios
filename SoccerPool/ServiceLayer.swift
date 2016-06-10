@@ -111,7 +111,7 @@ class ServiceLayer {
     
     //Private:
     
-    static let environment: Environment = .Test
+    static let environment: Environment = .Live
     
     
     
