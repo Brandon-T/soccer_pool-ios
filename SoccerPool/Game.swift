@@ -9,10 +9,10 @@
 import Foundation
 
 class Game : NSObject, Serializeable {
-    var gameID: Int = 0
-    var awayGoals: Int = 0
+    var gameID: UInt = 0
+    var awayGoals: UInt = 0
     var awayTeam: Team?
-    var homeGoals: Int = 0
+    var homeGoals: UInt = 0
     var homeTeam: Team?
     var prediction: Prediction?
     var startTime: NSDate?

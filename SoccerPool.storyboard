@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Baf-EB-vlc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Baf-EB-vlc">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -159,6 +159,9 @@
                                             </view>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gkw-wu-zuY">
                                                 <rect key="frame" x="0.0" y="300" width="600" height="187"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="187" id="HJC-O5-GHK"/>
+                                                </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="k47-Cp-RnU">
                                                     <size key="itemSize" width="50" height="50"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -214,7 +217,6 @@
                             <constraint firstItem="NLU-Fo-bMd" firstAttribute="width" secondItem="TFz-fu-MZ3" secondAttribute="width" id="1o7-oQ-WoX"/>
                             <constraint firstItem="6cj-7z-ND5" firstAttribute="top" secondItem="qRw-hk-5Bi" secondAttribute="bottom" id="BWk-oE-MZk"/>
                             <constraint firstItem="MN3-f6-z40" firstAttribute="top" secondItem="6cj-7z-ND5" secondAttribute="bottom" id="C5r-0B-oI7"/>
-                            <constraint firstItem="NLU-Fo-bMd" firstAttribute="height" secondItem="TFz-fu-MZ3" secondAttribute="height" id="ZCt-bQ-a3y"/>
                             <constraint firstItem="6cj-7z-ND5" firstAttribute="leading" secondItem="TFz-fu-MZ3" secondAttribute="leading" id="i0m-W4-p82"/>
                             <constraint firstAttribute="trailing" secondItem="6cj-7z-ND5" secondAttribute="trailing" id="pS5-WL-11l"/>
                         </constraints>
@@ -225,6 +227,7 @@
                     <connections>
                         <outlet property="barGraph" destination="Uqv-5e-HRn" id="OhL-Qk-1Uy"/>
                         <outlet property="collectionView" destination="Gkw-wu-zuY" id="0KF-bE-wBA"/>
+                        <outlet property="collectionViewHeightConstraint" destination="HJC-O5-GHK" id="Mr8-ad-the"/>
                         <outlet property="scrollView" destination="6cj-7z-ND5" id="PIZ-di-qvE"/>
                         <segue destination="DQV-co-UvZ" kind="presentation" identifier="segueHelp" id="qK9-gR-2Aa"/>
                     </connections>
@@ -409,6 +412,6 @@
         <image name="StandingsTabBarIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qK9-gR-2Aa"/>
+        <segue reference="by8-XA-9hx"/>
     </inferredMetricsTieBreakers>
 </document>

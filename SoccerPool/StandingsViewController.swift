@@ -16,16 +16,12 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var barGraph: BarGraphView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
     
     var pools = [[Pool]]()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.initControls()
-        self.setTheme()
-        self.registerClasses()
-        self.doLayout()
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
         pools.removeAll()
         
@@ -62,12 +58,27 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
                 for pool in pools {
                     self.barGraph.graphData[pool.name!] = Int(pool.points!) > 0 ? pool.points! : self.emptyBarHeight
                 }
-
+                
                 //Update UI.
                 self.barGraph.reloadData()
                 self.collectionView.reloadData()
             }
         }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.initControls()
+        self.setTheme()
+        self.registerClasses()
+        self.doLayout()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.collectionViewHeightConstraint.constant = self.collectionView.contentSize.height
     }
     
     func initControls() -> Void {

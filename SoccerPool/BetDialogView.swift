@@ -11,6 +11,13 @@ import UIKit
 class BetDialogView: UIView {
 
     @IBOutlet var view:UIView!
+    @IBOutlet weak var homeTeamNameLabel: UILabel!
+    @IBOutlet weak var awayTeamNameLabel: UILabel!
+    @IBOutlet weak var homeTeamFlagView: UIImageView!
+    @IBOutlet weak var awayTeamFlagView: UIImageView!
+    @IBOutlet weak var homeTeamScoreLabel: UITextField!
+    @IBOutlet weak var awayTeamScoreLabel: UITextField!
+    
     
     
     override init(frame: CGRect) {

@@ -38,21 +38,17 @@ class GamesViewController : UITableViewController {
                     let startTime = game.startTime!
                     let endTime = startTime.dateByAddingTimeInterval(2 * 60 * 60)
                     
-                    //startTime <= currentDateTime
-                    if self.currentDateTime.compare(startTime) == .OrderedAscending || self.currentDateTime.compare(startTime) == .OrderedSame {
-                        self.completedGames.append(game)
-                    }
-                    else if self.currentDateTime.compare(endTime) == .OrderedSame {
-                        self.completedGames.append(game)
-                    }
-                    else if self.currentDateTime.compare(endTime) == .OrderedDescending {
-                        self.upcomingGames.append(game)
-                    }
-                    else {
-                        //startTime < currentDateTime < endTime
-                        if self.currentDateTime.compare(startTime) == .OrderedDescending && self.currentDateTime.compare(endTime) == .OrderedAscending {
+                    //currentDateTime < startTime
+                    if self.currentDateTime.compare(startTime) == .OrderedDescending {
+                        if self.currentDateTime.compare(endTime) == .OrderedAscending {
                             self.inProgressGames.append(game)
                         }
+                        else {
+                            self.completedGames.append(game)
+                        }
+                    }
+                    else {
+                        self.upcomingGames.append(game)
                     }
                 }
 
@@ -141,7 +137,6 @@ class GamesViewController : UITableViewController {
 
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
         let view = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 44))
         let label = UILabel(frame: CGRectMake(0, 0, tableView.frame.size.width, 44))
         label.textAlignment = NSTextAlignment.Center
@@ -163,16 +158,16 @@ class GamesViewController : UITableViewController {
         return view
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
-    {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 130.0
+        }
         
-        if(indexPath.section == 1){
+        if indexPath.section == 1 {
             return 44.0
         }
-        else{
-            return 100.0
-        }
-  
+        
+        return 141.0
     }
  
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -181,7 +176,6 @@ class GamesViewController : UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         var cell: UITableViewCell!
         
         switch indexPath.section {
@@ -193,10 +187,10 @@ class GamesViewController : UITableViewController {
                 
                 cell.homeTeamNameLabel.text = game.homeTeam?.name
                 cell.awayTeamNameLabel.text = game.awayTeam?.name
-                cell.homeTeamFlagImageView.loadImage(game.homeTeam?.flag)
-                cell.awayTeamFlagImageView.loadImage(game.awayTeam?.flag)
-                cell.homeTeamScoreLabel.text = "\(game.homeGoals)"
-                cell.awayTeamScoreLabel.text = "\(game.awayGoals)"
+                cell.homeTeamFlagImageView.loadImage(game.homeTeam?.image)
+                cell.awayTeamFlagImageView.loadImage(game.awayTeam?.image)
+                cell.homeTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.homeGoals)" : "-")"
+                cell.awayTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.awayGoals)" : "-")"
                 cell.gameTimeLabel.text = game.startTime?.format("yyyy-MM-dd")
             }
         
@@ -211,11 +205,11 @@ class GamesViewController : UITableViewController {
                 
                 cell.homeTeamNameLabel.text = game.homeTeam?.name
                 cell.awayTeamNameLabel.text = game.awayTeam?.name
-                cell.homeTeamFlagImageView.loadImage(game.homeTeam?.flag)
-                cell.awayTeamFlagImageView.loadImage(game.awayTeam?.flag)
-                cell.homeTeamScoreLabel.text = "\(game.homeGoals)"
-                cell.awayTeamScoreLabel.text = "\(game.awayGoals)"
-                cell.finalScoreLabel.text = nil
+                cell.homeTeamFlagImageView.loadImage(game.homeTeam?.image)
+                cell.awayTeamFlagImageView.loadImage(game.awayTeam?.image)
+                cell.homeTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.homeGoals)" : "-")"
+                cell.awayTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.awayGoals)" : "-")"
+                cell.finalScoreLabel.text = "Final: \(game.homeGoals) - \(game.awayGoals)"
             }
         }
         
@@ -224,13 +218,14 @@ class GamesViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    
-        print(indexPath.row)
-        
-        if indexPath.section == 0{
-        
+        if indexPath.section == 0 {
+            
+            let game = self.upcomingGames[indexPath.row]
+            let homeGoalsPrediction = game.prediction != nil ? game.prediction!.homeGoals : 0
+            let awayGoalsPrediction = game.prediction != nil ? game.prediction!.awayGoals : 0
+            
             let appearance = SCLAlertView.SCLAppearance(
-                kTitleFont: UIFont.systemFontOfSize(18, weight: UIFontWeightSemibold),
+                kTitleFont: UIFont.semiBoldSystemFont(18),
                 kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
                 kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
                 showCloseButton: false
@@ -238,30 +233,42 @@ class GamesViewController : UITableViewController {
             
             let alert: SCLAlertView = SCLAlertView(appearance: appearance)
 
-            let subView = BetDialogView(frame: CGRectMake(0,0,215,135))
+            let subView = BetDialogView(frame: CGRectMake(0, 0, 215, 135))
+            subView.homeTeamNameLabel.text = game.homeTeam?.name
+            subView.homeTeamFlagView.loadImage(game.homeTeam?.image)
+            subView.homeTeamScoreLabel.text = "\(homeGoalsPrediction)"
+            
+            subView.awayTeamNameLabel.text = game.awayTeam?.name
+            subView.awayTeamFlagView.loadImage(game.awayTeam?.image)
+            subView.awayTeamScoreLabel.text = "\(awayGoalsPrediction)"
 
             // Add the subview to the alert's UI property
             alert.customSubview = subView
             
             alert.addButton("Submit") {
-                print("Submit The Score")
+                let homeGoals: UInt! = UInt(subView.homeTeamScoreLabel.text ?? "0")
+                let awayGoals: UInt! = UInt(subView.awayTeamScoreLabel.text ?? "0")
+                
+                ServiceLayer.predictGame(game.gameID, awayGoals: awayGoals, homeGoals: homeGoals, completion: { (json, error) in
+                    
+                    guard error == nil else {
+                        SCLAlertView().showInfo("Error", subTitle: error!.localizedDescription, circleIconImage: UIImage(named: "EuroCupIcon"))
+                        return
+                    }
+                    
+                    game.prediction!.homeGoals = homeGoals
+                    game.prediction!.awayGoals = awayGoals
+                    
+                    alert.hideView()
+                    tableView.reloadData()
+                })
             }
             alert.addButton("Cancel", backgroundColor: UIColor.navigationBarBackgroundColor(), textColor: UIColor.whiteColor(), showDurationStatus: false) {
                 alert.hideView()
+                tableView.reloadData()
             }
             
             alert.showInfo("Place Bet", subTitle: "", circleIconImage: UIImage(named: "EuroCupIcon"))
-            
         }
-        
     }
-    
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-    
 }
