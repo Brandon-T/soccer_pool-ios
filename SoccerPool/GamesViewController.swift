@@ -137,7 +137,6 @@ class GamesViewController : UITableViewController {
 
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
         let view = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 44))
         let label = UILabel(frame: CGRectMake(0, 0, tableView.frame.size.width, 44))
         label.textAlignment = NSTextAlignment.Center
@@ -159,16 +158,13 @@ class GamesViewController : UITableViewController {
         return view
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
-    {
-        
-        if(indexPath.section == 1){
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == 1 {
             return 44.0
         }
-        else{
-            return 100.0
+        else {
+            return 130.0
         }
-  
     }
  
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -177,7 +173,6 @@ class GamesViewController : UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         var cell: UITableViewCell!
         
         switch indexPath.section {
