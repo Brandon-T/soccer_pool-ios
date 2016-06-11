@@ -12,6 +12,8 @@ import SCLAlertView
 class UpgradeManager {
     static var shouldShowUpgrade: Bool = true
     
+    static let currentVersion: String = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
+    
     static func checkForLatestVersion() {
         
         if !ServiceLayer.isNetworkReachable() {
@@ -33,8 +35,7 @@ class UpgradeManager {
                     if let metadata = item["metadata"] as? Dictionary<String, AnyObject> {
                         
                         let latestVersion = metadata["bundle-version"] as! String
-                        let currentVersion: String = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
-                        
+
                         if shortenedVersionNumber(currentVersion).compare(shortenedVersionNumber(latestVersion), options: .NumericSearch) == .OrderedAscending {
                             
                             let appearance = SCLAlertView.SCLAppearance(

@@ -92,6 +92,12 @@
                                             <outlet property="passwordTextField" destination="RaI-kT-OAV" id="7ui-KW-daD"/>
                                         </connections>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v1.0.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I21-Vr-nxO">
+                                        <rect key="frame" x="282" y="326" width="35" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -99,9 +105,11 @@
                                     <constraint firstItem="jSl-9n-n56" firstAttribute="leading" secondItem="Nmc-au-2az" secondAttribute="leading" id="BMD-wL-uKk"/>
                                     <constraint firstAttribute="bottom" secondItem="jSl-9n-n56" secondAttribute="bottom" id="BXe-4I-ucF"/>
                                     <constraint firstAttribute="trailing" secondItem="AUa-qA-wFF" secondAttribute="trailing" constant="35" id="LVu-Yg-osS"/>
+                                    <constraint firstItem="I21-Vr-nxO" firstAttribute="centerX" secondItem="Nmc-au-2az" secondAttribute="centerX" id="Nhj-QZ-M7Y"/>
                                     <constraint firstItem="AUa-qA-wFF" firstAttribute="leading" secondItem="Nmc-au-2az" secondAttribute="leading" constant="35" id="W5b-dK-UuM"/>
                                     <constraint firstItem="aqW-mv-SV8" firstAttribute="top" secondItem="Nmc-au-2az" secondAttribute="top" constant="44" id="WyZ-KI-cjQ"/>
                                     <constraint firstItem="Kgs-wD-kDD" firstAttribute="top" secondItem="aqW-mv-SV8" secondAttribute="bottom" constant="15" id="dV1-a5-wnd"/>
+                                    <constraint firstItem="I21-Vr-nxO" firstAttribute="top" secondItem="Rii-o4-e5W" secondAttribute="bottom" constant="8" id="e5G-B2-VGz"/>
                                     <constraint firstItem="AUa-qA-wFF" firstAttribute="top" secondItem="Rii-o4-e5W" secondAttribute="bottom" constant="75" id="g4l-dp-Su8"/>
                                     <constraint firstItem="Rii-o4-e5W" firstAttribute="top" secondItem="Kgs-wD-kDD" secondAttribute="bottom" constant="15" id="g8f-Ul-cCE"/>
                                     <constraint firstItem="aqW-mv-SV8" firstAttribute="centerX" secondItem="Nmc-au-2az" secondAttribute="centerX" id="jDz-0g-6ZJ"/>
@@ -123,6 +131,7 @@
                     </view>
                     <connections>
                         <outlet property="loginFieldsView" destination="AUa-qA-wFF" id="WRl-Qv-wwU"/>
+                        <outlet property="versionLabel" destination="I21-Vr-nxO" id="LzM-bB-M95"/>
                         <segue destination="cYi-oa-FkP" kind="presentation" identifier="segueSuccessfulLogin" id="WJA-Bb-x3X"/>
                     </connections>
                 </viewController>

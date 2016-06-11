@@ -12,6 +12,8 @@ import SCLAlertView
 
 class LoginViewController : BaseViewController, LoginFieldsViewDelegate {
     
+    
+    @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var loginFieldsView: LoginFieldsView!
 
     required init?(coder aDecoder: NSCoder) {
@@ -51,7 +53,7 @@ class LoginViewController : BaseViewController, LoginFieldsViewDelegate {
     }
     
     func setTheme() -> Void {
-        
+        versionLabel.text = "v\(UpgradeManager.currentVersion)"
     }
     
     func doLayout() -> Void {
