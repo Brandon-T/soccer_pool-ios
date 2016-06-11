@@ -12,13 +12,16 @@ import SCLAlertView
 
 class StandingsViewController : BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, BarGraphViewDelegate {
     
-    let emptyBarHeight: Double = 0.5
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var barGraph: BarGraphView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
     
+    
     var pools = [[Pool]]()
+    let emptyBarHeight: Double = 0.5
+    var scrollCompletion: (() -> Void)? = nil
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -167,7 +170,9 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
         return CGSizeZero
     }
     
-    var scrollCompletion: (() -> Void)? = nil
+    
+    
+    
     
     func barSelected(barGraph: BarGraphView, index: UInt) -> Void {
         var idx = 0
