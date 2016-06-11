@@ -183,11 +183,13 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
         if CGRectIntersectsRect(self.scrollView.bounds, visibleFrame) {
             let width = self.pools[indexPath.section].count
             
+            self.barGraph.scrollToIndex(indexPath.row + width * indexPath.section)
             self.barGraph.pulseColour(indexPath.row + width * indexPath.section)
         }
         else {
             self.scrollCompletion = {
                 let width = self.pools[indexPath.section].count
+                self.barGraph.scrollToIndex(indexPath.row + width * indexPath.section)
                 self.barGraph.pulseColour(indexPath.row + width * indexPath.section)
             }
             
