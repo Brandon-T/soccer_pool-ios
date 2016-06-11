@@ -11,6 +11,12 @@ import SCLAlertView
 
 class UpgradeManager {
     static func checkForLatestVersion() {
+        
+        if !ServiceLayer.isNetworkReachable() {
+            SCLAlertView().showInfo("Error", subTitle: "Network Connection Unavailable", circleIconImage: UIImage(named: "EuroCupIcon"))
+            return
+        }
+        
         let plist = NSDictionary(contentsOfURL: NSURL(string: "https://brandon-t.github.io/install/manifest.plist")!) as? Dictionary<String, AnyObject>
         
         if let latestVersionPlist = plist {
@@ -22,7 +28,6 @@ class UpgradeManager {
                         let currentVersion: String = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
                         
                         if shortenedVersionNumber(currentVersion).compare(shortenedVersionNumber(latestVersion), options: .NumericSearch) == .OrderedAscending {
-                            
                             
                             let appearance = SCLAlertView.SCLAppearance(
                                 kTitleFont: UIFont.semiBoldSystemFont(18),

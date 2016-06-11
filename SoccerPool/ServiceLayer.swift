@@ -17,6 +17,10 @@ class ServiceLayer {
         ServiceLayer.request(.TestGames, completion: completion)
     }
     
+    static func isNetworkReachable() -> Bool {
+        return ServiceLayer.reachabilityManager.isReachable
+    }
+    
     static func getInfo(completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
         ServiceLayer.request(.Info, completion: completion)
     }
