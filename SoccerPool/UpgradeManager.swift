@@ -49,7 +49,8 @@ class UpgradeManager {
                             
                             alert.addButton("Yes", action: {
                                 shouldShowUpgrade = true
-                                UIApplication.sharedApplication().openURL(NSURL(string: "https://brandon-t.github.io/")!)
+                                UIApplication.sharedApplication().openURL(NSURL(string: "itms-services://?action=download-manifest&url=https://brandon-t.github.io/install/currentVersion.plist")!)
+                                exit(EXIT_SUCCESS)
                             })
                             
                             alert.addButton("No", action: {
