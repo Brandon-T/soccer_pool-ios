@@ -185,6 +185,13 @@ class GamesViewController : UITableViewController {
                 if let cell = cell as? FinishedMatchesTableViewCell {
                     let game = self.inProgressGames[indexPath.row]
                     
+                    let secondsLeft = NSDate().timeIntervalSinceDate(game.startTime!);
+                    let hours = secondsLeft / 3600;
+                    let minutes = (secondsLeft % 3600) / 60;
+                    let seconds = (secondsLeft % 3600) % 60;
+                    let timeLeft = String.init(format: "%02zd:%02zd:%02zd", Int(hours), Int(minutes), Int(seconds))
+                    
+                    
                     cell.homeTeamNameLabel.text = game.homeTeam?.name
                     cell.awayTeamNameLabel.text = game.awayTeam?.name
                     cell.homeTeamFlagImageView.loadImage(game.homeTeam?.image)
@@ -192,7 +199,8 @@ class GamesViewController : UITableViewController {
                     cell.homeTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.homeGoals)" : "-")"
                     cell.awayTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.awayGoals)" : "-")"
                     cell.finalScoreLabel.text = "Current Score: \(game.homeGoals) - \(game.awayGoals)"
-                    cell.gameTimeLabel.text = "Playing Right Now! -- Time Left: \(0)"
+                    cell.cornerLabel.text = "+\(game.prediction!.points)"
+                    cell.gameTimeLabel.text = "Playing Right Now! -- Time Left: \(timeLeft)"
                 }
             }
             else {
@@ -207,7 +215,7 @@ class GamesViewController : UITableViewController {
                     cell.awayTeamFlagImageView.loadImage(game.awayTeam?.image)
                     cell.homeTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.homeGoals)" : "-")"
                     cell.awayTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.awayGoals)" : "-")"
-                    cell.gameTimeLabel.text = game.startTime?.format("hh:mm, dd MMM yyyy")
+                    cell.gameTimeLabel.text = game.startTime?.format("dd MMM yyyy, HH:mm")
                 }
             }
         
@@ -224,7 +232,7 @@ class GamesViewController : UITableViewController {
                     cell.awayTeamFlagImageView.loadImage(game.awayTeam?.image)
                     cell.homeTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.homeGoals)" : "-")"
                     cell.awayTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.awayGoals)" : "-")"
-                    cell.gameTimeLabel.text = game.startTime?.format("hh:mm, dd MMM yyyy")
+                    cell.gameTimeLabel.text = game.startTime?.format("dd MMM yyyy, HH:mm")
                 }
             }
             else {
@@ -244,7 +252,7 @@ class GamesViewController : UITableViewController {
                 cell.awayTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.awayGoals)" : "-")"
                 cell.finalScoreLabel.text = "Final Score: \(game.homeGoals) - \(game.awayGoals)"
                 cell.cornerLabel.text = "+\(game.prediction!.points)"
-                cell.gameTimeLabel.text = "Completed On:   \(game.startTime!.dateByAddingTimeInterval(2 * 60 * 60).format("dd MMM yyyy, hh:mm"))"
+                cell.gameTimeLabel.text = "Completed On:   \(game.startTime!.dateByAddingTimeInterval(2 * 60 * 60).format("dd MMM yyyy, HH:mm"))"
             }
         }
         
