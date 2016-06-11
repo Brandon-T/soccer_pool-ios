@@ -10,12 +10,20 @@ import Foundation
 import SCLAlertView
 
 class UpgradeManager {
+    static var shouldShowUpgrade: Bool = true
+    
     static func checkForLatestVersion() {
         
         if !ServiceLayer.isNetworkReachable() {
             SCLAlertView().showInfo("Error", subTitle: "Network Connection Unavailable", circleIconImage: UIImage(named: "EuroCupIcon"))
             return
         }
+        
+        if !shouldShowUpgrade {
+            return
+        }
+        
+        shouldShowUpgrade = false
         
         let plist = NSDictionary(contentsOfURL: NSURL(string: "https://brandon-t.github.io/install/manifest.plist")!) as? Dictionary<String, AnyObject>
         
@@ -38,12 +46,13 @@ class UpgradeManager {
                             
                             let alert: SCLAlertView = SCLAlertView(appearance: appearance)
                             
-                            alert.addButton("Yes", action: { 
+                            alert.addButton("Yes", action: {
+                                shouldShowUpgrade = true
                                 UIApplication.sharedApplication().openURL(NSURL(string: "https://brandon-t.github.io/")!)
                             })
                             
                             alert.addButton("No", action: {
-                                
+                                shouldShowUpgrade = false
                             })
                             
                             alert.showInfo("New Version Available", subTitle: "\nWould you like to download it now?\n", closeButtonTitle: nil, colorStyle: 0x3F51B5, colorTextButton: 0xFFFFFF, circleIconImage: UIImage(named: "EuroCupIcon"))

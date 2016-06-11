@@ -40,6 +40,12 @@ class LoginViewController : BaseViewController, LoginFieldsViewDelegate {
         self.view.stopKeyboardListener()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UpgradeManager.checkForLatestVersion()
+    }
+    
     func initControls() -> Void {
         loginFieldsView.delegate = self
     }

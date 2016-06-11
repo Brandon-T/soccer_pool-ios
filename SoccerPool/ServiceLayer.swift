@@ -45,7 +45,6 @@ class ServiceLayer {
     static func logoutUser() -> Void {
         NSUserDefaults.standardUserDefaults().removeObjectForKey ("accessToken")
         NSUserDefaults.standardUserDefaults().synchronize()
-    
     }
     
     static func registerUser(email: String, password: String, completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
@@ -85,10 +84,7 @@ class ServiceLayer {
     }
     
     static func request(router: Router, completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
-        if !ServiceLayer.reachabilityManager.isReachable {
-            SCLAlertView().showInfo("Error", subTitle: "Network Connection Unavailable", circleIconImage: UIImage(named: "EuroCupIcon"))
-            return
-        }
+        UpgradeManager.checkForLatestVersion()
         
         requestManager.request(router)
             .validate(statusCode: 200..<300)
