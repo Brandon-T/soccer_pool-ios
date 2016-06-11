@@ -11,28 +11,33 @@ import CorePlot
 
 extension BarGraphView {
     
-    func scrollToIndex(index: Int) -> Void {
+    func scrollToIndex(index: Int, completion: () -> Void) -> Void {
         if let isScrolling: Bool = self.getObject("isScrolling") {
             if isScrolling {
                 return
             }
         }
         
-        let plotSpace = self.hostedGraph?.defaultPlotSpace!
-        let range = plotSpace?.plotRangeForCoordinate(CPTCoordinate.X)
-        let forwards: Bool = range!.locationDouble < Double(index)
+        let plotSpace = self.hostedGraph?.defaultPlotSpace as! CPTXYPlotSpace
+        let range = plotSpace.xRange
+        let globalRange = plotSpace.globalXRange!
+        let forwards: Bool = range.locationDouble < Double(index)
         
-        if range!.locationDouble.equals(Double(index)) {
+        
+        if range.locationDouble.equals(Double(index)) || range.locationDouble.equals(globalRange.endDouble - (8.0 * (1.0 - barWidth))) {
             self.setObject(false, key: "isScrolling")
             self.removeObject("index")
+            completion()
             return
         }
         
         self.setObject(true, key: "isScrolling")
-        self.setObject(range!.locationDouble, key: "index")
+        self.setObject(range.locationDouble, key: "index")
         
         
-        NSTimer.scheduledTimerWithTimeInterval(0.005, target: self, selector: #selector(scroll), userInfo: ["index": Double(index), "forwards": forwards], repeats: true)
+        let timer = NSTimer.scheduledTimerWithTimeInterval(0.005, target: self, selector: #selector(scroll), userInfo: ["index": Double(index), "forwards": forwards], repeats: true)
+        
+        timer.setObject(completion, key: "completion")
     }
     
     func pulseColour(index: Int) -> Void {
@@ -83,16 +88,20 @@ extension BarGraphView {
         let index = userInfo["index"] as! Double
         let forwards = userInfo["forwards"] as! Bool
         
-        let plotSpace = self.hostedGraph?.defaultPlotSpace!
-        let range = plotSpace?.plotRangeForCoordinate(CPTCoordinate.X)?.mutableCopy() as! CPTMutablePlotRange
-        range.locationDouble += forwards ? 0.1 : -0.1
-        plotSpace?.setPlotRange(range, forCoordinate: CPTCoordinate.X)
+        let plotSpace = self.hostedGraph?.defaultPlotSpace as! CPTXYPlotSpace
+        let range = plotSpace.xRange.mutableCopy() as! CPTMutablePlotRange
+        let globalRange = plotSpace.globalXRange!
         
-        if range.locationDouble.equals(index) {
+        range.locationDouble += forwards ? 0.25 : -0.25
+        plotSpace.xRange = range
+        
+        if range.locationDouble.equals(index) || range.locationDouble.equals(globalRange.endDouble - (8.0 * (1.0 - barWidth))) {
+            let completion: () -> Void = timer.getObject("completion")!
             timer.invalidate()
             
             self.setObject(false, key: "isScrolling")
             self.removeObject("index")
+            completion()
         }
     }
 }

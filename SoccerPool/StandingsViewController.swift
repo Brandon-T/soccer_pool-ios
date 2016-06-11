@@ -177,24 +177,38 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
             return
         }
         
+        var index: Int = 0
         let frame = self.barGraph.frame
         let visibleFrame = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.size.width, height: frame.origin.y + 5)
         
-        if CGRectIntersectsRect(self.scrollView.bounds, visibleFrame) {
-            let width = self.pools[indexPath.section].count
-            
-            self.barGraph.scrollToIndex(indexPath.row + width * indexPath.section)
-            self.barGraph.pulseColour(indexPath.row + width * indexPath.section)
-        }
-        else {
-            self.scrollCompletion = {
-                let width = self.pools[indexPath.section].count
-                self.barGraph.scrollToIndex(indexPath.row + width * indexPath.section)
-                self.barGraph.pulseColour(indexPath.row + width * indexPath.section)
+        let animation = { [unowned self](index: Int) -> Void in
+            if CGRectIntersectsRect(self.scrollView.bounds, visibleFrame) {
+                self.barGraph.scrollToIndex(index, completion: {
+                    self.barGraph.pulseColour(index)
+                })
             }
-            
-            self.scrollView.delegate = self
-            self.scrollView.scrollRectToVisible(self.barGraph.bounds, animated: true)
+            else {
+                self.scrollCompletion = {
+                    self.barGraph.scrollToIndex(index, completion: {
+                        self.barGraph.pulseColour(index)
+                    })
+                }
+                
+                self.scrollView.delegate = self
+                self.scrollView.scrollRectToVisible(self.barGraph.bounds, animated: true)
+            }
+        }
+        
+        
+        for section in 0..<self.pools.count {
+            for row in 0..<self.pools[section].count {
+                if section == indexPath.section && row == indexPath.row {
+                    animation(index)
+                    return
+                }
+                
+                index += 1
+            }
         }
     }
     
@@ -228,7 +242,7 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
                             })
                         }
                         else {
-                            self.scrollCompletion = {
+                            self.scrollCompletion = { [unowned self]() -> Void in
                                 let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
                                 
                                 dispatch_after(delayTime, dispatch_get_main_queue(), {
