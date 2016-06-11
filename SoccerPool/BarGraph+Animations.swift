@@ -26,7 +26,7 @@ extension BarGraphView {
         NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: #selector(pulse), userInfo: ["index":index, "range":range, "colour":colour], repeats: true)
     }
     
-    func pulse(timer: NSTimer) -> Void {
+    @objc private func pulse(timer: NSTimer) -> Void {
         var userInfo = timer.userInfo as! [String:AnyObject]
         let range = userInfo["range"] as! NSRange
         let index = userInfo["index"] as! Int

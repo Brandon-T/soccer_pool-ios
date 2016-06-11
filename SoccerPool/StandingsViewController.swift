@@ -173,10 +173,34 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        self.barGraph.pulseColour(indexPath.row)
+        if self.scrollCompletion != nil {
+            return
+        }
+        
+        let frame = self.barGraph.frame
+        let visibleFrame = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.size.width, height: frame.origin.y + 5)
+        
+        if CGRectIntersectsRect(self.scrollView.bounds, visibleFrame) {
+            let width = self.pools[indexPath.section].count
+            
+            self.barGraph.pulseColour(indexPath.row + width * indexPath.section)
+        }
+        else {
+            self.scrollCompletion = {
+                let width = self.pools[indexPath.section].count
+                self.barGraph.pulseColour(indexPath.row + width * indexPath.section)
+            }
+            
+            self.scrollView.delegate = self
+            self.scrollView.scrollRectToVisible(self.barGraph.bounds, animated: true)
+        }
     }
     
     func barSelected(barGraph: BarGraphView, index: UInt) -> Void {
+        if self.scrollCompletion != nil {
+            return
+        }
+        
         var idx = 0
         
         for section in 0..<self.pools.count {
@@ -229,6 +253,7 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
         if self.scrollCompletion != nil {
             scrollView.delegate = nil
             self.scrollCompletion!()
+            self.scrollCompletion = nil
         }
     }
 }
