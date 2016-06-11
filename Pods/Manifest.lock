@@ -1,20 +1,36 @@
 PODS:
   - Alamofire (3.3.1)
+  - AlamofireImage (2.4.0):
+    - Alamofire (~> 3.3)
+  - CorePlot (2.1)
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
   - MagicalRecord/Core (2.3.2)
   - MBProgressHUD (0.9.2)
+  - SCLAlertView (0.5.8)
+  - SDWebImage (3.8.1):
+    - SDWebImage/Core (= 3.8.1)
+  - SDWebImage/Core (3.8.1)
+  - XYPieChart (0.2)
 
 DEPENDENCIES:
   - Alamofire (~> 3.3.1)
+  - AlamofireImage (~> 2.4.0)
+  - CorePlot (~> 2.1)
   - MagicalRecord (~> 2.3.2)
   - MBProgressHUD (~> 0.9.1)
+  - SCLAlertView
+  - SDWebImage (~> 3.8)
+  - XYPieChart
 
 SPEC CHECKSUMS:
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  AlamofireImage: 87408b652e0f5ae5fe364035f15aea8b9b24c77e
+  CorePlot: ab9898c79b94999018e9634ab0aa4c21480c8552
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  SCLAlertView: 653e84d1f9fd95333bc54671fbadb7d0c47fce49
+  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+  XYPieChart: 0efd8069d26c25d20ab74c01b5ad455f1fc48153
 
-PODFILE CHECKSUM: 3c9bcb7e81cec6f0e637ffeb62cfc3ead3501a67
-
-COCOAPODS: 1.0.1
+COCOAPODS: 0.39.0

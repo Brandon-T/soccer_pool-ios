@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MagicalRecord
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,11 +17,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        self.window = UIWindow()
-        self.window?.rootViewController = LoginViewController()
-        self.window?.makeKeyAndVisible()
+        MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed("SoccerPool.sqlite")
+        
+        if ServiceLayer.isLoggedIn() {
+            self.window = UIWindow()
+            self.window?.rootViewController = UIStoryboard(name: "SoccerPool", bundle: nil).instantiateViewControllerWithIdentifier("mainViewController")
+            self.window?.makeKeyAndVisible()
+        }
+        else {
+            self.window = UIWindow()
+            self.window?.rootViewController = UIStoryboard(name: "SoccerPool", bundle: nil).instantiateInitialViewController()
+            self.window?.makeKeyAndVisible()
+        }
+        
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        application.registerUserNotificationSettings(settings)
+        application.registerForRemoteNotifications()
         
         return true
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        
+    }
+    
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        let notification = UILocalNotification()
+        notification.repeatInterval = NSCalendarUnit(rawValue: 0)
+        notification.alertBody = "Test"
+        notification.fireDate = NSDate().dateByAddingTimeInterval(5000)
+        notification.timeZone = NSTimeZone.defaultTimeZone()
+        application.scheduleLocalNotification(notification)
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        
     }
 
     func applicationWillResignActive(application: UIApplication) {

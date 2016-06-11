@@ -467,8 +467,4 @@
         }
     }
 }
-
-- (NSString *)description {
-    return [NSString stringWithFormat:@"%@", [self toJSON]];
-}
 @end
