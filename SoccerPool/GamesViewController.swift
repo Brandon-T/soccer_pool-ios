@@ -16,8 +16,6 @@ class GamesViewController : UITableViewController {
     var inProgressGames = [Game]()
     var completedGames = [Game]()
     
-    let currentDateTime = NSDate()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,14 +31,15 @@ class GamesViewController : UITableViewController {
             }
             if let gamesArray = json?["data"] as? [[String: AnyObject]] {
                 let games = Game.fromJSONArray(gamesArray) as! [Game]
+                let currentDateTime = NSDate()
                 
                 for game in games {
                     let startTime = game.startTime!
                     let endTime = startTime.dateByAddingTimeInterval(2 * 60 * 60)
                     
                     //currentDateTime < startTime
-                    if self.currentDateTime.compare(startTime) == .OrderedDescending {
-                        if self.currentDateTime.compare(endTime) == .OrderedAscending {
+                    if currentDateTime.compare(startTime) == .OrderedDescending {
+                        if currentDateTime.compare(endTime) == .OrderedAscending {
                             self.inProgressGames.append(game)
                         }
                         else {
