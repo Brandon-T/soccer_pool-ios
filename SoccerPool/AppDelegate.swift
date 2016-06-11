@@ -46,12 +46,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
-        let notification = UILocalNotification()
+        /*let notification = UILocalNotification()
         notification.repeatInterval = NSCalendarUnit(rawValue: 0)
         notification.alertBody = "Test"
-        notification.fireDate = NSDate().dateByAddingTimeInterval(5000)
+        notification.fireDate = NSDate().dateByAddingTimeInterval(5)
         notification.timeZone = NSTimeZone.defaultTimeZone()
-        application.scheduleLocalNotification(notification)
+        application.scheduleLocalNotification(notification)*/
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {

@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import AlamofireImage
+import SCLAlertView
 
 class ServiceLayer {
     
@@ -80,6 +81,11 @@ class ServiceLayer {
     }
     
     static func request(router: Router, completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
+        if !ServiceLayer.reachabilityManager.isReachable {
+            SCLAlertView().showInfo("Error", subTitle: "Network Connection Unavailable", circleIconImage: UIImage(named: "EuroCupIcon"))
+            return
+        }
+        
         requestManager.request(router)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json", "text/html"])
@@ -142,6 +148,19 @@ class ServiceLayer {
         }
         
         return Static.instance
+    }()
+    
+    static let reachabilityManager = {() -> NetworkReachabilityManager in
+        let manager = NetworkReachabilityManager()
+        manager?.listener = { (status: NetworkReachabilityManager.NetworkReachabilityStatus) in
+            
+            if status == .NotReachable {
+                SCLAlertView().showInfo("Error", subTitle: "Network Connection Unavailable", circleIconImage: UIImage(named: "EuroCupIcon"))
+            }
+        }
+        
+        manager?.startListening()
+        return manager!
     }()
     
     
