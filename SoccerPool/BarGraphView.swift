@@ -237,6 +237,6 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
             return UInt(first) > UInt(second)
         }
         
-        return 10 * floor((Double(sortedValues.first ?? 0) / 10.0) + 0.5)
+        return 10 * ceil((Double(sortedValues.first ?? 0) / 10.0) + 0.5)
     }
 }

@@ -172,7 +172,9 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     
     
     
-    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        self.barGraph.pulseColour(indexPath.row)
+    }
     
     func barSelected(barGraph: BarGraphView, index: UInt) -> Void {
         var idx = 0
