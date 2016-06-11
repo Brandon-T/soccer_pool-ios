@@ -27,7 +27,7 @@ class UpgradeManager {
         
         shouldShowUpgrade = false
         
-        let plist = NSDictionary(contentsOfURL: NSURL(string: "https://brandon-t.github.io/install/manifest.plist")!) as? Dictionary<String, AnyObject>
+        let plist = NSDictionary(contentsOfURL: NSURL(string: "https://brandon-t.github.io/install/currentVersion.plist")!) as? Dictionary<String, AnyObject>
         
         if let latestVersionPlist = plist {
             if let items = latestVersionPlist["items"] as? Array<Dictionary<String, AnyObject>> {
