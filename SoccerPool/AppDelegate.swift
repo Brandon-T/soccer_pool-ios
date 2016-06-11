@@ -34,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
         
+        UpgradeManager.checkForLatestVersion()
+        
         return true
     }
     
