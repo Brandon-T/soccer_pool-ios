@@ -13,6 +13,8 @@ class UpgradeManager {
     static var shouldShowUpgrade: Bool = true
     
     static let currentVersion: String = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
+    static let currentVersionURL: String = NSBundle.mainBundle().objectForInfoDictionaryKey("XIO.SoccerPool.CurrentVersion.URL") as! String
+    static let upgradingURL: String = NSBundle.mainBundle().objectForInfoDictionaryKey("XIO.SoccerPool.Upgrade.URL") as! String
     
     static func checkForLatestVersion() {
         
@@ -27,7 +29,7 @@ class UpgradeManager {
         
         shouldShowUpgrade = false
         
-        let plist = NSDictionary(contentsOfURL: NSURL(string: "https://brandon-t.github.io/install/currentVersion.plist")!) as? Dictionary<String, AnyObject>
+        let plist = NSDictionary(contentsOfURL: NSURL(string: currentVersionURL)!) as? Dictionary<String, AnyObject>
         
         if let latestVersionPlist = plist {
             if let items = latestVersionPlist["items"] as? Array<Dictionary<String, AnyObject>> {
@@ -49,7 +51,7 @@ class UpgradeManager {
                             
                             alert.addButton("Yes", action: {
                                 shouldShowUpgrade = true
-                                UIApplication.sharedApplication().openURL(NSURL(string: "itms-services://?action=download-manifest&url=https://brandon-t.github.io/install/currentVersion.plist")!)
+                                UIApplication.sharedApplication().openURL(NSURL(string: upgradingURL)!)
                                 exit(EXIT_SUCCESS)
                             })
                             
