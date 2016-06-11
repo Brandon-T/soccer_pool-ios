@@ -59,7 +59,7 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
                 for i in 0..<pools.count {
                     let pool = pools[i]
                     self.barGraph.graphBarColors[pool.name!] = self.generateColour(UInt(i), total: UInt(pools.count))
-                    self.barGraph.graphData[pool.name!] = Int(pool.points!) > 0 ? pool.points! : self.emptyBarHeight
+                    self.barGraph.graphData[pool.name!] = Double(pool.points) > 0 ? Double(pool.points) : self.emptyBarHeight
                 }
                 
                 //Update UI.
@@ -151,7 +151,7 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
         cell.userPhotoView.loadImage(pool.photo)
         cell.userNameLabel.text = pool.name
         cell.userNameLabel.textColor = colour
-        cell.userPointsLabel.text = "\(pool.points ?? "0") Pts"
+        cell.userPointsLabel.text = "\(pool.points) Pts"
         cell.userPointsLabel.textColor = colour
         return cell
     }
@@ -168,9 +168,11 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     }
     
     func barSelected(barGraph: BarGraphView, index: UInt) -> Void {
+        var idx = 0
+        
         for section in 0..<self.pools.count {
             for item in 0..<self.pools[section].count {
-                if UInt(section * item) == index {
+                if UInt(idx) == index {
                     let indexPath = NSIndexPath(forItem: item, inSection: section)
                     let attributes = self.collectionView.layoutAttributesForItemAtIndexPath(indexPath);
                     
@@ -179,14 +181,12 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
                         frame.origin.y -= self.barGraph.frame.size.height
                         frame = self.collectionView.convertRect(attributes.frame, toView: self.scrollView)
                         
-                        
                         self.scrollView.scrollRectToVisible(frame, animated: true)
-                        
+                        return
                     }
-                    
-                    //self.collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredVertically, animated: true)
-                    return
                 }
+                
+                idx += 1
             }
         }
     }
