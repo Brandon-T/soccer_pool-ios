@@ -167,6 +167,8 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
         return CGSizeZero
     }
     
+    var scrollCompletion: (() -> Void)? = nil
+    
     func barSelected(barGraph: BarGraphView, index: UInt) -> Void {
         var idx = 0
         
@@ -180,14 +182,46 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
                         var frame = attributes.frame
                         frame.origin.y -= self.barGraph.frame.size.height
                         frame = self.collectionView.convertRect(attributes.frame, toView: self.scrollView)
+
+                        let visibleFrame = CGRect(x: frame.origin.x, y: frame.origin.y + frame.size.height - 5, width: frame.size.width, height: frame.size.height)
                         
-                        self.scrollView.scrollRectToVisible(frame, animated: true)
+                        if CGRectIntersectsRect(self.scrollView.bounds, visibleFrame) {
+                            let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.0 * Double(NSEC_PER_SEC)))
+                            
+                            dispatch_after(delayTime, dispatch_get_main_queue(), {
+                                let pool = self.pools[section][item]
+                                let cell = self.collectionView.cellForItemAtIndexPath(indexPath) as! StandingsUserCollectionViewCell
+                                cell.pulseColour(barGraph.graphBarColors[pool.name!]!)
+                            })
+                        }
+                        else {
+                            self.scrollCompletion = {
+                                let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
+                                
+                                dispatch_after(delayTime, dispatch_get_main_queue(), {
+                                    let pool = self.pools[section][item]
+                                    let cell = self.collectionView.cellForItemAtIndexPath(indexPath) as! StandingsUserCollectionViewCell
+                                    cell.pulseColour(barGraph.graphBarColors[pool.name!]!)
+                                })
+                            }
+                            
+                            self.scrollView.delegate = self
+                            self.scrollView.scrollRectToVisible(frame, animated: true)
+                        }
+                        
                         return
                     }
                 }
                 
                 idx += 1
             }
+        }
+    }
+    
+    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+        if self.scrollCompletion != nil {
+            scrollView.delegate = nil
+            self.scrollCompletion!()
         }
     }
 }
