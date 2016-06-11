@@ -16,6 +16,26 @@ class GamesViewController : UITableViewController {
     var inProgressGames = [Game]()
     var completedGames = [Game]()
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if self.inProgressGames.count > 0 {
+            for i in 0..<self.inProgressGames.count {
+                let game = self.inProgressGames[i]
+                let indexPath = NSIndexPath(forRow: i, inSection: 0)
+                
+                let secondsLeft = NSDate().timeIntervalSinceDate(game.startTime!);
+                let hours = secondsLeft / 3600;
+                let minutes = 60 - ((secondsLeft % 3600) / 60);
+                let seconds = 60 - ((secondsLeft % 3600) % 60);
+                let timeLeft = String.init(format: "%02zd:%02zd:%02zd", Int(hours), Int(minutes), Int(seconds))
+                
+                let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! FinishedMatchesTableViewCell
+                cell.gameTimeLabel.text = "Playing Right Now! -- Time Left: \(timeLeft)"
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -186,8 +206,8 @@ class GamesViewController : UITableViewController {
                     
                     let secondsLeft = NSDate().timeIntervalSinceDate(game.startTime!);
                     let hours = secondsLeft / 3600;
-                    let minutes = (secondsLeft % 3600) / 60;
-                    let seconds = (secondsLeft % 3600) % 60;
+                    let minutes = 60 - ((secondsLeft % 3600) / 60);
+                    let seconds = 60 - ((secondsLeft % 3600) % 60);
                     let timeLeft = String.init(format: "%02zd:%02zd:%02zd", Int(hours), Int(minutes), Int(seconds))
                     
                     
