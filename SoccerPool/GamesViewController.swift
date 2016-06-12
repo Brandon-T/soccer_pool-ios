@@ -24,8 +24,8 @@ class GamesViewController : UITableViewController {
                 let game = self.inProgressGames[i]
                 let indexPath = NSIndexPath(forRow: i, inSection: 0)
                 
-                let secondsLeft = NSDate().timeIntervalSinceDate(game.startTime!);
-                let hours = secondsLeft / 3600;
+                let secondsLeft = NSDate().timeIntervalSinceDate(game.cutOffTime!);
+                let hours = 1 - (secondsLeft / 3600);
                 let minutes = 60 - ((secondsLeft % 3600) / 60);
                 let seconds = 60 - ((secondsLeft % 3600) % 60);
                 let timeLeft = String.init(format: "%02zd:%02zd:%02zd", Int(hours), Int(minutes), Int(seconds))
@@ -204,8 +204,8 @@ class GamesViewController : UITableViewController {
                 if let cell = cell as? FinishedMatchesTableViewCell {
                     let game = self.inProgressGames[indexPath.row]
                     
-                    let secondsLeft = NSDate().timeIntervalSinceDate(game.startTime!);
-                    let hours = secondsLeft / 3600;
+                    let secondsLeft = NSDate().timeIntervalSinceDate(game.cutOffTime!);
+                    let hours = 1 - (secondsLeft / 3600);
                     let minutes = 60 - ((secondsLeft % 3600) / 60);
                     let seconds = 60 - ((secondsLeft % 3600) % 60);
                     let timeLeft = String.init(format: "%02zd:%02zd:%02zd", Int(hours), Int(minutes), Int(seconds))
