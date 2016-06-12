@@ -9,11 +9,16 @@
 import Foundation
 import Alamofire
 import AlamofireImage
+import SCLAlertView
 
 class ServiceLayer {
     
     static func testGames(completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
         ServiceLayer.request(.TestGames, completion: completion)
+    }
+    
+    static func isNetworkReachable() -> Bool {
+        return ServiceLayer.reachabilityManager.isReachable
     }
     
     static func getInfo(completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
@@ -40,7 +45,6 @@ class ServiceLayer {
     static func logoutUser() -> Void {
         NSUserDefaults.standardUserDefaults().removeObjectForKey ("accessToken")
         NSUserDefaults.standardUserDefaults().synchronize()
-    
     }
     
     static func registerUser(email: String, password: String, completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
@@ -80,24 +84,29 @@ class ServiceLayer {
     }
     
     static func request(router: Router, completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
+        UpgradeManager.checkForLatestVersion()
+        
         requestManager.request(router)
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json", "text/html"])
             .responseJSON { (response) in
                 
                 func toError(json: [String: AnyObject]?) -> NSError? {
-                    let success: Bool = json?["success"] as! Bool
-                    let errorMessage: String = json?["errorMessage"] as! String
-                    let errorCode: Int = json?["errorCode"] as! Int
-                    
-                    guard success else {
-                        return NSError(domain: "com.soccer-pool.error", code: errorCode, userInfo: [NSLocalizedDescriptionKey: errorMessage])
+                    if let success = json?["success"] as? Bool, errorMessage = json?["errorMessage"] as? String, errorCode = json?["errorCode"] as? Int {
+                        guard success else {
+                            return NSError(domain: "com.soccer-pool.error", code: errorCode, userInfo: [NSLocalizedDescriptionKey: errorMessage])
+                        }
                     }
+                    
                     return nil
                 }
                 
+                guard response.result.error == nil else {
+                    completion(json: nil, error: response.result.error)
+                    return
+                }
+                
                 guard response.result.isSuccess else {
-                    print("Error: \(response.result.error)")
                     completion(json: nil, error: response.result.error ?? toError(response.result.value as? [String: AnyObject]))
                     return
                 }
@@ -112,6 +121,7 @@ class ServiceLayer {
     //Private:
     
     static let environment: Environment = .Live
+    static let footballToken: String = "2c58da639181458aa51069c8fe2ad767"
     
     
     
@@ -142,6 +152,19 @@ class ServiceLayer {
         }
         
         return Static.instance
+    }()
+    
+    static let reachabilityManager = {() -> NetworkReachabilityManager in
+        let manager = NetworkReachabilityManager()
+        manager?.listener = { (status: NetworkReachabilityManager.NetworkReachabilityStatus) in
+            
+            if status == .NotReachable {
+                SCLAlertView().showInfo("Error", subTitle: "Network Connection Unavailable", circleIconImage: UIImage(named: "EuroCupIcon"))
+            }
+        }
+        
+        manager?.startListening()
+        return manager!
     }()
     
     

@@ -92,6 +92,12 @@
                                             <outlet property="passwordTextField" destination="RaI-kT-OAV" id="7ui-KW-daD"/>
                                         </connections>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v1.0.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I21-Vr-nxO">
+                                        <rect key="frame" x="282" y="326" width="35" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -99,9 +105,11 @@
                                     <constraint firstItem="jSl-9n-n56" firstAttribute="leading" secondItem="Nmc-au-2az" secondAttribute="leading" id="BMD-wL-uKk"/>
                                     <constraint firstAttribute="bottom" secondItem="jSl-9n-n56" secondAttribute="bottom" id="BXe-4I-ucF"/>
                                     <constraint firstAttribute="trailing" secondItem="AUa-qA-wFF" secondAttribute="trailing" constant="35" id="LVu-Yg-osS"/>
+                                    <constraint firstItem="I21-Vr-nxO" firstAttribute="centerX" secondItem="Nmc-au-2az" secondAttribute="centerX" id="Nhj-QZ-M7Y"/>
                                     <constraint firstItem="AUa-qA-wFF" firstAttribute="leading" secondItem="Nmc-au-2az" secondAttribute="leading" constant="35" id="W5b-dK-UuM"/>
                                     <constraint firstItem="aqW-mv-SV8" firstAttribute="top" secondItem="Nmc-au-2az" secondAttribute="top" constant="44" id="WyZ-KI-cjQ"/>
                                     <constraint firstItem="Kgs-wD-kDD" firstAttribute="top" secondItem="aqW-mv-SV8" secondAttribute="bottom" constant="15" id="dV1-a5-wnd"/>
+                                    <constraint firstItem="I21-Vr-nxO" firstAttribute="top" secondItem="Rii-o4-e5W" secondAttribute="bottom" constant="8" id="e5G-B2-VGz"/>
                                     <constraint firstItem="AUa-qA-wFF" firstAttribute="top" secondItem="Rii-o4-e5W" secondAttribute="bottom" constant="75" id="g4l-dp-Su8"/>
                                     <constraint firstItem="Rii-o4-e5W" firstAttribute="top" secondItem="Kgs-wD-kDD" secondAttribute="bottom" constant="15" id="g8f-Ul-cCE"/>
                                     <constraint firstItem="aqW-mv-SV8" firstAttribute="centerX" secondItem="Nmc-au-2az" secondAttribute="centerX" id="jDz-0g-6ZJ"/>
@@ -123,6 +131,7 @@
                     </view>
                     <connections>
                         <outlet property="loginFieldsView" destination="AUa-qA-wFF" id="WRl-Qv-wwU"/>
+                        <outlet property="versionLabel" destination="I21-Vr-nxO" id="LzM-bB-M95"/>
                         <segue destination="cYi-oa-FkP" kind="presentation" identifier="segueSuccessfulLogin" id="WJA-Bb-x3X"/>
                     </connections>
                 </viewController>
@@ -142,7 +151,7 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="6cj-7z-ND5">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="6cj-7z-ND5">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLU-Fo-bMd" userLabel="ContentView">
@@ -339,11 +348,48 @@
                     <navigationItem key="navigationItem" id="h5n-Rx-jgX"/>
                     <connections>
                         <segue destination="DQV-co-UvZ" kind="presentation" identifier="segueHelp" id="by8-XA-9hx"/>
+                        <segue destination="xzz-dK-RrV" kind="show" identifier="teamDetailsSegue" id="7oO-gz-2ED"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IkY-57-Fuc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3160" y="-541"/>
+        </scene>
+        <!--Player Information-->
+        <scene sceneID="Bvu-8b-nw5">
+            <objects>
+                <tableViewController title="Player Information" id="xzz-dK-RrV" customClass="TeamDetailsViewController" customModule="SoccerPool" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="d3V-Az-rWh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeamFlagTableViewCell" rowHeight="114" id="NXt-Y3-D5T" customClass="TeamFlagTableViewCell">
+                                <rect key="frame" x="0.0" y="92" width="600" height="114"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NXt-Y3-D5T" id="a8X-I9-J7v">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="114"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeamTableViewCell" rowHeight="137" id="FPJ-af-qGj" customClass="TeamTableViewCell" customModule="SoccerPool" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="206" width="600" height="137"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FPJ-af-qGj" id="gKi-7j-pH3">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="137"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="xzz-dK-RrV" id="k7I-33-WFE"/>
+                            <outlet property="delegate" destination="xzz-dK-RrV" id="CaQ-Id-no5"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n2L-IF-iHG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4115" y="-799"/>
         </scene>
         <!--Standings-->
         <scene sceneID="hIQ-D0-Qgf">

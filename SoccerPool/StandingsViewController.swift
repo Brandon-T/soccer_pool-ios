@@ -12,13 +12,16 @@ import SCLAlertView
 
 class StandingsViewController : BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, BarGraphViewDelegate {
     
-    let emptyBarHeight: Double = 0.5
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var barGraph: BarGraphView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
     
+    
     var pools = [[Pool]]()
+    let emptyBarHeight: Double = 0.5
+    var scrollCompletion: (() -> Void)? = nil
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -29,6 +32,8 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
             guard error == nil else {
                 return
             }
+            
+            self.pools.removeAll()
             
             if let poolArray = json?["data"] as? [[String: AnyObject]] {
                 
@@ -54,9 +59,15 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
                 
                 //Source for bar graph
                 self.barGraph.graphData.removeAll()
+                self.barGraph.graphBarColors.removeAll()
                 
-                for pool in pools {
-                    self.barGraph.graphData[pool.name!] = Int(pool.points!) > 0 ? pool.points! : self.emptyBarHeight
+                for i in 0..<pools.count {
+                    let pool = pools[i]
+                    
+                    if pool.name != nil {
+                        self.barGraph.graphBarColors[pool.name!] = self.generateColour(UInt(i), total: UInt(pools.count))
+                        self.barGraph.graphData[pool.name!] = Double(pool.points) > 0 ? Double(pool.points) : self.emptyBarHeight
+                    }
                 }
                 
                 //Update UI.
@@ -79,6 +90,10 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
         super.viewDidLayoutSubviews()
         
         self.collectionViewHeightConstraint.constant = self.collectionView.contentSize.height
+    }
+    
+    func generateColour(idx: UInt, total: UInt) -> UIColor {
+        return UIColor(hue: CGFloat(idx) / CGFloat(total), saturation: 0.9, brightness: 0.9, alpha: 1.0)
     }
     
     func initControls() -> Void {
@@ -138,12 +153,19 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
         
         let pool = self.pools[indexPath.section][indexPath.row]
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("StandingsUserCellID", forIndexPath: indexPath) as! StandingsUserCollectionViewCell
+        if pool.name != nil {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("StandingsUserCellID", forIndexPath: indexPath) as! StandingsUserCollectionViewCell
         
-        cell.userPhotoView.loadImage(pool.photo)
-        cell.userNameLabel.text = pool.name
-        cell.userPointsLabel.text = "\(pool.points ?? "0") Pts"
-        return cell
+            let colour = self.barGraph.graphBarColors[pool.name!]
+            cell.userPhotoView.loadImage(pool.photo)
+            cell.userNameLabel.text = pool.name
+            cell.userNameLabel.textColor = colour
+            cell.userPointsLabel.text = "\(pool.points) Pts"
+            cell.userPointsLabel.textColor = colour
+            return cell
+        }
+        
+        return collectionView.dequeueReusableCellWithReuseIdentifier("StandingsUserCellID", forIndexPath: indexPath)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -151,13 +173,108 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
         if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
             let numberOfItemsInSection = CGFloat(self.collectionView(collectionView, numberOfItemsInSection: 0))
             let width = collectionView.bounds.width - ((layout.sectionInset.left + layout.sectionInset.right) * (numberOfItemsInSection - 1))
-            return CGSizeMake(width / numberOfItemsInSection, 150);
+            return CGSizeMake(width / numberOfItemsInSection, 180);
         }
         
         return CGSizeZero
     }
     
-    func barSelected(barGraph: BarGraphView, index: UInt) -> Void {
+    
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if self.scrollCompletion != nil {
+            return
+        }
         
+        var index: Int = 0
+        let frame = self.barGraph.frame
+        let visibleFrame = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.size.width, height: frame.origin.y + 5)
+        
+        let animation = { (index: Int) -> Void in
+            if CGRectIntersectsRect(self.scrollView.bounds, visibleFrame) {
+                self.barGraph.scrollToIndex(index, completion: {
+                    self.barGraph.pulseColour(index)
+                })
+            }
+            else {
+                self.scrollCompletion = {
+                    self.barGraph.scrollToIndex(index, completion: {
+                        self.barGraph.pulseColour(index)
+                    })
+                }
+                
+                self.scrollView.delegate = self
+                self.scrollView.scrollRectToVisible(self.barGraph.bounds, animated: true)
+            }
+        }
+        
+        
+        for section in 0..<self.pools.count {
+            for row in 0..<self.pools[section].count {
+                if section == indexPath.section && row == indexPath.row {
+                    animation(index)
+                    return
+                }
+                
+                index += 1
+            }
+        }
+    }
+    
+    func barSelected(barGraph: BarGraphView, index: UInt) -> Void {
+        if self.scrollCompletion != nil {
+            return
+        }
+        
+        var idx = 0
+        
+        for section in 0..<self.pools.count {
+            for item in 0..<self.pools[section].count {
+                if UInt(idx) == index {
+                    let indexPath = NSIndexPath(forItem: item, inSection: section)
+                    let attributes = self.collectionView.layoutAttributesForItemAtIndexPath(indexPath);
+                    
+                    if let attributes = attributes {
+                        var frame = attributes.frame
+                        frame.origin.y -= self.barGraph.frame.size.height
+                        frame = self.collectionView.convertRect(attributes.frame, toView: self.scrollView)
+
+                        let visibleFrame = CGRect(x: frame.origin.x, y: frame.origin.y + frame.size.height - 5, width: frame.size.width, height: frame.size.height)
+                        
+                        if CGRectIntersectsRect(self.scrollView.bounds, visibleFrame) {
+                            let pool = self.pools[section][item]
+                            let cell = self.collectionView.cellForItemAtIndexPath(indexPath) as! StandingsUserCollectionViewCell
+                            cell.pulseColour(barGraph.graphBarColors[pool.name!]!)
+                        }
+                        else {
+                            self.scrollCompletion = { () -> Void in
+                                let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
+                                
+                                dispatch_after(delayTime, dispatch_get_main_queue(), {
+                                    let pool = self.pools[section][item]
+                                    let cell = self.collectionView.cellForItemAtIndexPath(indexPath) as! StandingsUserCollectionViewCell
+                                    cell.pulseColour(barGraph.graphBarColors[pool.name!]!)
+                                })
+                            }
+                            
+                            self.scrollView.delegate = self
+                            self.scrollView.scrollRectToVisible(frame, animated: true)
+                        }
+                        
+                        return
+                    }
+                }
+                
+                idx += 1
+            }
+        }
+    }
+    
+    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+        if self.scrollCompletion != nil {
+            scrollView.delegate = nil
+            self.scrollCompletion!()
+            self.scrollCompletion = nil
+        }
     }
 }

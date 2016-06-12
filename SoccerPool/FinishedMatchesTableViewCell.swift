@@ -21,6 +21,7 @@ class FinishedMatchesTableViewCell: UITableViewCell {
     @IBOutlet weak var finalScoreLabel: UILabel!
     @IBOutlet weak var cornerView: UIView!
     @IBOutlet weak var cornerLabel: UILabel!
+    @IBOutlet weak var gameTimeLabel: UILabel!
     
     
     override func awakeFromNib() {

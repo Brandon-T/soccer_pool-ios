@@ -184,6 +184,7 @@
                 <outlet property="cornerLabel" destination="FH6-gj-kdv" id="iZf-k8-esm"/>
                 <outlet property="cornerView" destination="3Gf-Qs-STX" id="ZY9-q0-P6Y"/>
                 <outlet property="finalScoreLabel" destination="1Za-lg-ZVG" id="4Um-EC-Tar"/>
+                <outlet property="gameTimeLabel" destination="Vmt-tH-AJJ" id="4oD-da-5cO"/>
                 <outlet property="homeTeamFlagImageView" destination="0My-L1-68P" id="wqF-Ad-t7c"/>
                 <outlet property="homeTeamNameLabel" destination="Yex-yU-uX5" id="NFp-WJ-VSa"/>
                 <outlet property="homeTeamScoreLabel" destination="DVr-8I-TB8" id="v7A-wD-pAF"/>

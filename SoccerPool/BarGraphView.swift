@@ -33,7 +33,8 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
         }
     }
     
-    let graphData = OrderedDictionary<String, AnyObject>()
+    let graphData = OrderedDictionary<String, Double>()
+    var graphBarColors = OrderedDictionary<String, UIColor>()
     
     
     
@@ -62,7 +63,7 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
         let xMin = 0.0
         let yMin = 0.0
         let xMax = 4.0
-        let yMax = 10.0
+        let yMax = self.calculateYMax()
         let barOffset = barWidth / 2.0
         let backgroundColour = CPTColor(CGColor: UIColor.clearColor().CGColor)
         
@@ -188,18 +189,8 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
     }
     
     func barFillForBarPlot(barPlot: CPTBarPlot, recordIndex idx: UInt) -> CPTFill? {
-        func getBarColor(idx: UInt) -> CPTColor {
-            /*let randomRed:CGFloat = CGFloat(arc4random()) / CGFloat(UInt32.max)
-            let randomGreen:CGFloat = CGFloat(arc4random()) / CGFloat(UInt32.max)
-            let randomBlue:CGFloat = CGFloat(arc4random()) / CGFloat(UInt32.max)
-            return CPTColor(componentRed: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)*/
-            
-            let colour: UIColor = UIColor(hue: CGFloat(idx) / CGFloat(self.graphData.count), saturation: 0.9, brightness: 0.9, alpha: 1.0)
-            return CPTColor(CGColor: colour.CGColor)
-        }
-        
         if (barPlot.identifier as! String) == "BarGraphPlot" {
-            return CPTFill(color: getBarColor(idx))
+            return CPTFill(color: CPTColor(CGColor: self.graphBarColors[Int(idx)]!.CGColor))
         }
         return CPTFill(color: CPTColor.whiteColor())
     }
@@ -214,7 +205,7 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
             return CPTPlotRange(locationDecimal: newRange.locationDecimal, lengthDecimal: newRange.lengthDecimal)
         }
         
-        return CPTPlotRange(locationDecimal: CPTDecimalFromDouble(0.0), lengthDecimal: CPTDecimalFromDouble(10.0))
+        return CPTPlotRange(locationDecimal: CPTDecimalFromDouble(0.0), lengthDecimal: CPTDecimalFromDouble(self.calculateYMax()))
     }
     
     func plotSpace(space: CPTPlotSpace, willDisplaceBy proposedDisplacementVector: CGPoint) -> CGPoint {
@@ -231,7 +222,7 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
         let xMin = 0.0
         let yMin = 0.0
         let xMax = 4.0
-        let yMax = 10.0
+        let yMax = self.calculateYMax()
         
         let plotSpace = self.hostedGraph?.defaultPlotSpace as! CPTXYPlotSpace
         plotSpace.xRange = CPTPlotRange(locationDecimal: CPTDecimalFromDouble(xMin), lengthDecimal: CPTDecimalFromDouble(xMax - xMin))
@@ -239,5 +230,13 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
         plotSpace.globalXRange = CPTPlotRange(locationDecimal: CPTDecimalFromDouble(xMin), lengthDecimal: CPTDecimalFromDouble(Double(self.graphData.count) <= xMax ? xMax : Double(self.graphData.count) - (1.0 - barWidth)))
         
         self.hostedGraph?.reloadData()
+    }
+    
+    func calculateYMax() -> Double {
+        let sortedValues = self.graphData.values.values.sort { (first, second) -> Bool in
+            return UInt(first) > UInt(second)
+        }
+        
+        return 10 * ceil((Double(sortedValues.first ?? 0) / 10.0) + 0.5)
     }
 }
