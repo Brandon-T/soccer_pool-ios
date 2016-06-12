@@ -9,30 +9,6 @@
 import Foundation
 import Alamofire
 
-class FootballPlayer : NSObject, Serializeable {
-    var position: String?
-    var birth_date: String?
-    var image: String?
-    var birth_place: String?
-    var nationality: String?
-    var name: String?
-    var height: String?
-    var nickname: String?
-    var goals: Int?
-    var full_name: String?
-    var weight: String?
-    var team: String?
-    var TA: String?
-    var TR: String?
-    var jersey_number: String?
-    
-    
-    @objc override internal func propertyForName(name: String) -> String {
-        let dict = ["position": "demarcacion", "birth_date": "fecha_nacimiento", "image": "imagen", "birth_place": "lugar_nacimiento", "nationality": "nacionalidad", "name": "nombre", "height": "altura", "nickname": "apodo", "goals": "goles", "full_name": "nombre_completo", "weight": "peso", "team": "seleccion", "TA": "TA", "TR": "TR", "jersey_number": "dorsal"]
-        return dict[name] ?? name
-    }
-}
-
 class FootballAPI {
     static func getPlayers(teamName: String, completion: (players: [FootballPlayer]?, error: NSError?) -> Void) -> Void {
         FootballAPI.request(FootballRouter.Players(teamName)) { (json, error) in
@@ -47,6 +23,22 @@ class FootballAPI {
             }
         }
     }
+    
+    static func getStandingsInfo(completion: (standingsInfo: FootballStanding?, error: NSError?) -> Void) -> Void {
+        FootballAPI.request(FootballRouter.League(424)) { (json, error) in
+            guard error == nil else {
+                completion(standingsInfo: nil, error: error)
+                return
+            }
+            
+            if let dict = json!["standings"] as? [String: AnyObject] {
+                let standingInfo = FootballStanding.fromJSON(dict)
+                completion(standingsInfo: standingInfo, error: nil)
+            }
+        }
+    }
+    
+    
     
     static func request(router: FootballRouter, completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
         requestManager.request(router)
@@ -82,30 +74,34 @@ class FootballAPI {
     enum FootballRouter: URLRequestConvertible {
         
         case Players(String)
+        case League(Int)
         
         
-        var route: (method: Alamofire.Method, path: String, parameters: [String : AnyObject]?) {
+        var route: (method: Alamofire.Method, path: String, parameters: [String : AnyObject]?, headers: [String: AnyObject]?) {
             switch self {
             case .Players(let teamName):
                 let teams = ["Albania":1, "Austria":21, "Belgium":17, "Croatia":13, "Czech Republic":14, "England":5, "France":2, "Germany":9, "Hungary":22, "Iceland":23, "Republic of Ireland":19, "Italy":18, "Northern Ireland":10, "Poland":11, "Portugal":24, "Romania":3, "Russia":6, "Slovakia":7, "Spain":15, "Sweden":20, "Switzerland":4, "Turkey":16, "Ukraine":12, "Wales":8]
+                return (.GET, "/jugadores_equipo_json_generator.php", ["equipo":teams[teamName]!, "lang":"en"], ["User-Agent": "Euro%202016/2.05 CFNetwork/758.4.3 Darwin/15.5.0"])
                 
-                return (.GET, "/jugadores_equipo_json_generator.php", ["equipo":teams[teamName]!, "lang":"en"])
+            case .League(let leagueID):
+                return (.GET, "/soccerseasons/\(leagueID)/leagueTable", nil, ["X-Auth-Token": "8e4fb54a4f0e4717ad1e45e2abc2d2f6"])
             }
         }
         
         
-        
-        
-        static let baseURL = NSURL(string: "http://europecup2016.com")!
-
         var URL: NSURL {
-            return FootballRouter.baseURL.URLByAppendingPathComponent(route.path)
+            switch self {
+            case .Players:
+                return NSURL(string: "http://europecup2016.com")!.URLByAppendingPathComponent(route.path)
+                
+            case .League:
+                return NSURL(string: "http://api.football-data.org/v1")!.URLByAppendingPathComponent(route.path)
+            }
         }
         
         var URLRequest: NSMutableURLRequest {
             let request = NSMutableURLRequest(URL: URL)
             request.HTTPMethod = route.method.rawValue
-            request.addValue("Euro%202016/2.05 CFNetwork/758.4.3 Darwin/15.5.0", forHTTPHeaderField: "User-Agent")
             return ParameterEncoding.URL.encode(request, parameters: route.parameters).0
         }
     }

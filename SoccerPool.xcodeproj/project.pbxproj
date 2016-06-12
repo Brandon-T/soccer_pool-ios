@@ -42,6 +42,8 @@
 		CA3B0A491D0D1DB7000DD8E8 /* TeamTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3B0A471D0D1DB7000DD8E8 /* TeamTableViewCell.xib */; };
 		CA3B0A4C1D0D1DFD000DD8E8 /* TeamFlagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B0A4A1D0D1DFD000DD8E8 /* TeamFlagTableViewCell.swift */; };
 		CA3B0A4D1D0D1DFD000DD8E8 /* TeamFlagTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA3B0A4B1D0D1DFD000DD8E8 /* TeamFlagTableViewCell.xib */; };
+		CA53561C1D0DE4870063C613 /* FootballPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA53561B1D0DE4870063C613 /* FootballPlayer.swift */; };
+		CA5356201D0DE6530063C613 /* FootballStanding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA53561F1D0DE6530063C613 /* FootballStanding.swift */; };
 		CA5F53D21D0658D7007D7C3A /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F53D11D0658D7007D7C3A /* BaseModel.swift */; };
 		CA5FB2F51D013E0E00150762 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FB2F41D013E0E00150762 /* LoginViewController.swift */; };
 		CA5FB2F91D013E8700150762 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FB2F81D013E8700150762 /* BaseViewController.swift */; };
@@ -95,6 +97,8 @@
 		CA3B0A471D0D1DB7000DD8E8 /* TeamTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamTableViewCell.xib; sourceTree = "<group>"; };
 		CA3B0A4A1D0D1DFD000DD8E8 /* TeamFlagTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamFlagTableViewCell.swift; sourceTree = "<group>"; };
 		CA3B0A4B1D0D1DFD000DD8E8 /* TeamFlagTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamFlagTableViewCell.xib; sourceTree = "<group>"; };
+		CA53561B1D0DE4870063C613 /* FootballPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FootballPlayer.swift; sourceTree = "<group>"; };
+		CA53561F1D0DE6530063C613 /* FootballStanding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FootballStanding.swift; sourceTree = "<group>"; };
 		CA5F53CF1D065773007D7C3A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CA5F53D11D0658D7007D7C3A /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		CA5FB2F41D013E0E00150762 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -319,6 +323,15 @@
 			name = TeamTableViewCells;
 			sourceTree = "<group>";
 		};
+		CA53561A1D0DE4780063C613 /* FootballAPI */ = {
+			isa = PBXGroup;
+			children = (
+				CA53561B1D0DE4870063C613 /* FootballPlayer.swift */,
+				CA53561F1D0DE6530063C613 /* FootballStanding.swift */,
+			);
+			name = FootballAPI;
+			sourceTree = "<group>";
+		};
 		CABB72C2DF6493E03D6C997F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +344,7 @@
 		CAE147FE1D04A93D000C67A3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CA53561A1D0DE4780063C613 /* FootballAPI */,
 				5E286E141D05BA0A00838831 /* SoccerPool.xcdatamodeld */,
 				CAE147FF1D04A95E000C67A3 /* Pool.swift */,
 				CAE148011D04B06B000C67A3 /* Game.swift */,
@@ -545,12 +559,14 @@
 				5ED215B01D0C5B810088EC94 /* Int+Utilities.swift in Sources */,
 				CAE148061D04B0F8000C67A3 /* Prediction.swift in Sources */,
 				5EB458B81D0BB803003217BD /* UpgradeManager.swift in Sources */,
+				CA5356201D0DE6530063C613 /* FootballStanding.swift in Sources */,
 				2F615C4B1D0667E600B1C484 /* BaseNavigationController.swift in Sources */,
 				CA3B0A431D0D1C47000DD8E8 /* TeamDetailsViewController.swift in Sources */,
 				CA5FB2F51D013E0E00150762 /* LoginViewController.swift in Sources */,
 				CAD2AC3C1D0698F5004AC26E /* OrderedDictionary.swift in Sources */,
 				2F8B270F1D091D08002C0B46 /* FinishedMatchesTableViewCell.swift in Sources */,
 				5E53F4831D09E28E004CB62E /* NSDate+Utilities.swift in Sources */,
+				CA53561C1D0DE4870063C613 /* FootballPlayer.swift in Sources */,
 				5E15629F1D08C6AB001F50A2 /* StandingsUserCollectionViewCell.swift in Sources */,
 				CAE7836E1D013B7400492BBD /* AppDelegate.swift in Sources */,
 				2F7B9F631D04B822005BEAB8 /* LoginFieldsView.swift in Sources */,
