@@ -12,12 +12,19 @@ class FootballStandingGroup: NSObject, Serializeable {
     var group: String!
     var rank: Int = -1
     var team: String!
+    var image: String!
     var teamId: Int = 0
     var playedGames: Int = 0
     var points: Int = 0
     var goals: Int = 0
     var goalsAgainst: Int = 0
     var goalDifference: Int = 0
+
+    @objc override class func fromJSON(json: [NSObject : AnyObject]!) -> FootballStandingGroup! {
+        let instance = super.fromJSON(json) as! FootballStandingGroup
+        instance.image = FootballAPI.getImageURL(instance.team)
+        return instance
+    }
 }
 
 class FootballStanding : NSObject, Serializeable {

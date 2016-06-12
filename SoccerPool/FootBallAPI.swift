@@ -38,7 +38,9 @@ class FootballAPI {
         }
     }
     
-    
+    static func getImageURL(teamName: String) -> String {
+        return "http://104.131.118.14/images/\(teamName).png"
+    }
     
     static func request(router: FootballRouter, completion: (json: [String: AnyObject]?, error: NSError?) -> Void) -> Void {
         requestManager.request(router)
