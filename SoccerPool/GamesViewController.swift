@@ -450,8 +450,10 @@ class GamesViewController : UITableViewController {
         }
     }
     
+    //Because Android doesn't have it..
+    
     func onHomeTapped(tapGesture: UITapGestureRecognizer) -> Void {
-        let indexPath: NSIndexPath = tapGesture.getObject("indexPath")!
+        /*let indexPath: NSIndexPath = tapGesture.getObject("indexPath")!
         var game: Game?
         
         switch indexPath.section {
@@ -479,11 +481,11 @@ class GamesViewController : UITableViewController {
                     self.performSegueWithIdentifier("teamDetailsSegue", sender: info)
                 }
             }
-        }
+        }*/
     }
     
     func onAwayTapped(tapGesture: UITapGestureRecognizer) -> Void {
-        let indexPath: NSIndexPath = tapGesture.getObject("indexPath")!
+        /*let indexPath: NSIndexPath = tapGesture.getObject("indexPath")!
         var game: Game?
         
         switch indexPath.section {
@@ -511,7 +513,7 @@ class GamesViewController : UITableViewController {
                     self.performSegueWithIdentifier("teamDetailsSegue", sender: info)
                 }
             }
-        }
+        }*/
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
