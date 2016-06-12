@@ -26,7 +26,7 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
-        ServiceLayer.getPool { [unowned self](json, error) in
+        ServiceLayer.getPool { (json, error) in
             guard error == nil else {
                 return
             }
@@ -61,8 +61,11 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
                 
                 for i in 0..<pools.count {
                     let pool = pools[i]
-                    self.barGraph.graphBarColors[pool.name!] = self.generateColour(UInt(i), total: UInt(pools.count))
-                    self.barGraph.graphData[pool.name!] = Double(pool.points) > 0 ? Double(pool.points) : self.emptyBarHeight
+                    
+                    if pool.name != nil {
+                        self.barGraph.graphBarColors[pool.name!] = self.generateColour(UInt(i), total: UInt(pools.count))
+                        self.barGraph.graphData[pool.name!] = Double(pool.points) > 0 ? Double(pool.points) : self.emptyBarHeight
+                    }
                 }
                 
                 //Update UI.
@@ -147,16 +150,20 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let pool = self.pools[indexPath.section][indexPath.row]
-        let colour = self.barGraph.graphBarColors[pool.name!]
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("StandingsUserCellID", forIndexPath: indexPath) as! StandingsUserCollectionViewCell
+        if pool.name != nil {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("StandingsUserCellID", forIndexPath: indexPath) as! StandingsUserCollectionViewCell
         
-        cell.userPhotoView.loadImage(pool.photo)
-        cell.userNameLabel.text = pool.name
-        cell.userNameLabel.textColor = colour
-        cell.userPointsLabel.text = "\(pool.points) Pts"
-        cell.userPointsLabel.textColor = colour
-        return cell
+            let colour = self.barGraph.graphBarColors[pool.name!]
+            cell.userPhotoView.loadImage(pool.photo)
+            cell.userNameLabel.text = pool.name
+            cell.userNameLabel.textColor = colour
+            cell.userPointsLabel.text = "\(pool.points) Pts"
+            cell.userPointsLabel.textColor = colour
+            return cell
+        }
+        
+        return collectionView.dequeueReusableCellWithReuseIdentifier("StandingsUserCellID", forIndexPath: indexPath)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -181,7 +188,7 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
         let frame = self.barGraph.frame
         let visibleFrame = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.size.width, height: frame.origin.y + 5)
         
-        let animation = { [unowned self](index: Int) -> Void in
+        let animation = { (index: Int) -> Void in
             if CGRectIntersectsRect(self.scrollView.bounds, visibleFrame) {
                 self.barGraph.scrollToIndex(index, completion: {
                     self.barGraph.pulseColour(index)
@@ -233,16 +240,12 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
                         let visibleFrame = CGRect(x: frame.origin.x, y: frame.origin.y + frame.size.height - 5, width: frame.size.width, height: frame.size.height)
                         
                         if CGRectIntersectsRect(self.scrollView.bounds, visibleFrame) {
-                            let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.0 * Double(NSEC_PER_SEC)))
-                            
-                            dispatch_after(delayTime, dispatch_get_main_queue(), {
-                                let pool = self.pools[section][item]
-                                let cell = self.collectionView.cellForItemAtIndexPath(indexPath) as! StandingsUserCollectionViewCell
-                                cell.pulseColour(barGraph.graphBarColors[pool.name!]!)
-                            })
+                            let pool = self.pools[section][item]
+                            let cell = self.collectionView.cellForItemAtIndexPath(indexPath) as! StandingsUserCollectionViewCell
+                            cell.pulseColour(barGraph.graphBarColors[pool.name!]!)
                         }
                         else {
-                            self.scrollCompletion = { [unowned self]() -> Void in
+                            self.scrollCompletion = { () -> Void in
                                 let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
                                 
                                 dispatch_after(delayTime, dispatch_get_main_queue(), {
