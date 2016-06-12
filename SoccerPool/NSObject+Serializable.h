@@ -16,6 +16,9 @@
 
 
 @interface NSObject (Serializable)
+
+- (NSString *)propertyForName:(NSString *)name;
+
 + (instancetype)fromJSON:(NSDictionary *)json;
 + (NSArray<Serializeable> *)fromJSONArray:(NSArray<NSDictionary<NSString *, id> *> *)json;
 - (NSDictionary *)toJSON;

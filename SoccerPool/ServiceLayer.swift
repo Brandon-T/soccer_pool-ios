@@ -118,6 +118,7 @@ class ServiceLayer {
     //Private:
     
     static let environment: Environment = .Live
+    static let footballToken: String = "2c58da639181458aa51069c8fe2ad767"
     
     
     

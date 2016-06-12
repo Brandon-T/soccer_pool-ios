@@ -220,6 +220,22 @@ class GamesViewController : UITableViewController {
                     cell.finalScoreLabel.text = "Current Score: \(game.homeGoals) - \(game.awayGoals)"
                     cell.cornerLabel.text = "+\(game.prediction!.points)"
                     cell.gameTimeLabel.text = "Playing Right Now! -- Time Left: \(timeLeft)"
+                    
+                    let homeRecognizer = UITapGestureRecognizer(target: self, action: #selector(onHomeTapped))
+                    homeRecognizer.numberOfTapsRequired = 1
+                    homeRecognizer.numberOfTouchesRequired = 1
+                    homeRecognizer.setObject(indexPath, key: "indexPath")
+                    
+                    cell.homeTeamFlagImageView.addGestureRecognizer(homeRecognizer)
+                    cell.homeTeamFlagImageView.userInteractionEnabled = true
+                    
+                    let awayRecognizer = UITapGestureRecognizer(target: self, action: #selector(onAwayTapped))
+                    awayRecognizer.numberOfTapsRequired = 1
+                    awayRecognizer.numberOfTouchesRequired = 1
+                    awayRecognizer.setObject(indexPath, key: "indexPath")
+                    
+                    cell.awayTeamFlagImageView.addGestureRecognizer(awayRecognizer)
+                    cell.awayTeamFlagImageView.userInteractionEnabled = true
                 }
             }
             else {
@@ -235,6 +251,35 @@ class GamesViewController : UITableViewController {
                     cell.homeTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.homeGoals)" : "-")"
                     cell.awayTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.awayGoals)" : "-")"
                     cell.gameTimeLabel.text = game.startTime?.format("dd MMM yyyy, HH:mm")
+                    
+                    if let recognizers = cell.homeTeamFlagImageView.gestureRecognizers {
+                        for recognizer in recognizers {
+                            cell.homeTeamFlagImageView.removeGestureRecognizer(recognizer)
+                        }
+                    }
+                    
+                    if let recognizers = cell.awayTeamFlagImageView.gestureRecognizers {
+                        for recognizer in recognizers {
+                            cell.awayTeamFlagImageView.removeGestureRecognizer(recognizer)
+                        }
+                    }
+                    
+                    
+                    let homeRecognizer = UITapGestureRecognizer(target: self, action: #selector(onHomeTapped))
+                    homeRecognizer.numberOfTapsRequired = 1
+                    homeRecognizer.numberOfTouchesRequired = 1
+                    homeRecognizer.setObject(indexPath, key: "indexPath")
+                    
+                    cell.homeTeamFlagImageView.addGestureRecognizer(homeRecognizer)
+                    cell.homeTeamFlagImageView.userInteractionEnabled = true
+                    
+                    let awayRecognizer = UITapGestureRecognizer(target: self, action: #selector(onAwayTapped))
+                    awayRecognizer.numberOfTapsRequired = 1
+                    awayRecognizer.numberOfTouchesRequired = 1
+                    awayRecognizer.setObject(indexPath, key: "indexPath")
+                    
+                    cell.awayTeamFlagImageView.addGestureRecognizer(awayRecognizer)
+                    cell.awayTeamFlagImageView.userInteractionEnabled = true
                 }
             }
         
@@ -252,6 +297,35 @@ class GamesViewController : UITableViewController {
                     cell.homeTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.homeGoals)" : "-")"
                     cell.awayTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.awayGoals)" : "-")"
                     cell.gameTimeLabel.text = game.startTime?.format("dd MMM yyyy, HH:mm")
+                    
+                    if let recognizers = cell.homeTeamFlagImageView.gestureRecognizers {
+                        for recognizer in recognizers {
+                            cell.homeTeamFlagImageView.removeGestureRecognizer(recognizer)
+                        }
+                    }
+                    
+                    if let recognizers = cell.awayTeamFlagImageView.gestureRecognizers {
+                        for recognizer in recognizers {
+                            cell.awayTeamFlagImageView.removeGestureRecognizer(recognizer)
+                        }
+                    }
+                    
+                    
+                    let homeRecognizer = UITapGestureRecognizer(target: self, action: #selector(onHomeTapped))
+                    homeRecognizer.numberOfTapsRequired = 1
+                    homeRecognizer.numberOfTouchesRequired = 1
+                    homeRecognizer.setObject(indexPath, key: "indexPath")
+                    
+                    cell.homeTeamFlagImageView.addGestureRecognizer(homeRecognizer)
+                    cell.homeTeamFlagImageView.userInteractionEnabled = true
+                    
+                    let awayRecognizer = UITapGestureRecognizer(target: self, action: #selector(onAwayTapped))
+                    awayRecognizer.numberOfTapsRequired = 1
+                    awayRecognizer.numberOfTouchesRequired = 1
+                    awayRecognizer.setObject(indexPath, key: "indexPath")
+                    
+                    cell.awayTeamFlagImageView.addGestureRecognizer(awayRecognizer)
+                    cell.awayTeamFlagImageView.userInteractionEnabled = true
                 }
             }
             else {
@@ -262,7 +336,7 @@ class GamesViewController : UITableViewController {
             cell = tableView.dequeueReusableCellWithIdentifier("FinishedMatchesCell", forIndexPath: indexPath) as! FinishedMatchesTableViewCell
             if let cell = cell as? FinishedMatchesTableViewCell {
                 let game = self.completedGames[indexPath.row]
-                
+
                 cell.homeTeamNameLabel.text = game.homeTeam?.name
                 cell.awayTeamNameLabel.text = game.awayTeam?.name
                 cell.homeTeamFlagImageView.loadImage(game.homeTeam?.image)
@@ -272,6 +346,35 @@ class GamesViewController : UITableViewController {
                 cell.finalScoreLabel.text = "Final Score: \(game.homeGoals) - \(game.awayGoals)"
                 cell.cornerLabel.text = "+\(game.prediction!.points)"
                 cell.gameTimeLabel.text = "Completed On:   \(game.startTime!.dateByAddingTimeInterval(2 * 60 * 60).format("dd MMM yyyy, HH:mm"))"
+                
+                if let recognizers = cell.homeTeamFlagImageView.gestureRecognizers {
+                    for recognizer in recognizers {
+                        cell.homeTeamFlagImageView.removeGestureRecognizer(recognizer)
+                    }
+                }
+                
+                if let recognizers = cell.awayTeamFlagImageView.gestureRecognizers {
+                    for recognizer in recognizers {
+                        cell.awayTeamFlagImageView.removeGestureRecognizer(recognizer)
+                    }
+                }
+                
+                
+                let homeRecognizer = UITapGestureRecognizer(target: self, action: #selector(onHomeTapped))
+                homeRecognizer.numberOfTapsRequired = 1
+                homeRecognizer.numberOfTouchesRequired = 1
+                homeRecognizer.setObject(indexPath, key: "indexPath")
+                
+                cell.homeTeamFlagImageView.addGestureRecognizer(homeRecognizer)
+                cell.homeTeamFlagImageView.userInteractionEnabled = true
+                
+                let awayRecognizer = UITapGestureRecognizer(target: self, action: #selector(onAwayTapped))
+                awayRecognizer.numberOfTapsRequired = 1
+                awayRecognizer.numberOfTouchesRequired = 1
+                awayRecognizer.setObject(indexPath, key: "indexPath")
+                
+                cell.awayTeamFlagImageView.addGestureRecognizer(awayRecognizer)
+                cell.awayTeamFlagImageView.userInteractionEnabled = true
             }
         }
         
@@ -281,7 +384,6 @@ class GamesViewController : UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == (self.inProgressGames.count > 0 ? 1 : 0) {
-            
             let game = self.upcomingGames[indexPath.row]
             let homeGoalsPrediction = game.prediction != nil ? game.prediction!.homeGoals : 0
             let awayGoalsPrediction = game.prediction != nil ? game.prediction!.awayGoals : 0
@@ -332,6 +434,80 @@ class GamesViewController : UITableViewController {
             }
             
             alert.showInfo("Place Bet", subTitle: "", circleIconImage: UIImage(named: "EuroCupIcon"))
+        }
+    }
+    
+    func onHomeTapped(tapGesture: UITapGestureRecognizer) -> Void {
+        let indexPath: NSIndexPath = tapGesture.getObject("indexPath")!
+        var game: Game!
+        
+        switch indexPath.section {
+        case 0:
+            if self.inProgressGames.count > 0 {
+                game = self.inProgressGames[indexPath.row]
+            }
+            else {
+                game = self.upcomingGames[indexPath.row]
+            }
+            
+        case 1:
+            if self.inProgressGames.count > 0 {
+                game = self.inProgressGames[indexPath.row]
+            }
+            
+        default:
+            game = self.completedGames[indexPath.row]
+        }
+        
+        if game.homeTeam?.name != nil {
+            FootballAPI.getPlayers(game.homeTeam!.name!) { (players, error) in
+                if error == nil {
+                    let info: Array<AnyObject> = [(game.homeTeam?.image)!, (game.homeTeam?.name)!, players!]
+                    self.performSegueWithIdentifier("teamDetailsSegue", sender: info)
+                }
+            }
+        }
+    }
+    
+    func onAwayTapped(tapGesture: UITapGestureRecognizer) -> Void {
+        let indexPath: NSIndexPath = tapGesture.getObject("indexPath")!
+        var game: Game!
+        
+        switch indexPath.section {
+        case 0:
+            if self.inProgressGames.count > 0 {
+                game = self.inProgressGames[indexPath.row]
+            }
+            else {
+                game = self.upcomingGames[indexPath.row]
+            }
+            
+        case 1:
+            if self.inProgressGames.count > 0 {
+                game = self.inProgressGames[indexPath.row]
+            }
+            
+        default:
+            game = self.completedGames[indexPath.row]
+        }
+        
+        if game.awayTeam?.name != nil {
+            FootballAPI.getPlayers(game.awayTeam!.name!) { (players, error) in
+                if error == nil {
+                    let info: Array<AnyObject> = [(game.awayTeam?.image)!, (game.awayTeam?.name)!, players!]
+                    self.performSegueWithIdentifier("teamDetailsSegue", sender: info)
+                }
+            }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "teamDetailsSegue" {
+            let sender = sender as! [AnyObject]
+            let vc = segue.destinationViewController as! TeamDetailsViewController
+            vc.flag = sender[0] as? String
+            vc.country = sender[1] as? String
+            vc.players = sender[2] as? [FootballPlayer]
         }
     }
 }
