@@ -92,18 +92,21 @@ class ServiceLayer {
             .responseJSON { (response) in
                 
                 func toError(json: [String: AnyObject]?) -> NSError? {
-                    let success: Bool = json?["success"] as! Bool
-                    let errorMessage: String = json?["errorMessage"] as! String
-                    let errorCode: Int = json?["errorCode"] as! Int
-                    
-                    guard success else {
-                        return NSError(domain: "com.soccer-pool.error", code: errorCode, userInfo: [NSLocalizedDescriptionKey: errorMessage])
+                    if let success = json?["success"] as? Bool, errorMessage = json?["errorMessage"] as? String, errorCode = json?["errorCode"] as? Int {
+                        guard success else {
+                            return NSError(domain: "com.soccer-pool.error", code: errorCode, userInfo: [NSLocalizedDescriptionKey: errorMessage])
+                        }
                     }
+                    
                     return nil
                 }
                 
+                guard response.result.error == nil else {
+                    completion(json: nil, error: response.result.error)
+                    return
+                }
+                
                 guard response.result.isSuccess else {
-                    print("Error: \(response.result.error)")
                     completion(json: nil, error: response.result.error ?? toError(response.result.value as? [String: AnyObject]))
                     return
                 }
