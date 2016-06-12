@@ -24,10 +24,10 @@ class GamesViewController : UITableViewController {
                 let game = self.inProgressGames[i]
                 let indexPath = NSIndexPath(forRow: i, inSection: 0)
                 
-                let secondsLeft = NSDate().timeIntervalSinceDate(game.startTime!);
+                let secondsLeft = game.cutOffTime!.timeIntervalSinceDate(NSDate());
                 let hours = secondsLeft / 3600;
-                let minutes = 60 - ((secondsLeft % 3600) / 60);
-                let seconds = 60 - ((secondsLeft % 3600) % 60);
+                let minutes = (secondsLeft % 3600) / 60;
+                let seconds = (secondsLeft % 3600) % 60;
                 let timeLeft = String.init(format: "%02zd:%02zd:%02zd", Int(hours), Int(minutes), Int(seconds))
                 
                 let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! FinishedMatchesTableViewCell
@@ -55,7 +55,7 @@ class GamesViewController : UITableViewController {
                 
                 for game in games {
                     let startTime = game.startTime!
-                    let endTime = startTime.dateByAddingTimeInterval(2 * 60 * 60)
+                    let endTime = game.cutOffTime!
                     
                     //currentDateTime < startTime
                     if currentDateTime.compare(startTime) == .OrderedDescending {
@@ -204,10 +204,10 @@ class GamesViewController : UITableViewController {
                 if let cell = cell as? FinishedMatchesTableViewCell {
                     let game = self.inProgressGames[indexPath.row]
                     
-                    let secondsLeft = NSDate().timeIntervalSinceDate(game.startTime!);
+                    let secondsLeft = game.cutOffTime!.timeIntervalSinceDate(NSDate());
                     let hours = secondsLeft / 3600;
-                    let minutes = 60 - ((secondsLeft % 3600) / 60);
-                    let seconds = 60 - ((secondsLeft % 3600) % 60);
+                    let minutes = (secondsLeft % 3600) / 60;
+                    let seconds = (secondsLeft % 3600) % 60;
                     let timeLeft = String.init(format: "%02zd:%02zd:%02zd", Int(hours), Int(minutes), Int(seconds))
                     
                     
