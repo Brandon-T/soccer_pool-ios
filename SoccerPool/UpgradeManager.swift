@@ -17,7 +17,6 @@ class UpgradeManager {
     static let upgradingURL: String = NSBundle.mainBundle().objectForInfoDictionaryKey("XIO.SoccerPool.Upgrade.URL") as! String
     
     static func checkForLatestVersion() {
-        
         if !ServiceLayer.isNetworkReachable() {
             SCLAlertView().showInfo("Error", subTitle: "Network Connection Unavailable", circleIconImage: UIImage(named: "EuroCupIcon"))
             return
@@ -36,30 +35,30 @@ class UpgradeManager {
                 for item in items {
                     if let metadata = item["metadata"] as? Dictionary<String, AnyObject> {
                         
-                        let latestVersion = metadata["bundle-version"] as! String
-
-                        if shortenedVersionNumber(currentVersion).compare(shortenedVersionNumber(latestVersion), options: .NumericSearch) == .OrderedAscending {
-                            
-                            let appearance = SCLAlertView.SCLAppearance(
-                                kTitleFont: UIFont.semiBoldSystemFont(18),
-                                kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
-                                kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
-                                showCloseButton: false
-                            )
-                            
-                            let alert: SCLAlertView = SCLAlertView(appearance: appearance)
-                            
-                            alert.addButton("Yes", action: {
-                                shouldShowUpgrade = true
-                                UIApplication.sharedApplication().openURL(NSURL(string: upgradingURL)!)
-                                exit(EXIT_SUCCESS)
-                            })
-                            
-                            alert.addButton("No", action: {
-                                shouldShowUpgrade = false
-                            })
-                            
-                            alert.showInfo("New Version Available", subTitle: "\nWould you like to download it now?\n", closeButtonTitle: nil, colorStyle: 0x3F51B5, colorTextButton: 0xFFFFFF, circleIconImage: UIImage(named: "EuroCupIcon"))
+                        if let latestVersion = metadata["bundle-version"] as? String {
+                            if shortenedVersionNumber(currentVersion).compare(shortenedVersionNumber(latestVersion), options: .NumericSearch) == .OrderedAscending {
+                                
+                                let appearance = SCLAlertView.SCLAppearance(
+                                    kTitleFont: UIFont.semiBoldSystemFont(18),
+                                    kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
+                                    kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
+                                    showCloseButton: false
+                                )
+                                
+                                let alert: SCLAlertView = SCLAlertView(appearance: appearance)
+                                
+                                alert.addButton("Yes", action: {
+                                    shouldShowUpgrade = true
+                                    UIApplication.sharedApplication().openURL(NSURL(string: upgradingURL)!)
+                                    exit(EXIT_SUCCESS)
+                                })
+                                
+                                alert.addButton("No", action: {
+                                    shouldShowUpgrade = false
+                                })
+                                
+                                alert.showInfo("New Version Available", subTitle: "\nWould you like to download it now?\n", closeButtonTitle: nil, colorStyle: 0x3F51B5, colorTextButton: 0xFFFFFF, circleIconImage: UIImage(named: "EuroCupIcon"))
+                            }
                         }
                     }
                 }
