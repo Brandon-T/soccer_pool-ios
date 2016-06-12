@@ -19,7 +19,7 @@ class GamesViewController : UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        if self.inProgressGames.count > 0 {
+        /*if self.inProgressGames.count > 0 {
             for i in 0..<self.inProgressGames.count {
                 let game = self.inProgressGames[i]
                 
@@ -36,7 +36,7 @@ class GamesViewController : UITableViewController {
                     cell.gameTimeLabel.text = "Playing Right Now! -- Time Left: \(timeLeft)"
                 }
             }
-        }
+        }*/
     }
     
     override func viewDidLoad() {
@@ -214,15 +214,16 @@ class GamesViewController : UITableViewController {
                     cell.awayTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.awayGoals)" : "-")"
                     cell.finalScoreLabel.text = "Current Score: \(game.homeGoals) - \(game.awayGoals)"
                     cell.cornerLabel.text = "+\(game.prediction!.points)"
+                    cell.gameTimeLabel.text = "Playing Right Now!"
                     
                     if game.startTime != nil {
-                        let secondsLeft = NSDate().timeIntervalSinceDate(game.startTime!);
+                        /*let secondsLeft = NSDate().timeIntervalSinceDate(game.startTime!);
                         let hours = 1 - (secondsLeft / 3600);
                         let minutes = 60 - ((secondsLeft % 3600) / 60);
                         let seconds = 60 - ((secondsLeft % 3600) % 60);
                         let timeLeft = String.init(format: "%02zd:%02zd:%02zd", Int(hours), Int(minutes), Int(seconds))
                         
-                        cell.gameTimeLabel.text = "Playing Right Now! -- Time Left: \(timeLeft)"
+                        cell.gameTimeLabel.text = "Playing Right Now! -- Time Left: \(timeLeft)"*/
                     }
                     
                     let homeRecognizer = UITapGestureRecognizer(target: self, action: #selector(onHomeTapped))
