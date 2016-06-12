@@ -16,13 +16,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Iug-tV-siE">
-                        <rect key="frame" x="15" y="15" width="163.5" height="118.5"/>
+                        <rect key="frame" x="15" y="15" width="167.5" height="118.5"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZ6-LR-lJE">
-                        <rect key="frame" x="178.5" y="15" width="163.5" height="118.5"/>
+                        <rect key="frame" x="182.5" y="15" width="167.5" height="118.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spain" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yv6-7d-hSN">
-                                <rect key="frame" x="8" y="49" width="147.5" height="21"/>
+                                <rect key="frame" x="8" y="49" width="151.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -39,7 +39,7 @@
                 <constraints>
                     <constraint firstItem="EZ6-LR-lJE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="09d-nr-N5d"/>
                     <constraint firstItem="EZ6-LR-lJE" firstAttribute="width" secondItem="Iug-tV-siE" secondAttribute="width" id="2wj-ve-V06"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="EZ6-LR-lJE" secondAttribute="trailing" constant="15" id="33C-aF-pP6"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="EZ6-LR-lJE" secondAttribute="trailingMargin" constant="15" id="33C-aF-pP6"/>
                     <constraint firstAttribute="bottomMargin" secondItem="EZ6-LR-lJE" secondAttribute="bottomMargin" constant="15" id="4bc-Ar-eFj"/>
                     <constraint firstAttribute="bottom" secondItem="Iug-tV-siE" secondAttribute="bottom" constant="15" id="Kka-8s-sU3"/>
                     <constraint firstItem="EZ6-LR-lJE" firstAttribute="leading" secondItem="Iug-tV-siE" secondAttribute="trailing" id="Pev-tc-9pE"/>
