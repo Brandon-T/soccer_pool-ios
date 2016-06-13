@@ -465,7 +465,7 @@ class GamesViewController : UITableViewController {
             
         case 1:
             if self.inProgressGames.count > 0 {
-                game = self.inProgressGames[indexPath.row]
+                game = self.upcomingGames[indexPath.row]
             }
             
         default:
@@ -497,7 +497,7 @@ class GamesViewController : UITableViewController {
             
         case 1:
             if self.inProgressGames.count > 0 {
-                game = self.inProgressGames[indexPath.row]
+                game = self.upcomingGames[indexPath.row]
             }
             
         default:
