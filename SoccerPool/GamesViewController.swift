@@ -61,21 +61,42 @@ class GamesViewController : UITableViewController {
                 let currentDateTime = NSDate()
                 
                 for game in games {
-                    if let startTime = game.startTime {
-                        let endTime = startTime.dateByAddingTimeInterval(2 * 60 * 60)
-                        
-                        //currentDateTime < startTime
-                        if currentDateTime.compare(startTime) == .OrderedDescending {
-                            if currentDateTime.compare(endTime) == .OrderedAscending {
-                                self.inProgressGames.append(game)
+                    
+                    let performMath = { [unowned game, unowned self]() -> Void in
+                        if let startTime = game.startTime {
+                            let endTime = startTime.dateByAddingTimeInterval(2 * 60 * 60)
+                            
+                            //currentDateTime < startTime
+                            if currentDateTime.compare(startTime) == .OrderedDescending {
+                                if currentDateTime.compare(endTime) == .OrderedAscending {
+                                    self.inProgressGames.append(game)
+                                }
+                                else {
+                                    self.completedGames.append(game)
+                                }
                             }
                             else {
-                                self.completedGames.append(game)
+                                self.upcomingGames.append(game)
                             }
                         }
-                        else {
+                    }
+                    
+                    if let state = game.state {
+                        if state == "upcoming" {
                             self.upcomingGames.append(game)
                         }
+                        else if state == "progress" {
+                            self.inProgressGames.append(game)
+                        }
+                        else if state == "complete" {
+                            self.completedGames.append(game)
+                        }
+                        else {
+                            performMath()
+                        }
+                    }
+                    else {
+                        performMath()
                     }
                 }
                 

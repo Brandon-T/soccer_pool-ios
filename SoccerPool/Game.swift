@@ -18,4 +18,5 @@ class Game : NSObject, Serializeable {
     var startTime: NSDate?
     var cutOffTime: NSDate?
     var hasBeenPredicted: Bool = false
+    var state: String?
 }
