@@ -47,7 +47,10 @@ class GamesViewController : UITableViewController {
         self.registerClasses()
         self.doLayout()
   
-        
+        self.loadData()
+    }
+    
+    func loadData() {
         ServiceLayer.getGames { [unowned self](json, error) in
             guard error == nil else {
                 return
@@ -75,19 +78,19 @@ class GamesViewController : UITableViewController {
                         }
                     }
                 }
-
+                
                 //Server does this now..
                 /*self.upcomingGames.sortInPlace({ (first, second) -> Bool in
-                    return first.startTime!.compare(second.startTime!) == .OrderedAscending
-                })
-                
-                self.inProgressGames.sortInPlace({ (first, second) -> Bool in
-                    return first.startTime!.compare(second.startTime!) == .OrderedAscending
-                })
-                
-                self.completedGames.sortInPlace({ (first, second) -> Bool in
-                    return first.startTime!.compare(second.startTime!) == .OrderedAscending
-                })*/
+                 return first.startTime!.compare(second.startTime!) == .OrderedAscending
+                 })
+                 
+                 self.inProgressGames.sortInPlace({ (first, second) -> Bool in
+                 return first.startTime!.compare(second.startTime!) == .OrderedAscending
+                 })
+                 
+                 self.completedGames.sortInPlace({ (first, second) -> Bool in
+                 return first.startTime!.compare(second.startTime!) == .OrderedAscending
+                 })*/
                 
                 self.tableView.reloadData()
             }
@@ -111,6 +114,11 @@ class GamesViewController : UITableViewController {
         backgroundImageView.frame = self.tableView.frame
         self.tableView.backgroundView = backgroundImageView;
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont.boldSystemFontOfSize(16)])
+        refreshControl.tintColor = UIColor.whiteColor()
+        refreshControl.addTarget(self, action: #selector(onRefresh), forControlEvents: .ValueChanged)
+        self.tableView.addSubview(refreshControl)
     }
     
     func registerClasses() -> Void {
@@ -121,6 +129,12 @@ class GamesViewController : UITableViewController {
     
     func doLayout() -> Void {
         
+    }
+    
+    
+    func onRefresh(refreshControl: UIRefreshControl) {
+        self.loadData()
+        refreshControl.endRefreshing()
     }
     
     // MARK: - BAR BUTTON ITEM ACTIONS
