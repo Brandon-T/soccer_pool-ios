@@ -57,6 +57,10 @@ class GamesViewController : UITableViewController {
             }
             
             if let gamesArray = json?["data"] as? [[String: AnyObject]] {
+                self.inProgressGames.removeAll()
+                self.upcomingGames.removeAll()
+                self.completedGames.removeAll()
+                
                 let games = Game.fromJSONArray(gamesArray) as! [Game]
                 let currentDateTime = NSDate()
                 
