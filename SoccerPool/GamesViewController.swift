@@ -562,4 +562,8 @@ class GamesViewController : UITableViewController {
             vc.players = sender[2] as? [FootballPlayer]
         }
     }
+    
+    @IBAction func onStreamButtonPressed(sender: UIBarButtonItem) {
+        self.performSegueWithIdentifier("streamSegue", sender: self)
+    }
 }
