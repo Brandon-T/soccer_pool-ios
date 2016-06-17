@@ -76,9 +76,10 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        pools.removeAll()
-        
-        ServiceLayer.getPool { [unowned self](json, error) in
+        self.scrollView.hidden = true
+        self.testLayout()
+
+        ServiceLayer.getPool { (json, error) in
             guard error == nil else {
                 return
             }
