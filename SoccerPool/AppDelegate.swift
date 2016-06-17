@@ -88,6 +88,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func application(application: UIApplication, didChangeStatusBarFrame oldStatusBarFrame: CGRect) {
+        if let root = application.keyWindow?.rootViewController as? UITabBarController, let nav = root.selectedViewController as? BaseNavigationController {
+            nav.setNavigationBarHidden(true, animated: true)
+            nav.setNavigationBarHidden(false, animated: true)
+        }
+    }
 }
 
