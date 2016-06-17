@@ -30,9 +30,11 @@
 		44C583AF58B5112A57246843 /* Pods_SoccerPool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1FDBA1971B06030A022B613 /* Pods_SoccerPool.framework */; };
 		5E15629F1D08C6AB001F50A2 /* StandingsUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15629D1D08C6AB001F50A2 /* StandingsUserCollectionViewCell.swift */; };
 		5E1562A01D08C6AB001F50A2 /* StandingsUserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E15629E1D08C6AB001F50A2 /* StandingsUserCollectionViewCell.xib */; };
+		5E22EC6B1D119F4C00F0DE24 /* StreamingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22EC6A1D119F4C00F0DE24 /* StreamingViewController.swift */; };
 		5E286E161D05BA0A00838831 /* SoccerPool.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5E286E141D05BA0A00838831 /* SoccerPool.xcdatamodeld */; };
 		5E53F4831D09E28E004CB62E /* NSDate+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E53F4821D09E28E004CB62E /* NSDate+Utilities.swift */; };
 		5EB458B81D0BB803003217BD /* UpgradeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB458B71D0BB803003217BD /* UpgradeManager.swift */; };
+		5ED11BD21D12E887009484C7 /* Adblock.js in Resources */ = {isa = PBXBuildFile; fileRef = 5ED11BD11D12E887009484C7 /* Adblock.js */; };
 		5ED215B01D0C5B810088EC94 /* Int+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED215AF1D0C5B810088EC94 /* Int+Utilities.swift */; };
 		5ED215B21D0C7F490088EC94 /* BarGraph+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED215B11D0C7F490088EC94 /* BarGraph+Animations.swift */; };
 		5ED215B71D0C8ED40088EC94 /* Double+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED215B61D0C8ED40088EC94 /* Double+Utilities.swift */; };
@@ -84,9 +86,11 @@
 		4E875914CD1D81C714DAED12 /* Pods-SoccerPool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoccerPool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SoccerPool/Pods-SoccerPool.debug.xcconfig"; sourceTree = "<group>"; };
 		5E15629D1D08C6AB001F50A2 /* StandingsUserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandingsUserCollectionViewCell.swift; sourceTree = "<group>"; };
 		5E15629E1D08C6AB001F50A2 /* StandingsUserCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StandingsUserCollectionViewCell.xib; sourceTree = "<group>"; };
+		5E22EC6A1D119F4C00F0DE24 /* StreamingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamingViewController.swift; sourceTree = "<group>"; };
 		5E286E151D05BA0A00838831 /* SoccerPool.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SoccerPool.xcdatamodel; sourceTree = "<group>"; };
 		5E53F4821D09E28E004CB62E /* NSDate+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Utilities.swift"; sourceTree = "<group>"; };
 		5EB458B71D0BB803003217BD /* UpgradeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeManager.swift; sourceTree = "<group>"; };
+		5ED11BD11D12E887009484C7 /* Adblock.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Adblock.js; sourceTree = "<group>"; };
 		5ED215AF1D0C5B810088EC94 /* Int+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Utilities.swift"; sourceTree = "<group>"; };
 		5ED215B11D0C7F490088EC94 /* BarGraph+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BarGraph+Animations.swift"; sourceTree = "<group>"; };
 		5ED215B61D0C8ED40088EC94 /* Double+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Utilities.swift"; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 				CA5FB2FA1D0141D300150762 /* ServiceLayer.swift */,
 				5EB458B71D0BB803003217BD /* UpgradeManager.swift */,
 				CA3B0A401D0CF0E5000DD8E8 /* FootBallAPI.swift */,
+				5ED11BD11D12E887009484C7 /* Adblock.js */,
 			);
 			name = "Service Layer";
 			sourceTree = "<group>";
@@ -243,6 +248,7 @@
 		2FE39E211D04D5B400A62F1C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5E22EC691D119F3700F0DE24 /* Streaming */,
 				CA3B0A441D0D1D0E000DD8E8 /* Teams */,
 				2F615C4C1D06696900B1C484 /* Games */,
 				2F615C511D066A7F00B1C484 /* StandingsViewController */,
@@ -301,6 +307,14 @@
 				5E15629E1D08C6AB001F50A2 /* StandingsUserCollectionViewCell.xib */,
 			);
 			name = StandingCollectionViewCells;
+			sourceTree = "<group>";
+		};
+		5E22EC691D119F3700F0DE24 /* Streaming */ = {
+			isa = PBXGroup;
+			children = (
+				5E22EC6A1D119F4C00F0DE24 /* StreamingViewController.swift */,
+			);
+			name = Streaming;
 			sourceTree = "<group>";
 		};
 		CA3B0A441D0D1D0E000DD8E8 /* Teams */ = {
@@ -459,6 +473,7 @@
 				CA3B0A491D0D1DB7000DD8E8 /* TeamTableViewCell.xib in Resources */,
 				2F7B9F5F1D04A6FC005BEAB8 /* SoccerPool.storyboard in Resources */,
 				2FD919E41D08966600F8B771 /* VoteMatchesTableViewCell.xib in Resources */,
+				5ED11BD21D12E887009484C7 /* Adblock.js in Resources */,
 				CA3B0A4D1D0D1DFD000DD8E8 /* TeamFlagTableViewCell.xib in Resources */,
 				2F8B27101D091D08002C0B46 /* FinishedMatchesTableViewCell.xib in Resources */,
 			);
@@ -545,6 +560,7 @@
 				2F615C4E1D06699A00B1C484 /* GamesViewController.swift in Sources */,
 				CA3B0A481D0D1DB7000DD8E8 /* TeamTableViewCell.swift in Sources */,
 				CA886FA71D09273F00EC4704 /* UIImageView+Utilities.swift in Sources */,
+				5E22EC6B1D119F4C00F0DE24 /* StreamingViewController.swift in Sources */,
 				2FD919E31D08966600F8B771 /* VoteMatchesTableViewCell.swift in Sources */,
 				5ED215B71D0C8ED40088EC94 /* Double+Utilities.swift in Sources */,
 				CAE148021D04B06B000C67A3 /* Game.swift in Sources */,
