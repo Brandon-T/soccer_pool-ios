@@ -46,7 +46,6 @@ class GamesViewController : UITableViewController {
         self.setTheme()
         self.registerClasses()
         self.doLayout()
-  
         self.loadData()
     }
     
@@ -198,8 +197,8 @@ class GamesViewController : UITableViewController {
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 44))
-        let label = UILabel(frame: CGRectMake(0, 0, tableView.frame.size.width, 44))
-        label.textAlignment = NSTextAlignment.Center
+        let label = UILabel(frame: CGRectMake(15, 0, tableView.frame.size.width, 44))
+        label.textAlignment = NSTextAlignment.Left
         label.font = UIFont.boldSystemFontOfSize(17)
         label.textColor = UIColor.whiteColor()
         

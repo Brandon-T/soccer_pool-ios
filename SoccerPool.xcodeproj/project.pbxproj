@@ -22,11 +22,14 @@
 		2FABF9331D0766EA00F5AAE4 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FABF9321D0766EA00F5AAE4 /* TitleView.swift */; };
 		2FABF9351D07672900F5AAE4 /* TitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FABF9341D07672900F5AAE4 /* TitleView.xib */; };
 		2FABF93B1D07D64300F5AAE4 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FABF93A1D07D64300F5AAE4 /* HelpViewController.swift */; };
+		2FAC70111D149CC000B12CE1 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAC70101D149CC000B12CE1 /* ResultsViewController.swift */; };
 		2FD919E31D08966600F8B771 /* VoteMatchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD919E11D08966600F8B771 /* VoteMatchesTableViewCell.swift */; };
 		2FD919E41D08966600F8B771 /* VoteMatchesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FD919E21D08966600F8B771 /* VoteMatchesTableViewCell.xib */; };
 		2FD919E71D09043F00F8B771 /* BetDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD919E61D09043F00F8B771 /* BetDialogView.swift */; };
 		2FD919E91D09046100F8B771 /* BetDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FD919E81D09046100F8B771 /* BetDialogView.xib */; };
 		2FE39E1E1D04BC6B00A62F1C /* UIColor+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE39E1D1D04BC6B00A62F1C /* UIColor+Utilities.swift */; };
+		2FEE60461D14A06D00608A8F /* StandingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEE60441D14A06D00608A8F /* StandingsTableViewCell.swift */; };
+		2FEE60471D14A06D00608A8F /* StandingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FEE60451D14A06D00608A8F /* StandingsTableViewCell.xib */; };
 		44C583AF58B5112A57246843 /* Pods_SoccerPool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1FDBA1971B06030A022B613 /* Pods_SoccerPool.framework */; };
 		5E15629F1D08C6AB001F50A2 /* StandingsUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E15629D1D08C6AB001F50A2 /* StandingsUserCollectionViewCell.swift */; };
 		5E1562A01D08C6AB001F50A2 /* StandingsUserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E15629E1D08C6AB001F50A2 /* StandingsUserCollectionViewCell.xib */; };
@@ -79,11 +82,14 @@
 		2FABF9321D0766EA00F5AAE4 /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		2FABF9341D07672900F5AAE4 /* TitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleView.xib; sourceTree = "<group>"; };
 		2FABF93A1D07D64300F5AAE4 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		2FAC70101D149CC000B12CE1 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		2FD919E11D08966600F8B771 /* VoteMatchesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoteMatchesTableViewCell.swift; sourceTree = "<group>"; };
 		2FD919E21D08966600F8B771 /* VoteMatchesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VoteMatchesTableViewCell.xib; sourceTree = "<group>"; };
 		2FD919E61D09043F00F8B771 /* BetDialogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetDialogView.swift; sourceTree = "<group>"; };
 		2FD919E81D09046100F8B771 /* BetDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BetDialogView.xib; sourceTree = "<group>"; };
 		2FE39E1D1D04BC6B00A62F1C /* UIColor+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Utilities.swift"; sourceTree = "<group>"; };
+		2FEE60441D14A06D00608A8F /* StandingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandingsTableViewCell.swift; sourceTree = "<group>"; };
+		2FEE60451D14A06D00608A8F /* StandingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StandingsTableViewCell.xib; sourceTree = "<group>"; };
 		4E875914CD1D81C714DAED12 /* Pods-SoccerPool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoccerPool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SoccerPool/Pods-SoccerPool.debug.xcconfig"; sourceTree = "<group>"; };
 		5E15629D1D08C6AB001F50A2 /* StandingsUserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandingsUserCollectionViewCell.swift; sourceTree = "<group>"; };
 		5E15629E1D08C6AB001F50A2 /* StandingsUserCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StandingsUserCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -164,13 +170,13 @@
 			name = Games;
 			sourceTree = "<group>";
 		};
-		2F615C511D066A7F00B1C484 /* StandingsViewController */ = {
+		2F615C511D066A7F00B1C484 /* Standings */ = {
 			isa = PBXGroup;
 			children = (
 				5E1562981D08C5C7001F50A2 /* StandingCollectionViewCells */,
 				2F615C4F1D066A7A00B1C484 /* StandingsViewController.swift */,
 			);
-			name = StandingsViewController;
+			name = Standings;
 			sourceTree = "<group>";
 		};
 		2F7B9F611D04B7F5005BEAB8 /* Login */ = {
@@ -221,6 +227,24 @@
 			name = Help;
 			sourceTree = "<group>";
 		};
+		2FAC700F1D149CA000B12CE1 /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				2FAC70101D149CC000B12CE1 /* ResultsViewController.swift */,
+				2FAC70121D149D2400B12CE1 /* ResultsTableViewCells */,
+			);
+			name = Results;
+			sourceTree = "<group>";
+		};
+		2FAC70121D149D2400B12CE1 /* ResultsTableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				2FEE60441D14A06D00608A8F /* StandingsTableViewCell.swift */,
+				2FEE60451D14A06D00608A8F /* StandingsTableViewCell.xib */,
+			);
+			name = ResultsTableViewCells;
+			sourceTree = "<group>";
+		};
 		2FD919E51D0903F700F8B771 /* GamesDialogView */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,10 +275,11 @@
 		2FE39E211D04D5B400A62F1C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2FAC700F1D149CA000B12CE1 /* Results */,
+				2F615C4C1D06696900B1C484 /* Games */,
 				5E22EC691D119F3700F0DE24 /* Streaming */,
 				CA3B0A441D0D1D0E000DD8E8 /* Teams */,
-				2F615C4C1D06696900B1C484 /* Games */,
-				2F615C511D066A7F00B1C484 /* StandingsViewController */,
+				2F615C511D066A7F00B1C484 /* Standings */,
 				2FABF9391D07D5F100F5AAE4 /* Help */,
 				2F7B9F611D04B7F5005BEAB8 /* Login */,
 				2FE39E231D04D63200A62F1C /* Base */,
@@ -476,6 +501,7 @@
 				CA3B0A491D0D1DB7000DD8E8 /* TeamTableViewCell.xib in Resources */,
 				2F7B9F5F1D04A6FC005BEAB8 /* SoccerPool.storyboard in Resources */,
 				2FD919E41D08966600F8B771 /* VoteMatchesTableViewCell.xib in Resources */,
+				2FEE60471D14A06D00608A8F /* StandingsTableViewCell.xib in Resources */,
 				5ED11BD21D12E887009484C7 /* Adblock.js in Resources */,
 				CA3B0A4D1D0D1DFD000DD8E8 /* TeamFlagTableViewCell.xib in Resources */,
 				2F8B27101D091D08002C0B46 /* FinishedMatchesTableViewCell.xib in Resources */,
@@ -574,10 +600,12 @@
 				CA5FB2F91D013E8700150762 /* BaseViewController.swift in Sources */,
 				CA3B0A411D0CF0E5000DD8E8 /* FootBallAPI.swift in Sources */,
 				2FD919E71D09043F00F8B771 /* BetDialogView.swift in Sources */,
+				2FEE60461D14A06D00608A8F /* StandingsTableViewCell.swift in Sources */,
 				2FABF93B1D07D64300F5AAE4 /* HelpViewController.swift in Sources */,
 				5ED215B01D0C5B810088EC94 /* Int+Utilities.swift in Sources */,
 				CAE148061D04B0F8000C67A3 /* Prediction.swift in Sources */,
 				5EB458B81D0BB803003217BD /* UpgradeManager.swift in Sources */,
+				2FAC70111D149CC000B12CE1 /* ResultsViewController.swift in Sources */,
 				CA5356201D0DE6530063C613 /* FootballStanding.swift in Sources */,
 				2F615C4B1D0667E600B1C484 /* BaseNavigationController.swift in Sources */,
 				CA3B0A431D0D1C47000DD8E8 /* TeamDetailsViewController.swift in Sources */,

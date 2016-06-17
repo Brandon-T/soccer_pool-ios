@@ -254,6 +254,35 @@
             </objects>
             <point key="canvasLocation" x="3160" y="371"/>
         </scene>
+        <!--Results View Controller-->
+        <scene sceneID="idm-Az-AxO">
+            <objects>
+                <tableViewController id="cGr-46-uZC" customClass="ResultsViewController" customModule="SoccerPool" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="kiY-Ap-cLt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StandingsListCell" id="sXI-gq-0a3">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sXI-gq-0a3" id="Fgk-mI-Z4r">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cGr-46-uZC" id="m6v-OE-k8g"/>
+                            <outlet property="delegate" destination="cGr-46-uZC" id="aR5-zY-X2e"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="lB1-Mo-Kw5"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TYB-uE-2Zx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3160" y="1358"/>
+        </scene>
         <!--Streaming View Controller-->
         <scene sceneID="XvJ-Df-I5P">
             <objects>
@@ -446,6 +475,24 @@
             </objects>
             <point key="canvasLocation" x="2136" y="371"/>
         </scene>
+        <!--Results-->
+        <scene sceneID="uXa-qf-lzL">
+            <objects>
+                <navigationController id="ZHU-6F-Nmg" customClass="BaseNavigationController" customModule="SoccerPool" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Results" image="ListingTabBarIcon" id="iAg-JW-xQG"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="n6h-43-Cq9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.2470588235" green="0.31764705879999999" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="cGr-46-uZC" kind="relationship" relationship="rootViewController" id="1Qd-8W-a2x"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yyi-eE-bBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2136" y="1358"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="y4g-mb-0Fj">
             <objects>
@@ -461,6 +508,7 @@
                     <connections>
                         <segue destination="gXF-jl-xwV" kind="relationship" relationship="viewControllers" id="AgH-pB-Vlq"/>
                         <segue destination="v1P-C5-ouV" kind="relationship" relationship="viewControllers" id="HUb-yx-7Kn"/>
+                        <segue destination="ZHU-6F-Nmg" kind="relationship" relationship="viewControllers" id="zwn-hf-NAc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vo6-WJ-NTr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -491,10 +539,11 @@
         <image name="EuroCupBallLogo" width="2042" height="2042"/>
         <image name="FootballTabBarIcon" width="30" height="30"/>
         <image name="IntroBackground" width="380" height="560"/>
+        <image name="ListingTabBarIcon" width="30" height="30"/>
         <image name="PlasticLogo" width="575" height="258"/>
         <image name="StandingsTabBarIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qK9-gR-2Aa"/>
+        <segue reference="by8-XA-9hx"/>
     </inferredMetricsTieBreakers>
 </document>
