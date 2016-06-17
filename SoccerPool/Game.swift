@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Game : NSObject, Serializeable {
+class Game : BaseModel {
     var gameID: UInt = 0
     var awayGoals: UInt = 0
     var awayTeam: Team?
@@ -18,4 +18,5 @@ class Game : NSObject, Serializeable {
     var startTime: NSDate?
     var cutOffTime: NSDate?
     var hasBeenPredicted: Bool = false
+    var state: String?
 }

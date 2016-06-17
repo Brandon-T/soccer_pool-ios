@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Prediction : NSObject, Serializeable {
+class Prediction : BaseModel {
     var awayGoals: UInt = 0
     var homeGoals: UInt = 0
     var points: UInt = 0

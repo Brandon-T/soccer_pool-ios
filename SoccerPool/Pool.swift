@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Pool : NSObject, Serializeable {
+class Pool : BaseModel {
     var name: String?
     var points: UInt = 0
     var photo: String?

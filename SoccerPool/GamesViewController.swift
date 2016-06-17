@@ -47,47 +47,75 @@ class GamesViewController : UITableViewController {
         self.registerClasses()
         self.doLayout()
   
-        
-        ServiceLayer.getGames { [unowned self](json, error) in
+        self.loadData()
+    }
+    
+    func loadData() {
+        ServiceLayer.getGames { (json, error) in
             guard error == nil else {
                 return
             }
             
             if let gamesArray = json?["data"] as? [[String: AnyObject]] {
+                self.inProgressGames.removeAll()
+                self.upcomingGames.removeAll()
+                self.completedGames.removeAll()
+                
                 let games = Game.fromJSONArray(gamesArray) as! [Game]
                 let currentDateTime = NSDate()
                 
                 for game in games {
-                    if let startTime = game.startTime {
-                        let endTime = startTime.dateByAddingTimeInterval(2 * 60 * 60)
-                        
-                        //currentDateTime < startTime
-                        if currentDateTime.compare(startTime) == .OrderedDescending {
-                            if currentDateTime.compare(endTime) == .OrderedAscending {
-                                self.inProgressGames.append(game)
+                    
+                    let performMath = { [unowned game, unowned self]() -> Void in
+                        if let startTime = game.startTime {
+                            let endTime = startTime.dateByAddingTimeInterval(2 * 60 * 60)
+                            
+                            //currentDateTime < startTime
+                            if currentDateTime.compare(startTime) == .OrderedDescending {
+                                if currentDateTime.compare(endTime) == .OrderedAscending {
+                                    self.inProgressGames.append(game)
+                                }
+                                else {
+                                    self.completedGames.append(game)
+                                }
                             }
                             else {
-                                self.completedGames.append(game)
+                                self.upcomingGames.append(game)
                             }
                         }
-                        else {
+                    }
+                    
+                    if let state = game.state {
+                        if state == "upcoming" {
                             self.upcomingGames.append(game)
                         }
+                        else if state == "progress" {
+                            self.inProgressGames.append(game)
+                        }
+                        else if state == "complete" {
+                            self.completedGames.append(game)
+                        }
+                        else {
+                            performMath()
+                        }
+                    }
+                    else {
+                        performMath()
                     }
                 }
-
+                
                 //Server does this now..
                 /*self.upcomingGames.sortInPlace({ (first, second) -> Bool in
-                    return first.startTime!.compare(second.startTime!) == .OrderedAscending
-                })
-                
-                self.inProgressGames.sortInPlace({ (first, second) -> Bool in
-                    return first.startTime!.compare(second.startTime!) == .OrderedAscending
-                })
-                
-                self.completedGames.sortInPlace({ (first, second) -> Bool in
-                    return first.startTime!.compare(second.startTime!) == .OrderedAscending
-                })*/
+                 return first.startTime!.compare(second.startTime!) == .OrderedAscending
+                 })
+                 
+                 self.inProgressGames.sortInPlace({ (first, second) -> Bool in
+                 return first.startTime!.compare(second.startTime!) == .OrderedAscending
+                 })
+                 
+                 self.completedGames.sortInPlace({ (first, second) -> Bool in
+                 return first.startTime!.compare(second.startTime!) == .OrderedAscending
+                 })*/
                 
                 self.tableView.reloadData()
             }
@@ -111,6 +139,11 @@ class GamesViewController : UITableViewController {
         backgroundImageView.frame = self.tableView.frame
         self.tableView.backgroundView = backgroundImageView;
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont.boldSystemFontOfSize(16)])
+        refreshControl.tintColor = UIColor.whiteColor()
+        refreshControl.addTarget(self, action: #selector(onRefresh), forControlEvents: .ValueChanged)
+        self.tableView.addSubview(refreshControl)
     }
     
     func registerClasses() -> Void {
@@ -121,6 +154,12 @@ class GamesViewController : UITableViewController {
     
     func doLayout() -> Void {
         
+    }
+    
+    
+    func onRefresh(refreshControl: UIRefreshControl) {
+        self.loadData()
+        refreshControl.endRefreshing()
     }
     
     // MARK: - BAR BUTTON ITEM ACTIONS
@@ -226,7 +265,7 @@ class GamesViewController : UITableViewController {
                         cell.gameTimeLabel.text = "Playing Right Now! -- Time Left: \(timeLeft)"*/
                     }
                     
-                    /*let homeRecognizer = UITapGestureRecognizer(target: self, action: #selector(onHomeTapped))
+                    let homeRecognizer = UITapGestureRecognizer(target: self, action: #selector(onHomeTapped))
                     homeRecognizer.numberOfTapsRequired = 1
                     homeRecognizer.numberOfTouchesRequired = 1
                     homeRecognizer.setObject(indexPath, key: "indexPath")
@@ -240,7 +279,7 @@ class GamesViewController : UITableViewController {
                     awayRecognizer.setObject(indexPath, key: "indexPath")
                     
                     cell.awayTeamFlagImageView.addGestureRecognizer(awayRecognizer)
-                    cell.awayTeamFlagImageView.userInteractionEnabled = true*/
+                    cell.awayTeamFlagImageView.userInteractionEnabled = true
                 }
             }
             else {
@@ -257,7 +296,7 @@ class GamesViewController : UITableViewController {
                     cell.awayTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.awayGoals)" : "-")"
                     cell.gameTimeLabel.text = game.startTime?.format("dd MMM yyyy, HH:mm")
                     
-                    /*if let recognizers = cell.homeTeamFlagImageView.gestureRecognizers {
+                    if let recognizers = cell.homeTeamFlagImageView.gestureRecognizers {
                         for recognizer in recognizers {
                             cell.homeTeamFlagImageView.removeGestureRecognizer(recognizer)
                         }
@@ -284,7 +323,7 @@ class GamesViewController : UITableViewController {
                     awayRecognizer.setObject(indexPath, key: "indexPath")
                     
                     cell.awayTeamFlagImageView.addGestureRecognizer(awayRecognizer)
-                    cell.awayTeamFlagImageView.userInteractionEnabled = true*/
+                    cell.awayTeamFlagImageView.userInteractionEnabled = true
                 }
             }
         
@@ -303,7 +342,7 @@ class GamesViewController : UITableViewController {
                     cell.awayTeamScoreLabel.text = "\(game.hasBeenPredicted ? "\(game.prediction!.awayGoals)" : "-")"
                     cell.gameTimeLabel.text = game.startTime?.format("dd MMM yyyy, HH:mm")
                     
-                    /*if let recognizers = cell.homeTeamFlagImageView.gestureRecognizers {
+                    if let recognizers = cell.homeTeamFlagImageView.gestureRecognizers {
                         for recognizer in recognizers {
                             cell.homeTeamFlagImageView.removeGestureRecognizer(recognizer)
                         }
@@ -330,7 +369,7 @@ class GamesViewController : UITableViewController {
                     awayRecognizer.setObject(indexPath, key: "indexPath")
                     
                     cell.awayTeamFlagImageView.addGestureRecognizer(awayRecognizer)
-                    cell.awayTeamFlagImageView.userInteractionEnabled = true*/
+                    cell.awayTeamFlagImageView.userInteractionEnabled = true
                 }
             }
             else {
@@ -352,7 +391,7 @@ class GamesViewController : UITableViewController {
                 cell.cornerLabel.text = "+\(game.hasBeenPredicted ? game.prediction != nil ? game.prediction!.points : 0 : 0)"
                 cell.gameTimeLabel.text = "Completed On:   \(game.startTime != nil ? game.startTime!.dateByAddingTimeInterval(2 * 60 * 60).format("dd MMM yyyy, HH:mm") : "N/A")"
                 
-                /*if let recognizers = cell.homeTeamFlagImageView.gestureRecognizers {
+                if let recognizers = cell.homeTeamFlagImageView.gestureRecognizers {
                     for recognizer in recognizers {
                         cell.homeTeamFlagImageView.removeGestureRecognizer(recognizer)
                     }
@@ -379,7 +418,7 @@ class GamesViewController : UITableViewController {
                 awayRecognizer.setObject(indexPath, key: "indexPath")
                 
                 cell.awayTeamFlagImageView.addGestureRecognizer(awayRecognizer)
-                cell.awayTeamFlagImageView.userInteractionEnabled = true*/
+                cell.awayTeamFlagImageView.userInteractionEnabled = true
             }
         }
         
@@ -465,7 +504,7 @@ class GamesViewController : UITableViewController {
             
         case 1:
             if self.inProgressGames.count > 0 {
-                game = self.inProgressGames[indexPath.row]
+                game = self.upcomingGames[indexPath.row]
             }
             
         default:
@@ -497,7 +536,7 @@ class GamesViewController : UITableViewController {
             
         case 1:
             if self.inProgressGames.count > 0 {
-                game = self.inProgressGames[indexPath.row]
+                game = self.upcomingGames[indexPath.row]
             }
             
         default:
@@ -522,5 +561,9 @@ class GamesViewController : UITableViewController {
             vc.country = sender[1] as? String
             vc.players = sender[2] as? [FootballPlayer]
         }
+    }
+    
+    @IBAction func onStreamButtonPressed(sender: UIBarButtonItem) {
+        self.performSegueWithIdentifier("streamSegue", sender: self)
     }
 }
