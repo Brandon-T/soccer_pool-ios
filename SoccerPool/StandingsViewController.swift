@@ -14,6 +14,7 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var barGraph: BarGraphView!
+    @IBOutlet weak var horizontalBarGraph: HorizontalBarGraphView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
     
@@ -22,9 +23,61 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     let emptyBarHeight: Double = 0.5
     var scrollCompletion: (() -> Void)? = nil
     
+    func testLayout() {
+        ServiceLayer.getPool { (json, error) in
+            guard error == nil else {
+                return
+            }
+            
+            self.pools.removeAll()
+            
+            if let poolArray = json?["data"] as? [[String: AnyObject]] {
+                
+                //Sort into groups of 3 per row.
+                var pool = [Pool]()
+                let pools = Pool.fromJSONArray(poolArray) as! [Pool]
+                
+                for i in 0..<pools.count {
+                    if i > 0 && i % 3 == 0 {
+                        self.pools.append(pool)
+                        pool = [Pool]()
+                        pool.append(pools[i])
+                    }
+                    else {
+                        pool.append(pools[i])
+                    }
+                }
+                
+                if pool.count > 0 {
+                    self.pools.append(pool)
+                }
+                
+                
+                //Source for bar graph
+                self.horizontalBarGraph.graphData.removeAll()
+                self.horizontalBarGraph.graphBarColors.removeAll()
+                
+                for i in 0..<pools.count {
+                    let pool = pools[i]
+                    
+                    if pool.name != nil {
+                        self.horizontalBarGraph.graphBarColors[pool.name!] = self.generateColour(UInt(i), total: UInt(pools.count))
+                        self.horizontalBarGraph.graphData[pool.name!] = Double(pool.points) > 0 ? Double(pool.points) : self.emptyBarHeight
+                    }
+                }
+                
+                //Update UI.
+                self.horizontalBarGraph.reloadData()
+            }
+        }
+    }
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.scrollView.hidden = true
+        self.testLayout()
 
         ServiceLayer.getPool { (json, error) in
             guard error == nil else {
@@ -97,10 +150,13 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     func initControls() -> Void {
         self.title = "Standings"
         
-        let rightInformationBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "InformationBarButtonItem"), landscapeImagePhone: nil, style: .Done, target: self, action: #selector(informationBarButtonPressed))
+        let graphSwitchBarButtonItem: UIBarButtonItem = UIBarButtonItem(title: "📊🏅👻", style: .Done, target: nil, action: nil)
         
-        let rightLogoutBarButtonItem:UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "LogoutBarButtonItem"), landscapeImagePhone: nil, style: .Done, target: self, action: #selector(logoutBarButtonPressed))
+        let rightInformationBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "InformationBarButtonItem"), landscapeImagePhone: nil, style: .Done, target: self, action: #selector(informationBarButtonPressed))
         
+        let rightLogoutBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "LogoutBarButtonItem"), landscapeImagePhone: nil, style: .Done, target: self, action: #selector(logoutBarButtonPressed))
+        
+        self.navigationItem.leftBarButtonItem = graphSwitchBarButtonItem
         self.navigationItem.setRightBarButtonItems([rightLogoutBarButtonItem,rightInformationBarButtonItem], animated: true)
     }
     

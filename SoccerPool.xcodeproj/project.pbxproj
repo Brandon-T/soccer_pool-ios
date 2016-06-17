@@ -38,6 +38,7 @@
 		5ED215B01D0C5B810088EC94 /* Int+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED215AF1D0C5B810088EC94 /* Int+Utilities.swift */; };
 		5ED215B21D0C7F490088EC94 /* BarGraph+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED215B11D0C7F490088EC94 /* BarGraph+Animations.swift */; };
 		5ED215B71D0C8ED40088EC94 /* Double+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED215B61D0C8ED40088EC94 /* Double+Utilities.swift */; };
+		CA16F9861D13A6170015851D /* HorizontalBarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA16F9851D13A6170015851D /* HorizontalBarGraphView.swift */; };
 		CA3B0A411D0CF0E5000DD8E8 /* FootBallAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B0A401D0CF0E5000DD8E8 /* FootBallAPI.swift */; };
 		CA3B0A431D0D1C47000DD8E8 /* TeamDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B0A421D0D1C47000DD8E8 /* TeamDetailsViewController.swift */; };
 		CA3B0A481D0D1DB7000DD8E8 /* TeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B0A461D0D1DB7000DD8E8 /* TeamTableViewCell.swift */; };
@@ -95,6 +96,7 @@
 		5ED215B11D0C7F490088EC94 /* BarGraph+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BarGraph+Animations.swift"; sourceTree = "<group>"; };
 		5ED215B61D0C8ED40088EC94 /* Double+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Utilities.swift"; sourceTree = "<group>"; };
 		C47CCEBB48532F0E083249D2 /* Pods-SoccerPool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoccerPool.release.xcconfig"; path = "Pods/Target Support Files/Pods-SoccerPool/Pods-SoccerPool.release.xcconfig"; sourceTree = "<group>"; };
+		CA16F9851D13A6170015851D /* HorizontalBarGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalBarGraphView.swift; sourceTree = "<group>"; };
 		CA3B0A401D0CF0E5000DD8E8 /* FootBallAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FootBallAPI.swift; sourceTree = "<group>"; };
 		CA3B0A421D0D1C47000DD8E8 /* TeamDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamDetailsViewController.swift; sourceTree = "<group>"; };
 		CA3B0A461D0D1DB7000DD8E8 /* TeamTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamTableViewCell.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				CAD2AC391D068437004AC26E /* BarGraphView.swift */,
+				CA16F9851D13A6170015851D /* HorizontalBarGraphView.swift */,
 			);
 			name = BarGraphView;
 			sourceTree = "<group>";
@@ -589,6 +592,7 @@
 				2FABF9331D0766EA00F5AAE4 /* TitleView.swift in Sources */,
 				CAD2AC3A1D068437004AC26E /* BarGraphView.swift in Sources */,
 				2FE39E1E1D04BC6B00A62F1C /* UIColor+Utilities.swift in Sources */,
+				CA16F9861D13A6170015851D /* HorizontalBarGraphView.swift in Sources */,
 				CA886FA21D08F12A00EC4704 /* NSObject+Utilities.swift in Sources */,
 				CA5FB2FB1D0141D300150762 /* ServiceLayer.swift in Sources */,
 			);
