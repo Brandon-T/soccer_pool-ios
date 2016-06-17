@@ -11,16 +11,31 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
 }
 
 document.getElementsByClassName("cd-overlay").remove();
-document.getElementById("livefyre-comments").remove()
-document.getElementsByClassName("animsition").remove()
+document.getElementById("cd-nav").remove();
+document.getElementById("livefyre-comments").remove();
+document.getElementsByClassName("animsition").remove();
+document.getElementById("mydiv").remove();
+//document.getElementById("notifySnack-nhk9shk-pusher").remove()
+//document.getElementById("notifySnack-nhk9shk").remove()
+document.getElementsByClassName("section section-padding-top-bottom-small black-background").remove()
+document.getElementsByClassName("section footer white-background").remove()
 
 
-/*var arr = document.getElementsByClassName("iframe")
+var divs = document.getElementsByTagName("div");
 
-for iframe in arr {
-    if !iframe.src.includes("football") {
-        iframe.remove()
+for (var div in divs) {
+    if (div.className != null && div.className.indexOf("notify") > -1) {
+        div.remove();
     }
-}*/
+}
 
-webkit.messageHandlers.didGetHTML.postMessage(document.documentElement.outerHTML.toString());
+
+var frames = document.getElementsByClassName("iframe");
+
+for (var iframe in frames) {
+    if (iframe.src != null && iframe.src.indexOf("football") <= -1 && iframe.src.indexOf("stream") <= -1) {
+        iframe.remove();
+    }
+}
+
+webkit.messageHandlers.didFinishLoading.postMessage(document.documentElement.outerHTML.toString());

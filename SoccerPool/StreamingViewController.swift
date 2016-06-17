@@ -25,11 +25,8 @@ class StreamingViewController : UIViewController, WKNavigationDelegate, WKScript
 
         let javascript = try! String(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
         userController.addUserScript(WKUserScript(source: javascript, injectionTime: .AtDocumentEnd, forMainFrameOnly: false))
-        
-        //let script = WKUserScript(source: "webkit.messageHandlers.didGetHTML.postMessage(document.documentElement.outerHTML.toString());", injectionTime: .AtDocumentEnd, forMainFrameOnly: true)
-        //userController.addUserScript(script)
-        userController.addScriptMessageHandler(self, name: "didGetHTML")
-        
+
+        userController.addScriptMessageHandler(self, name: "didFinishLoading")
         config.userContentController = userController
         
         let webView = WKWebView(frame: self.view.frame, configuration: config)
@@ -45,12 +42,28 @@ class StreamingViewController : UIViewController, WKNavigationDelegate, WKScript
         super.didReceiveMemoryWarning()
     }
     
+    func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: ((WKNavigationActionPolicy) -> Void)) {
+        
+        let url = navigationAction.request.URLString
+        
+        if url.containsString("addthis.com") {
+            decisionHandler(.Allow)
+            return
+        }
+        
+        if url.containsString("getlivefootball") || url.containsString("stream") || url.containsString("embed") {
+            print("Allowing: \(navigationAction.request.URLString)")
+            decisionHandler(.Allow)
+        }
+        else {
+            print("Cancelling: \(navigationAction.request.URLString)")
+            decisionHandler(.Cancel)
+        }
+    }
+    
     
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
-        if(message.name == "callbackHandler") {
-            print("JavaScript is sending a message \(message.body)")
-        }
-        else if message.name == "didGetHTML" {
+        if message.name == "didFinishLoading" {
             if let html = message.body as? String {
                 print(html)
             }

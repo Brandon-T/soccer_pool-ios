@@ -47,7 +47,10 @@ class GamesViewController : UITableViewController {
         self.registerClasses()
         self.doLayout()
   
-        
+        self.loadData()
+    }
+    
+    func loadData() {
         ServiceLayer.getGames { (json, error) in
             guard error == nil else {
                 return
