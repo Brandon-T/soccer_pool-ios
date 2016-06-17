@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Team : NSObject, Serializeable {
+class Team : BaseModel {
     var image: String?
     var name: String?
 }

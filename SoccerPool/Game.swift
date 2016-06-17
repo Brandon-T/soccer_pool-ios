@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Game : NSObject, Serializeable {
+class Game : BaseModel {
     var gameID: UInt = 0
     var awayGoals: UInt = 0
     var awayTeam: Team?

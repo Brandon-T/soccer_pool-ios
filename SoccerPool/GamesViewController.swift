@@ -48,7 +48,7 @@ class GamesViewController : UITableViewController {
         self.doLayout()
   
         
-        ServiceLayer.getGames { [unowned self](json, error) in
+        ServiceLayer.getGames { (json, error) in
             guard error == nil else {
                 return
             }
