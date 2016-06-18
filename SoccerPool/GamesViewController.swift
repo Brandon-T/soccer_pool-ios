@@ -453,6 +453,14 @@ class GamesViewController : UITableViewController {
             alert.customSubview = subView
             
             alert.addButton("Submit") {
+                if let text = subView.homeTeamScoreLabel.text where text.isEmpty {
+                    subView.homeTeamScoreLabel.text = "0"
+                }
+                
+                if let text = subView.awayTeamScoreLabel.text where text.isEmpty {
+                    subView.awayTeamScoreLabel.text = "0"
+                }
+                
                 let homeGoals: UInt! = UInt(subView.homeTeamScoreLabel.text ?? "0")
                 let awayGoals: UInt! = UInt(subView.awayTeamScoreLabel.text ?? "0")
                 
