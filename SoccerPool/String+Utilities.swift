@@ -13,4 +13,8 @@ extension String {
         let emailTest  = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluateWithObject(self)
     }
+    
+    func subStringTo(index: Int) -> String {
+        return self.substringToIndex(self.startIndex.advancedBy(index))
+    }
 }

@@ -54,6 +54,7 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
                 
                 
                 //Source for bar graph
+                self.self.horizontalBarGraph.graphImages.removeAll()
                 self.horizontalBarGraph.graphData.removeAll()
                 self.horizontalBarGraph.graphBarColors.removeAll()
                 
@@ -61,6 +62,7 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
                     let pool = pools[i]
                     
                     if pool.name != nil {
+                        self.horizontalBarGraph.graphImages[pool.name!] = UIImage()
                         self.horizontalBarGraph.graphBarColors[pool.name!] = self.generateColour(UInt(i), total: UInt(pools.count))
                         self.horizontalBarGraph.graphData[pool.name!] = Double(pool.points) > 0 ? Double(pool.points) : self.emptyBarHeight
                     }
@@ -68,6 +70,26 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
                 
                 //Update UI.
                 self.horizontalBarGraph.reloadData()
+                
+                let group = dispatch_group_create()
+                
+                for pool in pools {
+                    if pool.name != nil && pool.photo != nil {
+                        dispatch_group_enter(group)
+                        ServiceLayer.getImage(pool.photo!, completion: { (image, error) in
+                            objc_sync_enter(self.horizontalBarGraph.graphImages)
+                            if image != nil {
+                                self.horizontalBarGraph.graphImages[pool.name!] = image
+                            }
+                            dispatch_group_leave(group)
+                            objc_sync_exit(self.horizontalBarGraph.graphImages)
+                        })
+                    }
+                }
+                
+                dispatch_group_notify(group, dispatch_get_main_queue(), { 
+                    self.horizontalBarGraph.reloadData()
+                });
             }
         }
     }
@@ -78,6 +100,9 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
         
         self.scrollView.hidden = true
         self.testLayout()
+        return
+        
+        //self.horizontalBarGraph.hidden = true
 
         ServiceLayer.getPool { (json, error) in
             guard error == nil else {
@@ -163,6 +188,8 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     func setTheme() -> Void {
         self.barGraph.title = "Leader Board (Competitors vs. Points)"
         self.barGraph.delegate = self
+        
+        self.horizontalBarGraph.title = "Leader Board (Competitor Rank vs. Points)"
         
         self.collectionView.backgroundColor = UIColor.clearColor()
         self.collectionView.backgroundView?.backgroundColor = UIColor.clearColor()
