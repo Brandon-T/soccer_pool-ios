@@ -237,46 +237,12 @@ class HorizontalBarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBar
     
     func reloadData() {
         self.setRanges()
+        self.renderAxisLabels()
+        self.renderImagesAndPoints()
         self.hostedGraph?.reloadData()
-        
-        let plot: CPTPlot = self.hostedGraph!.plotWithIdentifier("BarGraphPlot")!
-        plot.removeAllAnnotations()
-        
-        
-        let style = CPTMutableTextStyle()
-        style.color = CPTColor.whiteColor()
-        style.fontSize = 12.0;
-        style.fontName = "Helvetica-Bold";
-        style.textAlignment = .Left
-        
-        let longestTextSize = CPTTextLayer(text: self.calculateLongestName(), style: style).bounds.size
-         
-        for idx in 0..<self.graphData.count {
-            //Anchor Point
-            let anchor = [0, idx]
-
-            //Annotation For Text
-            var firstName = self.graphData.keys[idx]
-            if let range = self.graphData.keys[idx].rangeOfString(" ") {
-                firstName = self.graphData.keys[idx].substringToIndex(range.startIndex)
-            }
-            
-            
-            let textLayer = CPTTextLayer(text: "\(firstName): \(Int(self.graphData[idx]!)) Pts", style: style)
-            textLayer.paddingLeft = 45.0
-            textLayer.paddingTop = 10.0 * CGFloat(self.barWidth)
-
-            let posLayer = ImageLayer(frame: CGRectMake(0, 0, longestTextSize.width * 2, 35.0 * CGFloat(self.barWidth)), image: self.graphImages[idx])
-            posLayer.addSublayer(textLayer)
-            
-            let symbolTextAnnotation = CPTPlotSpaceAnnotation(plotSpace:plot.plotSpace!, anchorPlotPoint:anchor);
-            symbolTextAnnotation.contentLayer = posLayer;
-            symbolTextAnnotation.displacement = CGPointMake(longestTextSize.width, (-31.0  * CGFloat(self.barWidth)) / 2.0);
-            
-            plot.addAnnotation(symbolTextAnnotation)
-        }
-        
-        
+    }
+    
+    func renderAxisLabels() {
         let yAxis = (self.hostedGraph?.axisSet as! CPTXYAxisSet).yAxis!
         
         var axisLabels = Set<CPTAxisLabel>()
@@ -289,6 +255,45 @@ class HorizontalBarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBar
         }
         
         yAxis.axisLabels = Set(axisLabels.map { $0 })
+    }
+    
+    func renderImagesAndPoints() {
+        let plot: CPTPlot = self.hostedGraph!.plotWithIdentifier("BarGraphPlot")!
+        plot.removeAllAnnotations()
+        
+        
+        let style = CPTMutableTextStyle()
+        style.color = CPTColor.whiteColor()
+        style.fontSize = 12.0;
+        style.fontName = "Helvetica-Bold";
+        style.textAlignment = .Left
+        
+        let longestTextSize = CPTTextLayer(text: self.calculateLongestName(), style: style).bounds.size
+        
+        for idx in 0..<self.graphData.count {
+            //Anchor Point
+            let anchor = [0, idx]
+            
+            //Annotation For Text
+            var firstName = self.graphData.keys[idx]
+            if let range = self.graphData.keys[idx].rangeOfString(" ") {
+                firstName = self.graphData.keys[idx].substringToIndex(range.startIndex)
+            }
+            
+            
+            let textLayer = CPTTextLayer(text: "\(firstName): \(Int(self.graphData[idx]!)) Pts", style: style)
+            textLayer.paddingLeft = 45.0
+            textLayer.paddingTop = 10.0 * CGFloat(self.barWidth)
+            
+            let posLayer = ImageLayer(frame: CGRectMake(0, 0, longestTextSize.width * 2, 35.0 * CGFloat(self.barWidth)), image: self.graphImages[idx])
+            posLayer.addSublayer(textLayer)
+            
+            let symbolTextAnnotation = CPTPlotSpaceAnnotation(plotSpace:plot.plotSpace!, anchorPlotPoint:anchor);
+            symbolTextAnnotation.contentLayer = posLayer;
+            symbolTextAnnotation.displacement = CGPointMake(longestTextSize.width, (-31.0  * CGFloat(self.barWidth)) / 2.0);
+            
+            plot.addAnnotation(symbolTextAnnotation)
+        }
     }
     
     func setRanges() {
