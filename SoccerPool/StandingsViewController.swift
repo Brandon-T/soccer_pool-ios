@@ -23,134 +23,21 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     let emptyBarHeight: Double = 0.5
     var scrollCompletion: (() -> Void)? = nil
     
-    func testLayout() {
-        ServiceLayer.getPool { (json, error) in
-            guard error == nil else {
-                return
-            }
-            
-            self.pools.removeAll()
-            
-            if let poolArray = json?["data"] as? [[String: AnyObject]] {
-                
-                //Sort into groups of 3 per row.
-                var pool = [Pool]()
-                let pools = Pool.fromJSONArray(poolArray) as! [Pool]
-                
-                for i in 0..<pools.count {
-                    if i > 0 && i % 3 == 0 {
-                        self.pools.append(pool)
-                        pool = [Pool]()
-                        pool.append(pools[i])
-                    }
-                    else {
-                        pool.append(pools[i])
-                    }
-                }
-                
-                if pool.count > 0 {
-                    self.pools.append(pool)
-                }
-                
-                
-                //Source for bar graph
-                self.self.horizontalBarGraph.graphImages.removeAll()
-                self.horizontalBarGraph.graphData.removeAll()
-                self.horizontalBarGraph.graphBarColors.removeAll()
-                
-                for i in 0..<pools.count {
-                    let pool = pools[i]
-                    
-                    if pool.name != nil {
-                        self.horizontalBarGraph.graphImages[pool.name!] = UIImage()
-                        self.horizontalBarGraph.graphBarColors[pool.name!] = self.generateColour(UInt(i), total: UInt(pools.count))
-                        self.horizontalBarGraph.graphData[pool.name!] = Double(pool.points) > 0 ? Double(pool.points) : self.emptyBarHeight
-                    }
-                }
-                
-                //Update UI.
-                self.horizontalBarGraph.reloadData()
-                
-                let group = dispatch_group_create()
-                
-                for pool in pools {
-                    if pool.name != nil && pool.photo != nil {
-                        dispatch_group_enter(group)
-                        ServiceLayer.getImage(pool.photo!, completion: { (image, error) in
-                            objc_sync_enter(self.horizontalBarGraph.graphImages)
-                            if image != nil {
-                                self.horizontalBarGraph.graphImages[pool.name!] = image
-                            }
-                            dispatch_group_leave(group)
-                            objc_sync_exit(self.horizontalBarGraph.graphImages)
-                        })
-                    }
-                }
-                
-                dispatch_group_notify(group, dispatch_get_main_queue(), { 
-                    self.horizontalBarGraph.reloadData()
-                });
-            }
-        }
-    }
-    
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.scrollView.hidden = true
-        self.testLayout()
-        return
-        
-        //self.horizontalBarGraph.hidden = true
-
-        ServiceLayer.getPool { (json, error) in
-            guard error == nil else {
+        self.getPools { (pools) in
+            guard let pools = pools else {
+                //Alert Error..
                 return
             }
             
-            self.pools.removeAll()
-            
-            if let poolArray = json?["data"] as? [[String: AnyObject]] {
-                
-                //Sort into groups of 3 per row.
-                var pool = [Pool]()
-                let pools = Pool.fromJSONArray(poolArray) as! [Pool]
-                
-                for i in 0..<pools.count {
-                    if i > 0 && i % 3 == 0 {
-                        self.pools.append(pool)
-                        pool = [Pool]()
-                        pool.append(pools[i])
-                    }
-                    else {
-                        pool.append(pools[i])
-                    }
-                }
-                
-                if pool.count > 0 {
-                    self.pools.append(pool)
-                }
-                
-                
-                //Source for bar graph
-                self.barGraph.graphData.removeAll()
-                self.barGraph.graphBarColors.removeAll()
-                
-                for i in 0..<pools.count {
-                    let pool = pools[i]
-                    
-                    if pool.name != nil {
-                        self.barGraph.graphBarColors[pool.name!] = self.generateColour(UInt(i), total: UInt(pools.count))
-                        self.barGraph.graphData[pool.name!] = Double(pool.points) > 0 ? Double(pool.points) : self.emptyBarHeight
-                    }
-                }
-                
-                //Update UI.
-                self.barGraph.reloadData()
-                self.collectionView.reloadData()
-            }
+            self.renderBarGraph(pools)
+            self.renderHorizontalBarGraph(pools)
         }
+        
+        self.scrollView.hidden = true
+        //self.horizontalBarGraph.hidden = true
     }
 
     override func viewDidLoad() {
@@ -202,6 +89,105 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     func doLayout() -> Void {
         self.barGraph.reloadData()
     }
+    
+    
+    
+    
+    //MARK: Render Bar Graph
+    
+    func getPools(completion: (pools: [Pool]?) -> Void) -> Void {
+        ServiceLayer.getPool { (json, error) in
+            guard error == nil else {
+                return
+            }
+            
+            self.pools.removeAll()
+            
+            if let poolArray = json?["data"] as? [[String: AnyObject]] {
+                
+                //Sort into groups of 3 per row.
+                var pool = [Pool]()
+                let pools = Pool.fromJSONArray(poolArray) as! [Pool]
+                
+                for i in 0..<pools.count {
+                    if i > 0 && i % 3 == 0 {
+                        self.pools.append(pool)
+                        pool = [Pool]()
+                        pool.append(pools[i])
+                    }
+                    else {
+                        pool.append(pools[i])
+                    }
+                }
+                
+                if pool.count > 0 {
+                    self.pools.append(pool)
+                }
+                
+                completion(pools: pools)
+            }
+        }
+    }
+    
+    func renderBarGraph(pools: [Pool]) -> Void {
+        //Source for bar graph
+        self.barGraph.graphData.removeAll()
+        self.barGraph.graphBarColors.removeAll()
+        
+        for i in 0..<pools.count {
+            let pool = pools[i]
+            
+            if pool.name != nil {
+                self.barGraph.graphBarColors[pool.name!] = self.generateColour(UInt(i), total: UInt(pools.count))
+                self.barGraph.graphData[pool.name!] = Double(pool.points) > 0 ? Double(pool.points) : self.emptyBarHeight
+            }
+        }
+        
+        //Update UI.
+        self.barGraph.reloadData()
+        self.collectionView.reloadData()
+    }
+    
+    func renderHorizontalBarGraph(pools: [Pool]) -> Void {
+        //Source for bar graph
+        self.self.horizontalBarGraph.graphImages.removeAll()
+        self.horizontalBarGraph.graphData.removeAll()
+        self.horizontalBarGraph.graphBarColors.removeAll()
+        
+        for i in 0..<pools.count {
+            let pool = pools[i]
+            
+            if pool.name != nil {
+                self.horizontalBarGraph.graphImages[pool.name!] = UIImage()
+                self.horizontalBarGraph.graphBarColors[pool.name!] = self.generateColour(UInt(i), total: UInt(pools.count))
+                self.horizontalBarGraph.graphData[pool.name!] = Double(pool.points) > 0 ? Double(pool.points) : self.emptyBarHeight
+            }
+        }
+        
+        //Update UI.
+        self.horizontalBarGraph.reloadData()
+        
+        let group = dispatch_group_create()
+        
+        for pool in pools {
+            if pool.name != nil && pool.photo != nil {
+                dispatch_group_enter(group)
+                ServiceLayer.getImage(pool.photo!, completion: { (image, error) in
+                    objc_sync_enter(self.horizontalBarGraph.graphImages)
+                    if image != nil {
+                        self.horizontalBarGraph.graphImages[pool.name!] = image
+                    }
+                    dispatch_group_leave(group)
+                    objc_sync_exit(self.horizontalBarGraph.graphImages)
+                })
+            }
+        }
+        
+        dispatch_group_notify(group, dispatch_get_main_queue(), {
+            self.horizontalBarGraph.reloadData()
+        });
+    }
+    
     
     //MARK: BAR BUTTON ACTIONS
     
