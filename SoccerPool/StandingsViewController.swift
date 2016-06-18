@@ -26,6 +26,8 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.initBarButtonItems()
+        
         self.getPools { (pools) in
             guard let pools = pools else {
                 //Alert Error..
@@ -35,9 +37,6 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
             self.renderBarGraph(pools)
             self.renderHorizontalBarGraph(pools)
         }
-        
-        self.scrollView.hidden = true
-        //self.horizontalBarGraph.hidden = true
     }
 
     override func viewDidLoad() {
@@ -62,13 +61,16 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     func initControls() -> Void {
         self.title = "Standings"
         
-        let graphSwitchBarButtonItem: UIBarButtonItem = UIBarButtonItem(title: "📊🏅👻", style: .Done, target: nil, action: nil)
+        //let graphSwitchBarButtonItem: UIBarButtonItem = UIBarButtonItem(title: "📊🏅👻", style: .Done, target: nil, action: nil)
+        
+        self.scrollView.hidden = true
+        self.initBarButtonItems()
+        
         
         let rightInformationBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "InformationBarButtonItem"), landscapeImagePhone: nil, style: .Done, target: self, action: #selector(informationBarButtonPressed))
         
         let rightLogoutBarButtonItem: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "LogoutBarButtonItem"), landscapeImagePhone: nil, style: .Done, target: self, action: #selector(logoutBarButtonPressed))
         
-        self.navigationItem.leftBarButtonItem = graphSwitchBarButtonItem
         self.navigationItem.setRightBarButtonItems([rightLogoutBarButtonItem,rightInformationBarButtonItem], animated: true)
     }
     
@@ -90,6 +92,26 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
         self.barGraph.reloadData()
     }
     
+    func initBarButtonItems() -> Void {
+        if self.scrollView.hidden {
+            self.scrollView.hidden = true
+            self.horizontalBarGraph.hidden = false
+            let graphSwitchButton = UIButton(frame: CGRectMake(0.0, 0.0, 40.0, 40.0))
+            graphSwitchButton.setImage(UIImage(named: "GraphFilledBarButtonItem"), forState: .Normal)
+            graphSwitchButton.addTarget(self, action: #selector(graphBarButtonPressed), forControlEvents: .TouchUpInside)
+            let graphSwitchBarButtonItem: UIBarButtonItem = UIBarButtonItem(customView: graphSwitchButton)
+            self.navigationItem.leftBarButtonItem = graphSwitchBarButtonItem
+        }
+        else {
+            self.scrollView.hidden = false
+            self.horizontalBarGraph.hidden = true
+            let graphSwitchButton = UIButton(frame: CGRectMake(0.0, 0.0, 40.0, 40.0))
+            graphSwitchButton.setImage(UIImage(named: "GraphBarButtonItem"), forState: .Normal)
+            graphSwitchButton.addTarget(self, action: #selector(graphBarButtonPressed), forControlEvents: .TouchUpInside)
+            let graphSwitchBarButtonItem: UIBarButtonItem = UIBarButtonItem(customView: graphSwitchButton)
+            self.navigationItem.leftBarButtonItem = graphSwitchBarButtonItem
+        }
+    }
     
     
     
@@ -190,6 +212,26 @@ class StandingsViewController : BaseViewController, UICollectionViewDataSource, 
     
     
     //MARK: BAR BUTTON ACTIONS
+    
+    @IBAction func graphBarButtonPressed(sender: AnyObject) {
+        if !self.scrollView.hidden {
+            let graphSwitchButton = UIButton(frame: CGRectMake(0.0, 0.0, 40.0, 40.0))
+            graphSwitchButton.setImage(UIImage(named: "GraphFilledBarButtonItem"), forState: .Normal)
+            graphSwitchButton.addTarget(self, action: #selector(graphBarButtonPressed), forControlEvents: .TouchUpInside)
+            let graphSwitchBarButtonItem: UIBarButtonItem = UIBarButtonItem(customView: graphSwitchButton)
+            self.navigationItem.leftBarButtonItem = graphSwitchBarButtonItem
+        }
+        else {
+            let graphSwitchButton = UIButton(frame: CGRectMake(0.0, 0.0, 40.0, 40.0))
+            graphSwitchButton.setImage(UIImage(named: "GraphBarButtonItem"), forState: .Normal)
+            graphSwitchButton.addTarget(self, action: #selector(graphBarButtonPressed), forControlEvents: .TouchUpInside)
+            let graphSwitchBarButtonItem: UIBarButtonItem = UIBarButtonItem(customView: graphSwitchButton)
+            self.navigationItem.leftBarButtonItem = graphSwitchBarButtonItem
+        }
+        
+        self.scrollView.hidden = !self.scrollView.hidden
+        self.horizontalBarGraph.hidden = !self.horizontalBarGraph.hidden
+    }
     
     @IBAction func logoutBarButtonPressed(sender: AnyObject) {
         ServiceLayer.logoutUser()
