@@ -134,6 +134,8 @@ class GamesViewController : UITableViewController {
     }
     
     func setTheme() -> Void {
+        self.navigationItem.leftBarButtonItem = nil
+        
         let backgroundImageView = UIImageView(image: UIImage(named: "IntroBackground"))
         backgroundImageView.frame = self.tableView.frame
         self.tableView.backgroundView = backgroundImageView;
