@@ -4,7 +4,7 @@ use_frameworks!
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'SoccerPool' do
-  pod 'Alamofire', '~> 3.3.1'
+  pod 'Alamofire', '~> 3.4.0'
   pod 'MagicalRecord',   '~> 2.3.2'
   pod 'MBProgressHUD',   '~> 0.9.1'
   pod 'XYPieChart'

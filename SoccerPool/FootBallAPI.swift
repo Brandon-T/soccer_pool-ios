@@ -94,10 +94,10 @@ class FootballAPI {
         var URL: NSURL {
             switch self {
             case .Players:
-                return NSURL(string: "http://europecup2016.com")!.URLByAppendingPathComponent(route.path)
+                return NSURL(string: "http://europecup2016.com")!.URLByAppendingPathComponent(route.path)!
                 
             case .League:
-                return NSURL(string: "http://api.football-data.org/v1")!.URLByAppendingPathComponent(route.path)
+                return NSURL(string: "http://api.football-data.org/v1")!.URLByAppendingPathComponent(route.path)!
             }
         }
         
