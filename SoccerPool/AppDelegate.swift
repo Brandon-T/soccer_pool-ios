@@ -50,7 +50,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        if let userInfo = notification.userInfo {
+        if let userInfo = notification.userInfo, currentGameId = userInfo["gameID"] as? String, homeTeamName = userInfo["homeTeamName"] as? String, awayTeamName = userInfo["awayTeamName"] as? String {
+            
+            if let notifications = application.scheduledLocalNotifications {
+                for notification in notifications {
+                    if let info = notification.userInfo, otherGameId = info["gameID"] as? String {
+                        if currentGameId == otherGameId {
+                            application.cancelLocalNotification(notification)
+                        }
+                    }
+                }
+            }
+            
+            
             let appearance = SCLAlertView.SCLAppearance(
                 kTitleFont: UIFont.semiBoldSystemFont(18),
                 kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
@@ -64,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 alert.hideView()
             })
             
-            alert.showInfo("Upcoming Game", subTitle: "\n\(userInfo["homeTeamName"]) vs. \(userInfo["awayTeamName"]) will be taking place soon. Don't miss the opportunity to place your bet!\n", closeButtonTitle: nil, colorStyle: 0x3F51B5, colorTextButton: 0xFFFFFF, circleIconImage: UIImage(named: "EuroCupIcon"))
+            alert.showInfo("Upcoming Game", subTitle: "\n\(homeTeamName) vs. \(awayTeamName) will be taking place soon. Don't miss the opportunity to place your bet!\n", closeButtonTitle: nil, colorStyle: 0x3F51B5, colorTextButton: 0xFFFFFF, circleIconImage: UIImage(named: "EuroCupIcon"))
         }
     }
     
