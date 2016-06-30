@@ -31,8 +31,12 @@ class ImageLayer : CPTLayer {
             CGContextTranslateCTM(ctx, 0.0, 1.0);
             CGContextScaleCTM(ctx, 1.0, 1.0);
         
-        
-            CGContextDrawImage(ctx, CGRectMake(1.0, 7.0, self.bounds.size.height - 7.0, self.bounds.size.height - 11.0), cgImage)
+            if UIScreen.mainScreen().bounds.size.height < 667.0 {
+                CGContextDrawImage(ctx, CGRectMake(1.0, 7.0, self.bounds.size.height - 7.0, self.bounds.size.height - 11.0), cgImage)
+            }
+            else {
+                CGContextDrawImage(ctx, CGRectMake(1.0, 2.0, self.bounds.size.height - 3.0, self.bounds.size.height - 6.0), cgImage)
+            }
         
             CGContextRestoreGState(ctx);
         }
