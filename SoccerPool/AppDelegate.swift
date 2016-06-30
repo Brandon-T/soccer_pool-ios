@@ -47,6 +47,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        
+        //For Testing Notifications.
+        
+        /*let time = dispatch_time(DISPATCH_TIME_NOW, Int64(5.0 * Double(NSEC_PER_SEC)))
+        dispatch_after(time, dispatch_get_main_queue()) { 
+            
+            
+            
+            let times = [1.0, 2.0, 3.0]  //Seconds..
+            
+            for time in times {
+                let notification = UILocalNotification()
+                if #available(iOS 8.2, *) {
+                    notification.alertTitle = "Upcoming Game: Italy vs. Germany"
+                    notification.alertBody = "You have not placed a bet on this game yet."
+                } else {
+                    notification.alertBody = "Upcoming Game: Italy vs. Germany. Last chance to place your bet!"
+                }
+                
+                notification.repeatInterval = NSCalendarUnit(rawValue: 0)
+                notification.fireDate = NSDate().dateByAddingTimeInterval(time * 1.0)
+                notification.timeZone = NSTimeZone.localTimeZone()
+                notification.applicationIconBadgeNumber = 1
+                notification.soundName = UILocalNotificationDefaultSoundName
+                notification.alertAction = "View"
+                
+                notification.userInfo = ["gameID": "1024", "homeTeamName": "Italy", "awayTeamName": "Germany"]
+                
+                UIApplication.sharedApplication().scheduleLocalNotification(notification)
+            }
+        }*/
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
