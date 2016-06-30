@@ -17,6 +17,7 @@ class BetDialogView: UIView {
     @IBOutlet weak var awayTeamFlagView: UIImageView!
     @IBOutlet weak var homeTeamScoreLabel: UITextField!
     @IBOutlet weak var awayTeamScoreLabel: UITextField!
+    @IBOutlet weak var notificationLabel: UILabel!
     
     
     
@@ -42,15 +43,15 @@ class BetDialogView: UIView {
         self.doLayout()
     }
 
-    func initControllers(){
+    func initControllers() {
     
     }
     
-    func setTheme(){
-    
+    func setTheme() {
+        self.notificationLabel.text = nil
     }
     
-    func doLayout(){
+    func doLayout() {
     
     }
     

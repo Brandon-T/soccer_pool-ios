@@ -156,11 +156,6 @@ class GamesViewController : UITableViewController {
                     return first.startTime!.compare(second.startTime!) == .OrderedAscending
                 })
                 
-                
-                for game in self.upcomingGames {
-                    print(game.startTime!.timeIntervalSinceDate(NSDate()) / 60.0)
-                }
-                
                 self.setNotifications()
                 self.tableView.reloadData()
             }

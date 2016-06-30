@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
+        <development version="7000" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
@@ -13,6 +14,7 @@
                 <outlet property="homeTeamFlagView" destination="Ch0-q3-85H" id="Cpw-b7-5C8"/>
                 <outlet property="homeTeamNameLabel" destination="mXp-cn-A2g" id="5im-Y7-YDt"/>
                 <outlet property="homeTeamScoreLabel" destination="lRj-xT-sr2" id="FRL-G8-LWu"/>
+                <outlet property="notificationLabel" destination="UOy-kp-slu" id="Oek-BG-LFW"/>
                 <outlet property="view" destination="iN0-l3-epB" id="0k7-fV-Tjz"/>
             </connections>
         </placeholder>
@@ -22,21 +24,21 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spain" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTI-VS-Ypf">
-                    <rect key="frame" x="97" y="10" width="88" height="18"/>
+                    <rect key="frame" x="112" y="10" width="88" height="18"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="88" id="Atu-Ra-PUp"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXp-cn-A2g">
-                    <rect key="frame" x="30" y="10" width="88" height="18"/>
+                    <rect key="frame" x="15" y="10" width="88" height="18"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="88" id="EFr-yD-XQg"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TemplateFlag" translatesAutoresizingMaskIntoConstraints="NO" id="Ch0-q3-85H">
@@ -56,7 +58,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHk-6C-lxh">
                     <rect key="frame" x="80" y="43" width="55" height="18"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bcp-is-D0P">
@@ -77,21 +79,30 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                 </textField>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Will be taking place soon. Don't miss the chance to place your bet!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOy-kp-slu" userLabel="NotificationLabel">
+                    <rect key="frame" x="15" y="89.5" width="185" height="45.5"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="bTI-VS-Ypf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="0Zb-pl-wXz"/>
                 <constraint firstItem="Ch0-q3-85H" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="2oP-wK-W0y"/>
                 <constraint firstItem="Ch0-q3-85H" firstAttribute="top" secondItem="mXp-cn-A2g" secondAttribute="bottom" constant="10" id="8ni-vK-y20"/>
                 <constraint firstItem="lRj-xT-sr2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="58" id="BX8-d9-3l6"/>
-                <constraint firstItem="mXp-cn-A2g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="EA2-8h-jjm"/>
+                <constraint firstItem="mXp-cn-A2g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="EA2-8h-jjm"/>
+                <constraint firstItem="UOy-kp-slu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="H9o-aM-tIA"/>
                 <constraint firstItem="bcp-is-D0P" firstAttribute="top" secondItem="new-0t-tXl" secondAttribute="bottom" constant="15" id="KEw-aI-fDg"/>
                 <constraint firstItem="new-0t-tXl" firstAttribute="leading" secondItem="LHk-6C-lxh" secondAttribute="trailing" constant="15" id="OIg-Hv-tLM"/>
                 <constraint firstAttribute="trailing" secondItem="new-0t-tXl" secondAttribute="trailing" constant="15" id="S1y-9P-C4Q"/>
                 <constraint firstItem="lRj-xT-sr2" firstAttribute="top" secondItem="Ch0-q3-85H" secondAttribute="bottom" constant="15" id="UxL-lo-zx1"/>
                 <constraint firstItem="LHk-6C-lxh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="43" id="ixi-lF-Ix2"/>
-                <constraint firstAttribute="trailing" secondItem="bTI-VS-Ypf" secondAttribute="trailing" constant="30" id="juD-cP-4b5"/>
+                <constraint firstAttribute="trailing" secondItem="bTI-VS-Ypf" secondAttribute="trailing" constant="15" id="juD-cP-4b5"/>
                 <constraint firstItem="LHk-6C-lxh" firstAttribute="leading" secondItem="Ch0-q3-85H" secondAttribute="trailing" constant="15" id="lhd-qb-Vn8"/>
+                <constraint firstAttribute="trailing" secondItem="UOy-kp-slu" secondAttribute="trailing" constant="15" id="qnI-mJ-5wv"/>
+                <constraint firstAttribute="bottom" secondItem="UOy-kp-slu" secondAttribute="bottom" id="t9c-Mv-hZl"/>
                 <constraint firstAttribute="trailing" secondItem="bcp-is-D0P" secondAttribute="trailing" constant="58" id="tEW-Q2-Jo2"/>
                 <constraint firstItem="new-0t-tXl" firstAttribute="top" secondItem="bTI-VS-Ypf" secondAttribute="bottom" constant="10" id="tnf-VK-VOb"/>
                 <constraint firstItem="bcp-is-D0P" firstAttribute="leading" secondItem="lRj-xT-sr2" secondAttribute="trailing" constant="35" id="x7m-sK-hyq"/>

@@ -50,11 +50,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //For Testing Notifications.
         
-        /*let time = dispatch_time(DISPATCH_TIME_NOW, Int64(5.0 * Double(NSEC_PER_SEC)))
+        /*let time = dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC)))
         dispatch_after(time, dispatch_get_main_queue()) { 
-            
-            
-            
+
             let times = [1.0, 2.0, 3.0]  //Seconds..
             
             for time in times {
@@ -73,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 notification.soundName = UILocalNotificationDefaultSoundName
                 notification.alertAction = "View"
                 
-                notification.userInfo = ["gameID": "1024", "homeTeamName": "Italy", "awayTeamName": "Germany"]
+                notification.userInfo = ["gameID": "1024", "homeTeamName": "France", "awayTeamName": "Romania", "homeTeamImage": "http://104.131.118.14/images/France.png", "awayTeamImage": "http://104.131.118.14/images/Romania.png"]
                 
                 UIApplication.sharedApplication().scheduleLocalNotification(notification)
             }
@@ -102,6 +100,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             )
             
             let alert: SCLAlertView = SCLAlertView(appearance: appearance)
+            
+            if let homeTeamImage = userInfo["homeTeamImage"] as? String, awayTeamImage = userInfo["awayTeamImage"] as? String {
+                let subView = BetDialogView(frame: CGRectMake(0, 0, 215, 140))
+                subView.homeTeamNameLabel.text = homeTeamName
+                subView.homeTeamFlagView.loadImage(homeTeamImage)
+                subView.homeTeamScoreLabel.hidden = true
+                
+                subView.awayTeamNameLabel.text = awayTeamName
+                subView.awayTeamFlagView.loadImage(awayTeamImage)
+                subView.awayTeamScoreLabel.hidden = true
+                
+                subView.notificationLabel.text = "Will be taking place soon. Don't miss the chance to place your bet!"
+                subView.notificationLabel.hidden = false
+                
+                alert.customSubview = subView
+            }
             
             alert.addButton("OK", action: {
                 alert.hideView()
