@@ -49,6 +49,34 @@ class GamesViewController : UITableViewController {
         self.loadData()
     }
     
+    func setNotifications() {
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
+
+        for game in self.upcomingGames {
+            if let homeTeamName = game.homeTeam?.name, awayTeamName = game.awayTeam?.name {
+                if !game.hasBeenPredicted {
+                    let date = game.startTime?.dateByAddingTimeInterval(-60.0 * 60.0) //1hr before the match
+                    
+                    let notification = UILocalNotification()
+                    if #available(iOS 8.2, *) {
+                        notification.alertTitle = "Upcoming Game: \(homeTeamName) vs. \(awayTeamName)"
+                        notification.alertBody = "You have not placed a bet on this game yet."
+                    } else {
+                        notification.alertBody = "Upcoming Game: \(homeTeamName) vs. \(awayTeamName). Last chance to place your bet!"
+                    }
+                    
+                    notification.repeatInterval = NSCalendarUnit(rawValue: 0)
+                    notification.fireDate = date
+                    notification.timeZone = NSTimeZone.localTimeZone()
+                    
+                    notification.userInfo = ["gameID": game.gameID, "homeTeamName": homeTeamName, "awayTeamName": awayTeamName, "homeTeamImage": game.homeTeam?.image ?? "", "awayTeamImage": game.awayTeam?.image ?? ""]
+                    
+                    UIApplication.sharedApplication().scheduleLocalNotification(notification)
+                }
+            }
+        }
+    }
+    
     func loadData() {
         ServiceLayer.getGames { (json, error) in
             guard error == nil else {
@@ -64,7 +92,6 @@ class GamesViewController : UITableViewController {
                 let currentDateTime = NSDate()
                 
                 for game in games {
-                    
                     let performMath = { [unowned game, unowned self]() -> Void in
                         if let startTime = game.startTime {
                             let endTime = startTime.dateByAddingTimeInterval(2 * 60 * 60)
@@ -104,18 +131,19 @@ class GamesViewController : UITableViewController {
                 }
                 
                 //Server does this now..
-                /*self.upcomingGames.sortInPlace({ (first, second) -> Bool in
-                 return first.startTime!.compare(second.startTime!) == .OrderedAscending
-                 })
+                self.upcomingGames.sortInPlace({ (first, second) -> Bool in
+                    return first.startTime!.compare(second.startTime!) == .OrderedAscending
+                })
                  
-                 self.inProgressGames.sortInPlace({ (first, second) -> Bool in
-                 return first.startTime!.compare(second.startTime!) == .OrderedAscending
-                 })
+                self.inProgressGames.sortInPlace({ (first, second) -> Bool in
+                    return first.startTime!.compare(second.startTime!) == .OrderedAscending
+                })
                  
-                 self.completedGames.sortInPlace({ (first, second) -> Bool in
-                 return first.startTime!.compare(second.startTime!) == .OrderedAscending
-                 })*/
+                self.completedGames.sortInPlace({ (first, second) -> Bool in
+                    return first.startTime!.compare(second.startTime!) == .OrderedAscending
+                })
                 
+                self.setNotifications()
                 self.tableView.reloadData()
             }
         }

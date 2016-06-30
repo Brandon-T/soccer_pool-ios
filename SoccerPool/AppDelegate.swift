@@ -8,6 +8,7 @@
 
 import UIKit
 import MagicalRecord
+import SCLAlertView
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -46,16 +47,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
-        /*let notification = UILocalNotification()
-        notification.repeatInterval = NSCalendarUnit(rawValue: 0)
-        notification.alertBody = "Test"
-        notification.fireDate = NSDate().dateByAddingTimeInterval(5)
-        notification.timeZone = NSTimeZone.defaultTimeZone()
-        application.scheduleLocalNotification(notification)*/
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        
+        if let userInfo = notification.userInfo {
+            let appearance = SCLAlertView.SCLAppearance(
+                kTitleFont: UIFont.semiBoldSystemFont(18),
+                kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
+                kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
+                showCloseButton: false
+            )
+            
+            let alert: SCLAlertView = SCLAlertView(appearance: appearance)
+            
+            alert.addButton("OK", action: {
+                alert.hideView()
+            })
+            
+            alert.showInfo("Upcoming Game", subTitle: "\n\(userInfo["homeTeamName"]) vs. \(userInfo["awayTeamName"]) will be taking place soon. Don't miss the opportunity to place your bet!\n", closeButtonTitle: nil, colorStyle: 0x3F51B5, colorTextButton: 0xFFFFFF, circleIconImage: UIImage(named: "EuroCupIcon"))
+        }
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
@@ -88,11 +98,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    func application(application: UIApplication, didChangeStatusBarFrame oldStatusBarFrame: CGRect) {
+    /*func application(application: UIApplication, didChangeStatusBarFrame oldStatusBarFrame: CGRect) {
         if let root = application.keyWindow?.rootViewController as? UITabBarController, let nav = root.selectedViewController as? BaseNavigationController {
             nav.setNavigationBarHidden(true, animated: true)
             nav.setNavigationBarHidden(false, animated: true)
         }
-    }
+    }*/
 }
 
