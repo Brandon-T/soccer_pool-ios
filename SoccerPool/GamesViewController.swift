@@ -50,28 +50,41 @@ class GamesViewController : UITableViewController {
     }
     
     func setNotifications() {
-        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        if self.upcomingGames.count > 0 {
+            UIApplication.sharedApplication().cancelAllLocalNotifications()
+        }
 
         for game in self.upcomingGames {
             if let homeTeamName = game.homeTeam?.name, awayTeamName = game.awayTeam?.name {
-                if !game.hasBeenPredicted {
-                    let date = game.startTime?.dateByAddingTimeInterval(-60.0 * 60.0) //1hr before the match
+                if let startDate = game.startTime where !game.hasBeenPredicted {
+                    let time = startDate.timeIntervalSinceDate(NSDate()) / 60.0
                     
-                    let notification = UILocalNotification()
-                    if #available(iOS 8.2, *) {
-                        notification.alertTitle = "Upcoming Game: \(homeTeamName) vs. \(awayTeamName)"
-                        notification.alertBody = "You have not placed a bet on this game yet."
-                    } else {
-                        notification.alertBody = "Upcoming Game: \(homeTeamName) vs. \(awayTeamName). Last chance to place your bet!"
+                    if time >= 35.0 {
+                        let times = [-24.0 * 60.0, -60.0, -45.0, -35.0]  //Notify the user 1d, 60m, 45m, or 35m interval before the game.
+                        
+                        for time in times {
+                            let date = game.startTime!.dateByAddingTimeInterval(time * 60.0)
+                            
+                            let notification = UILocalNotification()
+                            if #available(iOS 8.2, *) {
+                                notification.alertTitle = "Upcoming Game: \(homeTeamName) vs. \(awayTeamName)"
+                                notification.alertBody = "You have not placed a bet on this game yet."
+                            } else {
+                                notification.alertBody = "Upcoming Game: \(homeTeamName) vs. \(awayTeamName). Last chance to place your bet!"
+                            }
+                            
+                            notification.repeatInterval = NSCalendarUnit(rawValue: 0)
+                            notification.fireDate = date
+                            notification.timeZone = NSTimeZone.localTimeZone()
+                            notification.applicationIconBadgeNumber = 1
+                            notification.soundName = UILocalNotificationDefaultSoundName
+                            notification.alertAction = "View"
+                            
+                            notification.userInfo = ["gameID": game.gameID, "homeTeamName": homeTeamName, "awayTeamName": awayTeamName, "homeTeamImage": game.homeTeam?.image ?? "", "awayTeamImage": game.awayTeam?.image ?? ""]
+                            
+                            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+                        }
                     }
-                    
-                    notification.repeatInterval = NSCalendarUnit(rawValue: 0)
-                    notification.fireDate = date
-                    notification.timeZone = NSTimeZone.localTimeZone()
-                    
-                    notification.userInfo = ["gameID": game.gameID, "homeTeamName": homeTeamName, "awayTeamName": awayTeamName, "homeTeamImage": game.homeTeam?.image ?? "", "awayTeamImage": game.awayTeam?.image ?? ""]
-                    
-                    UIApplication.sharedApplication().scheduleLocalNotification(notification)
                 }
             }
         }
@@ -142,6 +155,11 @@ class GamesViewController : UITableViewController {
                 self.completedGames.sortInPlace({ (first, second) -> Bool in
                     return first.startTime!.compare(second.startTime!) == .OrderedAscending
                 })
+                
+                
+                for game in self.upcomingGames {
+                    print(game.startTime!.timeIntervalSinceDate(NSDate()) / 60.0)
+                }
                 
                 self.setNotifications()
                 self.tableView.reloadData()
