@@ -50,9 +50,8 @@ class GamesViewController : UITableViewController {
     }
     
     func setNotifications() {
-        if self.upcomingGames.count > 0 {
-            UIApplication.sharedApplication().cancelAllLocalNotifications()
-        }
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
 
         for game in self.upcomingGames {
             if let homeTeamName = game.homeTeam?.name, awayTeamName = game.awayTeam?.name {
@@ -527,9 +526,11 @@ class GamesViewController : UITableViewController {
                     }
                     
                     alert.hideView()
+                    self.setNotifications()
                     tableView.reloadData()
                 })
             }
+            
             alert.addButton("Cancel", backgroundColor: UIColor.navigationBarBackgroundColor(), textColor: UIColor.whiteColor(), showDurationStatus: false) {
                 alert.hideView()
                 tableView.reloadData()
