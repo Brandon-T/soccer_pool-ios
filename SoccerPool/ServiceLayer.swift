@@ -259,7 +259,7 @@ class ServiceLayer {
             default:
                 break
             }
-            return Router.baseURL.URLByAppendingPathComponent(route.path)!
+            return Router.baseURL.URLByAppendingPathComponent(route.path)
         }
         
         var URLRequest: NSMutableURLRequest {

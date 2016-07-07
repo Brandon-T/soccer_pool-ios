@@ -92,6 +92,7 @@ class GamesViewController : UITableViewController {
     func loadData() {
         ServiceLayer.getGames { (json, error) in
             guard error == nil else {
+                self.setNotifications()
                 return
             }
             
@@ -157,6 +158,9 @@ class GamesViewController : UITableViewController {
                 
                 self.setNotifications()
                 self.tableView.reloadData()
+            }
+            else {
+                self.setNotifications()
             }
         }
     }
