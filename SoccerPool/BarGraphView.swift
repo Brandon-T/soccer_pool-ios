@@ -33,7 +33,7 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
         }
     }
     
-    let graphData = OrderedDictionary<String, AnyObject>()
+    let graphData = OrderedDictionary<String, Double>()
     var graphBarColors = OrderedDictionary<String, UIColor>()
     
     
@@ -63,14 +63,14 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
         let xMin = 0.0
         let yMin = 0.0
         let xMax = 4.0
-        let yMax = 10.0
+        let yMax = self.calculateYMax()
         let barOffset = barWidth / 2.0
         let backgroundColour = CPTColor(CGColor: UIColor.clearColor().CGColor)
         
         self.hostedGraph?.fill = CPTFill(color: backgroundColour)
         self.hostedGraph?.plotAreaFrame?.paddingTop = 30.0
         self.hostedGraph?.plotAreaFrame?.paddingBottom = 10.0
-        self.hostedGraph?.plotAreaFrame?.paddingLeft = 35.0
+        self.hostedGraph?.plotAreaFrame?.paddingLeft = 45.0
         self.hostedGraph?.plotAreaFrame?.paddingRight = 10.0
         
         let plotSpace = self.hostedGraph?.defaultPlotSpace as! CPTXYPlotSpace
@@ -205,7 +205,7 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
             return CPTPlotRange(locationDecimal: newRange.locationDecimal, lengthDecimal: newRange.lengthDecimal)
         }
         
-        return CPTPlotRange(locationDecimal: CPTDecimalFromDouble(0.0), lengthDecimal: CPTDecimalFromDouble(10.0))
+        return CPTPlotRange(locationDecimal: CPTDecimalFromDouble(0.0), lengthDecimal: CPTDecimalFromDouble(self.calculateYMax()))
     }
     
     func plotSpace(space: CPTPlotSpace, willDisplaceBy proposedDisplacementVector: CGPoint) -> CGPoint {
@@ -222,7 +222,7 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
         let xMin = 0.0
         let yMin = 0.0
         let xMax = 4.0
-        let yMax = 10.0
+        let yMax = self.calculateYMax()
         
         let plotSpace = self.hostedGraph?.defaultPlotSpace as! CPTXYPlotSpace
         plotSpace.xRange = CPTPlotRange(locationDecimal: CPTDecimalFromDouble(xMin), lengthDecimal: CPTDecimalFromDouble(xMax - xMin))
@@ -230,5 +230,13 @@ class BarGraphView : CPTGraphHostingView, CPTBarPlotDataSource, CPTBarPlotDelega
         plotSpace.globalXRange = CPTPlotRange(locationDecimal: CPTDecimalFromDouble(xMin), lengthDecimal: CPTDecimalFromDouble(Double(self.graphData.count) <= xMax ? xMax : Double(self.graphData.count) - (1.0 - barWidth)))
         
         self.hostedGraph?.reloadData()
+    }
+    
+    func calculateYMax() -> Double {
+        let sortedValues = self.graphData.values.values.sort { (first, second) -> Bool in
+            return UInt(first) > UInt(second)
+        }
+        
+        return 10 * ceil((Double(sortedValues.first ?? 0) / 10.0) + 0.5)
     }
 }

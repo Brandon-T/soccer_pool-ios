@@ -16,7 +16,13 @@
 
 
 @interface NSObject (Serializable)
+
 + (instancetype)fromJSON:(NSDictionary *)json;
 + (NSArray<Serializeable> *)fromJSONArray:(NSArray<NSDictionary<NSString *, id> *> *)json;
 - (NSDictionary *)toJSON;
+
+- (Class)classForProperty:(NSString *)property;
+- (NSString *)propertyForName:(NSString *)name;
+- (NSDictionary *)enumForProperty:(NSString *)property;
+- (NSDateFormatter *)dateFormatterForProperty:(NSString *)property;
 @end

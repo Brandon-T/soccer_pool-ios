@@ -6,7 +6,7 @@
 //
 
 #import <CoreData/CoreData.h>
-#import "MagicalRecordXcode7CompatibilityMacros.h"
+#import <MagicalRecord/MagicalRecordXcode7CompatibilityMacros.h>
 
 OBJC_EXPORT NSString * __MR_nonnull const kMagicalRecordPSCDidCompleteiCloudSetupNotification;
 OBJC_EXPORT NSString * __MR_nonnull const kMagicalRecordPSCMismatchWillDeleteStore;

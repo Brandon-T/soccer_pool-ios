@@ -25,7 +25,10 @@ class OrderedDictionary<Key: Hashable, Value> : DictionaryLiteralConvertible {
     
     subscript(index: Int) -> Value? {
         get {
-            return self.values[self.keys[index]]
+            if index < self.keys.count {
+                return self.values[self.keys[index]]
+            }
+            return nil
         }
         
         set(newValue) {

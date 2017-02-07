@@ -8,11 +8,68 @@
 
 import UIKit
 import MagicalRecord
+import SCLAlertView
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    
+    func getUpcomingGames(completion: (games: [Game]?) -> Void) {
+        ServiceLayer.getGames { (json, error) in
+            guard error == nil else {
+                completion(games: nil)
+                return
+            }
+            
+            if let gamesArray = json?["data"] as? [[String: AnyObject]] {
+                let games = Game.fromJSONArray(gamesArray) as! [Game]
+                let currentDateTime = NSDate()
+                
+                var upcomingGames = [Game]()
+                
+                for game in games {
+                    let performMath = { [unowned game]() -> Void in
+                        if let startTime = game.startTime {
+                            //currentDateTime < startTime
+                            if currentDateTime.compare(startTime) != .OrderedDescending {
+                                upcomingGames.append(game)
+                            }
+                        }
+                    }
+                    
+                    if let state = game.state {
+                        if state == "upcoming" {
+                            upcomingGames.append(game)
+                        }
+                        else if state == "progress" {
+                            
+                        }
+                        else if state == "complete" {
+                            
+                        }
+                        else {
+                            performMath()
+                        }
+                    }
+                    else {
+                        performMath()
+                    }
+                }
+                
+                //Server does this now..
+                upcomingGames.sortInPlace({ (first, second) -> Bool in
+                    return first.startTime!.compare(second.startTime!) == .OrderedAscending
+                })
+                
+                completion(games: upcomingGames)
+            }
+            else {
+                completion(games: nil)
+            }
+        }
+    }
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -46,16 +103,98 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
-        let notification = UILocalNotification()
-        notification.repeatInterval = NSCalendarUnit(rawValue: 0)
-        notification.alertBody = "Test"
-        notification.fireDate = NSDate().dateByAddingTimeInterval(5000)
-        notification.timeZone = NSTimeZone.defaultTimeZone()
-        application.scheduleLocalNotification(notification)
+        
+        //For Testing Notifications.
+        
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC)))
+        dispatch_after(time, dispatch_get_main_queue()) { 
+
+            let times = [1.0, 2.0, 3.0]  //Seconds..
+            
+            for time in times {
+                let notification = UILocalNotification()
+                if #available(iOS 8.2, *) {
+                    notification.alertTitle = "Upcoming Game: Italy vs. Germany"
+                    notification.alertBody = "You have not placed a bet on this game yet."
+                } else {
+                    notification.alertBody = "Upcoming Game: Italy vs. Germany. Last chance to place your bet!"
+                }
+                
+                notification.repeatInterval = NSCalendarUnit(rawValue: 0)
+                notification.fireDate = NSDate().dateByAddingTimeInterval(time * 1.0)
+                notification.timeZone = NSTimeZone.localTimeZone()
+                notification.applicationIconBadgeNumber = 1
+                notification.soundName = UILocalNotificationDefaultSoundName
+                notification.alertAction = "View"
+                
+                notification.userInfo = ["gameID": "153664", "homeTeamName": "France", "awayTeamName": "Romania", "homeTeamImage": "http://104.131.118.14/images/France.png", "awayTeamImage": "http://104.131.118.14/images/Romania.png"]
+                
+                UIApplication.sharedApplication().scheduleLocalNotification(notification)
+            }
+        }
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         
+        if (UIApplication.sharedApplication().applicationIconBadgeNumber > 0) {
+            UIApplication.sharedApplication().applicationIconBadgeNumber -= 1
+        }
+        
+        if let userInfo = notification.userInfo, currentGameId = userInfo["gameID"] as? String, homeTeamName = userInfo["homeTeamName"] as? String, awayTeamName = userInfo["awayTeamName"] as? String {
+            
+            if let notifications = application.scheduledLocalNotifications {
+                for notification in notifications {
+                    if let info = notification.userInfo, otherGameId = info["gameID"] as? String {
+                        if currentGameId == otherGameId {
+                            application.cancelLocalNotification(notification)
+                        }
+                    }
+                }
+            }
+            
+            
+            self.getUpcomingGames({ (games) in
+                
+                let games = games?.filter({ $0.gameID == UInt(currentGameId)})
+                
+                if games?.count > 0 {
+                    let game = games![0]
+                    
+                    if !game.hasBeenPredicted {
+                        let appearance = SCLAlertView.SCLAppearance(
+                            kTitleFont: UIFont.semiBoldSystemFont(18),
+                            kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
+                            kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
+                            showCloseButton: false
+                        )
+                        
+                        let alert: SCLAlertView = SCLAlertView(appearance: appearance)
+                        
+                        if let homeTeamImage = userInfo["homeTeamImage"] as? String, awayTeamImage = userInfo["awayTeamImage"] as? String {
+                            let subView = BetDialogView(frame: CGRectMake(0, 0, 215, 140))
+                            subView.homeTeamNameLabel.text = homeTeamName
+                            subView.homeTeamFlagView.loadImage(homeTeamImage)
+                            subView.homeTeamScoreLabel.hidden = true
+                            
+                            subView.awayTeamNameLabel.text = awayTeamName
+                            subView.awayTeamFlagView.loadImage(awayTeamImage)
+                            subView.awayTeamScoreLabel.hidden = true
+                            
+                            subView.notificationLabel.text = "Will be taking place soon. Don't miss the chance to place your bet!"
+                            subView.notificationLabel.hidden = false
+                            
+                            alert.customSubview = subView
+                        }
+                        
+                        alert.addButton("OK", action: {
+                            alert.hideView()
+                        })
+                        
+                        alert.showInfo("Upcoming Game", subTitle: "\n\(homeTeamName) vs. \(awayTeamName) will be taking place soon. Don't miss the opportunity to place your bet!\n", closeButtonTitle: nil, colorStyle: 0x3F51B5, colorTextButton: 0xFFFFFF, circleIconImage: UIImage(named: "EuroCupIcon"))
+                    }
+                }
+            })
+        }
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
@@ -70,6 +209,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        UpgradeManager.shouldShowUpgrade = true
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -78,12 +219,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        UpgradeManager.checkForLatestVersion()
     }
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    /*func application(application: UIApplication, didChangeStatusBarFrame oldStatusBarFrame: CGRect) {
+        if let root = application.keyWindow?.rootViewController as? UITabBarController, let nav = root.selectedViewController as? BaseNavigationController {
+            nav.setNavigationBarHidden(true, animated: true)
+            nav.setNavigationBarHidden(false, animated: true)
+        }
+    }*/
 }
 

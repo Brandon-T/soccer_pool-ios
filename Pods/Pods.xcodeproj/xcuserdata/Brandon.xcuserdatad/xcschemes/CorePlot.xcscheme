@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0800"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E0A86B1B66AB88330784C4DA3CB80593"
-               BuildableName = "XYPieChart.framework"
-               BlueprintName = "XYPieChart"
+               BlueprintIdentifier = "DD8D88E11F267207CF0EBFCDF88353B2"
+               BuildableName = "CorePlot.framework"
+               BlueprintName = "CorePlot"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E0A86B1B66AB88330784C4DA3CB80593"
-            BuildableName = "XYPieChart.framework"
-            BlueprintName = "XYPieChart"
+            BlueprintIdentifier = "DD8D88E11F267207CF0EBFCDF88353B2"
+            BuildableName = "CorePlot.framework"
+            BlueprintName = "CorePlot"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

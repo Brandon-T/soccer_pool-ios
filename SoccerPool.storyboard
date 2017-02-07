@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Baf-EB-vlc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11129.15" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" generatesPrototypingConstraints="YES" useTraitCollections="YES" colorMatched="NO" initialViewController="Baf-EB-vlc">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <development version="7000" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11103.10"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -15,40 +16,40 @@
                         <viewControllerLayoutGuide type="bottom" id="OPw-wk-OKZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Qmj-Y7-g9H">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nmc-au-2az">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IntroBackground" translatesAutoresizingMaskIntoConstraints="NO" id="jSl-9n-n56">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlasticLogo" translatesAutoresizingMaskIntoConstraints="NO" id="aqW-mv-SV8">
-                                        <rect key="frame" x="193" y="44" width="213" height="89"/>
+                                        <rect key="frame" x="81" y="44" width="213" height="89"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="213" id="P1h-eU-c23"/>
                                             <constraint firstAttribute="height" constant="89" id="aVp-yb-Cxd"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EURO CUP POOL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kgs-wD-kDD">
-                                        <rect key="frame" x="15" y="148" width="570" height="25"/>
+                                        <rect key="frame" x="15" y="148" width="345" height="26.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EuroCupBallLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Rii-o4-e5W">
-                                        <rect key="frame" x="235" y="188" width="130" height="130"/>
+                                        <rect key="frame" x="122" y="189" width="130" height="130"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="130" id="85S-9n-8sl"/>
                                             <constraint firstAttribute="width" secondItem="Rii-o4-e5W" secondAttribute="height" multiplier="1:1" id="GVH-Ry-Ld4"/>
                                         </constraints>
                                     </imageView>
                                     <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUa-qA-wFF" customClass="LoginFieldsView" customModule="SoccerPool" customModuleProvider="target">
-                                        <rect key="frame" x="35" y="393" width="530" height="192"/>
+                                        <rect key="frame" x="35" y="394" width="305" height="192"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Plastic Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="q9R-zh-XnE">
-                                                <rect key="frame" x="15" y="15" width="500" height="44"/>
+                                                <rect key="frame" x="15" y="15" width="275" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="bes-t1-Hg6"/>
                                                 </constraints>
@@ -56,17 +57,17 @@
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFd-QC-Tru">
-                                                <rect key="frame" x="15" y="133" width="500" height="44"/>
+                                                <rect key="frame" x="15" y="133" width="275" height="44"/>
                                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Enter the Pool">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="enterPoolButtonPressed:" destination="AUa-qA-wFF" eventType="touchUpInside" id="sCh-8W-MGP"/>
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Set Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RaI-kT-OAV">
-                                                <rect key="frame" x="15" y="74" width="500" height="44"/>
+                                                <rect key="frame" x="15" y="74" width="275" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                             </textField>
@@ -92,16 +93,24 @@
                                             <outlet property="passwordTextField" destination="RaI-kT-OAV" id="7ui-KW-daD"/>
                                         </connections>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v1.0.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I21-Vr-nxO">
+                                        <rect key="frame" x="170" y="327" width="35" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="jSl-9n-n56" secondAttribute="trailing" id="5L2-yp-kwP"/>
                                     <constraint firstItem="jSl-9n-n56" firstAttribute="leading" secondItem="Nmc-au-2az" secondAttribute="leading" id="BMD-wL-uKk"/>
                                     <constraint firstAttribute="bottom" secondItem="jSl-9n-n56" secondAttribute="bottom" id="BXe-4I-ucF"/>
                                     <constraint firstAttribute="trailing" secondItem="AUa-qA-wFF" secondAttribute="trailing" constant="35" id="LVu-Yg-osS"/>
+                                    <constraint firstItem="I21-Vr-nxO" firstAttribute="centerX" secondItem="Nmc-au-2az" secondAttribute="centerX" id="Nhj-QZ-M7Y"/>
                                     <constraint firstItem="AUa-qA-wFF" firstAttribute="leading" secondItem="Nmc-au-2az" secondAttribute="leading" constant="35" id="W5b-dK-UuM"/>
                                     <constraint firstItem="aqW-mv-SV8" firstAttribute="top" secondItem="Nmc-au-2az" secondAttribute="top" constant="44" id="WyZ-KI-cjQ"/>
                                     <constraint firstItem="Kgs-wD-kDD" firstAttribute="top" secondItem="aqW-mv-SV8" secondAttribute="bottom" constant="15" id="dV1-a5-wnd"/>
+                                    <constraint firstItem="I21-Vr-nxO" firstAttribute="top" secondItem="Rii-o4-e5W" secondAttribute="bottom" constant="8" id="e5G-B2-VGz"/>
                                     <constraint firstItem="AUa-qA-wFF" firstAttribute="top" secondItem="Rii-o4-e5W" secondAttribute="bottom" constant="75" id="g4l-dp-Su8"/>
                                     <constraint firstItem="Rii-o4-e5W" firstAttribute="top" secondItem="Kgs-wD-kDD" secondAttribute="bottom" constant="15" id="g8f-Ul-cCE"/>
                                     <constraint firstItem="aqW-mv-SV8" firstAttribute="centerX" secondItem="Nmc-au-2az" secondAttribute="centerX" id="jDz-0g-6ZJ"/>
@@ -113,7 +122,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Nmc-au-2az" firstAttribute="leading" secondItem="Qmj-Y7-g9H" secondAttribute="leading" id="0k5-gp-uVk"/>
                             <constraint firstAttribute="trailing" secondItem="Nmc-au-2az" secondAttribute="trailing" id="61l-Aa-dn5"/>
@@ -123,6 +132,7 @@
                     </view>
                     <connections>
                         <outlet property="loginFieldsView" destination="AUa-qA-wFF" id="WRl-Qv-wwU"/>
+                        <outlet property="versionLabel" destination="I21-Vr-nxO" id="LzM-bB-M95"/>
                         <segue destination="cYi-oa-FkP" kind="presentation" identifier="segueSuccessfulLogin" id="WJA-Bb-x3X"/>
                     </connections>
                 </viewController>
@@ -139,26 +149,30 @@
                         <viewControllerLayoutGuide type="bottom" id="MN3-f6-z40"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TFz-fu-MZ3">
-                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IntroBackground" translatesAutoresizingMaskIntoConstraints="NO" id="V8r-kt-pFB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6cO-R6-Apx" customClass="HorizontalBarGraphView" customModule="SoccerPool" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="6cj-7z-ND5">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLU-Fo-bMd" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="487"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IntroBackground" translatesAutoresizingMaskIntoConstraints="NO" id="V8r-kt-pFB">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
-                                            </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uqv-5e-HRn" userLabel="BarGraph" customClass="BarGraphView" customModule="SoccerPool" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="300" id="6oC-de-8Fd"/>
                                                 </constraints>
                                             </view>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gkw-wu-zuY">
-                                                <rect key="frame" x="0.0" y="300" width="600" height="187"/>
+                                                <rect key="frame" x="0.0" y="300" width="375" height="187"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="187" id="HJC-O5-GHK"/>
                                                 </constraints>
@@ -175,7 +189,6 @@
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </view>
                                                     </collectionViewCell>
                                                 </cells>
@@ -185,18 +198,13 @@
                                                 </connections>
                                             </collectionView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="V8r-kt-pFB" firstAttribute="top" secondItem="NLU-Fo-bMd" secondAttribute="top" id="8v3-NM-Jtl"/>
                                             <constraint firstItem="Uqv-5e-HRn" firstAttribute="top" secondItem="NLU-Fo-bMd" secondAttribute="top" id="Aua-R2-CXy"/>
                                             <constraint firstItem="Gkw-wu-zuY" firstAttribute="leading" secondItem="NLU-Fo-bMd" secondAttribute="leading" id="Blh-8Z-zlg"/>
-                                            <constraint firstAttribute="trailing" secondItem="V8r-kt-pFB" secondAttribute="trailing" id="OEy-QJ-ISE"/>
                                             <constraint firstAttribute="trailing" secondItem="Uqv-5e-HRn" secondAttribute="trailing" id="P2l-KZ-YX8"/>
                                             <constraint firstItem="Uqv-5e-HRn" firstAttribute="leading" secondItem="NLU-Fo-bMd" secondAttribute="leading" id="U4X-lo-omw"/>
                                             <constraint firstAttribute="bottom" secondItem="Gkw-wu-zuY" secondAttribute="bottom" id="W3V-sr-YXz"/>
                                             <constraint firstAttribute="trailing" secondItem="Gkw-wu-zuY" secondAttribute="trailing" id="mIr-Xx-Ub4"/>
-                                            <constraint firstItem="V8r-kt-pFB" firstAttribute="leading" secondItem="NLU-Fo-bMd" secondAttribute="leading" id="qbx-j0-OwA"/>
-                                            <constraint firstAttribute="bottom" secondItem="V8r-kt-pFB" secondAttribute="bottom" id="tNZ-m8-zf9"/>
                                             <constraint firstItem="Gkw-wu-zuY" firstAttribute="top" secondItem="Uqv-5e-HRn" secondAttribute="bottom" id="uDV-ei-i2K"/>
                                         </constraints>
                                     </view>
@@ -207,17 +215,22 @@
                                     <constraint firstItem="NLU-Fo-bMd" firstAttribute="top" secondItem="6cj-7z-ND5" secondAttribute="top" id="qUF-Gt-KpK"/>
                                     <constraint firstItem="NLU-Fo-bMd" firstAttribute="leading" secondItem="6cj-7z-ND5" secondAttribute="leading" id="zwH-2K-4FC"/>
                                 </constraints>
-                                <variation key="heightClass=regular" ambiguous="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="687"/>
-                                </variation>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="NLU-Fo-bMd" firstAttribute="width" secondItem="TFz-fu-MZ3" secondAttribute="width" id="1o7-oQ-WoX"/>
+                            <constraint firstItem="6cO-R6-Apx" firstAttribute="top" secondItem="qRw-hk-5Bi" secondAttribute="bottom" id="1tS-uf-wWO"/>
+                            <constraint firstAttribute="trailing" secondItem="V8r-kt-pFB" secondAttribute="trailing" id="3RN-ps-rFS"/>
+                            <constraint firstItem="6cO-R6-Apx" firstAttribute="leading" secondItem="TFz-fu-MZ3" secondAttribute="leading" id="3eE-Ot-3Fc"/>
+                            <constraint firstItem="MN3-f6-z40" firstAttribute="top" secondItem="6cO-R6-Apx" secondAttribute="bottom" id="9aU-go-Qh8"/>
                             <constraint firstItem="6cj-7z-ND5" firstAttribute="top" secondItem="qRw-hk-5Bi" secondAttribute="bottom" id="BWk-oE-MZk"/>
                             <constraint firstItem="MN3-f6-z40" firstAttribute="top" secondItem="6cj-7z-ND5" secondAttribute="bottom" id="C5r-0B-oI7"/>
+                            <constraint firstItem="MN3-f6-z40" firstAttribute="top" secondItem="V8r-kt-pFB" secondAttribute="bottom" id="CcB-Hr-3Vu"/>
+                            <constraint firstAttribute="trailing" secondItem="6cO-R6-Apx" secondAttribute="trailing" id="X5f-bE-Mmp"/>
+                            <constraint firstItem="V8r-kt-pFB" firstAttribute="top" secondItem="qRw-hk-5Bi" secondAttribute="bottom" id="gjs-tc-JKl"/>
                             <constraint firstItem="6cj-7z-ND5" firstAttribute="leading" secondItem="TFz-fu-MZ3" secondAttribute="leading" id="i0m-W4-p82"/>
+                            <constraint firstItem="V8r-kt-pFB" firstAttribute="leading" secondItem="TFz-fu-MZ3" secondAttribute="leading" id="iIS-WS-jgk"/>
                             <constraint firstAttribute="trailing" secondItem="6cj-7z-ND5" secondAttribute="trailing" id="pS5-WL-11l"/>
                         </constraints>
                     </view>
@@ -228,6 +241,7 @@
                         <outlet property="barGraph" destination="Uqv-5e-HRn" id="OhL-Qk-1Uy"/>
                         <outlet property="collectionView" destination="Gkw-wu-zuY" id="0KF-bE-wBA"/>
                         <outlet property="collectionViewHeightConstraint" destination="HJC-O5-GHK" id="Mr8-ad-the"/>
+                        <outlet property="horizontalBarGraph" destination="6cO-R6-Apx" id="lWc-o3-AGT"/>
                         <outlet property="scrollView" destination="6cj-7z-ND5" id="PIZ-di-qvE"/>
                         <segue destination="DQV-co-UvZ" kind="presentation" identifier="segueHelp" id="qK9-gR-2Aa"/>
                     </connections>
@@ -235,6 +249,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xpd-KP-giU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3160" y="371"/>
+        </scene>
+        <!--Streaming View Controller-->
+        <scene sceneID="XvJ-Df-I5P">
+            <objects>
+                <viewController id="0fa-Dg-LLY" customClass="StreamingViewController" customModule="SoccerPool" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="umv-6f-SJu"/>
+                        <viewControllerLayoutGuide type="bottom" id="NQB-Xa-NIq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ktU-VO-YcP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZIj-v3-nMt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4950" y="-792"/>
         </scene>
         <!--Help View Controller-->
         <scene sceneID="2Jt-II-J8S">
@@ -245,15 +279,15 @@
                         <viewControllerLayoutGuide type="bottom" id="5F1-MO-PKi"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Eqa-xa-a2b">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9xv-wT-j6b">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                             </webView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="9xv-wT-j6b" firstAttribute="leading" secondItem="Eqa-xa-a2b" secondAttribute="leading" id="B3W-aF-hzM"/>
                             <constraint firstItem="9xv-wT-j6b" firstAttribute="bottom" secondItem="5F1-MO-PKi" secondAttribute="top" id="ZXy-Ps-GZJ"/>
@@ -263,7 +297,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="yb9-is-eHW">
                         <barButtonItem key="rightBarButtonItem" systemItem="stop" id="doQ-Jq-Jey">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="closeBarButtonPressed:" destination="BlD-xU-dff" id="nNm-sq-joq"/>
                             </connections>
@@ -282,7 +316,7 @@
             <objects>
                 <navigationController id="gXF-jl-xwV" customClass="BaseNavigationController" customModule="SoccerPool" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Cup" image="FootballTabBarIcon" id="ZlD-q9-r04"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="smA-Vh-GBn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="smA-Vh-GBn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.24705882352941178" green="0.31764705882352939" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
@@ -300,24 +334,24 @@
             <objects>
                 <tableViewController id="e9Q-Qn-CLE" customClass="GamesViewController" customModule="SoccerPool" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="9o7-fM-g1n">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GamesCell" id="7uF-w3-QJB">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7uF-w3-QJB" id="jGf-d3-4Nn">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoMatchesCell" id="jFf-OQ-OOl" customClass="NoMatchesTableViewCell" customModule="SoccerPool" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="136" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jFf-OQ-OOl" id="b87-sD-1PQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No matches yet." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMu-WN-6Zk">
@@ -328,7 +362,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -336,21 +370,66 @@
                             <outlet property="delegate" destination="e9Q-Qn-CLE" id="v9f-yt-hEG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="h5n-Rx-jgX"/>
+                    <navigationItem key="navigationItem" id="h5n-Rx-jgX">
+                        <barButtonItem key="leftBarButtonItem" systemItem="play" id="fad-bA-4ah">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="onStreamButtonPressed:" destination="e9Q-Qn-CLE" id="33q-3J-qj0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="DQV-co-UvZ" kind="presentation" identifier="segueHelp" id="by8-XA-9hx"/>
+                        <segue destination="xzz-dK-RrV" kind="show" identifier="teamDetailsSegue" id="7oO-gz-2ED"/>
+                        <segue destination="0fa-Dg-LLY" kind="show" identifier="streamSegue" id="xGR-nz-8yB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IkY-57-Fuc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3160" y="-541"/>
         </scene>
+        <!--Player Information-->
+        <scene sceneID="Bvu-8b-nw5">
+            <objects>
+                <tableViewController title="Player Information" id="xzz-dK-RrV" customClass="TeamDetailsViewController" customModule="SoccerPool" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="d3V-Az-rWh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeamFlagTableViewCell" rowHeight="114" id="NXt-Y3-D5T" customClass="TeamFlagTableViewCell">
+                                <rect key="frame" x="0.0" y="92" width="375" height="114"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NXt-Y3-D5T" id="a8X-I9-J7v">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="114"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeamTableViewCell" rowHeight="137" id="FPJ-af-qGj" customClass="TeamTableViewCell" customModule="SoccerPool" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="206" width="375" height="137"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FPJ-af-qGj" id="gKi-7j-pH3">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="137"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="xzz-dK-RrV" id="k7I-33-WFE"/>
+                            <outlet property="delegate" destination="xzz-dK-RrV" id="CaQ-Id-no5"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n2L-IF-iHG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4115" y="-799"/>
+        </scene>
         <!--Standings-->
         <scene sceneID="hIQ-D0-Qgf">
             <objects>
                 <navigationController id="v1P-C5-ouV" customClass="BaseNavigationController" customModule="SoccerPool" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Standings" image="StandingsTabBarIcon" id="Nbg-x7-uYL"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DGE-Qb-3zL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DGE-Qb-3zL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.24705882352941178" green="0.31764705882352939" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
@@ -372,7 +451,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.77254901960784317" green="0.792156862745098" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.7725490196" green="0.79215686269999996" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
@@ -389,7 +468,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DQV-co-UvZ" customClass="BaseNavigationController" customModule="SoccerPool" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="w5l-fp-dxq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="w5l-fp-dxq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.24705882352941178" green="0.31764705882352939" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>

@@ -10,6 +10,24 @@ import Foundation
 
 class BaseModel : NSObject, Serializeable {
     override var description: String {
-        return "\(NSStringFromClass(self.dynamicType)): \(self.toJSON())"
+        return "\(self.toJSON())"
+    }
+    
+    override var debugDescription: String {
+        return "\(self.toJSON())"
+    }
+}
+
+extension Array {
+    var description: String {
+        let array = self.map { String($0) }
+        return array.joinWithSeparator(", ")
+    }
+}
+
+extension Dictionary {
+    var description: String {
+        let array = Array(self.map { "{" + String($0) + ": " + String($1) + "}" })
+        return array.joinWithSeparator(",\n")
     }
 }

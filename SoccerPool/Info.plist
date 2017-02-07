@@ -15,11 +15,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3</string>
+	<string>2.0.5</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>4</string>
+	<string>15</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -37,5 +37,9 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>XIO.SoccerPool.CurrentVersion.URL</key>
+	<string>https://brandon-t.github.io/install/currentVersion.plist</string>
+	<key>XIO.SoccerPool.Upgrade.URL</key>
+	<string>itms-services://?action=download-manifest&amp;url=https://brandon-t.github.io/install/currentVersion.plist</string>
 </dict>
 </plist>
